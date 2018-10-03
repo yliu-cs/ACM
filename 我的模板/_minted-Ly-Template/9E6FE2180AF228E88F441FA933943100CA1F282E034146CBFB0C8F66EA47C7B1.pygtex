@@ -1,0 +1,77 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}bits/stdc++.h\PYGZgt{}}
+
+\PYG{c+c1}{// 点}
+\PYG{k}{struct} \PYG{n}{Point} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// X:横坐标，Y:纵坐标}
+    \PYG{k+kt}{double} \PYG{n}{X}\PYG{p}{,} \PYG{n}{Y}\PYG{p}{;}
+    \PYG{n}{Point}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{\PYGZus{}X} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{\PYGZus{}Y} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{)}\PYG{o}{:} \PYG{n}{X}\PYG{p}{(}\PYG{n}{\PYGZus{}X}\PYG{p}{),} \PYG{n}{Y}\PYG{p}{(}\PYG{n}{\PYGZus{}Y}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+    \PYG{k+kt}{void} \PYG{n}{input}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+        \PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}lf\PYGZpc{}lf\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{X}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{Y}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kt}{void} \PYG{n}{output}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+        \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}lf\PYGZpc{}lf\PYGZdq{}}\PYG{p}{,} \PYG{n}{X}\PYG{p}{,} \PYG{n}{Y}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// 坐标减法}
+    \PYG{n}{Point} \PYG{k}{operator} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{Point} \PYG{p}{(}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// 向量叉乘}
+    \PYG{k+kt}{double} \PYG{k}{operator} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{X} \PYG{o}{*} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{Y} \PYG{o}{*} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{// 两点间距离}
+\PYG{k+kt}{double} \PYG{n+nf}{Distance}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{hypot}\PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{A}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 凸包，points:所有点，返回凸包总长度}
+\PYG{k+kt}{double} \PYG{n+nf}{ConvexHull}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Point}\PYG{o}{\PYGZgt{}} \PYG{n}{points}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{N} \PYG{o}{=} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{points}\PYG{p}{.}\PYG{n}{size}\PYG{p}{());}
+    \PYG{c+c1}{// 特判点数小于等于2的情况}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{N} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{N} \PYG{o}{==} \PYG{l+m+mi}{2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// 查找最左下角的基准点}
+    \PYG{k+kt}{int} \PYG{n}{Basic} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Y} \PYG{o}{\PYGZgt{}} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Basic}\PYG{p}{].}\PYG{n}{Y} \PYG{o}{||} 
+            \PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Y} \PYG{o}{==} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Basic}\PYG{p}{].}\PYG{n}{Y} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{X} \PYG{o}{\PYGZlt{}} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Basic}\PYG{p}{].}\PYG{n}{X}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+                \PYG{n}{Basic} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{swap}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Basic}\PYG{p}{]);}
+    \PYG{c+c1}{// 对其它点进行极角排序}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{sort}\PYG{p}{(}\PYG{n}{points}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{()} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{points}\PYG{p}{.}\PYG{n}{end}\PYG{p}{(),} \PYG{p}{[}\PYG{o}{\PYGZam{}}\PYG{p}{]} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{A}\PYG{p}{,} \PYG{k}{const} \PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{double} \PYG{n}{Temp} \PYG{o}{=} \PYG{p}{(}\PYG{n}{A} \PYG{o}{\PYGZhy{}} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]);}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{Temp} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{Temp} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])} \PYG{o}{\PYGZlt{}} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]))} \PYG{p}{\PYGZob{}}
+            \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{});}
+    \PYG{c+c1}{// 凸包选点}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Point}\PYG{o}{\PYGZgt{}} \PYG{n}{Stack}\PYG{p}{;}
+    \PYG{n}{Stack}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]);}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{while} \PYG{p}{(}\PYG{n}{Stack}\PYG{p}{.}\PYG{n}{size}\PYG{p}{()} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{2} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{p}{((}\PYG{n}{Stack}\PYG{p}{.}\PYG{n}{back}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{n}{Stack}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{Stack}\PYG{p}{.}\PYG{n}{size}\PYG{p}{())} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}\PYG{p}{])} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{Stack}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{Stack}\PYG{p}{.}\PYG{n}{size}\PYG{p}{())} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}\PYG{p}{]))} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Stack}\PYG{p}{.}\PYG{n}{pop\PYGZus{}back}\PYG{p}{();}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{Stack}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]);}
+    \PYG{c+c1}{// 计算总长}
+    \PYG{k+kt}{double} \PYG{n}{Ans} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{Stack}\PYG{p}{.}\PYG{n}{size}\PYG{p}{());} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Ans} \PYG{o}{+=} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Stack}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{Stack}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// 返回结果}
+    \PYG{k}{return} \PYG{n}{Ans}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

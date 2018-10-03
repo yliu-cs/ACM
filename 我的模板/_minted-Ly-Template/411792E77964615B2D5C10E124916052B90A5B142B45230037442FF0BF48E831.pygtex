@@ -1,0 +1,57 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}bits/stdc++.h\PYGZgt{}}
+
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+m+mf}{1e5} \PYG{o}{+} \PYG{l+m+mi}{5}\PYG{p}{;}
+
+\PYG{k}{struct} \PYG{n}{Edge} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{U}\PYG{p}{,} \PYG{n}{V}\PYG{p}{,} \PYG{n}{Dis}\PYG{p}{;}
+    \PYG{n}{Edge}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{\PYGZus{}U} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{\PYGZus{}V} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{\PYGZus{}Dis} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{)}\PYG{o}{:} \PYG{n}{U}\PYG{p}{(}\PYG{n}{\PYGZus{}U}\PYG{p}{),} \PYG{n}{V}\PYG{p}{(}\PYG{n}{\PYGZus{}V}\PYG{p}{),} \PYG{n}{Dis}\PYG{p}{(}\PYG{n}{\PYGZus{}Dis}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{// N:顶点数，E:边数，Pre并查集}
+\PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{,} \PYG{n}{E}\PYG{p}{,} \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{c+c1}{// edges:边}
+\PYG{n}{Edge} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+
+\PYG{k+kt}{void} \PYG{n+nf}{Init}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// 并查集初始化}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 并查集查询}
+\PYG{k+kt}{int} \PYG{n+nf}{Find}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{X}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{R} \PYG{o}{=} \PYG{n}{X}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{Pre}\PYG{p}{[}\PYG{n}{R}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{R}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{R} \PYG{o}{=} \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{R}\PYG{p}{];}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{R}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 并查集合并}
+\PYG{k+kt}{void} \PYG{n+nf}{Join}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{X}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Y}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{XX} \PYG{o}{=} \PYG{n}{Find}\PYG{p}{(}\PYG{n}{X}\PYG{p}{);}
+    \PYG{k+kt}{int} \PYG{n}{YY} \PYG{o}{=} \PYG{n}{Find}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{);}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{XX} \PYG{o}{!=} \PYG{n}{YY}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{XX}\PYG{p}{]} \PYG{o}{=} \PYG{n}{YY}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// Kruskal算法}
+\PYG{k+kt}{int} \PYG{n+nf}{Kruskal}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// 贪心排序}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{sort}\PYG{p}{(}\PYG{n}{edges} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{edges} \PYG{o}{+} \PYG{n}{E} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{n}{Init}\PYG{p}{();}
+    \PYG{k+kt}{int} \PYG{n}{Res} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{c+c1}{// 选边计算}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{E}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Edge} \PYG{n}{Temp} \PYG{o}{=} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{Find}\PYG{p}{(}\PYG{n}{Temp}\PYG{p}{.}\PYG{n}{U}\PYG{p}{)} \PYG{o}{!=} \PYG{n}{Find}\PYG{p}{(}\PYG{n}{Temp}\PYG{p}{.}\PYG{n}{V}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Join}\PYG{p}{(}\PYG{n}{Temp}\PYG{p}{.}\PYG{n}{U}\PYG{p}{,} \PYG{n}{Temp}\PYG{p}{.}\PYG{n}{V}\PYG{p}{);}
+            \PYG{n}{Res} \PYG{o}{+=} \PYG{n}{Temp}\PYG{p}{.}\PYG{n}{Dis}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{Res}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

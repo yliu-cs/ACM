@@ -1,0 +1,107 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}bits/stdc++.h\PYGZgt{}}
+
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+m+mf}{1e5} \PYG{o}{+} \PYG{l+m+mi}{5}\PYG{p}{;}
+
+\PYG{c+c1}{// Sum:线段树信息(此模板为求和)，Lazy:惰性标记}
+\PYG{k+kt}{int} \PYG{n}{Sum}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{],} \PYG{n}{Lazy}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{];}
+
+\PYG{c+c1}{// 更新节点信息，这里是求和}
+\PYG{k+kt}{void} \PYG{n+nf}{PushUp}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Root}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Sum}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Sum}\PYG{p}{[}\PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{Sum}\PYG{p}{[}\PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1} \PYG{o}{|} \PYG{l+m+mi}{1}\PYG{p}{];}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 下推标记函数，LeftNum，RightNum:分别为左右子树的数字数量}
+\PYG{k+kt}{void} \PYG{n+nf}{PushDown}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Root}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{LeftNum}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{RightNum}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{Lazy}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+        \PYG{c+c1}{// 下推标记}
+        \PYG{n}{Lazy}\PYG{p}{[}\PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{Lazy}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{];}
+        \PYG{n}{Lazy}\PYG{p}{[}\PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1} \PYG{o}{|} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{Lazy}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{];}
+        \PYG{c+c1}{// 根据惰性标修改子节点的值}
+        \PYG{n}{Sum}\PYG{p}{[}\PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{Lazy}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{]} \PYG{o}{*} \PYG{n}{LeftNum}\PYG{p}{;}
+        \PYG{n}{Sum}\PYG{p}{[}\PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1} \PYG{o}{|} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{Lazy}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{]} \PYG{o}{*} \PYG{n}{RightNum}\PYG{p}{;}
+        \PYG{c+c1}{// 清除本节点惰性标记}
+        \PYG{n}{Lazy}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 建树，Left、Right:当前节点区间，Root:当前节点编号}
+\PYG{k+kt}{void} \PYG{n+nf}{Build}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Left}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Right}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Root}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Lazy}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{c+c1}{// 到达叶子节点}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{Left} \PYG{o}{==} \PYG{n}{Right}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{Sum}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{]);}
+        \PYG{k}{return}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kt}{int} \PYG{n}{Mid} \PYG{o}{=} \PYG{p}{(}\PYG{n}{Left} \PYG{o}{+} \PYG{n}{Right}\PYG{p}{)} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{c+c1}{// 左子树}
+    \PYG{n}{Build}\PYG{p}{(}\PYG{n}{Left}\PYG{p}{,} \PYG{n}{Mid}\PYG{p}{,} \PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{c+c1}{// 右子树}
+    \PYG{n}{Build}\PYG{p}{(}\PYG{n}{Mid} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{Right}\PYG{p}{,} \PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1} \PYG{o}{|} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{c+c1}{// 更新信息}
+    \PYG{n}{PushUp}\PYG{p}{(}\PYG{n}{Root}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 单点修改，Pos:修改点位置，Value:修改值，Left、Right:当前区间，Root:当前节点编号}
+\PYG{k+kt}{void} \PYG{n+nf}{PointUpdate}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Pos}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Value}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Left}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Right}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Root}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// 修改叶子节点}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{Left} \PYG{o}{==} \PYG{n}{Right}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Sum}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{Value}\PYG{p}{;}
+        \PYG{k}{return}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kt}{int} \PYG{n}{Mid} \PYG{o}{=} \PYG{p}{(}\PYG{n}{Left} \PYG{o}{+} \PYG{n}{Right}\PYG{p}{)} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{c+c1}{// 根据条件判断调用左子树还是右子树}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{Pos} \PYG{o}{\PYGZlt{}=} \PYG{n}{Mid}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{PointUpdate}\PYG{p}{(}\PYG{n}{Pos}\PYG{p}{,} \PYG{n}{Value}\PYG{p}{,} \PYG{n}{Left}\PYG{p}{,} \PYG{n}{Mid}\PYG{p}{,} \PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} \PYG{p}{\PYGZob{}}
+        \PYG{n}{PointUpdate}\PYG{p}{(}\PYG{n}{Pos}\PYG{p}{,} \PYG{n}{Value}\PYG{p}{,} \PYG{n}{Mid} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{Right}\PYG{p}{,} \PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1} \PYG{o}{|} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// 子节点更新后更新此节点}
+    \PYG{n}{PushUp}\PYG{p}{(}\PYG{n}{Root}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 区间修改，OperateLeft、OperateRight:操作区间，Left、Right:当前区间，Root:当前节点编号}
+\PYG{k+kt}{void} \PYG{n+nf}{IntervalUpdate}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{OperateLeft}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{OperateRight}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Value}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Left}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Right}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Root}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// 若本区间完全在操作区间内}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{OperateLeft} \PYG{o}{\PYGZlt{}=} \PYG{n}{Left} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{OperateRight} \PYG{o}{\PYGZgt{}=} \PYG{n}{Right}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Sum}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{Value} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Right} \PYG{o}{\PYGZhy{}} \PYG{n}{Left} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+        \PYG{c+c1}{// 增加惰性标记，表示本区间Sum正确，但子区间仍需要根据惰性标记调整更新}
+        \PYG{n}{Lazy}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{Value}\PYG{p}{;}
+        \PYG{k}{return}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kt}{int} \PYG{n}{Mid} \PYG{o}{=} \PYG{p}{(}\PYG{n}{Left} \PYG{o}{+} \PYG{n}{Right}\PYG{p}{)} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{c+c1}{// 下推标记}
+    \PYG{n}{PushDown}\PYG{p}{(}\PYG{n}{Root}\PYG{p}{,} \PYG{n}{Mid} \PYG{o}{\PYGZhy{}} \PYG{n}{Left} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{Right} \PYG{o}{\PYGZhy{}} \PYG{n}{Mid}\PYG{p}{);}
+    \PYG{c+c1}{// 根据条件判断调用左子树还是右子树}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{OperateLeft} \PYG{o}{\PYGZlt{}=} \PYG{n}{Mid}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{IntervalUpdate}\PYG{p}{(}\PYG{n}{OperateLeft}\PYG{p}{,} \PYG{n}{OperateRight}\PYG{p}{,} \PYG{n}{Value}\PYG{p}{,} \PYG{n}{Left}\PYG{p}{,} \PYG{n}{Mid}\PYG{p}{,} \PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{OperateRight} \PYG{o}{\PYGZgt{}} \PYG{n}{Mid}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{IntervalUpdate}\PYG{p}{(}\PYG{n}{OperateLeft}\PYG{p}{,} \PYG{n}{OperateRight}\PYG{p}{,} \PYG{n}{Value}\PYG{p}{,} \PYG{n}{Mid} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{Right}\PYG{p}{,} \PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1} \PYG{o}{|} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// 更新当前节点信息}
+    \PYG{n}{PushUp}\PYG{p}{(}\PYG{n}{Root}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 区间查询，OperateLeft、OperateRight:操作区间，Left、Right:当前区间，Root:当前节点编号}
+\PYG{k+kt}{int} \PYG{n+nf}{Query}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{OperateLeft}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{OperateRight}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Left}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Right}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Root}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// 区间内直接返回}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{OperateLeft} \PYG{o}{\PYGZlt{}=} \PYG{n}{Left} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{OperateRight} \PYG{o}{\PYGZgt{}=} \PYG{n}{Right}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{Sum}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{];}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k+kt}{int} \PYG{n}{Mid} \PYG{o}{=} \PYG{p}{(}\PYG{n}{Left} \PYG{o}{+} \PYG{n}{Right}\PYG{p}{)} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{c+c1}{// 下推标记}
+    \PYG{n}{PushDown}\PYG{p}{(}\PYG{n}{Root}\PYG{p}{,} \PYG{n}{Mid} \PYG{o}{\PYGZhy{}} \PYG{n}{Left} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{Right} \PYG{o}{\PYGZhy{}} \PYG{n}{Mid}\PYG{p}{);}
+    \PYG{c+c1}{// 叠加结果}
+    \PYG{k+kt}{int} \PYG{n}{Ans} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{OperateLeft} \PYG{o}{\PYGZlt{}=} \PYG{n}{Mid}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Ans} \PYG{o}{+=} \PYG{n}{Query}\PYG{p}{(}\PYG{n}{OperateLeft}\PYG{p}{,} \PYG{n}{OperateRight}\PYG{p}{,} \PYG{n}{Left}\PYG{p}{,} \PYG{n}{Mid}\PYG{p}{,} \PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{OperateRight} \PYG{o}{\PYGZgt{}} \PYG{n}{Mid}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Ans} \PYG{o}{+=} \PYG{n}{Query}\PYG{p}{(}\PYG{n}{OperateLeft}\PYG{p}{,} \PYG{n}{OperateRight}\PYG{p}{,} \PYG{n}{Mid} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{Right}\PYG{p}{,} \PYG{n}{Root} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1} \PYG{o}{|} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// 返回结果}
+    \PYG{k}{return} \PYG{n}{Ans}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

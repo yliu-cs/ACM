@@ -1,0 +1,64 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}bits/stdc++.h\PYGZgt{}}
+
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+m+mi}{26}\PYG{p}{;}
+
+\PYG{c+c1}{// 字典树节点}
+\PYG{k}{struct} \PYG{n}{Trie} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// 指针数组指向下一层(这里代表26个字母)}
+    \PYG{n}{Trie} \PYG{o}{*}\PYG{n}{Next}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+    \PYG{c+c1}{// 统计}
+    \PYG{k+kt}{int} \PYG{n}{Cnt}\PYG{p}{;}
+    \PYG{c+c1}{// 初始化}
+    \PYG{n}{Trie}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{maxn}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{NULL}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{Cnt} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{// 根节点}
+\PYG{n}{Trie} \PYG{o}{*}\PYG{n}{Root}\PYG{p}{;}
+
+\PYG{c+c1}{// 插入字符串Str}
+\PYG{k+kt}{void} \PYG{n+nf}{InsertTrie}\PYG{p}{(}\PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{Str}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{Len} \PYG{o}{=} \PYG{n}{strlen}\PYG{p}{(}\PYG{n}{Str}\PYG{p}{);}
+    \PYG{n}{Trie} \PYG{o}{*}\PYG{n}{P} \PYG{o}{=} \PYG{n}{Root}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{Len}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{ID} \PYG{o}{=} \PYG{n}{Str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{l+s+sc}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{;}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{P} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{ID}\PYG{p}{]} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{P} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{ID}\PYG{p}{]} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Trie}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{P} \PYG{o}{=} \PYG{n}{P} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{ID}\PYG{p}{];}
+        \PYG{n}{P} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Cnt}\PYG{o}{++}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 查找以Str字符串为前缀的字符串数量}
+\PYG{k+kt}{int} \PYG{n+nf}{FindTrie}\PYG{p}{(}\PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{Str}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{Len} \PYG{o}{=} \PYG{n}{strlen}\PYG{p}{(}\PYG{n}{Str}\PYG{p}{);}
+    \PYG{n}{Trie} \PYG{o}{*}\PYG{n}{P} \PYG{o}{=} \PYG{n}{Root}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{Len}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{ID} \PYG{o}{=} \PYG{n}{Str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{l+s+sc}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{;}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{P} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{ID}\PYG{p}{]} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{P} \PYG{o}{=} \PYG{n}{P} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{ID}\PYG{p}{];}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{P} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Cnt}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 释放字典树}
+\PYG{k+kt}{void} \PYG{n+nf}{DeleteTrie}\PYG{p}{(}\PYG{n}{Trie} \PYG{o}{*}\PYG{n}{Node}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{Node} \PYG{o}{==} \PYG{n+nb}{NULL}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{maxn}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{Node} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{!=} \PYG{n+nb}{NULL}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{DeleteTrie}\PYG{p}{(}\PYG{n}{Node} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{free}\PYG{p}{(}\PYG{n}{Node}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
