@@ -35,10 +35,11 @@ void PreKMP(string Pattern, vector<int> &Next) {
 }
 
 // 利用预处理Next数组计数模式串Pattern在主串Main中出现次数
-int KMPCount(string Pattern, string Main, vector<int> &Next) {
+int KMPCount(string Pattern, string Main) {
+    int PatternLen = int(Pattern.length()), MainLen = int(Main.length());
+    vector<int> Next(PatternLen + 1, 0);
     //PreKMP(Pattern, Next);
     KMPPre(Pattern, Next);
-    int PatternLen = int(Pattern.length()), MainLen = int(Main.length());
     int i = 0, j = 0;
     int Ans = 0;
     while (i < MainLen) {

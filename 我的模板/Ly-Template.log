@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.9.30)  4 OCT 2018 11:33
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.9.30)  4 OCT 2018 11:46
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1468,7 +1468,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [3]
 (./_minted-Ly-Template/default-pyg-prefix.pygstyle)
 (./_minted-Ly-Template/default.pygstyle)
-(./_minted-Ly-Template/E81EEE583597222CA0E8B7449560248A22E9052A18435959489170EA
+(./_minted-Ly-Template/8E189AC62D97DB7A6EBBE04F4EFF3D2F22E9052A18435959489170EA
 36FF2F2E.pygtex
 \g__fontspec_family_AdobeFangsongStd-Regular.otf_int=\count303
 .................................................
@@ -1495,7 +1495,7 @@ nput line 4.
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 42.
+(Font)              <5> on input line 40.
 [4])
 (./_minted-Ly-Template/15A38C829523868D9ED3FD8F64C5769F5009F6BD5C85DF0F389060BB
 53B61750.pygtex)
