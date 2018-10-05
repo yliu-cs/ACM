@@ -18,8 +18,8 @@ void Init() {
 
 // 加边建图
 void AddEdge(int U, int V) {
-    edges[++Tot] = Link {V, Head[U]};
-    Head[U] = Tot;
+    edges[Tot] = Link {V, Head[U]};
+    Head[U] = Tot++;
 }
 
 // 匹配左顶点数

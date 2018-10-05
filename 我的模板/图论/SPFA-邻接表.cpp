@@ -4,10 +4,9 @@ const int INF = 0x3f3f3f3f;
 const int maxn = 1e3 + 5;
 
 // 边
-struct Edge {
+struct Link {
     // V:连接点，Dis:边权
     int V, Dis;
-    Edge(int _V = 0, int _Dis = 0): V(_V), Dis(Dis) {}
 };
 
 // N:顶点数，E:边数
@@ -19,13 +18,13 @@ int Cnt[maxn];
 // 最短路数组
 int Dis[maxn];
 // 邻接表
-std::vector<Edge> Adj[maxn];
+std::vector<Link> Adj[maxn];
 
 // 建图加边，U、V之间权值为Weight的边
 void AddEdge (int U, int V, int Weight) {
-    Adj[U].push_back(Edge (V, Weight));
+    Adj[U].push_back(Link (V, Weight));
     // 无向图建立反向边
-    Adj[V].push_back(Edge (U, Weight));
+    Adj[V].push_back(Link (U, Weight));
 }
 
 // SPFA算法，Start:起点

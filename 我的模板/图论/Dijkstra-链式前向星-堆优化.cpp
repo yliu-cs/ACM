@@ -7,7 +7,6 @@ const int INF = 0x3f3f3f3f;
 struct Link {
     // V:连接点，Weight:权值，Next:上一条边的编号
     int V, Weight, Next;
-    Link(int _V = 0, int _Weight = 0, int _Next = 0): V(_V), Weight(_Weight), Next(_Next) {}
 };
 
 // 边，一定要开到足够大

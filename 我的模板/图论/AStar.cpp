@@ -25,11 +25,11 @@ void Init() {
 
 // 加边建图
 void AddEdge(int U, int V, int Weight) {
-    edges[++Tot] = Link {V, Weight, Head[U]};
-    Head[U] = Tot;
+    edges[Tot] = Link {V, Weight, Head[U]};
+    Head[U] = Tot++;
     // 用反向边另建图
-    Reverseedges[++ReverseTot] = Link {U, Weight, ReverseHead[V]};
-    ReverseHead[V] = ReverseTot;
+    Reverseedges[ReverseTot] = Link {U, Weight, ReverseHead[V]};
+    ReverseHead[V] = ReverseTot++;
 }
 
 int Dis[maxn];

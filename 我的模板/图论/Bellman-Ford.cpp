@@ -3,16 +3,15 @@
 const int INF = 0x3f3f3f3f;
 const int maxn = 1e5 + 5;
 
-struct Edge {
+struct Link {
     // U、V:顶点，Dis:边权
     int U, V;
     int Dis;
-    Edge(int _U = 0, int _V = 0, int _Dis = 0): U(_U), V(_V), Dis(_Dis) {}
 };
 // 松弛更新数组
 int Dis[maxn];
 // 边
-std::vector<Edge> edges;
+std::vector<Link> edges;
 
 // Bellman_Ford算法判断是否存在负环回路
 bool BellmanFord(int Start, int N) {

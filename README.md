@@ -95,6 +95,10 @@
 * [SPOJ-BALNUM](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/SPOJ/SPOJ-BALNUM.cpp)
 ### 51Nod
 * [51Nod-1256](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/51Nod/51Nod-1256.cpp)
+### ZZNUOJ
+* [ZZNUOJ-2107](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/ZZNUOJ/ZZNUOJ-2107.cpp)
+* [ZZNUOJ-2109](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/ZZNUOJ/ZZNUOJ-2109.cpp)
+* [ZZNUOJ-2112](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/ZZNUOJ/ZZNUOJ-2112.cpp)
 ### PTA
 * [团体程序设计天梯赛-练习集-L1-002](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/PTA/团体程序设计天梯赛-练习集-L1-002.cpp)
 * [团体程序设计天梯赛-练习集-L1-017](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/PTA/团体程序设计天梯赛-练习集-L1-017.cpp)
@@ -144,6 +148,9 @@
 * [HDU-1072](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1072.cpp)
 * [HDU-1078](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1078.cpp)
 * [HDU-1086](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1086.cpp)
+* [HDU-1089](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1089.cpp)
+* [HDU-1090](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1090.cpp)
+* [HDU-1091](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1091.cpp)
 * [HDU-1115](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1115.cpp)
 * [HDU-1147](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1147.cpp)
 * [HDU-1159](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1159.cpp)
