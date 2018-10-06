@@ -10,9 +10,7 @@ int main(int argc, char *argv[]) {
         Ans += (t - Keep) / a;
         Keep = t + l;
     }
-    if (L > Keep) {
-        Ans += (L - Keep) / a;
-    }
+    Ans += (L - Keep) / a;
     printf("%d\n", Ans);
     return 0;
 }
