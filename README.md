@@ -407,6 +407,8 @@
 * [POJ-3468](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/POJ/POJ-3468.cpp)
 * [POJ-3616](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/POJ/POJ-3616.cpp)
 * [POJ-3984](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/POJ/POJ-3984.cpp)
+### 洛谷
+* [洛谷-P3369](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/洛谷/洛谷-P3369.cpp)
 ### CodeForces
 * [CodeForces-1000A](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/CodeForces/CodeForces-1000A.cpp)
 * [CodeForces-1000B](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/CodeForces/CodeForces-1000B.cpp)
