@@ -67,21 +67,18 @@
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
 
-\PYG{c+c1}{// 获取以R为根节点Splay Tree中的第K大个元素}
+\PYG{c+c1}{// 获取以R为根节点Splay Tree中的第K大个元素在Splay Tree中的位置}
 \PYG{k+kt}{int} \PYG{n+nf}{Kth}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{R}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{K}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kt}{int} \PYG{n}{Cur} \PYG{o}{=} \PYG{n}{R}\PYG{p}{;}
-    \PYG{k}{while} \PYG{p}{(}\PYG{n+nb}{true}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{n}{PushDown}\PYG{p}{(}\PYG{n}{Cur}\PYG{p}{);}
-        \PYG{k}{if} \PYG{p}{(}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{K} \PYG{o}{\PYGZlt{}=} \PYG{n}{Size}\PYG{p}{[}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]])} \PYG{p}{\PYGZob{}}
-            \PYG{n}{Cur} \PYG{o}{=} \PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{];}
-        \PYG{p}{\PYGZcb{}}
-        \PYG{k}{else} \PYG{p}{\PYGZob{}}
-            \PYG{n}{K} \PYG{o}{\PYGZhy{}=} \PYG{n}{Size}\PYG{p}{[}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]]} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
-            \PYG{k}{if} \PYG{p}{(}\PYG{n}{K} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-                \PYG{k}{return} \PYG{n}{Cur}\PYG{p}{;}
-            \PYG{p}{\PYGZcb{}}
-            \PYG{n}{Cur} \PYG{o}{=} \PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{];}
-        \PYG{p}{\PYGZcb{}}
+    \PYG{n}{PushDown}\PYG{p}{(}\PYG{n}{R}\PYG{p}{);}
+    \PYG{k+kt}{int} \PYG{n}{Temp} \PYG{o}{=} \PYG{n}{Size}\PYG{p}{[}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{R}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]]} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{Temp} \PYG{o}{==} \PYG{n}{K}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{R}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{Temp} \PYG{o}{\PYGZgt{}} \PYG{n}{K}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{Kth}\PYG{p}{(}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{R}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{K}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{Kth}\PYG{p}{(}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{R}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{K} \PYG{o}{\PYGZhy{}} \PYG{n}{Temp}\PYG{p}{);}
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
 
@@ -90,6 +87,7 @@
     \PYG{k+kt}{int} \PYG{n}{X} \PYG{o}{=} \PYG{n}{Kth}\PYG{p}{(}\PYG{n}{Root}\PYG{p}{,} \PYG{n}{Left}\PYG{p}{),} \PYG{n}{Y} \PYG{o}{=} \PYG{n}{Kth}\PYG{p}{(}\PYG{n}{Root}\PYG{p}{,} \PYG{n}{Right} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{p}{);}
     \PYG{n}{Splay}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
     \PYG{n}{Splay}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{,} \PYG{n}{X}\PYG{p}{);}
+    \PYG{n}{PushDown}\PYG{p}{(}\PYG{n}{Root}\PYG{p}{);}
     \PYG{n}{Lazy}\PYG{p}{[}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{Y}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]]} \PYG{o}{\PYGZca{}=} \PYG{l+m+mi}{1}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 
