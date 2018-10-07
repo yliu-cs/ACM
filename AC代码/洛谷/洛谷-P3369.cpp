@@ -44,6 +44,7 @@ void Rotate(int X) {
     PushUp(X);
 }
 
+// 旋转X节点到根节点
 void Splay(int X) {
     for (int i = Pre[X]; i = Pre[X]; Rotate(X)) {
         if (Pre[i]) {
@@ -122,7 +123,11 @@ int Kth(int X) {
     }
 }
 
-// 在 insert 操作时 x 已经 splay 到根了，所以 x 的前驱就是 x 的左子树的最右边的节点，后继就是 x 的右子树的最左边的节点
+/*
+ * 在Insert操作时X已经Splay到根了
+ * 所以X的前驱就是X的左子树的最右边的节点
+ * 后继就是X的右子树的最左边的节点
+ */
 
 // 求前驱
 int Path() {
