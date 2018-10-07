@@ -66,21 +66,18 @@ void Splay(int X, int Goal = 0) {
     }
 }
 
-// 获取以R为根节点Splay Tree中的第K大个元素
+// 获取以R为根节点Splay Tree中的第K大个元素在Splay Tree中的位置
 int Kth(int R, int K) {
-    int Cur = R;
-    while (true) {
-        PushDown(Cur);
-        if (Son[Cur][0] && K <= Size[Son[Cur][0]]) {
-            Cur = Son[Cur][0];
-        }
-        else {
-            K -= Size[Son[Cur][0]] + 1;
-            if (K <= 0) {
-                return Cur;
-            }
-            Cur = Son[Cur][1];
-        }
+    PushDown(R);
+    int Temp = Size[Son[R][0]] + 1;
+    if (Temp == K) {
+        return R;
+    }
+    if (Temp > K) {
+        return Kth(Son[R][0], K);
+    }
+    else {
+        return Kth(Son[R][1], K - Temp);
     }
 }
 
@@ -89,6 +86,7 @@ void Reverse(int Left, int Right) {
     int X = Kth(Root, Left), Y = Kth(Root, Right + 2);
     Splay(X, 0);
     Splay(Y, X);
+    PushDown(Root);
     Lazy[Son[Y][0]] ^= 1;
 }
 

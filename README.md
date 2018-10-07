@@ -55,6 +55,7 @@
 * [牛客网暑期ACM多校训练营（第一场）-J_树状数组](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/牛客网/牛客网暑期ACM多校训练营（第一场）-J_树状数组.cpp)
 * [牛客网暑期ACM多校训练营（第七场）-A](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/牛客网/牛客网暑期ACM多校训练营（第七场）-A.cpp)
 * [牛客网暑期ACM多校训练营（第三场）-A](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/牛客网/牛客网暑期ACM多校训练营（第三场）-A.cpp)
+* [牛客网暑期ACM多校训练营（第三场）-C](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/牛客网/牛客网暑期ACM多校训练营（第三场）-C.cpp)
 * [牛客网暑期ACM多校训练营（第三场）-H](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/牛客网/牛客网暑期ACM多校训练营（第三场）-H.cpp)
 * [牛客网暑期ACM多校训练营（第二场）-A](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/牛客网/牛客网暑期ACM多校训练营（第二场）-A.cpp)
 * [牛客网暑期ACM多校训练营（第二场）-D](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/牛客网/牛客网暑期ACM多校训练营（第二场）-D.cpp)

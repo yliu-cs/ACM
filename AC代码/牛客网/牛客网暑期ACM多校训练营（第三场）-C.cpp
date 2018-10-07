@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 
-const int maxn = 1e5 + 5;
+const int INF = 0x3f3f3f3f;
+const int maxn = 1e6 + 5;
 
 // Root:Splay Tree根节点
 int Root, Tot;
@@ -14,6 +15,8 @@ int Val[maxn];
 int Size[maxn];
 // 惰性标记数组
 bool Lazy[maxn];
+
+int A[maxn];
 
 void PushUp(int X) {
     Size[X] = Size[Son[X][0]] + Size[Son[X][1]] + 1;
@@ -99,7 +102,8 @@ void Build(int Left, int Right, int Cur) {
     Build(Left, Mid - 1, Mid);
     Build(Mid + 1, Right, Mid);
     Pre[Mid] = Cur;
-    Val[Mid] = Mid - 1;
+    Val[Mid] = A[Mid];
+    Lazy[Mid] = 0;
     PushUp(Mid);
     if (Mid < Cur) {
         Son[Cur][0] = Mid;
@@ -109,3 +113,35 @@ void Build(int Left, int Right, int Cur) {
     }
 }
 
+void Print(int Cur) {
+    PushDown(Cur);
+    if (Son[Cur][0]) {
+        Print(Son[Cur][0]);
+    }
+    if (Val[Cur] != -INF && Val[Cur] != INF) {
+        printf("%d ", Val[Cur]);
+    }
+    if (Val[Son[Cur][1]]) {
+        Print(Son[Cur][1]);
+    }
+}
+
+int main(int argc, char *argv[]) {
+    int N, M;
+    scanf("%d%d", &N, &M);
+    for (int i = 2; i <= N + 1; ++i) {
+        A[i] = i - 1;
+    }
+    A[1] = INF;
+    A[N + 2] = -INF;
+    Build(1, N + 2, 0);
+    Root = (N + 3) >> 1;
+    for (int i = 0, Left, Right; i < M; ++i) {
+        scanf("%d%d", &Left, &Right);
+        Reverse(1, Left + Right - 1);
+        Reverse(1, Right);
+        Reverse(Right + 1, Left + Right - 1);
+    }
+    Print(Root);
+    return 0;
+}
