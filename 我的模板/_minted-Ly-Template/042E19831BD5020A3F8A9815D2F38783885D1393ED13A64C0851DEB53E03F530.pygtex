@@ -5,10 +5,9 @@
 \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+m+mf}{1e3} \PYG{o}{+} \PYG{l+m+mi}{5}\PYG{p}{;}
 
 \PYG{c+c1}{// 边}
-\PYG{k}{struct} \PYG{n}{Edge} \PYG{p}{\PYGZob{}}
+\PYG{k}{struct} \PYG{n}{Link} \PYG{p}{\PYGZob{}}
     \PYG{c+c1}{// V:连接点，Dis:边权}
     \PYG{k+kt}{int} \PYG{n}{V}\PYG{p}{,} \PYG{n}{Dis}\PYG{p}{;}
-    \PYG{n}{Edge}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{\PYGZus{}V} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{\PYGZus{}Dis} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{)}\PYG{o}{:} \PYG{n}{V}\PYG{p}{(}\PYG{n}{\PYGZus{}V}\PYG{p}{),} \PYG{n}{Dis}\PYG{p}{(}\PYG{n}{Dis}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
 \PYG{p}{\PYGZcb{};}
 
 \PYG{c+c1}{// N:顶点数，E:边数}
@@ -20,13 +19,13 @@
 \PYG{c+c1}{// 最短路数组}
 \PYG{k+kt}{int} \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
 \PYG{c+c1}{// 邻接表}
-\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Edge}\PYG{o}{\PYGZgt{}} \PYG{n}{Adj}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Link}\PYG{o}{\PYGZgt{}} \PYG{n}{Adj}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
 
 \PYG{c+c1}{// 建图加边，U、V之间权值为Weight的边}
 \PYG{k+kt}{void} \PYG{n+nf}{AddEdge} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{U}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{V}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Weight}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n}{Adj}\PYG{p}{[}\PYG{n}{U}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Edge} \PYG{p}{(}\PYG{n}{V}\PYG{p}{,} \PYG{n}{Weight}\PYG{p}{));}
+    \PYG{n}{Adj}\PYG{p}{[}\PYG{n}{U}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Link} \PYG{p}{(}\PYG{n}{V}\PYG{p}{,} \PYG{n}{Weight}\PYG{p}{));}
     \PYG{c+c1}{// 无向图建立反向边}
-    \PYG{n}{Adj}\PYG{p}{[}\PYG{n}{V}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Edge} \PYG{p}{(}\PYG{n}{U}\PYG{p}{,} \PYG{n}{Weight}\PYG{p}{));}
+    \PYG{n}{Adj}\PYG{p}{[}\PYG{n}{V}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{Link} \PYG{p}{(}\PYG{n}{U}\PYG{p}{,} \PYG{n}{Weight}\PYG{p}{));}
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// SPFA算法，Start:起点}

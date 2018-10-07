@@ -8,7 +8,6 @@
 \PYG{k}{struct} \PYG{n}{Link} \PYG{p}{\PYGZob{}}
     \PYG{c+c1}{// V:连接点，Weight:权值，Next:上一条边的编号}
     \PYG{k+kt}{int} \PYG{n}{V}\PYG{p}{,} \PYG{n}{Weight}\PYG{p}{,} \PYG{n}{Next}\PYG{p}{;}
-    \PYG{n}{Link}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{\PYGZus{}V} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{\PYGZus{}Weight} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{\PYGZus{}Next} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{)}\PYG{o}{:} \PYG{n}{V}\PYG{p}{(}\PYG{n}{\PYGZus{}V}\PYG{p}{),} \PYG{n}{Weight}\PYG{p}{(}\PYG{n}{\PYGZus{}Weight}\PYG{p}{),} \PYG{n}{Next}\PYG{p}{(}\PYG{n}{\PYGZus{}Next}\PYG{p}{)} \PYG{p}{\PYGZob{}\PYGZcb{}}
 \PYG{p}{\PYGZcb{};}
 
 \PYG{c+c1}{// 边，一定要开到足够大}
