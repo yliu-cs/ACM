@@ -82,6 +82,26 @@
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
 
+\PYG{c+c1}{// 获取Splay Tree中以X为根节点子树的最小值位置}
+\PYG{k+kt}{int} \PYG{n+nf}{GetMin}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{X}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{PushDown}\PYG{p}{(}\PYG{n}{X}\PYG{p}{);}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{X}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+        \PYG{n}{X} \PYG{o}{=} \PYG{n}{Son}\PYG{p}{[}\PYG{n}{X}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{];}
+        \PYG{n}{PushDown}\PYG{p}{(}\PYG{n}{X}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{X}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 获取Splay Tree中以X为根节点子树的最大值位置}
+\PYG{k+kt}{int} \PYG{n+nf}{GetMax}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{X}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{PushDown}\PYG{p}{(}\PYG{n}{X}\PYG{p}{);}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{X}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+        \PYG{n}{X} \PYG{o}{=} \PYG{n}{Son}\PYG{p}{[}\PYG{n}{X}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{];}
+        \PYG{n}{PushDown}\PYG{p}{(}\PYG{n}{X}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{X}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
 \PYG{c+c1}{// 翻转Splay Tree中Left\PYGZti{}Right区间}
 \PYG{k+kt}{void} \PYG{n+nf}{Reverse}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Left}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Right}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{int} \PYG{n}{X} \PYG{o}{=} \PYG{n}{Kth}\PYG{p}{(}\PYG{n}{Root}\PYG{p}{,} \PYG{n}{Left}\PYG{p}{),} \PYG{n}{Y} \PYG{o}{=} \PYG{n}{Kth}\PYG{p}{(}\PYG{n}{Root}\PYG{p}{,} \PYG{n}{Right} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{p}{);}

@@ -81,6 +81,26 @@ int Kth(int R, int K) {
     }
 }
 
+// 获取Splay Tree中以X为根节点子树的最小值位置
+int GetMin(int X) {
+    PushDown(X);
+    while (Son[X]) {
+        X = Son[X][0];
+        PushDown(X);
+    }
+    return X;
+}
+
+// 获取Splay Tree中以X为根节点子树的最大值位置
+int GetMax(int X) {
+    PushDown(X);
+    while (Son[X][1]) {
+        X = Son[X][1];
+        PushDown(X);
+    }
+    return X;
+}
+
 // 翻转Splay Tree中Left~Right区间
 void Reverse(int Left, int Right) {
     int X = Kth(Root, Left), Y = Kth(Root, Right + 2);
@@ -108,4 +128,5 @@ void Build(int Left, int Right, int Cur) {
         Son[Cur][1] = Mid;
     }
 }
+
 
