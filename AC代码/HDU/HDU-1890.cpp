@@ -1,184 +1,190 @@
 #include <bits/stdc++.h>
+using namespace std;
 
+const int INF = 0x3f3f3f3f;
 const int maxn = 1e5 + 5;
 
-struct Node;
-
-Node* Null;
-
-struct Node {
-    Node *Son[2], *Pre;
-    int Size;
-    int Rev;
-    Node() {
-        Son[0] = Son[1] = Pre = Null;
-        Rev = 0;
-    }
-    inline void PushUp() {
-        if (this == Null) {
-            return;
+struct Data {
+    int Num, Id;
+    bool operator < (const Data &A) const {
+        if (Num == A.Num) {
+            return Id < A.Id;
         }
-        Size = Son[0] -> Size + Son[1] -> Size + 1;
-    }
-    inline void Adjust(Node* P, int WhichSon) {
-        Son[WhichSon] = P;
-        P -> Pre = this;
-    }
-    inline bool SelfJudge() {
-        return Pre -> Son[1] == this;
-    }
-    void Clear() {
-        Size = 1;
-        Son[0] = Son[1] = Pre = Null;
-        Rev = 0;
-    }
-    void UpdateRev() {
-        if (this == Null) {
-            return;
-        }
-        std::swap(Son[0], Son[1]);
-        Rev ^= 1;
-    }
-    inline void PushDown() {
-        if (this == Null) {
-            return;
-        }
-        if (Rev) {
-            Son[0] -> UpdateRev();
-            Son[1] -> UpdateRev();
-            Rev = 0;
-        }
-    }
-    inline bool IsRoot() {
-        return Pre == Null || this != Pre -> Son[0] && this != Pre -> Son[1];
+        return Num < A.Num;
     }
 };
 
-inline void Rotate(Node* X) {
-    Node *Pre = X -> Pre, *PrePre = X -> Pre -> Pre;
-    Pre -> PushDown();
-    X -> PushDown();
-    int J = X -> SelfJudge(), PreJ = Pre -> SelfJudge();
-    Pre -> Adjust(X -> Son[!J], J);
-    X -> Adjust(Pre, !J);
-    if (PrePre -> Son[PreJ] == Pre) {
-        PrePre -> Adjust(X, PreJ);
-    }
-    else {
-        X -> Pre = PrePre;
-    }
-    Pre -> PushUp();
+// Root:Splay Tree根节点
+int Root, Tot;
+// Son[i][0]:i节点的左孩子，Son[i][0]:i节点的右孩子
+int Son[maxn][2];
+// Pre[i]:i节点的父节点
+int Pre[maxn];
+// Size[i]:以i节点为根的Splay Tree的节点数(包含自身)
+int Size[maxn];
+// 惰性标记数组
+bool Lazy[maxn];
+
+Data Num[maxn];
+
+void PushUp(int X) {
+    Size[X] = Size[Son[X][0]] + Size[Son[X][1]] + 1;
 }
 
-inline void Splay(Node* &Root, Node* X, Node* Goal) {
-    while (X -> Pre != Goal) {
-        if (X -> Pre -> Pre == Goal) {
-            Rotate(X);
+void PushDown(int X) {
+    if (Lazy[X]) {
+        std::swap(Son[X][0], Son[X][1]);
+        if (Son[X][0]) {
+            Lazy[Son[X][0]] ^= 1;
         }
-        else {
-            X -> Pre -> Pre -> PushDown();
-            X -> Pre -> PushDown();
-            X -> PushDown();
-            if (X -> SelfJudge() == (X -> Pre -> SelfJudge())) {
-                Rotate(X -> Pre);
+        if (Son[X][1]) {
+            Lazy[Son[X][1]] ^= 1;
+        }
+        Lazy[X] = 0;
+    }
+}
+
+// 判断X节点是其父节点的左孩子还是右孩子
+bool Self(int X) {
+    return Son[Pre[X]][1] == X;
+}
+
+// 旋转节点X
+void Rotate(int X) {
+    int Fa = Pre[X], FaFa = Pre[Fa], XJ = Self(X);
+    PushDown(Fa); PushDown(X);
+    Son[Fa][XJ] = Son[X][XJ ^ 1];
+    Pre[Son[Fa][XJ]] = Pre[X];
+    Son[X][XJ ^ 1] = Pre[X];
+    Pre[Fa] = X;
+    Pre[X] = FaFa;
+    if (FaFa) {
+        Son[FaFa][Fa == Son[FaFa][1]] = X;
+    }
+    PushUp(Fa); PushUp(X);
+}
+
+// 旋转X节点到节点Goal
+void Splay(int X, int Goal = 0) {
+    for (int Cur = Pre[X]; (Cur = Pre[X]) != Goal; Rotate(X)) {
+        PushDown(Pre[Cur]); PushDown(Cur); PushDown(X);
+        if (Pre[Cur] != Goal) {
+            if (Self(X) == Self(Cur)) {
+                Rotate(Cur);
             }
             else {
                 Rotate(X);
             }
-            Rotate(X);
         }
     }
-    X -> PushUp();
-    if (Goal == Null) {
+    if (!Goal) {
         Root = X;
     }
 }
 
-Node* GetKth(Node* Root, int K) {
-    Node* X = Root;
-    X -> PushDown();
-    while (X -> Son[0] -> Size + 1 != K) {
-        if (K < X -> Son[0] -> Size + 1) {
-            X = X -> Son[0];
-        }
-        else {
-            K -= X -> Son[0] -> Size + 1;
-            X = X -> Son[1];
-        }
-        X -> PushDown();
+// 获取以R为根节点Splay Tree中的第K大个元素在Splay Tree中的位置
+int Kth(int R, int K) {
+    PushDown(R);
+    int Temp = Size[Son[R][0]] + 1;
+    if (Temp == K) {
+        return R;
+    }
+    if (Temp > K) {
+        return Kth(Son[R][0], K);
+    }
+    else {
+        return Kth(Son[R][1], K - Temp);
+    }
+}
+
+// 获取Splay Tree中以X为根节点子树的最小值位置
+int GetMin(int X) {
+    PushDown(X);
+    while (Son[X]) {
+        X = Son[X][0];
+        PushDown(X);
     }
     return X;
 }
 
-Node Pool[maxn], *Tail;
-Node *SplayTree[maxn];
-Node *Root;
+// 获取Splay Tree中以X为根节点子树的最大值位置
+int GetMax(int X) {
+    PushDown(X);
+    while (Son[X][1]) {
+        X = Son[X][1];
+        PushDown(X);
+    }
+    return X;
+}
 
-void Build(Node* &X, int Left, int Right, Node* Pre) {
+// 求节点X的前驱节点
+int GetPath(int X) {
+    Splay(X, Root);
+    int Cur = Son[Root][0];
+    while (Son[Cur][1]) {
+        Cur = Son[Cur][1];
+    }
+    return Cur;
+}
+
+// 求节点Y的后继节点
+int GetNext(int X) {
+    Splay(X, Root);
+    int Cur = Son[Root][1];
+    while (Son[Cur][0]) {
+        Cur = Son[Cur][0];
+    }
+    return Cur;
+}
+
+// 翻转Splay Tree中Left~Right区间
+void Reverse(int Left, int Right) {
+    int X = Kth(Root, Left), Y = Kth(Root, Right);
+    Splay(X, 0);
+    Splay(Y, X);
+    Lazy[Son[Y][0]] ^= 1;
+}
+
+// 建立Splay Tree
+void Build(int Left, int Right, int Cur) {
     if (Left > Right) {
         return;
     }
-    int Mid = (Left + Right) / 2;
-    X = Tail++;
-    X -> Clear();
-    X -> Pre = Pre;
-    SplayTree[Mid] = X;
-    Build(X -> Son[0], Left, Mid - 1, X);
-    Build(X -> Son[1], Mid + 1, Right, X);
-    X -> PushUp();
-}
-
-void Init(int N) {
-    Tail = Pool;
-    Null = Tail++;
-    Null -> Pre = Null -> Son[0] = Null -> Son[1] = Null;
-    Null -> Size = 0;
-    Null -> Rev = 0;
-    Node* P = Tail++;
-    P -> Clear();
-    Root = P;
-    P = Tail++;
-    P -> Clear();
-    Root -> Adjust(P, 1);
-    Build(Root -> Son[1] -> Son[0], 1, N, Root -> Son[1]);
-    Root -> Son[1] -> PushUp();
-    Root -> PushUp();
-}
-
-int A[maxn], B[maxn];
-
-bool Cmp(int i, int j) {
-    if (A[i] != A[j]) {
-        return A[i] < A[j];
+    int Mid = (Left + Right) >> 1;
+    Build(Left, Mid - 1, Mid);
+    Build(Mid + 1, Right, Mid);
+    Pre[Mid] = Cur;
+    Size[Mid] = 1;
+    Lazy[Mid] = 0;
+    PushUp(Mid);
+    if (Mid < Cur) {
+        Son[Cur][0] = Mid;
     }
     else {
-        return i < j;
+        Son[Cur][1] = Mid;
     }
 }
 
 int main(int argc, char *argv[]) {
     int N;
-    while (~scanf("%d", &N) && N) {
-        for (int i = 1; i <= N; ++i) {
-            scanf("%d", &A[i]);
-            B[i] = i;
+    while (scanf("%d", &N) && N) {
+        Num[1].Num = -INF; Num[1].Id = 1;
+        for (int i = 2; i <= N + 1; ++i) {
+            scanf("%d", &Num[i].Num);
+            Num[i].Id = i;
         }
-        Init(N);
-        std::sort(B + 1, B + N + 1, Cmp);
-        for (int i = 1; i <= N; ++i) {
-            Splay(Root, SplayTree[B[i]], Null);
-            int Sz = Root -> Son[0] -> Size;
-            printf("%d", Root -> Son[0] -> Size);
-            if (i == N) {
-                printf("\n");
-            }
-            else {
-                printf(" ");
-            }
-            Splay(Root, GetKth(Root, i), Null);
-            Splay(Root, GetKth(Root, Sz + 2), Root);
-            Root -> Son[1] -> Son[0] -> UpdateRev();
+        Num[N + 2].Num = INF; Num[N + 2].Id = N + 2;
+        sort(Num + 1, Num + N + 3);
+        memset(Son, 0, sizeof(Son));
+        Build(1, N + 2, 0);
+        Root = (N + 3) >> 1;
+        for (int i = 2; i <= N; ++i) {
+            Splay(Num[i].Id);
+            printf("%d ", Size[Son[Root][0]]);
+            Reverse(i - 1, Size[Son[Root][0]] + 2);
         }
+        printf("%d\n", N);
     }
     return 0;
 }
+

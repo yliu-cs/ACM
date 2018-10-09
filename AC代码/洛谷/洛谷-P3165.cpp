@@ -1,6 +1,18 @@
 #include <bits/stdc++.h>
+using namespace std;
 
+const int INF = 0x3f3f3f3f;
 const int maxn = 1e5 + 5;
+
+struct Data {
+    int Num, Id;
+    bool operator < (const Data &A) const {
+        if (Num == A.Num) {
+            return Id < A.Id;
+        }
+        return Num < A.Num;
+    }
+};
 
 // Root:Splay Tree根节点
 int Root, Tot;
@@ -8,12 +20,12 @@ int Root, Tot;
 int Son[maxn][2];
 // Pre[i]:i节点的父节点
 int Pre[maxn];
-// Val[i]:i节点的权值
-int Val[maxn];
 // Size[i]:以i节点为根的Splay Tree的节点数(包含自身)
 int Size[maxn];
 // 惰性标记数组
 bool Lazy[maxn];
+
+Data Num[maxn];
 
 void PushUp(int X) {
     Size[X] = Size[Son[X][0]] + Size[Son[X][1]] + 1;
@@ -142,8 +154,7 @@ void Build(int Left, int Right, int Cur) {
     Build(Left, Mid - 1, Mid);
     Build(Mid + 1, Right, Mid);
     Pre[Mid] = Cur;
-    Val[Mid] = Mid - 1;
-    Lazy[Mid] = 0;
+    Size[Mid] = 1;
     PushUp(Mid);
     if (Mid < Cur) {
         Son[Cur][0] = Mid;
@@ -151,4 +162,25 @@ void Build(int Left, int Right, int Cur) {
     else {
         Son[Cur][1] = Mid;
     }
+}
+
+int main(int argc, char *argv[]) {
+    int N;
+    scanf("%d", &N);
+    Num[1].Num = -INF; Num[1].Id = 1;
+    for (int i = 2; i <= N + 1; ++i) {
+        scanf("%d", &Num[i].Num);
+        Num[i].Id = i;
+    }
+    Num[N + 2].Num = INF; Num[N + 2].Id = N + 2;
+    sort(Num + 1, Num + N + 3);
+    Build(1, N + 2, 0);
+    Root = (N + 3) >> 1;
+    for (int i = 2; i <= N; ++i) {
+        Splay(Num[i].Id);
+        printf("%d ", Size[Son[Root][0]]);
+        Reverse(i - 1, Size[Son[Root][0]] + 2);
+    }
+    printf("%d\n", N);
+    return 0;
 }
