@@ -88,6 +88,7 @@
 * [ZZULIOJ-2263](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/ZZULIOJ/ZZULIOJ-2263.cpp)
 * [ZZULIOJ-2269](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/ZZULIOJ/ZZULIOJ-2269.cpp)
 ### LightOJ
+* [LightOJ-1027](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/LightOJ/LightOJ-1027.cpp)
 * [LightOJ-1220](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/LightOJ/LightOJ-1220.cpp)
 * [LightOJ-1236](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/LightOJ/LightOJ-1236.cpp)
 * [LightOJ-1336](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/LightOJ/LightOJ-1336.cpp)
