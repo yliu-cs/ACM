@@ -152,3 +152,18 @@ void Build(int Left, int Right, int Cur) {
         Son[Cur][1] = Mid;
     }
 }
+
+// 输出Splay Tree
+void Print(int Cur) {
+    PushDown(Cur);
+    if (Son[Cur][0]) {
+        Print(Son[Cur][0]);
+    }
+    // 哨兵节点判断
+    if (Val[Cur] != -INF && Val[Cur] != INF) {
+        printf("%d ", Val[Cur]);
+    }
+    if (Val[Son[Cur][1]]) {
+        Print(Son[Cur][1]);
+    }
+}

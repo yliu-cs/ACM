@@ -153,4 +153,19 @@
         \PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Mid}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 输出Splay Tree}
+\PYG{k+kt}{void} \PYG{n+nf}{Print}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Cur}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{PushDown}\PYG{p}{(}\PYG{n}{Cur}\PYG{p}{);}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Print}\PYG{p}{(}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// 哨兵节点判断}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{Val}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{]} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{n}{INF} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{Val}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{INF}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d \PYGZdq{}}\PYG{p}{,} \PYG{n}{Val}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{Val}\PYG{p}{[}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]])} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Print}\PYG{p}{(}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
 \end{Verbatim}
