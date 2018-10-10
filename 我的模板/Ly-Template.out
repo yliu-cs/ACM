@@ -9,10 +9,10 @@
 \BOOKMARK [2][-]{subsection.3.2}{线段树}{section.3}% 9
 \BOOKMARK [3][-]{subsubsection.3.2.1}{线段树-Array}{subsection.3.2}% 10
 \BOOKMARK [3][-]{subsubsection.3.2.2}{线段树-Struct}{subsection.3.2}% 11
-\BOOKMARK [2][-]{subsection.3.3}{伸展树}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{伸展树\(Splay Tree\)}{section.3}% 12
 \BOOKMARK [3][-]{subsubsection.3.3.1}{Splay-维护二叉查找树}{subsection.3.3}% 13
 \BOOKMARK [3][-]{subsubsection.3.3.2}{Splay-维护数列}{subsection.3.3}% 14
-\BOOKMARK [2][-]{subsection.3.4}{字典树}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.4}{字典树\(Trie Tree\)}{section.3}% 15
 \BOOKMARK [2][-]{subsection.3.5}{Dfs序}{section.3}% 16
 \BOOKMARK [2][-]{subsection.3.6}{最近公共祖先}{section.3}% 17
 \BOOKMARK [3][-]{subsubsection.3.6.1}{在线LCA}{subsection.3.6}% 18

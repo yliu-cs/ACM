@@ -159,7 +159,8 @@
 * [HDU-1166_2](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1166_2.cpp)
 * [HDU-1233](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1233.cpp)
 * [HDU-1237](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1237.cpp)
-* [HDU-1251](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1251.cpp)
+* [HDU-1251_1](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1251_1.cpp)
+* [HDU-1251_2](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1251_2.cpp)
 * [HDU-1263](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1263.cpp)
 * [HDU-1276](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1276.cpp)
 * [HDU-1280](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-1280.cpp)
@@ -409,6 +410,7 @@
 * [POJ-3616](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/POJ/POJ-3616.cpp)
 * [POJ-3984](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/POJ/POJ-3984.cpp)
 ### 洛谷
+* [洛谷-P2580](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/洛谷/洛谷-P2580.cpp)
 * [洛谷-P3165](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/洛谷/洛谷-P3165.cpp)
 * [洛谷-P3369](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/洛谷/洛谷-P3369.cpp)
 * [洛谷-P3391](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/洛谷/洛谷-P3391.cpp)
