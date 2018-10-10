@@ -449,6 +449,7 @@
 * [CodeForces-1059A](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/CodeForces/CodeForces-1059A.cpp)
 * [CodeForces-1059B](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/CodeForces/CodeForces-1059B.cpp)
 * [CodeForces-1059C](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/CodeForces/CodeForces-1059C.cpp)
+* [CodeForces-1059D](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/CodeForces/CodeForces-1059D.cpp)
 * [CodeForces-116A](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/CodeForces/CodeForces-116A.cpp)
 * [CodeForces-119A](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/CodeForces/CodeForces-119A.cpp)
 * [CodeForces-149A](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/CodeForces/CodeForces-149A.cpp)
