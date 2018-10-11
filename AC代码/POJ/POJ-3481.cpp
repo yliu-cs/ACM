@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <cstdio>
+#include <map>
+using namespace std;
 
 const int maxn = 1e5 + 5;
 
@@ -9,6 +12,7 @@ struct SplayTree {
     int Son[maxn][2];
     // Pre[i]:i节点的父节点
     int Pre[maxn];
+    int Id[maxn];
     // Val[i]:i节点的权值
     int Val[maxn];
     // Size[i]:以i节点为根的Splay Tree的节点数(包含自身)
@@ -55,9 +59,10 @@ struct SplayTree {
     }
 
     // 插入数X
-    void Insert(int X) {
+    void Insert(int P, int X) {
         if (!Root) {
             Val[++Tot] = X;
+            Id[Tot] = P;
             Cnt[Tot]++;
             Root = Tot;
             PushUp(Root);
@@ -76,6 +81,7 @@ struct SplayTree {
             Cur = Son[Cur][Val[Cur] < X];
             if (!Cur) {
                 Val[++Tot] = X;
+                Id[Tot] = P;
                 Cnt[Tot]++;
                 Pre[Tot] = F;
                 Son[F][Val[F] < X] = Tot;
@@ -123,6 +129,22 @@ struct SplayTree {
         }
     }
 
+    int GetMax() {
+        int Cur = Root;
+        while (Son[Cur][1]) {
+            Cur = Son[Cur][1];
+        }
+        return Cur;
+    }
+
+    int GetMin() {
+        int Cur = Root;
+        while (Son[Cur][0]) {
+            Cur = Son[Cur][0];
+        }
+        return Cur;
+    }
+
     /*
      * 在Insert操作时X已经Splay到根了
      * 所以X的前驱就是X的左子树的最右边的节点
@@ -130,7 +152,7 @@ struct SplayTree {
      */
 
     // 求前驱
-    int GetPath() {
+    int Path() {
         int Cur = Son[Root][0];
         while (Son[Cur][1]) {
             Cur = Son[Cur][1];
@@ -139,7 +161,7 @@ struct SplayTree {
     }
 
     // 求后继
-    int GetNext() {
+    int Next() {
         int Cur = Son[Root][1];
         while (Son[Cur][0]) {
             Cur = Son[Cur][0];
@@ -147,7 +169,7 @@ struct SplayTree {
         return Cur;
     }
 
-    // 删除值为X的节点
+    // 删除节点X
     void Delete(int X) {
         // 将X旋转到根
         Rank(X);
@@ -183,3 +205,24 @@ struct SplayTree {
         PushUp(Root);
     }
 };
+
+int main(int argc, char *argv[]) {
+    int Op;
+    SplayTree Tree;
+    while (~scanf("%d", &Op) && Op) {
+        if (Op == 1) {
+            int K, P;
+            scanf("%d%d", &K, &P);
+            Tree.Insert(K, P);
+        }
+        else if (Op == 2) {
+            printf("%d\n", Tree.Id[Tree.GetMax()]);
+            Tree.Delete(Tree.Val[Tree.GetMax()]);
+        }
+        else if (Op == 3) {
+            printf("%d\n", Tree.Id[Tree.GetMin()]);
+            Tree.Delete(Tree.Val[Tree.GetMin()]);
+        }
+    }
+    return 0;
+}

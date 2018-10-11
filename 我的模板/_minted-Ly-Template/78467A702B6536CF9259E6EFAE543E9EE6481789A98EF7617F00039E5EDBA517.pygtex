@@ -131,7 +131,7 @@
 \PYG{c+cm}{     */}
 
     \PYG{c+c1}{// 求前驱}
-    \PYG{k+kt}{int} \PYG{n+nf}{Path}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n+nf}{GetPath}\PYG{p}{()} \PYG{p}{\PYGZob{}}
         \PYG{k+kt}{int} \PYG{n}{Cur} \PYG{o}{=} \PYG{n}{Son}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{];}
         \PYG{k}{while} \PYG{p}{(}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{])} \PYG{p}{\PYGZob{}}
             \PYG{n}{Cur} \PYG{o}{=} \PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{];}
@@ -140,7 +140,7 @@
     \PYG{p}{\PYGZcb{}}
 
     \PYG{c+c1}{// 求后继}
-    \PYG{k+kt}{int} \PYG{n+nf}{Next}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n+nf}{GetNext}\PYG{p}{()} \PYG{p}{\PYGZob{}}
         \PYG{k+kt}{int} \PYG{n}{Cur} \PYG{o}{=} \PYG{n}{Son}\PYG{p}{[}\PYG{n}{Root}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{];}
         \PYG{k}{while} \PYG{p}{(}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{])} \PYG{p}{\PYGZob{}}
             \PYG{n}{Cur} \PYG{o}{=} \PYG{n}{Son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{];}
@@ -148,7 +148,7 @@
         \PYG{k}{return} \PYG{n}{Cur}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 
-    \PYG{c+c1}{// 删除节点X}
+    \PYG{c+c1}{// 删除值为X的节点}
     \PYG{k+kt}{void} \PYG{n+nf}{Delete}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{X}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{c+c1}{// 将X旋转到根}
         \PYG{n}{Rank}\PYG{p}{(}\PYG{n}{X}\PYG{p}{);}

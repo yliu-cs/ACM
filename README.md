@@ -409,6 +409,7 @@
 * [POJ-3281](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/POJ/POJ-3281.cpp)
 * [POJ-3436](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/POJ/POJ-3436.cpp)
 * [POJ-3468](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/POJ/POJ-3468.cpp)
+* [POJ-3481](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/POJ/POJ-3481.cpp)
 * [POJ-3616](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/POJ/POJ-3616.cpp)
 * [POJ-3984](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/POJ/POJ-3984.cpp)
 ### 洛谷
