@@ -1,4 +1,4 @@
 python3 Directory.py
 git add .
-git commit -m "Fight!!!!!!"
+git commit -m "Strive! ! !"
 git push origin master
