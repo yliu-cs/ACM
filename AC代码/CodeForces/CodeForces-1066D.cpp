@@ -7,7 +7,6 @@ int N, M, K;
 int A[maxn];
 
 bool Check(int X) {
-    int Ans = N - X + 1;
     int Vis = 0;
     while (Vis < M && X <= N) {
         int Temp = K;
