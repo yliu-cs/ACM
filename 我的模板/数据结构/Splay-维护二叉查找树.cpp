@@ -175,7 +175,7 @@ struct SplayTree {
             Clear(Temp);
             return;
         }
-        int Temp = Path(), Old = Root;
+        int Temp = GetPath(), Old = Root;
         Splay(Temp);
         Pre[Son[Old][1]] = Temp;
         Son[Temp][1] = Son[Old][1];
