@@ -310,6 +310,7 @@
 * [HDU-5540](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-5540.cpp)
 * [HDU-5692](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-5692.cpp)
 * [HDU-5933](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-5933.cpp)
+* [HDU-5938](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-5938.cpp)
 * [HDU-5968](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-5968.cpp)
 * [HDU-6023](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-6023.cpp)
 * [HDU-6025](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/HDU/HDU-6025.cpp)
