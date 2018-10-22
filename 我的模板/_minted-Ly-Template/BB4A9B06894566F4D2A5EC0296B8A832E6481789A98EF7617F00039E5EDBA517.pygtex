@@ -176,7 +176,7 @@
             \PYG{n}{Clear}\PYG{p}{(}\PYG{n}{Temp}\PYG{p}{);}
             \PYG{k}{return}\PYG{p}{;}
         \PYG{p}{\PYGZcb{}}
-        \PYG{k+kt}{int} \PYG{n}{Temp} \PYG{o}{=} \PYG{n}{Path}\PYG{p}{(),} \PYG{n}{Old} \PYG{o}{=} \PYG{n}{Root}\PYG{p}{;}
+        \PYG{k+kt}{int} \PYG{n}{Temp} \PYG{o}{=} \PYG{n}{GetPath}\PYG{p}{(),} \PYG{n}{Old} \PYG{o}{=} \PYG{n}{Root}\PYG{p}{;}
         \PYG{n}{Splay}\PYG{p}{(}\PYG{n}{Temp}\PYG{p}{);}
         \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{Son}\PYG{p}{[}\PYG{n}{Old}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]]} \PYG{o}{=} \PYG{n}{Temp}\PYG{p}{;}
         \PYG{n}{Son}\PYG{p}{[}\PYG{n}{Temp}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Son}\PYG{p}{[}\PYG{n}{Old}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{];}

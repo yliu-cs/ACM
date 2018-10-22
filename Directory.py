@@ -23,7 +23,7 @@ def AC_Code():
         ProblemList.sort()
         README.write('%s\n' % str('### ' + OJ))
         for Problem in ProblemList:
-            README.write('%s\n' % str('* [' + Problem[:-4] + '](https://coding.net/u/Tony5t4rk/p/MyACM/git/blob/master/AC代码/' + OJ + '/' + Problem + ')'))
+            README.write('%s\n' % str('* [' + Problem[:-4] + '](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/' + OJ + '/' + Problem + ')'))
 
 def main():
     AC_Code()

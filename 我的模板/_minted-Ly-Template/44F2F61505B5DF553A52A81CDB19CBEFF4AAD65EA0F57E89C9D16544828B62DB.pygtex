@@ -1,0 +1,80 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Tarjan求割点\PYGZam{}桥}
+\PYG{c+cm}{/*}
+\PYG{c+cm}{*求 无向图的割点和桥}
+\PYG{c+cm}{*可以找出割点和桥，求删掉每个点后增加的连通块。}
+\PYG{c+cm}{*/}
+\PYG{k+kt}{bool} \PYG{n}{vis}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{dfn}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];} \PYG{c+c1}{//搜索的时间戳}
+\PYG{k+kt}{int} \PYG{n}{low}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];} \PYG{c+c1}{//树中最小子树的根，结点父亲的时间戳}
+\PYG{k+kt}{int} \PYG{n}{num}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];} \PYG{c+c1}{// 各连通分量点个数 不一定需要}
+\PYG{k+kt}{int} \PYG{n}{id}\PYG{p}{,} \PYG{n}{tot}\PYG{p}{,} \PYG{n}{top}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{bridge}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{add\PYGZus{}block}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}\PYG{c+c1}{//删除一个点后增加的连通块}
+\PYG{k}{struct} \PYG{n}{Edge}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{,} \PYG{n}{next}\PYG{p}{;}
+    \PYG{k+kt}{bool} \PYG{n}{cut}\PYG{p}{;} \PYG{c+c1}{// 是否为桥(割边)}
+\PYG{p}{\PYGZcb{}}\PYG{n}{e}\PYG{p}{[}\PYG{n}{maxm}\PYG{p}{];}
+\PYG{k+kt}{bool} \PYG{n}{cut}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{head}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{void} \PYG{n+nf}{init}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{head}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{head}\PYG{p}{));}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{vis}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{vis}\PYG{p}{));}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{dfn}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{dfn}\PYG{p}{));}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{low}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{low}\PYG{p}{));}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{cut}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{cut}\PYG{p}{));}
+    \PYG{n}{tot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{id} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{top} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{bridge} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{addedge}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{e}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{].}\PYG{n}{v} \PYG{o}{=} \PYG{n}{v}\PYG{p}{;}
+    \PYG{n}{e}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{].}\PYG{n}{next} \PYG{o}{=} \PYG{n}{head}\PYG{p}{[}\PYG{n}{u}\PYG{p}{];}
+    \PYG{n}{e}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{].}\PYG{n}{cut} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
+    \PYG{n}{head}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{tot}\PYG{o}{++}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{tarjan}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{,}\PYG{k+kt}{int} \PYG{n}{pre}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{;}
+    \PYG{n}{low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfn}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{o}{++}\PYG{n}{id}\PYG{p}{;}
+    \PYG{n}{vis}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{son} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{head}\PYG{p}{[}\PYG{n}{u}\PYG{p}{];}\PYG{n}{i} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{i} \PYG{o}{=} \PYG{n}{e}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{next}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{n}{v} \PYG{o}{=} \PYG{n}{e}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{v}\PYG{p}{;}
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{v} \PYG{o}{==} \PYG{n}{pre}\PYG{p}{)}\PYG{k}{continue}\PYG{p}{;}
+        \PYG{k}{if}\PYG{p}{(} \PYG{o}{!}\PYG{n}{dfn}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+            \PYG{n}{son}\PYG{o}{++}\PYG{p}{;}
+            \PYG{n}{tarjan}\PYG{p}{(}\PYG{n}{v}\PYG{p}{,}\PYG{n}{u}\PYG{p}{);}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{])}\PYG{n}{low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{];}
+             \PYG{c+c1}{//桥}
+            \PYG{c+c1}{//一条无向边(u,v)是桥，当且仅当(u,v)为树枝边，且满足DFS(u)\PYGZlt{}low(v)。}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dfn}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}
+            \PYG{p}{\PYGZob{}}
+                \PYG{n}{bridge}\PYG{o}{++}\PYG{p}{;}
+                \PYG{n}{e}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{cut} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+                \PYG{n}{e}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{1}\PYG{p}{].}\PYG{n}{cut} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+             \PYG{c+c1}{//割点}
+            \PYG{c+c1}{//一个顶点u是割点，当且仅当满足(1)或(2) (1) u为树根，且u有多于一个子树。}
+            \PYG{c+c1}{//(2) u不为树根，且满足存在(u,v)为树枝边(或称父子边，}
+            \PYG{c+c1}{//即u为v在搜索树中的父亲)，使得DFS(u)\PYGZlt{}=low(v)}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{u} \PYG{o}{!=} \PYG{n}{pre} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{low}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZgt{}=} \PYG{n}{dfn}\PYG{p}{[}\PYG{n}{u}\PYG{p}{])}\PYG{c+c1}{//不是树根}
+            \PYG{p}{\PYGZob{}}
+                \PYG{n}{cut}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+                \PYG{n}{add\PYGZus{}block}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{o}{++}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{else} \PYG{k}{if}\PYG{p}{(} \PYG{n}{low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dfn}\PYG{p}{[}\PYG{n}{v}\PYG{p}{])}
+             \PYG{n}{low}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfn}\PYG{p}{[}\PYG{n}{v}\PYG{p}{];}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{if}\PYG{p}{(}\PYG{n}{u} \PYG{o}{==} \PYG{n}{pre} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{son} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{)}\PYG{n}{cut}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+    \PYG{k}{if}\PYG{p}{(}\PYG{n}{u} \PYG{o}{==} \PYG{n}{pre}\PYG{p}{)}\PYG{n}{add\PYGZus{}block}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{son} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{n}{vis}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,0 +1,44 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// 带权二分图的权值最大的完备匹配称为最佳匹配。}
+\PYG{c+c1}{// KM算法求最佳匹配}
+\PYG{k+kt}{int} \PYG{n}{val}\PYG{p}{[}\PYG{n}{N}\PYG{p}{][}\PYG{n}{N}\PYG{p}{],}\PYG{n}{lx}\PYG{p}{[}\PYG{n}{N}\PYG{p}{],}\PYG{n}{ly}\PYG{p}{[}\PYG{n}{N}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{linky}\PYG{p}{[}\PYG{n}{N}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{pre}\PYG{p}{[}\PYG{n}{N}\PYG{p}{];}
+\PYG{k+kt}{bool} \PYG{n}{vis}\PYG{p}{[}\PYG{n}{N}\PYG{p}{],}\PYG{n}{visx}\PYG{p}{[}\PYG{n}{N}\PYG{p}{],}\PYG{n}{visy}\PYG{p}{[}\PYG{n}{N}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{slack}\PYG{p}{[}\PYG{n}{N}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{;}
+\PYG{k+kt}{void} \PYG{n+nf}{bfs}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{k}\PYG{p}{)}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{px}\PYG{p}{,} \PYG{n}{py} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{yy} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{d}\PYG{p}{;}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{pre}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{pre}\PYG{p}{));}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{slack}\PYG{p}{,} \PYG{n}{INF}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{slack}\PYG{p}{));}
+    \PYG{n}{linky}\PYG{p}{[}\PYG{n}{py}\PYG{p}{]}\PYG{o}{=}\PYG{n}{k}\PYG{p}{;}
+    \PYG{k}{do}\PYG{p}{\PYGZob{}}
+        \PYG{n}{px} \PYG{o}{=} \PYG{n}{linky}\PYG{p}{[}\PYG{n}{py}\PYG{p}{],}\PYG{n}{d} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{,} \PYG{n}{vis}\PYG{p}{[}\PYG{n}{py}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+            \PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{vis}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])}
+            \PYG{p}{\PYGZob{}}
+                \PYG{k}{if}\PYG{p}{(}\PYG{n}{slack}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{lx}\PYG{p}{[}\PYG{n}{px}\PYG{p}{]} \PYG{o}{+} \PYG{n}{ly}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{val}\PYG{p}{[}\PYG{n}{px}\PYG{p}{][}\PYG{n}{i}\PYG{p}{])}
+                    \PYG{n}{slack}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{lx}\PYG{p}{[}\PYG{n}{px}\PYG{p}{]} \PYG{o}{+} \PYG{n}{ly}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}}\PYG{n}{val}\PYG{p}{[}\PYG{n}{px}\PYG{p}{][}\PYG{n}{i}\PYG{p}{],} \PYG{n}{pre}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{=}\PYG{n}{py}\PYG{p}{;}
+                \PYG{k}{if}\PYG{p}{(}\PYG{n}{slack}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZlt{}}\PYG{n}{d}\PYG{p}{)} \PYG{n}{d}\PYG{o}{=}\PYG{n}{slack}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],}\PYG{n}{yy}\PYG{o}{=}\PYG{n}{i}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{vis}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{n}{lx}\PYG{p}{[}\PYG{n}{linky}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]]} \PYG{o}{\PYGZhy{}=} \PYG{n}{d}\PYG{p}{,} \PYG{n}{ly}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{d}\PYG{p}{;}
+            \PYG{k}{else} \PYG{n}{slack}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}=} \PYG{n}{d}\PYG{p}{;}
+        \PYG{n}{py} \PYG{o}{=} \PYG{n}{yy}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}\PYG{k}{while}\PYG{p}{(}\PYG{n}{linky}\PYG{p}{[}\PYG{n}{py}\PYG{p}{]);}
+    \PYG{k}{while}\PYG{p}{(}\PYG{n}{py}\PYG{p}{)} \PYG{n}{linky}\PYG{p}{[}\PYG{n}{py}\PYG{p}{]} \PYG{o}{=} \PYG{n}{linky}\PYG{p}{[}\PYG{n}{pre}\PYG{p}{[}\PYG{n}{py}\PYG{p}{]]} \PYG{p}{,} \PYG{n}{py}\PYG{o}{=}\PYG{n}{pre}\PYG{p}{[}\PYG{n}{py}\PYG{p}{];}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{int} \PYG{n+nf}{KM}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{lx}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{lx}\PYG{p}{));}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{ly}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{ly}\PYG{p}{));}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{linky}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{linky}\PYG{p}{));}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+        \PYG{n}{memset}\PYG{p}{(}\PYG{n}{vis}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{vis}\PYG{p}{)),} \PYG{n}{bfs}\PYG{p}{(}\PYG{n}{i}\PYG{p}{);}
+    \PYG{k+kt}{int} \PYG{n}{ans} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+    \PYG{n}{ans} \PYG{o}{+=} \PYG{n}{lx}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{+} \PYG{n}{ly}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+    \PYG{k}{return} \PYG{n}{ans}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

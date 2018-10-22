@@ -1,0 +1,42 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// Exkmp}
+\PYG{k+kt}{void} \PYG{n+nf}{getextNext}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{p} \PYG{p}{,} \PYG{n}{a}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{tlen} \PYG{o}{=} \PYG{n}{strlen}\PYG{p}{(}\PYG{n}{T}\PYG{p}{);}
+    \PYG{n}{Next}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{tlen}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{j} \PYG{o}{=} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{tlen}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{,} \PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{==} \PYG{n}{j} \PYG{o}{||} \PYG{n}{i} \PYG{o}{+} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{a}\PYG{p}{]} \PYG{o}{\PYGZgt{}=} \PYG{n}{p}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{p} \PYG{o}{=} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+            \PYG{k}{while} \PYG{p}{(}\PYG{n}{p} \PYG{o}{\PYGZlt{}} \PYG{n}{tlen} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{T}\PYG{p}{[}\PYG{n}{p}\PYG{p}{]} \PYG{o}{==} \PYG{n}{T}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{n}{p}\PYG{o}{++}\PYG{p}{,} \PYG{n}{j}\PYG{o}{++}\PYG{p}{;}
+            \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{j}\PYG{p}{;}
+            \PYG{n}{a} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{else} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{a}\PYG{p}{];}
+
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{void} \PYG{n+nf}{getext}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{p} \PYG{p}{,} \PYG{n}{a}\PYG{p}{;}
+    \PYG{n}{getextNext}\PYG{p}{();}
+    \PYG{k+kt}{int} \PYG{n}{slen} \PYG{o}{=} \PYG{n}{strlen}\PYG{p}{(}\PYG{n}{S}\PYG{p}{);}
+    \PYG{k+kt}{int} \PYG{n}{tlen} \PYG{o}{=} \PYG{n}{strlen}\PYG{p}{(}\PYG{n}{T}\PYG{p}{);}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{j} \PYG{o}{=} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{slen}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{,} \PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)}
+    \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{==} \PYG{n}{j} \PYG{o}{||} \PYG{n}{i} \PYG{o}{+} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{a}\PYG{p}{]} \PYG{o}{\PYGZgt{}=} \PYG{n}{p}\PYG{p}{)}
+        \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{p} \PYG{o}{=} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+
+            \PYG{k}{while} \PYG{p}{(}\PYG{n}{p} \PYG{o}{\PYGZlt{}} \PYG{n}{slen} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{tlen} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{S}\PYG{p}{[}\PYG{n}{p}\PYG{p}{]} \PYG{o}{==} \PYG{n}{T}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{p}{)} \PYG{n}{p}\PYG{o}{++}\PYG{p}{,} \PYG{n}{j}\PYG{o}{++}\PYG{p}{;}
+            \PYG{n}{ext}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{j}\PYG{p}{;}
+            \PYG{n}{a} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{else} \PYG{n}{ext}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{a}\PYG{p}{];}
+
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -62,3 +62,14 @@
 \contentsline {subsection}{\numberline {7.2}闰年}{63}{subsection.7.2}
 \contentsline {subsection}{\numberline {7.3}阶乘-万进制数组模拟}{63}{subsection.7.3}
 \contentsline {subsection}{\numberline {7.4}读写挂}{64}{subsection.7.4}
+\contentsline {section}{\numberline {8}Yiguang Li}{69}{section.8}
+\contentsline {subsection}{\numberline {8.1}匈牙利算法}{69}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}KM算法求最佳匹配}{70}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}HK算法求最大匹配}{71}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.4}Tarjan求连通分量}{73}{subsection.8.4}
+\contentsline {subsection}{\numberline {8.5}Tarjan求割点和桥}{74}{subsection.8.5}
+\contentsline {subsection}{\numberline {8.6}字符串最大最小表示法}{76}{subsection.8.6}
+\contentsline {subsection}{\numberline {8.7}扩展KMP}{77}{subsection.8.7}
+\contentsline {subsection}{\numberline {8.8}Manacher求回文}{78}{subsection.8.8}
+\contentsline {subsection}{\numberline {8.9}树链剖分}{79}{subsection.8.9}
+\contentsline {subsection}{\numberline {8.10}字典树}{81}{subsection.8.10}
