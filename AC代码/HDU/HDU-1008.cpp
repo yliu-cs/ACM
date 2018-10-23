@@ -1,34 +1,21 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-// 根据题意模拟
-int main()
-{
+
+int main(int argc, char *argv[]) {
     int N;
-    while (cin >> N)
-    {
-        if (N == 0)
-        {
-            break;
-        }
-        int res = N * 5;
-        int a = 0;
-        while (N--)
-        {
-            int n;
-            cin >> n;
-            if (n > a)
-            {
-                int b =    n - a;
-                res += b * 6;
-                a = n;
-            }else if (a > n)
-            {
-                int b = a - n;
-                res += b * 4;
-                a = n;
+    while (~scanf("%d", &N) && N) {
+        int Cur = 0, Ans = N * 5;
+        for (int i = 0, X; i < N; ++i) {
+            scanf("%d", &X);
+            if (X > Cur) {
+                Ans += 6 * (X - Cur);
             }
+            else {
+                Ans += 4 * (Cur - X);
+            }
+            Cur = X;
         }
-        cout << res << endl;
+        printf("%d\n", Ans);
     }
     return 0;
 }
