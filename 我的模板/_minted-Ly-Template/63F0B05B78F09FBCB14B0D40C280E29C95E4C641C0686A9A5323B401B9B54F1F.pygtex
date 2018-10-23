@@ -1,0 +1,159 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/*}
+\PYG{c+cm}{树的重心也叫树的质心。对于一棵树n个节点的无根树，找到一个点，使得把树变成以该点为根的有根树时，最大子树的结点数最小。换句话说，删除这个点后最大连通块（一定是树）的结点数最小。}
+
+\PYG{c+cm}{和树的最大独立问题类似，先任选一个结点作为根节点，把无根树变成有根树，然后设d(i)表示以i为根的子树的结点的个数。不难发现d(i)=∑d(j)+1，j∈s（i）。s（i）为i结点的所有儿子结点的编号的集合。程序也十分简单：只需要DFS一次，在无根树有根数的同时计算即可，连记忆化都不需要——因为本来就没有重复计算。 }
+\PYG{c+cm}{那么，删除结点i后，最大的连通块有多少个呢？结点i的子树中最大有max\PYGZob{}d（j）\PYGZcb{}个结点，i的“上方子树”中有n\PYGZhy{}d（i）个结点， }
+\PYG{c+cm}{ }
+\PYG{c+cm}{如图这样，在动态规划的过程中就可以随便找出树的重心了。}
+\PYG{c+cm}{*/}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}stdio.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}algorithm\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}math.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}vector\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}set\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}map\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}string\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}string.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}queue\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}stack\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}deque\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}stdlib.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}bitset\PYGZgt{}}
+
+\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
+
+\PYG{c+cp}{\PYGZsh{}define ll long long}
+\PYG{c+cp}{\PYGZsh{}define ull unsigned long long}
+\PYG{c+cp}{\PYGZsh{}define INF 0x3f3f3f3f}
+\PYG{c+cp}{\PYGZsh{}define maxn 10}
+\PYG{c+cp}{\PYGZsh{}define eps 0.00000001}
+\PYG{c+cp}{\PYGZsh{}define M 1e9 + 7}
+
+\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{tree}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}\PYG{c+c1}{//tree[i]是与i相邻的点}
+\PYG{k+kt}{int} \PYG{n}{d}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{+} \PYG{l+m+mi}{5}\PYG{p}{];} \PYG{c+c1}{//以i为根的子树的节点个数}
+\PYG{k+kt}{int} \PYG{n}{minNode}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{minBalance}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{;}
+
+\PYG{k+kt}{void} \PYG{n+nf}{dfs}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{node}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{parent}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{c+c1}{//自己， 父节点}
+    \PYG{n}{d}\PYG{p}{[}\PYG{n}{node}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}\PYG{c+c1}{// 自身}
+    \PYG{k+kt}{int} \PYG{n}{maxSubTree} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}\PYG{c+c1}{//最大子树节点个数}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{tree}\PYG{p}{[}\PYG{n}{node}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();} \PYG{n}{i} \PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{son} \PYG{o}{=} \PYG{n}{tree}\PYG{p}{[}\PYG{n}{node}\PYG{p}{][}\PYG{n}{i}\PYG{p}{];}\PYG{c+c1}{//子树}
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{son} \PYG{o}{!=} \PYG{n}{parent}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{dfs}\PYG{p}{(}\PYG{n}{son}\PYG{p}{,} \PYG{n}{node}\PYG{p}{);}
+            \PYG{n}{d}\PYG{p}{[}\PYG{n}{node}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{d}\PYG{p}{[}\PYG{n}{son}\PYG{p}{];}\PYG{c+c1}{//node的节点数加上son的节点个数}
+            \PYG{n}{maxSubTree} \PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{maxSubTree}\PYG{p}{,} \PYG{n}{d}\PYG{p}{[}\PYG{n}{son}\PYG{p}{]);}\PYG{c+c1}{//比较更大的子树节点个数}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{maxSubTree} \PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{maxSubTree}\PYG{p}{,} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{n}{d}\PYG{p}{[}\PYG{n}{node}\PYG{p}{]);}
+    \PYG{k}{if}\PYG{p}{(}\PYG{n}{maxSubTree} \PYG{o}{\PYGZlt{}} \PYG{n}{minBalance}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{minBalance} \PYG{o}{=} \PYG{n}{maxSubTree}\PYG{p}{;}
+        \PYG{n}{minNode} \PYG{o}{=} \PYG{n}{node}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{argc}\PYG{p}{,} \PYG{k}{const} \PYG{k+kt}{char} \PYG{o}{*} \PYG{n}{argv}\PYG{p}{[])} \PYG{p}{\PYGZob{}}
+    \PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{n}\PYG{p}{);}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i} \PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{s}\PYG{p}{,} \PYG{n}{e}\PYG{p}{;}
+        \PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d \PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{s}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{e}\PYG{p}{);}
+        \PYG{n}{tree}\PYG{p}{[}\PYG{n}{s}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{e}\PYG{p}{);}
+        \PYG{n}{tree}\PYG{p}{[}\PYG{n}{e}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{s}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{minNode} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{minBalance} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{;}
+    \PYG{n}{dfs}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+    \PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d \PYGZpc{}d}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{minNode}\PYG{p}{,} \PYG{n}{minBalance}\PYG{p}{);}
+    \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 数组模拟邻接表版}
+
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}iostream\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}stdio.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}algorithm\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}math.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}vector\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}set\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}map\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}string\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}string.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}queue\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}stack\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}deque\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}stdlib.h\PYGZgt{}}
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}bitset\PYGZgt{}}
+
+\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
+
+\PYG{c+cp}{\PYGZsh{}define ll long long}
+\PYG{c+cp}{\PYGZsh{}define ull unsigned long long}
+\PYG{c+cp}{\PYGZsh{}define INF 0x3f3f3f3f}
+\PYG{c+cp}{\PYGZsh{}define maxn 100005}
+\PYG{c+cp}{\PYGZsh{}define eps 0.00000001}
+\PYG{c+cp}{\PYGZsh{}define M 1e9 + 7}
+
+\PYG{k}{struct} \PYG{n}{Edge}\PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{s}\PYG{p}{,} \PYG{n}{e}\PYG{p}{;}
+    \PYG{n}{Edge}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
+    \PYG{n}{Edge}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{\PYGZus{}s}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{\PYGZus{}e}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{s} \PYG{o}{=} \PYG{n}{\PYGZus{}s}\PYG{p}{;}
+        \PYG{n}{e} \PYG{o}{=} \PYG{n}{\PYGZus{}e}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}\PYG{n}{edge}\PYG{p}{[}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{maxn}\PYG{p}{];}
+
+\PYG{k+kt}{int} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{*} \PYG{l+m+mi}{2}\PYG{p}{],} \PYG{n}{pre}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{*} \PYG{l+m+mi}{2}\PYG{p}{],} \PYG{n}{tot}\PYG{p}{,} \PYG{n}{ans}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{],} \PYG{n}{d}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,} \PYG{n}{minBalance}\PYG{p}{,} \PYG{n}{minNode}\PYG{p}{;}
+
+\PYG{k+kt}{void} \PYG{n+nf}{add}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{s}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{e}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{tot} \PYG{o}{++}\PYG{p}{;}
+    \PYG{n}{Next}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{pre}\PYG{p}{[}\PYG{n}{s}\PYG{p}{];} \PYG{n}{pre}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]} \PYG{o}{=} \PYG{n}{tot}\PYG{p}{;}
+    \PYG{n}{edge}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{].}\PYG{n}{s} \PYG{o}{=} \PYG{n}{s}\PYG{p}{;}
+    \PYG{n}{edge}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{].}\PYG{n}{e} \PYG{o}{=} \PYG{n}{e}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{init}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{maxn}\PYG{p}{;} \PYG{n}{i} \PYG{o}{++}\PYG{p}{)}
+        \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{pre}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{dfs}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{node}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{parent}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{d}\PYG{p}{[}\PYG{n}{node}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{maxSubTree} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{pre}\PYG{p}{[}\PYG{n}{node}\PYG{p}{];} \PYG{n}{i} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{=} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{son} \PYG{o}{=} \PYG{n}{edge}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{e}\PYG{p}{;}
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{son} \PYG{o}{==} \PYG{n}{parent}\PYG{p}{)} \PYG{k}{continue}\PYG{p}{;}
+        \PYG{n}{dfs}\PYG{p}{(}\PYG{n}{son}\PYG{p}{,} \PYG{n}{node}\PYG{p}{);}
+        \PYG{n}{d}\PYG{p}{[}\PYG{n}{node}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{d}\PYG{p}{[}\PYG{n}{son}\PYG{p}{];}
+        \PYG{n}{maxSubTree} \PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{maxSubTree}\PYG{p}{,} \PYG{n}{d}\PYG{p}{[}\PYG{n}{son}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{maxSubTree} \PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{maxSubTree}\PYG{p}{,} \PYG{n}{n} \PYG{o}{\PYGZhy{}} \PYG{n}{d}\PYG{p}{[}\PYG{n}{node}\PYG{p}{]);}
+    \PYG{k}{if}\PYG{p}{(}\PYG{n}{maxSubTree} \PYG{o}{\PYGZlt{}} \PYG{n}{minBalance}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{minBalance} \PYG{o}{=} \PYG{n}{maxSubTree}\PYG{p}{;}
+        \PYG{n}{minNode} \PYG{o}{=} \PYG{n}{node}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{argc}\PYG{p}{,} \PYG{k}{const} \PYG{k+kt}{char} \PYG{o}{*} \PYG{n}{argv}\PYG{p}{[])} \PYG{p}{\PYGZob{}}
+
+    \PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{n}\PYG{p}{);}
+    \PYG{n}{tot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{init}\PYG{p}{();}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{n}\PYG{p}{;} \PYG{n}{i} \PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{s}\PYG{p}{,} \PYG{n}{e}\PYG{p}{;}
+        \PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}d \PYGZpc{}d\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{s}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{e}\PYG{p}{);}
+        \PYG{n}{add}\PYG{p}{(}\PYG{n}{s}\PYG{p}{,} \PYG{n}{e}\PYG{p}{);}
+        \PYG{n}{add}\PYG{p}{(}\PYG{n}{e}\PYG{p}{,} \PYG{n}{s}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{minBalance} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{;}
+    \PYG{n}{minNode} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{tot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{dfs}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+
+    \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
