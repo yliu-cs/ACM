@@ -139,6 +139,8 @@
 * [HDU-1001](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/HDU/HDU-1001.cpp)
 * [HDU-1002](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/HDU/HDU-1002.cpp)
 * [HDU-1003](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/HDU/HDU-1003.cpp)
+* [HDU-1004](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/HDU/HDU-1004.cpp)
+* [HDU-1005](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/HDU/HDU-1005.cpp)
 * [HDU-1008](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/HDU/HDU-1008.cpp)
 * [HDU-1012](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/HDU/HDU-1012.cpp)
 * [HDU-1018](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/HDU/HDU-1018.cpp)
