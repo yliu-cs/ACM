@@ -78,3 +78,4 @@
 \contentsline {subsection}{\numberline {9.2}一般的SG函数}{87}{subsection.9.2}
 \contentsline {subsection}{\numberline {9.3}复杂的SG函数}{89}{subsection.9.3}
 \contentsline {subsection}{\numberline {9.4}多重集合的排列组合}{90}{subsection.9.4}
+\contentsline {subsection}{\numberline {9.5}莫比乌斯反演}{90}{subsection.9.5}

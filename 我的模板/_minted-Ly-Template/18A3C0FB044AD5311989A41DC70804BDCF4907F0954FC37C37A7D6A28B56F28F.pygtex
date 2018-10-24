@@ -1,0 +1,41 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}bits/stdc++.h\PYGZgt{}}
+\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
+\PYG{c+cp}{\PYGZsh{}define maxn 10000005}
+\PYG{c+cp}{\PYGZsh{}define LL long long}
+\PYG{k+kt}{int} \PYG{n}{minu}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{],} \PYG{n}{prim}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{],} \PYG{n}{vis}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{],} \PYG{n}{cnt}\PYG{p}{;}
+
+\PYG{k+kt}{void} \PYG{n+nf}{Init}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{N} \PYG{o}{=} \PYG{n}{maxn}\PYG{p}{;}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{prim}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{prim}\PYG{p}{));}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{minu}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{minu}\PYG{p}{));}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{vis}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{vis}\PYG{p}{));}
+    \PYG{n}{minu}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{n}{cnt} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{n}{i} \PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if}\PYG{p}{(}\PYG{o}{!}\PYG{n}{vis}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+            \PYG{n}{prim}\PYG{p}{[}\PYG{n}{cnt}\PYG{o}{++}\PYG{p}{]} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+            \PYG{n}{minu}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{cnt} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{i} \PYG{o}{*} \PYG{n}{prim}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{n}{j} \PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{vis}\PYG{p}{[}\PYG{n}{i} \PYG{o}{*} \PYG{n}{prim}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZpc{}} \PYG{n}{prim}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{n}{minu}\PYG{p}{[}\PYG{n}{i} \PYG{o}{*} \PYG{n}{prim}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]]} \PYG{o}{=} \PYG{o}{\PYGZhy{}} \PYG{n}{minu}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+            \PYG{k}{else} \PYG{p}{\PYGZob{}}
+                \PYG{n}{minu}\PYG{p}{[}\PYG{n}{i} \PYG{o}{*} \PYG{n}{prim}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+                \PYG{k}{break}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{LL} \PYG{n+nf}{solve}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{d}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{LL} \PYG{n}{ans} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{d}\PYG{p}{;} \PYG{n}{i} \PYG{o}{++}\PYG{p}{)}
+        \PYG{n}{ans} \PYG{o}{+=} \PYG{p}{(}\PYG{n}{LL}\PYG{p}{)}\PYG{n}{minu}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{p}{(}\PYG{n}{d}\PYG{o}{/}\PYG{n}{i}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{d}\PYG{o}{/}\PYG{n}{i}\PYG{p}{);}
+    \PYG{k}{return} \PYG{n}{ans}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
