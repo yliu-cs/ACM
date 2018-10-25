@@ -62,20 +62,21 @@
 \contentsline {subsection}{\numberline {7.2}闰年}{64}{subsection.7.2}
 \contentsline {subsection}{\numberline {7.3}阶乘-万进制数组模拟}{64}{subsection.7.3}
 \contentsline {subsection}{\numberline {7.4}读写挂}{65}{subsection.7.4}
-\contentsline {section}{\numberline {8}Yiguang Li}{71}{section.8}
-\contentsline {subsection}{\numberline {8.1}匈牙利算法}{71}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}KM算法求最佳匹配}{72}{subsection.8.2}
-\contentsline {subsection}{\numberline {8.3}HK算法求最大匹配}{73}{subsection.8.3}
-\contentsline {subsection}{\numberline {8.4}Tarjan求连通分量}{74}{subsection.8.4}
-\contentsline {subsection}{\numberline {8.5}Tarjan求割点和桥}{76}{subsection.8.5}
-\contentsline {subsection}{\numberline {8.6}字符串最大最小表示法}{78}{subsection.8.6}
-\contentsline {subsection}{\numberline {8.7}扩展KMP}{79}{subsection.8.7}
-\contentsline {subsection}{\numberline {8.8}Manacher求回文}{80}{subsection.8.8}
-\contentsline {subsection}{\numberline {8.9}树链剖分}{81}{subsection.8.9}
-\contentsline {subsection}{\numberline {8.10}字典树}{82}{subsection.8.10}
-\contentsline {section}{\numberline {9}Hongliang Deng}{84}{section.9}
-\contentsline {subsection}{\numberline {9.1}树的重心}{84}{subsection.9.1}
-\contentsline {subsection}{\numberline {9.2}一般的SG函数}{87}{subsection.9.2}
-\contentsline {subsection}{\numberline {9.3}复杂的SG函数}{89}{subsection.9.3}
-\contentsline {subsection}{\numberline {9.4}多重集合的排列组合}{90}{subsection.9.4}
-\contentsline {subsection}{\numberline {9.5}莫比乌斯反演}{90}{subsection.9.5}
+\contentsline {section}{\numberline {8}Yiguang Li}{73}{section.8}
+\contentsline {subsection}{\numberline {8.1}匈牙利算法}{73}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}KM算法求最佳匹配}{74}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}HK算法求最大匹配}{75}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.4}Tarjan求连通分量}{76}{subsection.8.4}
+\contentsline {subsection}{\numberline {8.5}Tarjan求割点和桥}{78}{subsection.8.5}
+\contentsline {subsection}{\numberline {8.6}字符串最大最小表示法}{80}{subsection.8.6}
+\contentsline {subsection}{\numberline {8.7}扩展KMP}{81}{subsection.8.7}
+\contentsline {subsection}{\numberline {8.8}Manacher求回文}{82}{subsection.8.8}
+\contentsline {subsection}{\numberline {8.9}树链剖分}{83}{subsection.8.9}
+\contentsline {subsection}{\numberline {8.10}字典树}{84}{subsection.8.10}
+\contentsline {subsection}{\numberline {8.11}卢卡斯}{85}{subsection.8.11}
+\contentsline {section}{\numberline {9}Hongliang Deng}{89}{section.9}
+\contentsline {subsection}{\numberline {9.1}树的重心}{89}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}一般的SG函数}{92}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}复杂的SG函数}{94}{subsection.9.3}
+\contentsline {subsection}{\numberline {9.4}多重集合的排列组合}{95}{subsection.9.4}
+\contentsline {subsection}{\numberline {9.5}莫比乌斯反演}{95}{subsection.9.5}

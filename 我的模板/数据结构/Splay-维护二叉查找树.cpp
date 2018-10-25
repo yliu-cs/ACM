@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-const int maxn = 1e5 + 5;
+const int maxn = "Edit";
 
 struct SplayTree {
     // Root:Splay Tree根节点

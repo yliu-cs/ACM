@@ -1,10 +1,9 @@
 #include <bits/stdc++.h>
 
-const int maxn = 1e5 + 5;
+const int maxn = "Edit";
 
 struct Edge {
     int U, V, Dis;
-    Edge(int _U = 0, int _V = 0, int _Dis = 0): U(_U), V(_V), Dis(_Dis) {}
 };
 
 // N:顶点数，E:边数，Pre并查集

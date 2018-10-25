@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
-const int INF = 0x3f3f3f3f;
-const int maxn = 1e5 + 5;
+const int INF = "Edit";
+const int maxn = "Edit";
 
 struct Link {
     // U、V:顶点，Dis:边权

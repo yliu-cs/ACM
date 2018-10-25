@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
-const int maxn = 1e5 + 5;
 const int mod = 1e9 + 7;
+const int maxn = "Edit";
 
 // 快速乘
 long long QuickMul(long long A, long long B) {

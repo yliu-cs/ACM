@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-const int maxn = 1e5 + 5;
+const int maxn = "Edit";
 
 // Dp[i][j]:Str1[1]~Str1[i]和Str2[1]~Str2[j]对应的公共子序列长度
 int Dp[maxn][maxn];

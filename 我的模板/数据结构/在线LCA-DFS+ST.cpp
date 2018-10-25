@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-const int maxn = 1e5 + 5;
+const int maxn = "Edit";
 
 // 节点深度
 int Rmq[maxn << 1];

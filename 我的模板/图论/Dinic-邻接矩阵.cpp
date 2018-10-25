@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
-const int INF = 0x3f3f3f3f;
-const int maxn = 20;
+const int INF = "Edit";
+const int maxn = "Edit";
 
 // N:顶点数，E:边数
 int N, E;

@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-const int maxn = 1e5 + 5;
+const int maxn = "Edit";
 
 int Dp[maxn];
 // NValue:背包容量，NKind:总物品数

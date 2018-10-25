@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-const int maxn = 1e5 + 5;
+const int maxn = "Edit";
 
 // Sum:线段树信息(此模板为求和)，Lazy:惰性标记
 int Sum[maxn << 2], Lazy[maxn << 2];

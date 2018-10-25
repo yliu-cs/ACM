@@ -1,0 +1,91 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}bits/stdc++.h\PYGZgt{}}
+
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{INF} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{c+c1}{// 边}
+\PYG{k}{struct} \PYG{n}{Link} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// V:连接点，Flow:流量，Cost:费用}
+    \PYG{k+kt}{int} \PYG{n}{V}\PYG{p}{,} \PYG{n}{Cap}\PYG{p}{,} \PYG{n}{Cost}\PYG{p}{,} \PYG{n}{Flow}\PYG{p}{,} \PYG{n}{Next}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{// N:顶点数，E:边数}
+\PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{,} \PYG{n}{E}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{Head}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{c+c1}{// 前驱记录数组}
+\PYG{k+kt}{int} \PYG{n}{Path}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{c+c1}{// 访问标记数组}
+\PYG{k+kt}{bool} \PYG{n}{Vis}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{Tot}\PYG{p}{;}
+\PYG{c+c1}{// 链式前向星}
+\PYG{n}{Link} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+
+\PYG{c+c1}{// 链式前向星初始化}
+\PYG{k+kt}{void} \PYG{n+nf}{Init}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Tot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{Head}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{Head}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 建图加边，U、V之间建立一条费用为Cost的边}
+\PYG{k+kt}{void} \PYG{n+nf}{AddEdge}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{U}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{V}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Cap}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Cost}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{edges}\PYG{p}{[}\PYG{n}{Tot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Link} \PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{,} \PYG{n}{Cap}\PYG{p}{,} \PYG{n}{Cost}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{Head}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]\PYGZcb{};}
+    \PYG{n}{Head}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Tot}\PYG{o}{++}\PYG{p}{;}
+    \PYG{n}{edges}\PYG{p}{[}\PYG{n}{Tot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Link} \PYG{p}{\PYGZob{}}\PYG{n}{U}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{Cost}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{Head}\PYG{p}{[}\PYG{n}{V}\PYG{p}{]\PYGZcb{};}
+    \PYG{n}{Head}\PYG{p}{[}\PYG{n}{V}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Tot}\PYG{o}{++}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{//  SPFA算法，Start:起点，End:终点}
+\PYG{k+kt}{bool} \PYG{n+nf}{SPFA}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Start}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{End}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{Dis}\PYG{p}{,} \PYG{n}{INF}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{Dis}\PYG{p}{));}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{Vis}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{Vis}\PYG{p}{));}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{Path}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{Path}\PYG{p}{));}
+    \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{Start}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{Vis}\PYG{p}{[}\PYG{n}{Start}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+    \PYG{n}{std}\PYG{o}{::}\PYG{n}{queue}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{Que}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{Que}\PYG{p}{.}\PYG{n}{empty}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Que}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{Que}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{Start}\PYG{p}{);}
+    \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{Que}\PYG{p}{.}\PYG{n}{empty}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{U} \PYG{o}{=} \PYG{n}{Que}\PYG{p}{.}\PYG{n}{front}\PYG{p}{();}
+        \PYG{n}{Que}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}
+        \PYG{n}{Vis}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{Head}\PYG{p}{[}\PYG{n}{U}\PYG{p}{];} \PYG{n}{i} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{=} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Next}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k+kt}{int} \PYG{n}{V} \PYG{o}{=} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{V}\PYG{p}{;}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Cap} \PYG{o}{\PYGZgt{}} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Flow} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{V}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]} \PYG{o}{+} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Cost}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{V}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]} \PYG{o}{+} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Cost}\PYG{p}{;}
+                \PYG{n}{Path}\PYG{p}{[}\PYG{n}{V}\PYG{p}{]} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+                \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{Vis}\PYG{p}{[}\PYG{n}{V}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+                    \PYG{n}{Vis}\PYG{p}{[}\PYG{n}{V}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+                    \PYG{n}{Que}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{V}\PYG{p}{);}
+                \PYG{p}{\PYGZcb{}}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{Path}\PYG{p}{[}\PYG{n}{End}\PYG{p}{]} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 最小费用最大流，Start:起点，End:终点，Cost:最小费用}
+\PYG{k+kt}{int} \PYG{n+nf}{MinCostMaxFlow}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Start}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{End}\PYG{p}{,} \PYG{k+kt}{int} \PYG{o}{\PYGZam{}}\PYG{n}{MinCost}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{MaxFlow} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{MinCost} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{SPFA}\PYG{p}{(}\PYG{n}{Start}\PYG{p}{,} \PYG{n}{End}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{Min} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{;}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{Path}\PYG{p}{[}\PYG{n}{End}\PYG{p}{];} \PYG{n}{i} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{=} \PYG{n}{Path}\PYG{p}{[}\PYG{n}{edges}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZca{}} \PYG{l+m+mi}{1}\PYG{p}{].}\PYG{n}{V}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Cap} \PYG{o}{\PYGZhy{}} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Flow} \PYG{o}{\PYGZlt{}} \PYG{n}{Min}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{Min} \PYG{o}{=} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Cap} \PYG{o}{\PYGZhy{}} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Flow}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{Path}\PYG{p}{[}\PYG{n}{End}\PYG{p}{];} \PYG{n}{i} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{=} \PYG{n}{Path}\PYG{p}{[}\PYG{n}{edges}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZca{}} \PYG{l+m+mi}{1}\PYG{p}{].}\PYG{n}{V}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+            \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Flow} \PYG{o}{+=} \PYG{n}{Min}\PYG{p}{;}
+            \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZca{}} \PYG{l+m+mi}{1}\PYG{p}{].}\PYG{n}{Flow} \PYG{o}{\PYGZhy{}=} \PYG{n}{Min}\PYG{p}{;}
+            \PYG{n}{MinCost} \PYG{o}{+=} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Cost} \PYG{o}{*} \PYG{n}{Min}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{MaxFlow} \PYG{o}{+=} \PYG{n}{Min}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{c+c1}{// 返回最大流}
+    \PYG{k}{return} \PYG{n}{MaxFlow}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-const int maxn = 1e5 + 5;
+const int maxn = "Edit";
 const int mod = 1e9 + 7;
 
 // Staggered:错排数

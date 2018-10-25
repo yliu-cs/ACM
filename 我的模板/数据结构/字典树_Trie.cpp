@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-const int maxn = 5e5 + 5;
+const int maxn = "Edit";
 
 struct Trie {
     // Trie Tree节点

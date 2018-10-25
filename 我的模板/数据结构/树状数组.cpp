@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #define lowbit(x) (x&(-x))
 
-const int maxn = 1e5 + 5;
+const int maxn = "Edit";
 
 // 树状数组
 int C[maxn];

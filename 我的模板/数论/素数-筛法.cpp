@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-const int maxn = 1e6 + 5;
+const int maxn = "Edit";
 
 bool IsPrime[maxn];
 

@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-const int maxn = 5e5 + 5;
+const int maxn = "Edit";
 
 // 子节点记录数组
 int Son[maxn][26];

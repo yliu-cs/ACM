@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-const int maxn = 1e5 + 5;
+const int maxn = "Edit";
 
 // Root:Splay Tree根节点
 int Root, Tot;
@@ -88,7 +88,7 @@ int Kth(int R, int K) {
 // 获取Splay Tree中以X为根节点子树的最小值位置
 int GetMin(int X) {
     PushDown(X);
-    while (Son[X]) {
+    while (Son[X][0]) {
         X = Son[X][0];
         PushDown(X);
     }
