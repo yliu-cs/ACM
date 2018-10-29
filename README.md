@@ -558,6 +558,7 @@
 * [Aizu-2249](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/Aizu/Aizu-2249.cpp)
 ### UVA
 * [UVA-10480](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/UVA/UVA-10480.cpp)
+* [UVA-11292](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/UVA/UVA-11292.cpp)
 * [UVA-11401](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/UVA/UVA-11401.cpp)
 * [UVA-11426](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/UVA/UVA-11426.cpp)
 * [UVA-1339](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/UVA/UVA-1339.cpp)
