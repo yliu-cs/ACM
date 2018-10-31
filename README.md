@@ -422,6 +422,7 @@
 * [POJ-3984](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/POJ/POJ-3984.cpp)
 ### 洛谷
 * [洛谷-P2234](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/洛谷/洛谷-P2234.cpp)
+* [洛谷-P2313](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/洛谷/洛谷-P2313.cpp)
 * [洛谷-P2580](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/洛谷/洛谷-P2580.cpp)
 * [洛谷-P3165](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/洛谷/洛谷-P3165.cpp)
 * [洛谷-P3369](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/洛谷/洛谷-P3369.cpp)
