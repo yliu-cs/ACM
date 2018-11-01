@@ -1,21 +1,27 @@
 #include <bits/stdc++.h>
 
+const double eps = "Edit";
+
 // 点
 struct Point {
     // X:横坐标，Y:纵坐标
     double X, Y;
-    Point(double _X = 0, double _Y = 0): X(_X), Y(_Y) {}
+
     void input() {
         scanf("%lf%lf", &X, &Y);
     }
-    void output() {
-        printf("%lf%lf", X, Y);
-    }
-    // 坐标减法
+
+    // 减法
     Point operator - (const Point &B) const {
         return Point (X - B.X, Y - B.Y);
     }
-    // 向量叉乘
+
+	// 点积
+	double operator * (const Point &B) const {
+		return X * B.X + Y * B.Y;
+	}
+
+    // 叉积
     double operator ^ (const Point &B) const {
         return X * B.Y - Y * B.X;
     }
@@ -24,6 +30,31 @@ struct Point {
 // 两点间距离
 double Distance(Point A, Point B) {
     return hypot(A.X - B.X, A.Y - B.Y);
+}
+
+// 线段
+struct Segment {
+	Point S, T;
+
+	void Input() {
+		S.Input();
+		T.Input();
+	}
+
+	// 向量叉积
+	double operator ^ (const Segment &B) const {
+		return (T - S) ^ (B.T - B.S);
+	}
+};
+
+// 判断线段A、B是否相交
+bool Intersect(Segment A, Segment B) {
+	return (A ^ Segment {A.S, B.S}) * (A ^ Segment {A.S, B.T}) <= eps && (B ^ Segment {B.S, A.S}) * (B ^ Segment {B.S, A.T}) <= eps;
+}
+
+// 判断线段A所在直线与线段B是否相交
+bool Intersect(Segment A, Segment B) {
+	return ((A.S - B.S) ^ (A.T - B.S)) * ((A.S - B.T) ^ (A.T - B.T)) <= eps;
 }
 
 // 凸包，points:所有点，返回凸包总长度
@@ -73,3 +104,4 @@ double ConvexHull(std::vector<Point> points) {
     // 返回结果
     return Ans;
 }
+
