@@ -48,13 +48,24 @@ struct Segment {
 };
 
 // 判断线段A、B是否相交
-bool Intersect(Segment A, Segment B) {
-	return (A ^ Segment {A.S, B.S}) * (A ^ Segment {A.S, B.T}) <= eps && (B ^ Segment {B.S, A.S}) * (B ^ Segment {B.S, A.T}) <= eps;
+bool IsIntersect(Segment A, Segment B) {
+	return fabs((A ^ Segment {A.S, B.S}) * (A ^ Segment {A.S, B.T})) <= eps && fabs((B ^ Segment {B.S, A.S}) * (B ^ Segment {B.S, A.T})) <= eps;
 }
 
 // 判断线段A所在直线与线段B是否相交
-bool Intersect(Segment A, Segment B) {
-	return ((A.S - B.S) ^ (A.T - B.S)) * ((A.S - B.T) ^ (A.T - B.T)) <= eps;
+bool IsIntersect(Segment A, Segment B) {
+	return fabs(((A.S - B.S) ^ (A.T - B.S)) * ((A.S - B.T) ^ (A.T - B.T))) <= eps;
+}
+
+// 判断线段(直线)A、B是否平行
+bool Parallel(Segment A, Segment B) {
+	return fabs((A.T - A.S) ^ (B.T - B.S)) <= eps;
+}
+
+// 求直线A、B交点
+Point IntersectionPoint(Segment A, Segment B) {
+	double X = (B.T - B.S) ^ (A.S - B.S), Y = (B.T - B.S) ^ (A.T - B.S);
+	return Point {(A.S.X * Y - A.T.X * X) / (Y - X), (A.S.Y * Y - A.T.Y * X) / (Y - X)};
 }
 
 // 凸包，points:所有点，返回凸包总长度
