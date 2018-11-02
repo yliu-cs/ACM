@@ -58,6 +58,11 @@
 	\PYG{k}{return} \PYG{n}{fabs}\PYG{p}{(((}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{))} \PYG{o}{*} \PYG{p}{((}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{)))} \PYG{o}{\PYGZlt{}=} \PYG{n}{eps}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 
+\PYG{c+c1}{// 判断直线A、B是否相交}
+\PYG{k+kt}{bool} \PYG{n+nf}{IsIntersect}\PYG{p}{(}\PYG{n}{Segment} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Segment} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{k}{return} \PYG{n}{fabs}\PYG{p}{((}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{\PYGZlt{}=} \PYG{n}{eps}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
 \PYG{c+c1}{// 判断线段(直线)A、B是否平行}
 \PYG{k+kt}{bool} \PYG{n+nf}{Parallel}\PYG{p}{(}\PYG{n}{Segment} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Segment} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
 	\PYG{k}{return} \PYG{n}{fabs}\PYG{p}{((}\PYG{n}{A}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{))} \PYG{o}{\PYGZlt{}=} \PYG{n}{eps}\PYG{p}{;}

@@ -46,11 +46,11 @@
 \contentsline {subsection}{\numberline {6.2}母函数}{57}{subsection.6.2}
 \contentsline {subsection}{\numberline {6.3}快速乘+快速幂}{57}{subsection.6.3}
 \contentsline {subsection}{\numberline {6.4}卡特兰}{58}{subsection.6.4}
-\contentsline {subsection}{\numberline {6.5}斯特林}{58}{subsection.6.5}
+\contentsline {subsection}{\numberline {6.5}斯特林}{59}{subsection.6.5}
 \contentsline {subsection}{\numberline {6.6}错排}{59}{subsection.6.6}
 \contentsline {subsection}{\numberline {6.7}斐波那契-矩阵快速幂}{59}{subsection.6.7}
-\contentsline {subsection}{\numberline {6.8}逆元}{60}{subsection.6.8}
-\contentsline {subsubsection}{\numberline {6.8.1}逆元-扩展欧几里得}{60}{subsubsection.6.8.1}
+\contentsline {subsection}{\numberline {6.8}逆元}{61}{subsection.6.8}
+\contentsline {subsubsection}{\numberline {6.8.1}逆元-扩展欧几里得}{61}{subsubsection.6.8.1}
 \contentsline {subsubsection}{\numberline {6.8.2}逆元-递推}{61}{subsubsection.6.8.2}
 \contentsline {subsubsection}{\numberline {6.8.3}阶乘逆元}{62}{subsubsection.6.8.3}
 \contentsline {subsection}{\numberline {6.9}欧拉函数}{63}{subsection.6.9}
@@ -60,8 +60,8 @@
 \contentsline {section}{\numberline {7}其他}{65}{section.7}
 \contentsline {subsection}{\numberline {7.1}尼姆博弈}{65}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}闰年}{65}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}阶乘-万进制数组模拟}{65}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}读写挂}{66}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.3}阶乘-万进制数组模拟}{66}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}读写挂}{67}{subsection.7.4}
 \contentsline {section}{\numberline {8}Yiguang Li}{74}{section.8}
 \contentsline {subsection}{\numberline {8.1}匈牙利算法}{74}{subsection.8.1}
 \contentsline {subsection}{\numberline {8.2}KM算法求最佳匹配}{75}{subsection.8.2}

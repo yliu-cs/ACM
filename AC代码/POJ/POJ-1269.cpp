@@ -46,7 +46,7 @@ bool Parallel(Segment A, Segment B) {
 }
 
 bool IsIntersect(Segment A, Segment B) {
-	return fabs((A ^ Segment {A.S, B.S}) * (A ^ Segment {A.S, B.T})) <= eps && fabs((B ^ Segment {B.S, A.S}) * (B ^ Segment {B.S, A.T})) <= eps;
+	return fabs((B.S - A.S) ^ (B.T - A.S)) <= eps;
 }
 
 Point IntersectionPoint(Segment A, Segment B) {
@@ -77,4 +77,3 @@ int main(int argc, char *argv[]) {
 	printf("END OF OUTPUT\n");
 	return 0;
 }
-

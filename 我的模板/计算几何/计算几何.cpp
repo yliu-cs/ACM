@@ -57,6 +57,11 @@ bool IsIntersect(Segment A, Segment B) {
 	return fabs(((A.S - B.S) ^ (A.T - B.S)) * ((A.S - B.T) ^ (A.T - B.T))) <= eps;
 }
 
+// 判断直线A、B是否相交
+bool IsIntersect(Segment A, Segment B) {
+	return fabs((B.S - A.S) ^ (B.T - A.T)) <= eps;
+}
+
 // 判断线段(直线)A、B是否平行
 bool Parallel(Segment A, Segment B) {
 	return fabs((A.T - A.S) ^ (B.T - B.S)) <= eps;
