@@ -49,7 +49,7 @@ struct Segment {
 
 // 判断线段A、B是否相交
 bool IsIntersect(Segment A, Segment B) {
-	return fabs((A ^ Segment {A.S, B.S}) * (A ^ Segment {A.S, B.T})) <= eps && fabs((B ^ Segment {B.S, A.S}) * (B ^ Segment {B.S, A.T})) <= eps;
+	return (A ^ Segment {A.S, B.S}) * (A ^ Segment {A.S, B.T}) <= 0 && (B ^ Segment {B.S, A.S}) * (B ^ Segment {B.S, A.T}) <= 0;
 }
 
 // 判断线段A所在直线与线段B是否相交
