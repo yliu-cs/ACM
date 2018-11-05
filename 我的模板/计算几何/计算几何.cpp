@@ -49,7 +49,13 @@ struct Segment {
 
 // 判断线段A、B是否相交
 bool IsIntersect(Segment A, Segment B) {
-	return (A ^ Segment {A.S, B.S}) * (A ^ Segment {A.S, B.T}) <= 0 && (B ^ Segment {B.S, A.S}) * (B ^ Segment {B.S, A.T}) <= 0;
+	return
+		max(A.S.X, A.T.X) >= min(B.S.X, B.T.X) &&
+		max(B.S.X, B.T.X) >= min(A.S.X, A.T.X) &&
+		max(A.S.Y, A.T.Y) >= min(B.S.Y, B.T.Y) &&
+		max(B.S.Y, B.T.Y) >= min(A.S.Y, A.T.Y) &&
+		(A ^ Segment {A.S, B.S}) * (A ^ Segment {A.S, B.T}) <= 0 &&
+		(B ^ Segment {B.S, A.S}) * (B ^ Segment {B.S, A.T}) <= 0;
 }
 
 // 判断线段A所在直线与线段B是否相交
