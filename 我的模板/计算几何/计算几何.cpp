@@ -29,7 +29,7 @@ struct Point {
 
 // 两点间距离
 double Distance(Point A, Point B) {
-    return hypot(A.X - B.X, A.Y - B.Y);
+	return sqrt((B - A) * (B - A));
 }
 
 // 线段
@@ -104,7 +104,7 @@ double ConvexHull(std::vector<Point> points) {
         if (Temp > 0) {
             return true;
         }
-        else if (!Temp && Distance(A, points[0]) < Distance(A, points[0])) {
+        else if (!Temp && Distance(A, points[0]) < Distance(B, points[0])) {
             return true;
         }
         return false;
