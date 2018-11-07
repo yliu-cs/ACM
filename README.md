@@ -405,6 +405,7 @@
 * [POJ-2516](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/POJ/POJ-2516.cpp)
 * [POJ-2653](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/POJ/POJ-2653.cpp)
 * [POJ-2785](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/POJ/POJ-2785.cpp)
+* [POJ-2826](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/POJ/POJ-2826.cpp)
 * [POJ-2965](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/POJ/POJ-2965.cpp)
 * [POJ-2976](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/POJ/POJ-2976.cpp)
 * [POJ-3046](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/POJ/POJ-3046.cpp)
