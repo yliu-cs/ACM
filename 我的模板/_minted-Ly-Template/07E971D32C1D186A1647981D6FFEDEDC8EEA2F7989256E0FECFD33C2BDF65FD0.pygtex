@@ -3,6 +3,18 @@
 
 \PYG{k}{const} \PYG{k+kt}{double} \PYG{n}{eps} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
 
+\PYG{k+kt}{int} \PYG{n+nf}{Sgn}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{X}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{fabs}\PYG{p}{(}\PYG{n}{X}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{eps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{X} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{else} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
 \PYG{c+c1}{// 点}
 \PYG{k}{struct} \PYG{n}{Point} \PYG{p}{\PYGZob{}}
     \PYG{c+c1}{// X:横坐标，Y:纵坐标}
@@ -30,7 +42,7 @@
 
 \PYG{c+c1}{// 两点间距离}
 \PYG{k+kt}{double} \PYG{n+nf}{Distance}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{n}{hypot}\PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{A}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{);}
+	\PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{((}\PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{));}
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 线段}
@@ -61,17 +73,17 @@
 
 \PYG{c+c1}{// 判断线段A所在直线与线段B是否相交}
 \PYG{k+kt}{bool} \PYG{n+nf}{IsIntersect}\PYG{p}{(}\PYG{n}{Segment} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Segment} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-	\PYG{k}{return} \PYG{n}{fabs}\PYG{p}{(((}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{))} \PYG{o}{*} \PYG{p}{((}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{)))} \PYG{o}{\PYGZlt{}=} \PYG{n}{eps}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}
-
-\PYG{c+c1}{// 判断直线A、B是否相交}
-\PYG{k+kt}{bool} \PYG{n+nf}{IsIntersect}\PYG{p}{(}\PYG{n}{Segment} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Segment} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-	\PYG{k}{return} \PYG{n}{fabs}\PYG{p}{((}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{\PYGZlt{}=} \PYG{n}{eps}\PYG{p}{;}
+    \PYG{k}{return} \PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{*} \PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{0}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 判断线段(直线)A、B是否平行}
 \PYG{k+kt}{bool} \PYG{n+nf}{Parallel}\PYG{p}{(}\PYG{n}{Segment} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Segment} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-	\PYG{k}{return} \PYG{n}{fabs}\PYG{p}{((}\PYG{n}{A}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{))} \PYG{o}{\PYGZlt{}=} \PYG{n}{eps}\PYG{p}{;}
+    \PYG{k}{return} \PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 判断直线A、B是否相交}
+\PYG{k+kt}{bool} \PYG{n+nf}{IsIntersect}\PYG{p}{(}\PYG{n}{Segment} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Segment} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{o}{!}\PYG{n}{Parallel}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{B}\PYG{p}{)} \PYG{o}{||} \PYG{p}{(}\PYG{n}{Parallel}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{B}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{o}{!}\PYG{p}{(}\PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{))} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{));}
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 求直线A、B交点}
@@ -105,7 +117,7 @@
         \PYG{k}{if} \PYG{p}{(}\PYG{n}{Temp} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
             \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
         \PYG{p}{\PYGZcb{}}
-        \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{Temp} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])} \PYG{o}{\PYGZlt{}} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]))} \PYG{p}{\PYGZob{}}
+        \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{Temp} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])} \PYG{o}{\PYGZlt{}} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{B}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]))} \PYG{p}{\PYGZob{}}
             \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
         \PYG{p}{\PYGZcb{}}
         \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}

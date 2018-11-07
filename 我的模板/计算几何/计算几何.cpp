@@ -2,6 +2,18 @@
 
 const double eps = "Edit";
 
+int Sgn(double X) {
+    if (fabs(X) < eps) {
+        return 0;
+    }
+    if (X < 0) {
+        return -1;
+    }
+    else {
+        return 1;
+    }
+}
+
 // 点
 struct Point {
     // X:横坐标，Y:纵坐标
@@ -60,17 +72,17 @@ bool IsIntersect(Segment A, Segment B) {
 
 // 判断线段A所在直线与线段B是否相交
 bool IsIntersect(Segment A, Segment B) {
-	return fabs(((A.S - B.S) ^ (A.T - B.S)) * ((A.S - B.T) ^ (A.T - B.T))) <= eps;
-}
-
-// 判断直线A、B是否相交
-bool IsIntersect(Segment A, Segment B) {
-	return fabs((B.S - A.S) ^ (B.T - A.T)) <= eps;
+    return Sgn((B.S - A.T) ^ (A.S - A.T)) * Sgn((B.T - A.T) ^ (A.S - A.T)) <= 0;
 }
 
 // 判断线段(直线)A、B是否平行
 bool Parallel(Segment A, Segment B) {
-	return fabs((A.T - A.S) ^ (B.T - B.S)) <= eps;
+    return Sgn((A.S - A.T) ^ (B.S - B.T)) == 0;
+}
+
+// 判断直线A、B是否相交
+bool IsIntersect(Segment A, Segment B) {
+    return !Parallel(A, B) || (Parallel(A, B) && !(Sgn((A.S - B.S) ^ (B.T - B.S)) == 0));
 }
 
 // 求直线A、B交点
