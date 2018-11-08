@@ -46,17 +46,17 @@ double Distance(Point A, Point B) {
 
 // 线段
 struct Segment {
-	Point S, T;
+    Point S, T;
 
-	void Input() {
-		S.Input();
-		T.Input();
-	}
+    void Input() {
+        S.Input();
+        T.Input();
+    }
 
 	// 向量叉积
-	double operator ^ (const Segment &B) const {
-		return (T - S) ^ (B.T - B.S);
-	}
+    double operator ^ (const Segment &B) const {
+        return (T - S) ^ (B.T - B.S);
+    }
 };
 
 // 判断线段A、B是否相交
