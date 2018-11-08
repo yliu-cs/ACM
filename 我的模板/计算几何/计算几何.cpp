@@ -61,11 +61,11 @@ struct Segment {
 
 // 判断线段A、B是否相交
 bool IsIntersect(Segment A, Segment B) {
-	return
-		max(A.S.X, A.T.X) >= min(B.S.X, B.T.X) &&
-		max(B.S.X, B.T.X) >= min(A.S.X, A.T.X) &&
-		max(A.S.Y, A.T.Y) >= min(B.S.Y, B.T.Y) &&
-		max(B.S.Y, B.T.Y) >= min(A.S.Y, A.T.Y) &&
+    return
+        max(A.S.X, A.T.X) >= min(B.S.X, B.T.X) &&
+        max(B.S.X, B.T.X) >= min(A.S.X, A.T.X) &&
+        max(A.S.Y, A.T.Y) >= min(B.S.Y, B.T.Y) &&
+        max(B.S.Y, B.T.Y) >= min(A.S.Y, A.T.Y) &&
         Sgn((B.S - A.T) ^ (A.S - A.T)) * Sgn((B.T - A.T) ^ (A.S - A.T)) <= 0 &&
         Sgn((A.S - B.T) ^ (B.S - B.T)) * Sgn((A.T - B.T) ^ (B.S - B.T)) <= 0;
 }
@@ -89,6 +89,18 @@ bool IsIntersect(Segment A, Segment B) {
 Point IntersectionPoint(Segment A, Segment B) {
 	double X = (B.T - B.S) ^ (A.S - B.S), Y = (B.T - B.S) ^ (A.T - B.S);
 	return Point {(A.S.X * Y - A.T.X * X) / (Y - X), (A.S.Y * Y - A.T.Y * X) / (Y - X)};
+}
+
+// 判断N个点(下标1~N-1)能否组成凸包
+bool IsConvexHull(Point points[], int N) {
+    points[N] = points[0];
+    points[N + 1] = points[1];
+    for (int i = 2; i <= N + 1; ++i) {
+        if (Sgn((points[i - 1] - points[i - 2]) ^ (points[i] - points[i - 2])) <= 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 // 凸包，points:所有点，返回凸包总长度
