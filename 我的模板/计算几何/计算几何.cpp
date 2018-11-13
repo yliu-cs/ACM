@@ -6,12 +6,7 @@ int Sgn(double X) {
     if (fabs(X) < eps) {
         return 0;
     }
-    if (X < 0) {
-        return -1;
-    }
-    else {
-        return 1;
-    }
+    return X < 0 ? -1 : 1;
 }
 
 // 点
@@ -76,7 +71,7 @@ bool IsIntersect(Segment A, Segment B) {
 }
 
 // 判断线段(直线)A、B是否平行
-bool Parallel(Segment A, Segment B) {
+bool IsParallel(Segment A, Segment B) {
     return Sgn((A.S - A.T) ^ (B.S - B.T)) == 0;
 }
 
@@ -93,10 +88,8 @@ Point IntersectionPoint(Segment A, Segment B) {
 
 // 判断N个点(下标1~N-1)能否组成凸包
 bool IsConvexHull(Point points[], int N) {
-    points[N] = points[0];
-    points[N + 1] = points[1];
-    for (int i = 2; i <= N + 1; ++i) {
-        if (Sgn((points[i - 1] - points[i - 2]) ^ (points[i] - points[i - 2])) <= 0) {
+    for (int i = 0; i < N; ++i) {
+        if (Sgn((points[(i + 1) % N] - points[i]) ^ (points[(i + 2) % N] - points[(i + 1) % N])) < 0) {
             return false;
         }
     }
@@ -151,3 +144,91 @@ double ConvexHull(std::vector<Point> points) {
     return Ans;
 }
 
+// 半平面,表示S->T逆时针(左侧)的半平面
+struct HalfPlane:public Segment {
+    Point S, T;
+    double Angle;
+
+    HalfPlane() {}
+    HalfPlane(Point _S, Point _T) {
+        S = _S;
+        T = _T;
+    }
+    HalfPlane(Segment ST) {
+        S = ST.S;
+        T = ST.T;
+    }
+
+    void CalCangle() {
+        Angle = Atan2(T.Y - S.Y, T.X - S.X);
+    }
+
+    bool operator < (const HalfPlane &B) const {
+        return Angle < B.Angle;
+    }
+};
+
+// 半平面数量
+int Tot;
+// 半平面
+HalfPlane halfplanes[maxn];
+// 点队列
+Point points[maxn];
+// 双向队列首尾指针
+int Front, Tail;
+// 半平面交双向队列指针
+int Que[maxn];
+
+// 添加半平面
+void Push(HalfPlane X) {
+    halfplanes[Tot++] = X;
+}
+
+// 半平面去重
+void Unique() {
+    int Cnt = 1;
+    for (int i = 1; i < Tot; ++i) {
+        if (Sgn(halfplanes[i].Angle - halfplanes[i - 1].Angle) != 0) {
+            halfplanes[Cnt++] = halfplanes[i];
+        }
+        else if (Sgn((halfplanes[Cnt - 1].T - halfplanes[Cnt - 1].S) ^ (halfplanes[i].S - halfplanes[Cnt - 1].S)) > 0) {
+            halfplanes[Cnt - 1] = halfplanes[i];
+        }
+    }
+    Tot = Cnt;
+}
+
+// 判断半平面交是否有内核
+bool HalfPlaneInsert() {
+    for (int i = 0; i < Tot; ++i) {
+        halfplanes[i].CalAngle();
+    }
+    sort(halfplanes, halfplanes + Tot);
+    Unique();
+    Que[Front = 0] = 0;
+    Que[Tail = 1] = 1;
+    points[1] = IntersectionPoint(halfplanes[0], halfplanes[1]);
+    for (int i = 2; i < Tot; ++i) {
+        while (Front < Tail && Sgn((halfplanes[i].T - halfplanes[i].S) ^ (points[Tail] - halfplanes[i].S)) < 0) {
+            Tail--;
+        }
+        while (Front < Tail && Sgn((halfplanes[i].T - halfplanes[i].S) ^ (points[Front + 1] - halfplanes[i].S)) < 0) {
+            Front++;
+        }
+        Que[++Tail] = i;
+        if (IsParallel(halfplanes[i], halfplanes[Que[Tail - 1]])) {
+            return false;
+        }
+        points[Tail] = IntersectionPoint(halfplanes[i], halfplanes[Que[Tail - 1]]);
+    }
+    while (Front < Tail && Sgn((halfplanes[Que[Front]].T - halfplanes[Que[Front]].S) ^ (points[Tail] - halfplanes[Que[Front]].S)) < 0) {
+        Tail--;
+    }
+    while (Front < Tail && Sgn((halfplanes[Que[Tail]].T - halfplanes[Que[Tail]].S) ^ (points[Front + 1] - halfplanes[Que[Tail]].S)) < 0) {
+        Front++;
+    }
+    if (Front + 1 >= Tail) {
+        return false;
+    }
+    return true;
+}
