@@ -14,6 +14,12 @@ struct Point {
     // X:横坐标，Y:纵坐标
     double X, Y;
 
+    Point() {}
+    Point(double _X, double _Y) {
+        X = _X;
+        Y = _Y;
+    }
+
     void input() {
         scanf("%lf%lf", &X, &Y);
     }
@@ -27,11 +33,13 @@ struct Point {
 	double operator * (const Point &B) const {
 		return X * B.X + Y * B.Y;
 	}
+doub
 
-    // 叉积
+	// 叉积
     double operator ^ (const Point &B) const {
         return X * B.Y - Y * B.X;
     }
+
 };
 
 // 两点间距离
@@ -39,9 +47,15 @@ double Distance(Point A, Point B) {
 	return sqrt((B - A) * (B - A));
 }
 
-// 线段
+// 线
 struct Segment {
     Point S, T;
+    
+    Segment() {}
+    Segment(Point _S, Point _T) {
+        S = _S;
+        T = _T;
+    }
 
     void Input() {
         S.Input();
@@ -51,6 +65,17 @@ struct Segment {
 	// 向量叉积
     double operator ^ (const Segment &B) const {
         return (T - S) ^ (B.T - B.S);
+    }
+
+    // 判断是否平行
+    bool IsParallel(const Segment &B) const {
+        return Sgn((S - T) ^ (B.S - B.T)) == 0;
+    }
+
+    // 求交点
+    Point operator & (const Segment &B) const {
+        double Temp = ((S - B.S) ^ (B.S - B.T)) / ((S - T) ^ (B.S - B.T));
+        return Point(S.X + (T.X - S.X) * Temp, S.Y + (T.Y - S.Y) * Temp);
     }
 };
 
@@ -70,20 +95,9 @@ bool IsIntersect(Segment A, Segment B) {
     return Sgn((B.S - A.T) ^ (A.S - A.T)) * Sgn((B.T - A.T) ^ (A.S - A.T)) <= 0;
 }
 
-// 判断线段(直线)A、B是否平行
-bool IsParallel(Segment A, Segment B) {
-    return Sgn((A.S - A.T) ^ (B.S - B.T)) == 0;
-}
-
 // 判断直线A、B是否相交
 bool IsIntersect(Segment A, Segment B) {
     return !Parallel(A, B) || (Parallel(A, B) && !(Sgn((A.S - B.S) ^ (B.T - B.S)) == 0));
-}
-
-// 求直线A、B交点
-Point IntersectionPoint(Segment A, Segment B) {
-	double X = (B.T - B.S) ^ (A.S - B.S), Y = (B.T - B.S) ^ (A.T - B.S);
-	return Point {(A.S.X * Y - A.T.X * X) / (Y - X), (A.S.Y * Y - A.T.Y * X) / (Y - X)};
 }
 
 // 判断N个点(下标1~N-1)能否组成凸包
@@ -146,7 +160,6 @@ double ConvexHull(std::vector<Point> points) {
 
 // 半平面,表示S->T逆时针(左侧)的半平面
 struct HalfPlane:public Segment {
-    Point S, T;
     double Angle;
 
     HalfPlane() {}
@@ -159,76 +172,91 @@ struct HalfPlane:public Segment {
         T = ST.T;
     }
 
-    void CalCangle() {
-        Angle = Atan2(T.Y - S.Y, T.X - S.X);
+    void CalAngle() {
+        Angle = atan2(T.Y - S.Y, T.X - S.X);
     }
 
     bool operator < (const HalfPlane &B) const {
-        return Angle < B.Angle;
+        if (Sgn(Angle - B.Angle)) {
+            return Angle < B.Angle;
+        }
+        return ((S - B.S) ^ (B.T - B.S)) < 0;
     }
 };
 
-// 半平面数量
-int Tot;
-// 半平面
-HalfPlane halfplanes[maxn];
-// 点队列
-Point points[maxn];
-// 双向队列首尾指针
-int Front, Tail;
-// 半平面交双向队列指针
-int Que[maxn];
+// 半平面交
+struct HPI {
+    // 半平面数量
+    int Tot;
+    // 半平面
+    HalfPlane halfplanes[maxn];
+    // 半平面交双向队列
+    HalfPlane Deque[maxn];
+    // 点队列
+    Point points[maxn];
+    // 半平面交内核
+    Point Res[maxn];
+    // 双向队列首尾指针
+    int Front, Tail;
 
-// 添加半平面
-void Push(HalfPlane X) {
-    halfplanes[Tot++] = X;
-}
-
-// 半平面去重
-void Unique() {
-    int Cnt = 1;
-    for (int i = 1; i < Tot; ++i) {
-        if (Sgn(halfplanes[i].Angle - halfplanes[i - 1].Angle) != 0) {
-            halfplanes[Cnt++] = halfplanes[i];
-        }
-        else if (Sgn((halfplanes[Cnt - 1].T - halfplanes[Cnt - 1].S) ^ (halfplanes[i].S - halfplanes[Cnt - 1].S)) > 0) {
-            halfplanes[Cnt - 1] = halfplanes[i];
-        }
+    // 添加半平面
+    void Push(HalfPlane X) {
+        halfplanes[Tot++] = X;
     }
-    Tot = Cnt;
-}
 
-// 判断半平面交是否有内核
-bool HalfPlaneInsert() {
-    for (int i = 0; i < Tot; ++i) {
-        halfplanes[i].CalAngle();
+    // 半平面去重
+    void Unique() {
+        int Cnt = 1;
+        for (int i = 1; i < Tot; ++i) {
+            if (Sgn(halfplanes[i].Angle - halfplanes[i - 1].Angle)) {
+                halfplanes[Cnt++] = halfplanes[i];
+            }
+        }
+        Tot = Cnt;
     }
-    sort(halfplanes, halfplanes + Tot);
-    Unique();
-    Que[Front = 0] = 0;
-    Que[Tail = 1] = 1;
-    points[1] = IntersectionPoint(halfplanes[0], halfplanes[1]);
-    for (int i = 2; i < Tot; ++i) {
-        while (Front < Tail && Sgn((halfplanes[i].T - halfplanes[i].S) ^ (points[Tail] - halfplanes[i].S)) < 0) {
+
+    // 判断半平面交是否有内核
+    bool HalfPlaneInsert() {
+        for (int i = 0; i < Tot; ++i) {
+            halfplanes[i].CalAngle();
+        }
+        sort(halfplanes, halfplanes + Tot);
+        Unique();
+        Deque[Front = 0] = halfplanes[0];
+        Deque[Tail = 1] = halfplanes[1];
+        for (int i = 2; i < Tot; ++i) {
+            if (!Sgn((Deque[Tail].T - Deque[Tail].S) ^ (Deque[Tail - 1].T - Deque[Tail - 1].S)) || !Sgn((Deque[Front].T - Deque[Front].S) ^ (Deque[Front + 1].T - Deque[Front + 1].S))) {
+                return false;
+            }
+            while (Front < Tail && Sgn(((Deque[Tail] & Deque[Tail - 1]) - halfplanes[i].S) ^ (halfplanes[i].T - halfplanes[i].S)) > 0) {
+                Tail--;
+            }
+            while (Front < Tail && Sgn(((Deque[Front] & Deque[Front + 1]) - halfplanes[i].S) ^ (halfplanes[i].T - halfplanes[i].S)) > 0) {
+                Front++;
+            }
+            Deque[++Tail] = halfplanes[i];
+        }
+        while (Front < Tail && Sgn(((Deque[Tail] & Deque[Tail - 1]) - Deque[Front].S) ^ (Deque[Front].T - Deque[Front].S)) > 0) {
             Tail--;
         }
-        while (Front < Tail && Sgn((halfplanes[i].T - halfplanes[i].S) ^ (points[Front + 1] - halfplanes[i].S)) < 0) {
+        while (Front < Tail && Sgn(((Deque[Front] & Deque[Front - 1]) - Deque[Tail].S) ^ (Deque[Tail].T - Deque[Tail].T)) > 0) {
             Front++;
         }
-        Que[++Tail] = i;
-        if (IsParallel(halfplanes[i], halfplanes[Que[Tail - 1]])) {
+        if (Tail <= Front + 1) {
             return false;
         }
-        points[Tail] = IntersectionPoint(halfplanes[i], halfplanes[Que[Tail - 1]]);
+        return true;
     }
-    while (Front < Tail && Sgn((halfplanes[Que[Front]].T - halfplanes[Que[Front]].S) ^ (points[Tail] - halfplanes[Que[Front]].S)) < 0) {
-        Tail--;
+
+    // 获取半平面交内核点集Re
+    void GetHalfPlaneInsertConvex() {
+        int Cnt = 0;
+        for (int i = Front; i < Tail; ++i) {
+            Res[Cnt++] = Deque[i] & Deque[i + 1];
+        }
+        if (Front < Tail - 1) {
+            Res[Cnt++] = Deque[Front] & Deque[Tail];
+        }
     }
-    while (Front < Tail && Sgn((halfplanes[Que[Tail]].T - halfplanes[Que[Tail]].S) ^ (points[Front + 1] - halfplanes[Que[Tail]].S)) < 0) {
-        Front++;
-    }
-    if (Front + 1 >= Tail) {
-        return false;
-    }
-    return true;
-}
+};
+
