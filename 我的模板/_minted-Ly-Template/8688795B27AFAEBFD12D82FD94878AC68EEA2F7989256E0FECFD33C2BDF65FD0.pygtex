@@ -249,7 +249,7 @@
         \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 
-    \PYG{c+c1}{// 获取半平面交内核点集Re}
+    \PYG{c+c1}{// 获取半平面交内核点集Res}
     \PYG{k+kt}{void} \PYG{n+nf}{GetHalfPlaneInsertConvex}\PYG{p}{()} \PYG{p}{\PYGZob{}}
         \PYG{k+kt}{int} \PYG{n}{Cnt} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
         \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{Front}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{Tail}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}

@@ -248,7 +248,7 @@ struct HPI {
         return true;
     }
 
-    // 获取半平面交内核点集Re
+    // 获取半平面交内核点集Res
     void GetHalfPlaneInsertConvex() {
         int Cnt = 0;
         for (int i = Front; i < Tail; ++i) {
