@@ -177,7 +177,7 @@ struct HalfPlane:public Segment {
     }
 
     bool operator < (const HalfPlane &B) const {
-        if (Sgn(Angle - B.Angle)) {
+        if (fabs(Angle - B.Angle) > eps) {
             return Angle < B.Angle;
         }
         return ((S - B.S) ^ (B.T - B.S)) < 0;
@@ -208,7 +208,7 @@ struct HPI {
     void Unique() {
         int Cnt = 1;
         for (int i = 1; i < Tot; ++i) {
-            if (Sgn(halfplanes[i].Angle - halfplanes[i - 1].Angle)) {
+            if (fabs(halfplanes[i].Angle - halfplanes[i - 1].Angle) > eps) {
                 halfplanes[Cnt++] = halfplanes[i];
             }
         }
@@ -225,21 +225,21 @@ struct HPI {
         Deque[Front = 0] = halfplanes[0];
         Deque[Tail = 1] = halfplanes[1];
         for (int i = 2; i < Tot; ++i) {
-            if (!Sgn((Deque[Tail].T - Deque[Tail].S) ^ (Deque[Tail - 1].T - Deque[Tail - 1].S)) || !Sgn((Deque[Front].T - Deque[Front].S) ^ (Deque[Front + 1].T - Deque[Front + 1].S))) {
+            if (fabs((Deque[Tail].T - Deque[Tail].S) ^ (Deque[Tail - 1].T - Deque[Tail - 1].S)) < eps || fabs((Deque[Front].T - Deque[Front].S) ^ (Deque[Front + 1].T - Deque[Front + 1].S)) < eps) {
                 return false;
             }
-            while (Front < Tail && Sgn(((Deque[Tail] & Deque[Tail - 1]) - halfplanes[i].S) ^ (halfplanes[i].T - halfplanes[i].S)) > 0) {
+            while (Front < Tail && (((Deque[Tail] & Deque[Tail - 1]) - halfplanes[i].S) ^ (halfplanes[i].T - halfplanes[i].S)) > eps) {
                 Tail--;
             }
-            while (Front < Tail && Sgn(((Deque[Front] & Deque[Front + 1]) - halfplanes[i].S) ^ (halfplanes[i].T - halfplanes[i].S)) > 0) {
+            while (Front < Tail && (((Deque[Front] & Deque[Front + 1]) - halfplanes[i].S) ^ (halfplanes[i].T - halfplanes[i].S)) > eps) {
                 Front++;
             }
             Deque[++Tail] = halfplanes[i];
         }
-        while (Front < Tail && Sgn(((Deque[Tail] & Deque[Tail - 1]) - Deque[Front].S) ^ (Deque[Front].T - Deque[Front].S)) > 0) {
+        while (Front < Tail && (((Deque[Tail] & Deque[Tail - 1]) - Deque[Front].S) ^ (Deque[Front].T - Deque[Front].S)) > eps) {
             Tail--;
         }
-        while (Front < Tail && Sgn(((Deque[Front] & Deque[Front - 1]) - Deque[Tail].S) ^ (Deque[Tail].T - Deque[Tail].T)) > 0) {
+        while (Front < Tail && (((Deque[Front] & Deque[Front - 1]) - Deque[Tail].S) ^ (Deque[Tail].T - Deque[Tail].T)) > eps) {
             Front++;
         }
         if (Tail <= Front + 1) {
