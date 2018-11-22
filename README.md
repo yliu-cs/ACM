@@ -100,6 +100,8 @@
 * [ZZNUOJ-2107](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/ZZNUOJ/ZZNUOJ-2107.cpp)
 * [ZZNUOJ-2109](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/ZZNUOJ/ZZNUOJ-2109.cpp)
 * [ZZNUOJ-2112](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/ZZNUOJ/ZZNUOJ-2112.cpp)
+### CodeForces-GYM
+* [CodeForces-GYM101981-A](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/CodeForces-GYM/CodeForces-GYM101981-A.cpp)
 ### PTA
 * [团体程序设计天梯赛-练习集-L1-002](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/PTA/团体程序设计天梯赛-练习集-L1-002.cpp)
 * [团体程序设计天梯赛-练习集-L1-017](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/PTA/团体程序设计天梯赛-练习集-L1-017.cpp)
