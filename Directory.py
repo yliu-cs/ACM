@@ -31,11 +31,11 @@ def Work():
     OJs = os.listdir(Index)
     OJs.sort()
     for OJ in OJs:
-        print(len(OJ))
         Cnt = len(os.listdir(Index + '/' + OJ))
         AllCnt += Cnt
         README.write(Change(Add(OJ, 15)))
-        README.write(Change(str(Cnt) + '\n'))
+        README.write(Change(str(Cnt)))
+        README.write('\n')
     README.write('###### `Total:' + str(AllCnt) + '`\n')
 
 def main():
