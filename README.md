@@ -86,7 +86,7 @@
 * [ZZULIOJ-2259](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/ZZULIOJ/ZZULIOJ-2259.cpp)
 * [ZZULIOJ-2263](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/ZZULIOJ/ZZULIOJ-2263.cpp)
 * [ZZULIOJ-2269](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/ZZULIOJ/ZZULIOJ-2269.cpp)
-* [ZZULIOJ-2416](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/ZZULIOJ/ZZULIOJ-2416.cpp)
+* [ZZULIOJ-2417](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/ZZULIOJ/ZZULIOJ-2417.cpp)
 ### LightOJ
 * [LightOJ-1027](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/LightOJ/LightOJ-1027.cpp)
 * [LightOJ-1220](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/LightOJ/LightOJ-1220.cpp)
@@ -103,6 +103,8 @@
 * [ZZNUOJ-2112](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/ZZNUOJ/ZZNUOJ-2112.cpp)
 ### CodeForces-GYM
 * [CodeForces-GYM101981-A](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/CodeForces-GYM/CodeForces-GYM101981-A.cpp)
+* [CodeForces-GYM101981-G](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/CodeForces-GYM/CodeForces-GYM101981-G.cpp)
+* [CodeForces-GYM101981-J](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/CodeForces-GYM/CodeForces-GYM101981-J.cpp)
 ### PTA
 * [团体程序设计天梯赛-练习集-L1-002](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/PTA/团体程序设计天梯赛-练习集-L1-002.cpp)
 * [团体程序设计天梯赛-练习集-L1-017](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/PTA/团体程序设计天梯赛-练习集-L1-017.cpp)
