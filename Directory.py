@@ -2,34 +2,45 @@
 
 import os
 
+AllCnt = 0
+
 README = open('README.md', 'w')
 
-AllCnt = 0;
+def Change(Str):
+    Ans = ""
+    for Char in Str:
+        InsideCode = ord(Char)
+        if InsideCode == 32:
+            InsideCode = 12288
+        elif InsideCode >= 32 and InsideCode <= 126:
+            InsideCode += 65248
+        Ans += chr(InsideCode)
+    return Ans
 
-def AC_Code():
+def Add(Str, Tar):
+    Len = len(Str)
+    if Len < Tar:
+        for i in range(Tar - Len):
+            Str += ' '
+    return Str
+
+def Work():
     global AllCnt
-    README.write('%s\n' % '## AC Code:')
-    OJPos = os.getcwd() + '/AC代码'
-    OJs = os.listdir(OJPos)
+    README.write('# Count of Solved Problems\n')
+    Index = os.getcwd() + '/AC代码'
+    OJs = os.listdir(Index)
+    OJs.sort()
     for OJ in OJs:
-        Cnt = 0
-        ProblemPos = OJPos + '/' + OJ
-        Problems = os.listdir(ProblemPos)
-        ProblemList = []
-        for Problem in Problems:
-            ProblemList.append(Problem)
-            Cnt += 1
-            AllCnt += 1
-        ProblemList.sort()
-        README.write('%s\n' % str('### ' + OJ))
-        for Problem in ProblemList:
-            README.write('%s\n' % str('* [' + Problem[:-4] + '](https://github.com/Tony5t4rk/ACM/tree/master/AC代码/' + OJ + '/' + Problem + ')'))
+        print(len(OJ))
+        Cnt = len(os.listdir(Index + '/' + OJ))
+        AllCnt += Cnt
+        README.write(Change(Add(OJ, 30)))
+        README.write(Change(str(Cnt) + '\n'))
+    README.write('###### `Total:' + str(AllCnt) + '`\n')
 
 def main():
-    AC_Code()
-    README.write('\n%s\n' % '![](http://p980l5uv6.bkt.clouddn.com/18s.jpg)')
+    Work()
     README.close()
-    print('Cnt=', AllCnt)
 
 if __name__ == '__main__':
     main()
