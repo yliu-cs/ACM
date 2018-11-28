@@ -26,7 +26,7 @@ def Add(Str, Tar):
 
 def Work():
     global AllCnt
-    README.write('# Count of Solved Problems\n')
+    README.write('# Count of Solved Problems  \n')
     Index = os.getcwd() + '/AC代码'
     OJs = os.listdir(Index)
     OJs.sort()
@@ -35,7 +35,7 @@ def Work():
         AllCnt += Cnt
         README.write(Change(Add(OJ, 15)))
         README.write(Change(str(Cnt)))
-        README.write('\n\n')
+        README.write('  \n')
     README.write('###### `Total:' + str(AllCnt) + '`\n')
 
 def main():
