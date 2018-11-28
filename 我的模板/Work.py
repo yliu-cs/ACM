@@ -70,7 +70,9 @@ def Work():
     SearchWrite(ClassifyPos, 0)
 
 def Run():
-    os.system('sh Work.sh')
+    os.system('xelatex -shell-escape Ly-Template.tex')
+    os.system('xelatex -shell-escape Ly-Template.tex')
+    os.system('xelatex -shell-escape Ly-Template.tex')
 
 def main():
     File.write(TexHead)
