@@ -34,7 +34,7 @@ def Work():
         print(len(OJ))
         Cnt = len(os.listdir(Index + '/' + OJ))
         AllCnt += Cnt
-        README.write(Change(Add(OJ, 30)))
+        README.write(Change(Add(OJ, 15)))
         README.write(Change(str(Cnt) + '\n'))
     README.write('###### `Total:' + str(AllCnt) + '`\n')
 
