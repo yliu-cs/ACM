@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.12)  20 NOV 2018 14:11
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.12)  28 NOV 2018 23:26
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1337,37 +1337,37 @@ runsystem(rm Ly-Template.aex)...executed.
 (./Ly-Template.aux)
 \openout1 = `Ly-Template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 19.
-LaTeX Font Info:    Try loading font information for T3+cmr on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 18.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 18.
  (/usr/share/texmf/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 19.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
 .................................................
 . fontspec info: "setup-math"
 . 
@@ -1375,59 +1375,59 @@ LaTeX Font Info:    ... okay on input line 19.
 .................................................
 \symlegacymaths=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 19.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 19.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 19.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 19.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 19.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 19.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 19.
-LaTeX Font Info:    Redeclaring math accent \check on input line 19.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 19.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 19.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \colon on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 19.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 19.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 19.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 18.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 18.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 18.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 18.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 18.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 18.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 18.
+LaTeX Font Info:    Redeclaring math accent \check on input line 18.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 18.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 18.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 18.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 18.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 18.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 19.
+(Font)              `operators' in the math version `normal' on input line 18.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 19.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 18.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 19.
+(Font)              `operators' in the math version `bold' on input line 18.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 19.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 18.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 19.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 18.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 19.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 18.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 19.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/bx/n on input line 18.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 19.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 18.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 19.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 18.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/bx/n on input line 19.
+(Font)                  TU/lmr/m/n --> TU/lmr/bx/n on input line 18.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/bx/it on input line 19.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/bx/it on input line 18.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 19.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 18.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 19.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 18.
 \AtBeginShipoutBox=\box55
-Package hyperref Info: Link coloring ON on input line 19.
+Package hyperref Info: Link coloring ON on input line 18.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1437,20 +1437,20 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count302
 )
-LaTeX Info: Redefining \ref on input line 19.
-LaTeX Info: Redefining \pageref on input line 19.
-LaTeX Info: Redefining \nameref on input line 19.
+LaTeX Info: Redefining \ref on input line 18.
+LaTeX Info: Redefining \pageref on input line 18.
+LaTeX Info: Redefining \nameref on input line 18.
 
 (./Ly-Template.out) (./Ly-Template.out)
 \@outlinefile=\write6
 \openout6 = `Ly-Template.out'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 21.
+(Font)              <12> on input line 20.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 21.
+(Font)              <8> on input line 20.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 21.
+(Font)              <6> on input line 20.
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
 File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
@@ -1461,15 +1461,15 @@ File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 ] (./Ly-Template.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 2.
- [2] [3])
+ [2])
 \tf@toc=\write7
 \openout7 = `Ly-Template.toc'.
 
- [4]
+ [3]
 (./_minted-Ly-Template/default-pyg-prefix.pygstyle)
 (./_minted-Ly-Template/default.pygstyle)
-(./_minted-Ly-Template/8E189AC62D97DB7A6EBBE04F4EFF3D2F22E9052A18435959489170EA
-36FF2F2E.pygtex
+(./_minted-Ly-Template/0A640743B7DF5946D303FF2751AB62FC6A2DC3FF505B69E36B5EC4AE
+4756C5E1.pygtex
 \g__fontspec_family_AdobeFangsongStd-Regular.otf_int=\count303
 .................................................
 . fontspec info: "defining-font"
@@ -1485,119 +1485,105 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 DFLT;mapping=tex-text;"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 4.
 
 
 LaTeX Font Warning: Font shape `TU/AdobeFangsongStd-Regular.otf(0)/m/it' undefi
 ned
 (Font)              using `TU/AdobeFangsongStd-Regular.otf(0)/m/n' instead on i
-nput line 4.
+nput line 6.
 
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 5.
+[4])
+(./_minted-Ly-Template/8E189AC62D97DB7A6EBBE04F4EFF3D2F6502A2B99716CFF95230A870
+C84BE747.pygtex [5]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 40.
-[5])
-(./_minted-Ly-Template/0A640743B7DF5946D303FF2751AB62FCBEA07B78B440A4948D0B7301
-3A16F635.pygtex [6] [7])
-(./_minted-Ly-Template/15A38C829523868D9ED3FD8F64C5769F5009F6BD5C85DF0F389060BB
-53B61750.pygtex)
-(./_minted-Ly-Template/42091A8E8C833112FFC37562FB7C04B17FADDF36E954CF14FE134BF5
-1CB7A7F1.pygtex [8])
-(./_minted-Ly-Template/F774ABCF98467C4149AFBB8C802F1A2A8EA0F901DB6897D8259BC0DE
-2C32E065.pygtex [9])
-(./_minted-Ly-Template/AD3769C6AAC6FE973D737DA104FC4F25322ADBDF55B405F2563919F4
-ABC61EA9.pygtex)
-(./_minted-Ly-Template/05D382F6AF08A8E2044FD82107CFC5522399163E989265DF08105D7A
-7D67C65D.pygtex [10] [11] [12])
-(./_minted-Ly-Template/8FF52408B9387E1807A38FF5BA46D2F580748E2BDA12FA8B818A1C0B
-8552D4A7.pygtex [13] [14] [15])
-(./_minted-Ly-Template/839B8BA347CEAA4F74B8795EE7724C36E6481789A98EF7617F00039E
-5EDBA517.pygtex [16] [17] [18] [19])
-(./_minted-Ly-Template/D5C55B4EBAE2DB5CFEE7A717E5DE3EC24836A26ED25F29C213663751
-0FC394A0.pygtex [20] [21] [22] [23])
-(./_minted-Ly-Template/8C7D3DA7743795CA99E0968C05DA27ADF851B1F45445837874E1D8A8
-6BC3A273.pygtex [24] [25])
-(./_minted-Ly-Template/61E2E76F4316090B5F215668BBEE385ADB2A158FC88992EC7ED44BCB
-7F0B5E34.pygtex [26])
-(./_minted-Ly-Template/9EDB5E74E02EB335235569E895F9B60E7E989BA9F7BAA36C727A5BD7
-2D45372B.pygtex [27] [28])
-(./_minted-Ly-Template/BC9C1B15F3A42B993FFBC7493327CE715A7EC2F482445EBFD0E2545C
-5FB23ED9.pygtex [29] [30])
-(./_minted-Ly-Template/BDB38D634B255606BA56ED1550A0E7F43607920F0C1316F8C2E4468D
-A950D1EF.pygtex [31] [32])
-(./_minted-Ly-Template/C6E24BF2DC290DDF6054FC6AD6C445FEB90A5B142B45230037442FF0
-BF48E831.pygtex [33])
-(./_minted-Ly-Template/26236E480BBCA8712D0806019403AA46F3457CFED5FF9B5BD96FA38D
-9DF4C662.pygtex [34])
-(./_minted-Ly-Template/099F1D7ADE6977F9C999E159674D67D0F935D1373F2D76D4C4489765
-EF006669.pygtex [35])
-(./_minted-Ly-Template/A16F3F88D16B5C0017AAEC118C37303BD61AE34A1D5C987F8D8D9703
-94B7B400.pygtex [36] [37])
-(./_minted-Ly-Template/C40EA0AFEDD36D9D5AF343A13ABC84E673248043EAC9C9D6351A5E12
-ABF1FF9D.pygtex [38])
-(./_minted-Ly-Template/445E137F8C7DD5C0C95DBD07E3133302885D1393ED13A64C0851DEB5
-3E03F530.pygtex [39] [40])
-(./_minted-Ly-Template/00862831B9C463E7E5BC2F268FE550C0347290F58AA60A2F869A0BB4
-78158B0F.pygtex)
-(./_minted-Ly-Template/A577226A62B46A07515EE9B03E6AA82CE7875325810183643498835B
-4C889D87.pygtex [41] [42] [43])
-(./_minted-Ly-Template/058FE69F59F9449A97D3A2FC75314D1896B9635C9C8603527BF560E9
-94C9FBC3.pygtex [44])
-(./_minted-Ly-Template/E32297E670EA0F7BDBE8B3FF09970DE1F5EA359C9F462D88EACF85BD
-B8E6AA5F.pygtex [45])
-(./_minted-Ly-Template/280E87D25F13FBCE3B2F215B1062ED79AD5DDE6B032433A6429C7B0D
-32E67D13.pygtex [46] [47])
-(./_minted-Ly-Template/176B48740CD9F231522FA8DDBA5C568292080087E886F561D6498F87
-49FAACF0.pygtex [48] [49] [50])
-(./_minted-Ly-Template/9EB1C19B78E3428F12873D5520A593B1D9F73012157A05C327E5E467
-D9624262.pygtex [51] [52])
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 102.
-
-
-(./_minted-Ly-Template/FA23930323DF5EA9219953518DE137368EEA2F7989256E0FECFD33C2
-BDF65FD0.pygtex [53] [54] [55] [56] [57] [58] [59])
-(./_minted-Ly-Template/927DF1C6A4855CF8E80D86454F022FBF383DA8B5627E51780D9830BA
-7254B9FF.pygtex)
-(./_minted-Ly-Template/1513971374A58B9902ECD4557FEB6093D05BCC307E24348BBEB01EBA
-C58D708E.pygtex [60])
-(./_minted-Ly-Template/6FC204405206D244D79B6111E94605F04EDB7B573236B484CAFC6A1D
-2FBB4A84.pygtex)
-(./_minted-Ly-Template/B2567F73F888757606F76ABA5ACB024F177586B880AA8E5BB34B1FEF
-B03E3FDD.pygtex [61])
-(./_minted-Ly-Template/AB53158137A383C18D56B863C8D86D0E5423989FF147C7CDE2F86DD6
-DEAF1F6D.pygtex)
-(./_minted-Ly-Template/C5BB885F4C49ED7DD614A7753BD84CFA6FD597AD8EC6AFAB4D7A287C
-4532A9FB.pygtex [62])
-(./_minted-Ly-Template/CB32F771A34C58D49DFD4A25F7455B24D407E20F3FF6C32A1A2D26C7
-3181A3BC.pygtex [63])
-(./_minted-Ly-Template/8AB3B988EAFB797FE3AE3BCBDCBDBEFB74383BC4A4F3FB938D151B61
-D50733D9.pygtex [64])
-(./_minted-Ly-Template/6B542C3ED6A540E13775CCD9B5C1989C34F5F64F108BBD1B882EE4CB
-1D9C0E18.pygtex)
-(./_minted-Ly-Template/FFF3DAB486E435705C2AB17E40EFB0E69F48447C8E7B2F7C20A570C5
-698B521B.pygtex [65])
-(./_minted-Ly-Template/C97B946A1865F13830C810BBDC260FE15AE510B3334E5F3AA4E43421
-DE2B1E7B.pygtex [66])
-(./_minted-Ly-Template/64D978E0775465A258A9883725F225AB62E747D7B7C94DAF98DD11F5
-D8F9CB17.pygtex)
-(./_minted-Ly-Template/64B4109713F6964288F1D99F9FFC283DE3463668C3CF1C35B2CFA195
-E735BC9C.pygtex [67])
-(./_minted-Ly-Template/C5B0C9E1AA494439C2D242D93EE2BCB54FC85D5C346B9095C265EBB7
-82F7351A.pygtex [68])
-(./_minted-Ly-Template/B98AF93C621638CC445C1B12BB16075E914B6E92CA943C723696935C
-72AE502B.pygtex)
-(./_minted-Ly-Template/79DBAA586A1F7722142D09E377EFD878C7A6CB01077AB9F851C84242
-42146D1C.pygtex [69])
-(./_minted-Ly-Template/08DE2C9EC947F2CBAD00EC3333D69BEE2321D13263569AF29085DCF2
-A0A1F223.pygtex [70] [71]
+ [6])
+(./_minted-Ly-Template/B2567F73F888757606F76ABA5ACB024F806B4F896CA9BCC34C224B7F
+92B2AE88.pygtex)
+(./_minted-Ly-Template/C5BB885F4C49ED7DD614A7753BD84CFADFF6F2260A2478E55165921E
+43854644.pygtex [7])
+(./_minted-Ly-Template/C97B946A1865F13830C810BBDC260FE12A0B51CB5743C56D253FEA6C
+50032297.pygtex)
+(./_minted-Ly-Template/64B4109713F6964288F1D99F9FFC283D6D135A91F3CE412A62A21F69
+A4C5EEFF.pygtex [8])
+(./_minted-Ly-Template/64D978E0775465A258A9883725F225AB9026349B1586740BAFDDF316
+C354EF4C.pygtex [9])
+(./_minted-Ly-Template/CB32F771A34C58D49DFD4A25F7455B24DBD85E776A70DD0B1B696774
+450926A5.pygtex [10])
+(./_minted-Ly-Template/1513971374A58B9902ECD4557FEB60938BC38C3DEE7E3F05BC788D24
+8A5A5FEF.pygtex)
+(./_minted-Ly-Template/8AB3B988EAFB797FE3AE3BCBDCBDBEFB1972ABD0CD02D81BA594E9C9
+EBB18D9E.pygtex [11])
+(./_minted-Ly-Template/FFF3DAB486E435705C2AB17E40EFB0E6478860CA5286E5C3761B12C3
+3C055250.pygtex [12])
+(./_minted-Ly-Template/6CEF9DFD20AED017B38F2A5B7047407DEE39091DC1AD330EF1706D37
+766C252E.pygtex [13])
+(./_minted-Ly-Template/6B542C3ED6A540E13775CCD9B5C1989C60931939733ADAE24D73A9CE
+5B551B9A.pygtex)
+(./_minted-Ly-Template/DFF7AF7E61CDB09EF5659DA3EC713125AAC619B0D11A6D449BBACE24
+5ADF54C8.pygtex [14])
+(./_minted-Ly-Template/927DF1C6A4855CF8E80D86454F022FBFF07C02A49E13549938DCFAA0
+9ADA5CEC.pygtex)
+(./_minted-Ly-Template/6FC204405206D244D79B6111E94605F02462EC375E60E74E727905BC
+66399054.pygtex [15])
+(./_minted-Ly-Template/AB53158137A383C18D56B863C8D86D0EDDF9036F95F8068368A4CE37
+DCD9BA64.pygtex)
+(./_minted-Ly-Template/AD3769C6AAC6FE973D737DA104FC4F256A0CD10BDC37637F926B3B9F
+0F83430F.pygtex [16])
+(./_minted-Ly-Template/61E2E76F4316090B5F215668BBEE385AF7D989F64426F3A3C8DA9D99
+94C9D9B5.pygtex [17])
+(./_minted-Ly-Template/9EDB5E74E02EB335235569E895F9B60ED77D4912AD81C71EAD0D18BC
+45943434.pygtex [18] [19])
+(./_minted-Ly-Template/BC9C1B15F3A42B993FFBC7493327CE71C8486EF19AA55FE3DC69A143
+0F31058D.pygtex [20] [21])
+(./_minted-Ly-Template/05D382F6AF08A8E2044FD82107CFC552CFF8BDC98AB16CFDA0DDB780
+8AB6A486.pygtex [22] [23] [24])
+(./_minted-Ly-Template/8FF52408B9387E1807A38FF5BA46D2F5A2EA823C89F20CA04155D12C
+9F1B6F7D.pygtex [25] [26] [27])
+(./_minted-Ly-Template/839B8BA347CEAA4F74B8795EE7724C361B4011324043CA395CE7560E
+B0788821.pygtex [28] [29] [30] [31])
+(./_minted-Ly-Template/D5C55B4EBAE2DB5CFEE7A717E5DE3EC2FBCF1A8C03DEAE1F1E5B9642
+E402DD14.pygtex [32] [33] [34] [35])
+(./_minted-Ly-Template/8C7D3DA7743795CA99E0968C05DA27AD94D69DF5C0212F7EFD520755
+F054EA76.pygtex [36] [37])
+(./_minted-Ly-Template/C6E24BF2DC290DDF6054FC6AD6C445FE0EE11BAC17D8780FDCCB95F0
+37C302B8.pygtex [38])
+(./_minted-Ly-Template/BDB38D634B255606BA56ED1550A0E7F491E80371ABAE635286A90297
+E80A367E.pygtex [39])
+(./_minted-Ly-Template/176B48740CD9F231522FA8DDBA5C568297521492E92BA0244F7E6C62
+F6529622.pygtex [40] [41] [42])
+(./_minted-Ly-Template/E32297E670EA0F7BDBE8B3FF09970DE1858B12F5898F8274EAF6294E
+6527FAD4.pygtex [43])
+(./_minted-Ly-Template/9EB1C19B78E3428F12873D5520A593B1CE0C45110FAFD3849BA3E48F
+7BAF6253.pygtex [44] [45])
+(./_minted-Ly-Template/26236E480BBCA8712D0806019403AA46F9EBE109293DEC8498F59C2D
+2E7C8FEF.pygtex [46])
+(./_minted-Ly-Template/C40EA0AFEDD36D9D5AF343A13ABC84E6E1AE1CC4226B74DEE297AE4C
+ED068338.pygtex [47] [48])
+(./_minted-Ly-Template/00862831B9C463E7E5BC2F268FE550C0DDFDF2BAF9823068AB3D683B
+79916922.pygtex)
+(./_minted-Ly-Template/445E137F8C7DD5C0C95DBD07E3133302D76318DC70B8803DD378142A
+A2526FAF.pygtex [49] [50])
+(./_minted-Ly-Template/42091A8E8C833112FFC37562FB7C04B131EF3142441A8BF0C1A6490D
+CAADE8E6.pygtex [51])
+(./_minted-Ly-Template/15A38C829523868D9ED3FD8F64C5769F4D4A558F81F9A5CC8EDC3F5B
+8D330A92.pygtex)
+(./_minted-Ly-Template/F774ABCF98467C4149AFBB8C802F1A2A09F55665607EA32620E9416C
+1BCFE16D.pygtex [52])
+(./_minted-Ly-Template/FA23930323DF5EA9219953518DE13736822F08775ED45D05B43C24AA
+E70195D4.pygtex [53] [54] [55] [56] [57] [58] [59])
+(./_minted-Ly-Template/79DBAA586A1F7722142D09E377EFD8780591F112019D4356064F3C3F
+719BFD8E.pygtex [60])
+(./_minted-Ly-Template/08DE2C9EC947F2CBAD00EC3333D69BEEE3AEBA6EE1AD0EA284FD2DD3
+C58D1FF7.pygtex [61] [62]
 Overfull \hbox (36.66367pt too wide) in paragraph at lines 111--111
 \TU/lmtt/m/n/10.95 (;ch[]>=[][]'0'[][]&&[]ch[]<=[][]'9'[];ch[]=[]nc())tmp[]/=[]
 []10.0[],x[]+=[]tmp[]*[](ch[]-[][]'0'[]);|  
  []
 
-[72] [73]
+[63]
 Overfull \hbox (82.65366pt too wide) in paragraph at lines 161--161
 \TU/lmtt/m/n/10.95 mul[][]=[]{[]1[],[]10[],[]100[],[]1000[],[]10000[],[]100000[
 ],[]1000000[],[]10000000[],[]100000000[],|  
@@ -1609,70 +1595,37 @@ Overfull \hbox (174.63364pt too wide) in paragraph at lines 162--162
 0000000LL[],[]10000000000000LL[],|  
  []
 
-
+[64]
 Overfull \hbox (209.12613pt too wide) in paragraph at lines 163--163
 []\TU/lmtt/m/n/10.95 100000000000000LL[],[]1000000000000000LL[],[]1000000000000
 0000LL[],[]100000000000000000LL[]};|  
  []
 
 )
-(./_minted-Ly-Template/28C26F408D959687E36D30F7886D869F69DA9C7314F2028E13400048
-90DFE00D.pygtex [74]) [75] [76] [77]
-(./_minted-Ly-Template/510300F54ED94D4B191C4CE8FB1A6BCAF190E3418F621B5E1C19AD5B
-F1E953A5.pygtex)
-(./_minted-Ly-Template/2746410731B68D0F6EC4CD240F08CCC604301A11DA654B358CC45BD6
-E2728008.pygtex [78] [79])
-(./_minted-Ly-Template/BA2EB6ED802CB02741A72C67AB74C770A9F234108B69687A6C05280A
-80AA2855.pygtex [80])
-(./_minted-Ly-Template/D1DA4D06A2E5E828BBBD95B0072C33B62188281873F145094D89D0E5
-535F27EA.pygtex [81] [82])
-(./_minted-Ly-Template/44F2F61505B5DF553A52A81CDB19CBEFF4AAD65EA0F57E89C9D16544
-828B62DB.pygtex [83] [84])
-(./_minted-Ly-Template/2308596D0C7518074BD2E18D519595CD0CD1886C8EDEF694813C1514
-98984F64.pygtex [85])
-(./_minted-Ly-Template/E01D48464764E011C4435BB4340B1EC20D57FE8272F3AC8277B28413
-D251F105.pygtex [86])
-(./_minted-Ly-Template/09E855A299BD2AC412FB61BBD472AB70C025AC92736B2F725D78C6D9
-C48C583B.pygtex [87])
-(./_minted-Ly-Template/567CA8DEEEA2342F5AFC4BB5E2D088028C9ECB73C4BEC28BB05F137E
-EDC35B5F.pygtex [88])
-(./_minted-Ly-Template/A52D12BF27A14AD4089ED2917814C51D02A566AE2B6E47A2999152F3
-728F3E54.pygtex [89])
-(./_minted-Ly-Template/E9FC03E3478942009E7E159C772CEBE37D7581DBEA1D6522687E1F6C
-543451B9.pygtex [90]) [91] [92] [93]
-(./_minted-Ly-Template/63F0B05B78F09FBCB14B0D40C280E29C95E4C641C0686A9A5323B401
-B9B54F1F.pygtex
-Missing character: There is no ∑ in font [lmmono10-italic]:!
-Missing character: There is no ∈ in font [lmmono10-italic]:!
-Missing character: There is no ∑ in font [lmmono10-italic]:!
-Missing character: There is no ∈ in font [lmmono10-italic]:!
- [94] [95] [96])
-(./_minted-Ly-Template/8590EC48294E7C5E9F6F42A167C64270BB79E63F4F90FBAF6E16D01A
-9A90755A.pygtex [97])
-(./_minted-Ly-Template/47BECAF683A33BF659D44A3CC1ACFF0E4715A3BAFA32ADA1121FDA76
-30B8600E.pygtex [98] [99])
-(./_minted-Ly-Template/900585155AE681D049AC721AC81A0409750153805C714313F736B42C
-305B42D2.pygtex)
-(./_minted-Ly-Template/18A3C0FB044AD5311989A41DC70804BDCF4907F0954FC37C37A7D6A2
-8B56F28F.pygtex [100])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 197.
- [101]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 197.
+(./_minted-Ly-Template/B98AF93C621638CC445C1B12BB16075E96A5BDFAB0F4491192E91DF1
+49EDA0E8.pygtex [65])
+(./_minted-Ly-Template/C5B0C9E1AA494439C2D242D93EE2BCB5C3E15E5C71828FB0B2778B8B
+6CDF2A09.pygtex)
+(./_minted-Ly-Template/28C26F408D959687E36D30F7886D869F7BC1637C03EBD192262865E9
+1E115C37.pygtex)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 146.
+ [66]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 146.
  (./Ly-Template.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 197.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 197.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 146.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 146.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 28408 strings out of 494988
- 575516 string characters out of 6178637
- 670187 words of memory out of 5000000
- 31828 multiletter control sequences out of 15000+600000
- 534492 words of font info for 61 fonts, out of 8000000 for 9000
+ 28110 strings out of 494988
+ 550408 string characters out of 6178637
+ 660764 words of memory out of 5000000
+ 31591 multiletter control sequences out of 15000+600000
+ 534460 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 53i,12n,76p,10446b,593s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,12n,76p,10438b,593s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Ly-Template.pdf (101 pages).
+Output written on Ly-Template.pdf (66 pages).

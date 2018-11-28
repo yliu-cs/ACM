@@ -1,3 +1,4 @@
+python3 我的模板/Work.py
 python3 Directory.py
 git add .
 git commit -m "Strive! ! !"

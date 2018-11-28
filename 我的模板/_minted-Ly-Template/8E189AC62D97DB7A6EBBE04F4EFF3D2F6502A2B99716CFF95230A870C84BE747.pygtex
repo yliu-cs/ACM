@@ -1,0 +1,58 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}bits/stdc++.h\PYGZgt{}}
+
+\PYG{c+c1}{// 对模式串Pattern计算Next数组}
+\PYG{k+kt}{void} \PYG{n+nf}{KMPPre}\PYG{p}{(}\PYG{n}{string} \PYG{n}{Pattern}\PYG{p}{,} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{Next}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{j} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{n}{Next}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{Len} \PYG{o}{=} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{Pattern}\PYG{p}{.}\PYG{n}{length}\PYG{p}{());}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{o}{!=} \PYG{n}{Len}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{||} \PYG{n}{Pattern}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{Pattern}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Next}\PYG{p}{[}\PYG{o}{++}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{o}{++}\PYG{n}{j}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{else} \PYG{p}{\PYGZob{}}
+            \PYG{n}{j} \PYG{o}{=} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 优化对模式串Pattern计算Next数组}
+\PYG{k+kt}{void} \PYG{n+nf}{PreKMP}\PYG{p}{(}\PYG{n}{string} \PYG{n}{Pattern}\PYG{p}{,} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{Next}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{;}
+    \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{j} \PYG{o}{=} \PYG{n}{Next}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{Len} \PYG{o}{=} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{Pattern}\PYG{p}{.}\PYG{n}{length}\PYG{p}{());}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{Len}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{while} \PYG{p}{(}\PYG{n}{j} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{Pattern}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{Pattern}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+            \PYG{n}{j} \PYG{o}{=} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{Pattern}\PYG{p}{[}\PYG{o}{++}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{Pattern}\PYG{p}{[}\PYG{o}{++}\PYG{n}{j}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{else} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Next}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{j}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 利用预处理Next数组计数模式串Pattern在主串Main中出现次数}
+\PYG{k+kt}{int} \PYG{n+nf}{KMPCount}\PYG{p}{(}\PYG{n}{string} \PYG{n}{Pattern}\PYG{p}{,} \PYG{n}{string} \PYG{n}{Main}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{PatternLen} \PYG{o}{=} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{Pattern}\PYG{p}{.}\PYG{n}{length}\PYG{p}{()),} \PYG{n}{MainLen} \PYG{o}{=} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{Main}\PYG{p}{.}\PYG{n}{length}\PYG{p}{());}
+    \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{Next}\PYG{p}{(}\PYG{n}{PatternLen} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+    \PYG{c+c1}{//PreKMP(Pattern, Next);}
+    \PYG{n}{KMPPre}\PYG{p}{(}\PYG{n}{Pattern}\PYG{p}{,} \PYG{n}{Next}\PYG{p}{);}
+    \PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{Ans} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{MainLen}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{while} \PYG{p}{(}\PYG{n}{j} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{Main}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{Pattern}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+            \PYG{n}{j} \PYG{o}{=} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{n}{i}\PYG{o}{++}\PYG{p}{;} \PYG{n}{j}\PYG{o}{++}\PYG{p}{;}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{\PYGZgt{}=} \PYG{n}{PatternLen}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Ans}\PYG{o}{++}\PYG{p}{;}
+            \PYG{n}{j} \PYG{o}{=} \PYG{n}{Next}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{Ans}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
