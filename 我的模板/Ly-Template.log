@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.12)  29 NOV 2018 15:55
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.12)  29 NOV 2018 16:07
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1574,7 +1574,7 @@ CAADE8E6.pygtex [51])
 1BCFE16D.pygtex [52])
 (./_minted-Ly-Template/FA23930323DF5EA9219953518DE13736DD27B039F513865563C75A86
 C0D787B6.pygtex [53] [54] [55] [56] [57] [58] [59])
-(./_minted-Ly-Template/8B53E73AEA8FA084094433DF308A790DE8A3B5A8BB260ECB6785131A
+(./_minted-Ly-Template/434096972B345E86214F91D797831F2FE8A3B5A8BB260ECB6785131A
 8EC881E2.pygtex [60])
 (./_minted-Ly-Template/79DBAA586A1F7722142D09E377EFD8780591F112019D4356064F3C3F
 719BFD8E.pygtex [61])
@@ -1624,7 +1624,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  28114 strings out of 494988
  550741 string characters out of 6178637
- 662584 words of memory out of 5000000
+ 661584 words of memory out of 5000000
  31592 multiletter control sequences out of 15000+600000
  534460 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191

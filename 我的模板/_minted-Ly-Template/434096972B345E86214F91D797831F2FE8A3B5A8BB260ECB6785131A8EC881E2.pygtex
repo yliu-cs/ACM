@@ -26,7 +26,7 @@
 \PYG{c+c1}{// 模拟退火求N个点的最小球覆盖}
 \PYG{k+kt}{double} \PYG{n+nf}{MinimimSphereCoverage}\PYG{p}{()} \PYG{p}{\PYGZob{}}
     \PYG{n}{Point} \PYG{n}{Cur} \PYG{o}{=} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{];}
-    \PYG{k+kt}{double} \PYG{n}{Probability} \PYG{o}{=} \PYG{l+m+mi}{100}\PYG{p}{,} \PYG{n}{Ans} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{;}
+    \PYG{k+kt}{double} \PYG{n}{Probability} \PYG{o}{=} \PYG{l+m+mi}{10000}\PYG{p}{,} \PYG{n}{Ans} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{;}
     \PYG{k}{while} \PYG{p}{(}\PYG{n}{Probability} \PYG{o}{\PYGZgt{}} \PYG{n}{eps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k+kt}{int} \PYG{n}{Book} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
         \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
