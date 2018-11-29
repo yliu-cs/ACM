@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.12)  29 NOV 2018 13:33
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.12)  29 NOV 2018 15:55
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1504,7 +1504,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 92B2AE88.pygtex)
 (./_minted-Ly-Template/C5BB885F4C49ED7DD614A7753BD84CFADFF6F2260A2478E55165921E
 43854644.pygtex [7])
-(./_minted-Ly-Template/C97B946A1865F13830C810BBDC260FE12A0B51CB5743C56D253FEA6C
+(./_minted-Ly-Template/E8313D86A9E1C915871BFC8289C14E712A0B51CB5743C56D253FEA6C
 50032297.pygtex)
 (./_minted-Ly-Template/64B4109713F6964288F1D99F9FFC283D6D135A91F3CE412A62A21F69
 A4C5EEFF.pygtex [8])
@@ -1572,18 +1572,20 @@ CAADE8E6.pygtex [51])
 8D330A92.pygtex)
 (./_minted-Ly-Template/F774ABCF98467C4149AFBB8C802F1A2A09F55665607EA32620E9416C
 1BCFE16D.pygtex [52])
-(./_minted-Ly-Template/FA23930323DF5EA9219953518DE13736822F08775ED45D05B43C24AA
-E70195D4.pygtex [53] [54] [55] [56] [57] [58] [59])
+(./_minted-Ly-Template/FA23930323DF5EA9219953518DE13736DD27B039F513865563C75A86
+C0D787B6.pygtex [53] [54] [55] [56] [57] [58] [59])
+(./_minted-Ly-Template/8B53E73AEA8FA084094433DF308A790DE8A3B5A8BB260ECB6785131A
+8EC881E2.pygtex [60])
 (./_minted-Ly-Template/79DBAA586A1F7722142D09E377EFD8780591F112019D4356064F3C3F
-719BFD8E.pygtex [60])
+719BFD8E.pygtex [61])
 (./_minted-Ly-Template/08DE2C9EC947F2CBAD00EC3333D69BEEE3AEBA6EE1AD0EA284FD2DD3
-C58D1FF7.pygtex [61] [62]
+C58D1FF7.pygtex [62] [63]
 Overfull \hbox (36.66367pt too wide) in paragraph at lines 111--111
 \TU/lmtt/m/n/10.95 (;ch[]>=[][]'0'[][]&&[]ch[]<=[][]'9'[];ch[]=[]nc())tmp[]/=[]
 []10.0[],x[]+=[]tmp[]*[](ch[]-[][]'0'[]);|  
  []
 
-[63]
+[64] [65]
 Overfull \hbox (82.65366pt too wide) in paragraph at lines 161--161
 \TU/lmtt/m/n/10.95 mul[][]=[]{[]1[],[]10[],[]100[],[]1000[],[]10000[],[]100000[
 ],[]1000000[],[]10000000[],[]100000000[],|  
@@ -1595,37 +1597,37 @@ Overfull \hbox (174.63364pt too wide) in paragraph at lines 162--162
 0000000LL[],[]10000000000000LL[],|  
  []
 
-[64]
+
 Overfull \hbox (209.12613pt too wide) in paragraph at lines 163--163
 []\TU/lmtt/m/n/10.95 100000000000000LL[],[]1000000000000000LL[],[]1000000000000
 0000LL[],[]100000000000000000LL[]};|  
  []
 
-)
+[66])
 (./_minted-Ly-Template/B98AF93C621638CC445C1B12BB16075E96A5BDFAB0F4491192E91DF1
-49EDA0E8.pygtex [65])
+49EDA0E8.pygtex)
 (./_minted-Ly-Template/C5B0C9E1AA494439C2D242D93EE2BCB5C3E15E5C71828FB0B2778B8B
 6CDF2A09.pygtex)
 (./_minted-Ly-Template/28C26F408D959687E36D30F7886D869F7BC1637C03EBD192262865E9
 1E115C37.pygtex)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 146.
- [66]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 146.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 148.
+ [67]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 148.
  (./Ly-Template.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 146.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 146.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 148.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 148.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 28110 strings out of 494988
- 550408 string characters out of 6178637
- 660764 words of memory out of 5000000
- 31591 multiletter control sequences out of 15000+600000
+ 28114 strings out of 494988
+ 550741 string characters out of 6178637
+ 662584 words of memory out of 5000000
+ 31592 multiletter control sequences out of 15000+600000
  534460 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  53i,12n,76p,10438b,593s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Ly-Template.pdf (66 pages).
+Output written on Ly-Template.pdf (67 pages).

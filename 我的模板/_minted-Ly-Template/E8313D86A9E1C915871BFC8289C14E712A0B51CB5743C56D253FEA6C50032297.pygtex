@@ -4,7 +4,7 @@
 \PYG{c+c1}{// 单独求解欧拉函数}
 \PYG{k+kt}{int} \PYG{n+nf}{Phi}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{X}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{int} \PYG{n}{Ans} \PYG{o}{=} \PYG{n}{X}\PYG{p}{;}
-    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{X}\PYG{p}{));} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{*} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{X}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{p}{(}\PYG{n}{X} \PYG{o}{\PYGZpc{}} \PYG{n}{i}\PYG{p}{))} \PYG{p}{\PYGZob{}}
             \PYG{n}{Ans} \PYG{o}{=} \PYG{n}{Ans} \PYG{o}{/} \PYG{n}{i} \PYG{o}{*} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{);}
             \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{p}{(}\PYG{n}{X} \PYG{o}{\PYGZpc{}} \PYG{n}{i}\PYG{p}{))} \PYG{p}{\PYGZob{}}
