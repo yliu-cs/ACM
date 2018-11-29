@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
+using namespace std;
 
-const int maxn = "Edit";
+const int maxn = 1e6 + 5;
 
 char ConvertStr[maxn << 1];
 int Len[maxn << 1];
 
-// Manacher算法求Str字符串最长回文子串长度
 int Manacher(char Str[]) {
     int L = 0, StrLen = int(strlen(Str));
     ConvertStr[L++] = '$'; ConvertStr[L++] = '#';
@@ -26,5 +26,17 @@ int Manacher(char Str[]) {
         Ans = max(Ans, Len[i] - 1);
     }
     return Ans;
+}
+
+int T;
+char Str[maxn];
+
+int main(int argc, char *argv[]) {
+    scanf("%d", &T);
+    for (int Case = 1; Case <= T; ++Case) {
+        scanf("%s", Str);
+        printf("%d\n", Manacher(Str));
+    }
+    return 0;
 }
 
