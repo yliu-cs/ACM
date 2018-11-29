@@ -33,7 +33,7 @@ def Work():
     for OJ in OJs:
         Cnt = len(os.listdir(Index + '/' + OJ))
         AllCnt += Cnt
-        README.write(Change(Add(OJ, 23)))
+        README.write(Change(Add(OJ, 16)))
         README.write(Change(str(Cnt)))
         README.write('  \n')
     README.write('###### `Total:' + str(AllCnt) + '`\n')
