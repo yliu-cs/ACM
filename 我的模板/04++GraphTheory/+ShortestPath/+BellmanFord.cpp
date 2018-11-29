@@ -3,7 +3,7 @@
 const int INF = "Edit";
 const int maxn = "Edit";
 
-struct Link {
+struct Edge {
     // U、V:顶点，Dis:边权
     int U, V;
     int Dis;
@@ -11,7 +11,7 @@ struct Link {
 // 松弛更新数组
 int Dis[maxn];
 // 边
-std::vector<Link> edges;
+std::vector<Edge> edges;
 
 // Bellman_Ford算法判断是否存在负环回路
 bool BellmanFord(int Start, int N) {

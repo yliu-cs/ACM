@@ -2,11 +2,11 @@
 
 const int maxn = "Edit";
 
-struct Link {
+struct Edge {
     int V, Next;
 };
 
-Link edges[maxn << 1];
+Edge edges[maxn << 1];
 int Head[maxn];
 int Tot;
 
@@ -18,14 +18,14 @@ void Init() {
 
 // 加边建图
 void AddEdge(int U, int V) {
-    edges[Tot] = Link {V, Head[U]};
+    edges[Tot] = Edge {V, Head[U]};
     Head[U] = Tot++;
 }
 
 // 匹配左顶点数
 int N;
 // 右顶点匹配左顶点编号
-int Linker[maxn];
+int Edgeer[maxn];
 // 右顶点匹配标记
 bool Vis[maxn];
 
@@ -34,8 +34,8 @@ bool Dfs(int U) {
     for (int i = Head[U]; i != -1; i = edges[i].Next) {
         if (!Vis[edges[i].V]) {
             Vis[edges[i].V] = true;
-            if (Linker[edges[i].V] == -1 || Dfs(Linker[edges[i].V])) {
-                Linker[edges[i].V] = U;
+            if (Edgeer[edges[i].V] == -1 || Dfs(Edgeer[edges[i].V])) {
+                Edgeer[edges[i].V] = U;
                 return true;
             }
         }
@@ -46,7 +46,7 @@ bool Dfs(int U) {
 // 匈牙利算法
 int Hungary() {
     int Ans = 0;
-    memset(Linker, -1, sizeof(Vis));
+    memset(Edgeer, -1, sizeof(Vis));
     // 枚举左顶点
     for (int i = 1; i <= N; ++i) {
         memset(Vis, false, sizeof(Vis));

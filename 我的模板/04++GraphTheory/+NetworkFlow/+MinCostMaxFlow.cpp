@@ -4,7 +4,7 @@ const int INF = "Edit";
 const int maxn = "Edit";
 
 // 边
-struct Link {
+struct Edge {
     // V:连接点，Flow:流量，Cost:费用
     int V, Cap, Cost, Flow, Next;
 };
@@ -19,7 +19,7 @@ int Dis[maxn];
 bool Vis[maxn];
 int Tot;
 // 链式前向星
-Link edges[maxn];
+Edge edges[maxn];
 
 // 链式前向星初始化
 void Init() {
@@ -29,9 +29,9 @@ void Init() {
 
 // 建图加边，U、V之间建立一条费用为Cost的边
 void AddEdge(int U, int V, int Cap, int Cost) {
-    edges[Tot] = Link {V, Cap, Cost, 0, Head[U]};
+    edges[Tot] = Edge {V, Cap, Cost, 0, Head[U]};
     Head[U] = Tot++;
-    edges[Tot] = Link {U, 0, -Cost, 0, Head[V]};
+    edges[Tot] = Edge {U, 0, -Cost, 0, Head[V]};
     Head[V] = Tot++;
 }
 

@@ -4,13 +4,13 @@ const int maxn = "Edit";
 const int INF = "Edit";
 
 // 边
-struct Link {
+struct Edge {
     // V:连接点，Weight:权值，Next:上一条边的编号
     int V, Weight, Next;
 };
 
 // 边，一定要开到足够大
-Link edges[maxn << 1];
+Edge edges[maxn << 1];
 // Head[i]为点i上最后一条边的编号
 int Head[maxn];
 // 增加边时更新编号
@@ -26,7 +26,7 @@ void Init() {
 
 // 添加一条U至V权值为Weight的边
 void AddEdge(int U, int V, int Weight) {
-    edges[Tot] = Link (V, Weight, Head[U]);
+    edges[Tot] = Edge (V, Weight, Head[U]);
     Head[U] = Tot++;
 }
 

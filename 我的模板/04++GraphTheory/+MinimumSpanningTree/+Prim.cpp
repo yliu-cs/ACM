@@ -3,10 +3,10 @@
 const int INF = "Edit";
 const int maxn = "Edit";
 
-struct Link {
+struct Edge {
     // V:连接点，Dis:边权
     int V, Dis;
-    Link(int _V = 0, int _Dis = 0): V(_V), Dis(_Dis) {}
+    Edge(int _V = 0, int _Dis = 0): V(_V), Dis(_Dis) {}
 };
 
 // N:顶点数，E:边数
@@ -16,13 +16,13 @@ int Dis[maxn];
 // 访问标记数组
 int Vis[maxn];
 // 邻接表
-std::vector<Link> Adj[maxn];
+std::vector<Edge> Adj[maxn];
 
 // 建图加边，U、V:顶点,Weight:权值
 void AddEdge(int U, int V, int Weight) {
-    Adj[U].push_back(Link (V, Weight));
+    Adj[U].push_back(Edge (V, Weight));
     // 无向图反向建边
-    Adj[V].push_back(Link (U, Weight));
+    Adj[V].push_back(Edge (U, Weight));
 }
 
 // Prim算法

@@ -4,13 +4,13 @@ const int INF = "Edit";
 const int maxn = "Edit";
 
 // 边
-struct Link {
+struct Edge {
     // V:连接点，Weight:权值，Next:上一条边的编号
     int V, Weight, Next;
 };
 
 // 边，一定要开到足够大
-Link edges[maxn << 1];
+Edge edges[maxn << 1];
 // Head[i]为点i上最后一条边的编号
 int Head[maxn];
 // 增加边时更新编号
@@ -30,10 +30,10 @@ void Init() {
 
 // 添加一条由U至V权值为Weight的边
 void AddEdge(int U, int V, int Weight, int ReverseWeight = 0) {
-    edges[Tot] = Link (V, Weight, Head[U]);
+    edges[Tot] = Edge (V, Weight, Head[U]);
     Head[U] = Tot++;
     // 反向建边
-    edges[Tot] = Link (U, ReverseWeight, Head[V]);
+    edges[Tot] = Edge (U, ReverseWeight, Head[V]);
     Head[V] = Tot++;
 }
 
@@ -44,11 +44,11 @@ bool Bfs(int Start, int End) {
     Depth[Start] = 0;
     Que.push(Start);
     while (!Que.empty()) {
-        int Vertex = Que.front();
+        int Cur = Que.front();
         Que.pop();
-        for (int i = Head[Vertex]; i != -1; i = edges[i].Next) {
+        for (int i = Head[Cur]; i != -1; i = edges[i].Next) {
             if (Depth[edges[i].V] == -1 && edges[i].Weight > 0) {
-                Depth[edges[i].V] = Depth[Vertex] + 1;
+                Depth[edges[i].V] = Depth[Cur] + 1;
                 Que.push(edges[i].V);
             }
         }
@@ -56,17 +56,17 @@ bool Bfs(int Start, int End) {
     return Depth[End] != -1;
 }
 
-// Dfs搜索增广路径，Vertex:当前搜索顶点，End:终点，NowFlow:当前最大流
-int Dfs(int Vertex, int End, int NowFlow) {
+// Dfs搜索增广路径，Cur:当前搜索顶点，End:终点，NowFlow:当前最大流
+int Dfs(int Cur, int End, int NowFlow) {
     // 搜索到终点或者可用当前最大流为0返回
-    if (Vertex == End || NowFlow == 0) {
+    if (Cur == End || NowFlow == 0) {
         return NowFlow;
     }
     // UsableFlow:可用流量，当达到NowFlow时不可再增加，FindFlow:递归深搜到的最大流
     int UsableFlow = 0, FindFlow;
-    // &i=Current[Vertex]为当前弧优化，每次更新Current[Vertex]
-    for (int &i = Current[Vertex]; i != -1; i = edges[i].Next) {
-        if (edges[i].Weight > 0 && Depth[edges[i].V] == Depth[Vertex] + 1) {
+    // &i=Current[Cur]为当前弧优化，每次更新Current[Cur]
+    for (int &i = Current[Cur]; i != -1; i = edges[i].Next) {
+        if (edges[i].Weight > 0 && Depth[edges[i].V] == Depth[Cur] + 1) {
             FindFlow = Dfs(edges[i].V, End, std::min(NowFlow - UsableFlow, edges[i].Weight));
             if (FindFlow > 0) {
                 edges[i].Weight -= FindFlow;
@@ -81,7 +81,7 @@ int Dfs(int Vertex, int End, int NowFlow) {
     }
     // 炸点优化
     if (!UsableFlow) {
-        Depth[Vertex] = -2;
+        Depth[Cur] = -2;
     }
     return UsableFlow;
 }

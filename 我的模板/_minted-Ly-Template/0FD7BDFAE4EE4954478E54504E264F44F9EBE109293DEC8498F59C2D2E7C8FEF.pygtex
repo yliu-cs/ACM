@@ -4,7 +4,7 @@
 \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{INF} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
 \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
 
-\PYG{k}{struct} \PYG{n}{Link} \PYG{p}{\PYGZob{}}
+\PYG{k}{struct} \PYG{n}{Edge} \PYG{p}{\PYGZob{}}
     \PYG{c+c1}{// U、V:顶点，Dis:边权}
     \PYG{k+kt}{int} \PYG{n}{U}\PYG{p}{,} \PYG{n}{V}\PYG{p}{;}
     \PYG{k+kt}{int} \PYG{n}{Dis}\PYG{p}{;}
@@ -12,7 +12,7 @@
 \PYG{c+c1}{// 松弛更新数组}
 \PYG{k+kt}{int} \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
 \PYG{c+c1}{// 边}
-\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Link}\PYG{o}{\PYGZgt{}} \PYG{n}{edges}\PYG{p}{;}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Edge}\PYG{o}{\PYGZgt{}} \PYG{n}{edges}\PYG{p}{;}
 
 \PYG{c+c1}{// Bellman\PYGZus{}Ford算法判断是否存在负环回路}
 \PYG{k+kt}{bool} \PYG{n+nf}{BellmanFord}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Start}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{)} \PYG{p}{\PYGZob{}}

@@ -11,7 +11,7 @@
 \BOOKMARK [3][-]{subsubsection.2.3.2}{PrimeEuler}{subsection.2.3}% 11
 \BOOKMARK [3][-]{subsubsection.2.3.3}{Sieve}{subsection.2.3}% 12
 \BOOKMARK [2][-]{subsection.2.4}{Fibonacci}{section.2}% 13
-\BOOKMARK [2][-]{subsection.2.5}{Generating-Function}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.5}{GeneratingFunction}{section.2}% 14
 \BOOKMARK [2][-]{subsection.2.6}{InverseElement}{section.2}% 15
 \BOOKMARK [3][-]{subsubsection.2.6.1}{ExtendGcd}{subsection.2.6}% 16
 \BOOKMARK [3][-]{subsubsection.2.6.2}{Factorial}{subsection.2.6}% 17
@@ -20,7 +20,7 @@
 \BOOKMARK [2][-]{subsection.2.7}{Prime}{section.2}% 20
 \BOOKMARK [3][-]{subsubsection.2.7.1}{PrimeFactor}{subsection.2.7}% 21
 \BOOKMARK [3][-]{subsubsection.2.7.2}{SieveOfEratosthenes}{subsection.2.7}% 22
-\BOOKMARK [2][-]{subsection.2.8}{Quick-Pow}{section.2}% 23
+\BOOKMARK [2][-]{subsection.2.8}{QuickPow}{section.2}% 23
 \BOOKMARK [2][-]{subsection.2.9}{Stirling}{section.2}% 24
 \BOOKMARK [1][-]{section.3}{DataStructure}{}% 25
 \BOOKMARK [2][-]{subsection.3.1}{BinaryIndexedTree}{section.3}% 26

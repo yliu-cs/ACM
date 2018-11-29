@@ -3,15 +3,15 @@
 const int INF = "Edit";
 const int maxn = "Edit";
 
-struct Link {
+struct Edge {
     int V, Weight, Next;
 };
 
-Link edges[maxn << 1];
+Edge edges[maxn << 1];
 int Head[maxn];
 int Tot;
 // 反向边
-Link Reverseedges[maxn << 1];
+Edge Reverseedges[maxn << 1];
 int ReverseHead[maxn];
 int ReverseTot;
 
@@ -25,10 +25,10 @@ void Init() {
 
 // 加边建图
 void AddEdge(int U, int V, int Weight) {
-    edges[Tot] = Link {V, Weight, Head[U]};
+    edges[Tot] = Edge {V, Weight, Head[U]};
     Head[U] = Tot++;
     // 用反向边另建图
-    Reverseedges[ReverseTot] = Link {U, Weight, ReverseHead[V]};
+    Reverseedges[ReverseTot] = Edge {U, Weight, ReverseHead[V]};
     ReverseHead[V] = ReverseTot++;
 }
 
