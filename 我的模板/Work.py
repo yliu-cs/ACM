@@ -44,6 +44,8 @@ def SearchWrite(Address, Cnt):
                 Str = '\\section{' + Classify[4:] + '}\n'
                 File.write(Str)
                 SearchWrite(Address + '/' + Classify, Cnt + 1)
+                Str = '\\newpage\n'
+                File.write(Str)
         else:
             if re.match(r'\+.', Classify):
                 if re.match(r'(.+?)\.(.+?)', Classify):

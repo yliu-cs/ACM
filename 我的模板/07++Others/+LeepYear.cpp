@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-inline int Leep(int Year) {
+inline bool Leep(int Year) {
     return (!(Year % 4) && (Year % 100)) || !(Year % 400);
 }
 
