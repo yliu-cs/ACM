@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.12)  29 NOV 2018 20:57
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.12)  29 NOV 2018 22:58
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1570,12 +1570,14 @@ ED068338.pygtex [51] [52])
 79916922.pygtex)
 (./_minted-Ly-Template/445E137F8C7DD5C0C95DBD07E3133302D76318DC70B8803DD378142A
 A2526FAF.pygtex [53] [54]) [55]
+(./_minted-Ly-Template/76AE2D3035137C00903F946D852092EF59C06C14C0072F1DE0699A1D
+635B43EE.pygtex)
 (./_minted-Ly-Template/42091A8E8C833112FFC37562FB7C04B131EF3142441A8BF0C1A6490D
-CAADE8E6.pygtex)
+CAADE8E6.pygtex [56])
 (./_minted-Ly-Template/15A38C829523868D9ED3FD8F64C5769F4D4A558F81F9A5CC8EDC3F5B
-8D330A92.pygtex [56])
+8D330A92.pygtex [57])
 (./_minted-Ly-Template/F774ABCF98467C4149AFBB8C802F1A2A09F55665607EA32620E9416C
-1BCFE16D.pygtex [57]) [58]
+1BCFE16D.pygtex) [58]
 (./_minted-Ly-Template/FA23930323DF5EA9219953518DE13736DD27B039F513865563C75A86
 C0D787B6.pygtex [59] [60] [61] [62] [63] [64])
 (./_minted-Ly-Template/434096972B345E86214F91D797831F2FE8A3B5A8BB260ECB6785131A
@@ -1614,21 +1616,21 @@ Overfull \hbox (209.12613pt too wide) in paragraph at lines 163--163
 6CDF2A09.pygtex [72])
 (./_minted-Ly-Template/28C26F408D959687E36D30F7886D869F7BC1637C03EBD192262865E9
 1E115C37.pygtex) [73]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 159.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 159.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 161.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 161.
  (./Ly-Template.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 159.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 159.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 161.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 161.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 28122 strings out of 494988
- 551407 string characters out of 6178637
- 661185 words of memory out of 5000000
- 31594 multiletter control sequences out of 15000+600000
+ 28126 strings out of 494988
+ 551740 string characters out of 6178637
+ 661324 words of memory out of 5000000
+ 31595 multiletter control sequences out of 15000+600000
  534460 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  53i,12n,76p,10438b,593s stack positions out of 5000i,500n,10000p,200000b,80000s
