@@ -35,8 +35,8 @@ def Work():
         AllCnt += Cnt
         README.write(Change(Add(OJ, 16)))
         README.write(Change(str(Cnt)))
-        README.write('\n')
-    README.write('### `Total:' + str(AllCnt) + '`\n')
+        README.write('  \n')
+    README.write('#### `Total:' + str(AllCnt) + '`\n')
 
 def main():
     Work()
