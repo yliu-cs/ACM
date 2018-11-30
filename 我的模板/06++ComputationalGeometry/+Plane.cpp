@@ -48,11 +48,11 @@ double Distance(Point A, Point B) {
 }
 
 // 线
-struct Segment {
+struct Line {
     Point S, T;
     
-    Segment() {}
-    Segment(Point _S, Point _T) {
+    Line() {}
+    Line(Point _S, Point _T) {
         S = _S;
         T = _T;
     }
@@ -63,24 +63,24 @@ struct Segment {
     }
 
 	// 向量叉积
-    double operator ^ (const Segment &B) const {
+    double operator ^ (const Line &B) const {
         return (T - S) ^ (B.T - B.S);
     }
 
     // 判断是否平行
-    bool IsParallel(const Segment &B) const {
+    bool IsParallel(const Line &B) const {
         return Sgn((S - T) ^ (B.S - B.T)) == 0;
     }
 
     // 求交点
-    Point operator & (const Segment &B) const {
+    Point operator & (const Line &B) const {
         double Temp = ((S - B.S) ^ (B.S - B.T)) / ((S - T) ^ (B.S - B.T));
         return Point(S.X + (T.X - S.X) * Temp, S.Y + (T.Y - S.Y) * Temp);
     }
 };
 
 // 判断线段A、B是否相交
-bool IsIntersect(Segment A, Segment B) {
+bool IsIntersect(Line A, Line B) {
     return
         max(A.S.X, A.T.X) >= min(B.S.X, B.T.X) &&
         max(B.S.X, B.T.X) >= min(A.S.X, A.T.X) &&
@@ -91,12 +91,12 @@ bool IsIntersect(Segment A, Segment B) {
 }
 
 // 判断线段A所在直线与线段B是否相交
-bool IsIntersect(Segment A, Segment B) {
+bool IsIntersect(Line A, Line B) {
     return Sgn((B.S - A.T) ^ (A.S - A.T)) * Sgn((B.T - A.T) ^ (A.S - A.T)) <= 0;
 }
 
 // 判断直线A、B是否相交
-bool IsIntersect(Segment A, Segment B) {
+bool IsIntersect(Line A, Line B) {
     return !Parallel(A, B) || (Parallel(A, B) && !(Sgn((A.S - B.S) ^ (B.T - B.S)) == 0));
 }
 
@@ -159,7 +159,7 @@ double ConvexHull(std::vector<Point> points) {
 }
 
 // 半平面,表示S->T逆时针(左侧)的半平面
-struct HalfPlane:public Segment {
+struct HalfPlane:public Line {
     double Angle;
 
     HalfPlane() {}
@@ -167,7 +167,7 @@ struct HalfPlane:public Segment {
         S = _S;
         T = _T;
     }
-    HalfPlane(Segment ST) {
+    HalfPlane(Line ST) {
         S = ST.S;
         T = ST.T;
     }

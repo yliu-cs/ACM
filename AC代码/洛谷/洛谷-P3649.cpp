@@ -74,18 +74,20 @@ struct PalindromicTree {
     }
 };
 
+long long Ans;
 char Str[maxn];
+int StrLen;
+PalindromicTree T;
 
 int main(int argc, char *argv[]) {
-    PalindromicTree T;
     scanf("%s", Str);
     T.Init();
-    int StrLen = int(strlen(Str));
+    StrLen = int(strlen(Str));
     for (long long i = 0; i < StrLen; ++i) {
         T.Add(Str[i]);
     }
     T.Count();
-    long long Ans = 0;
+    Ans = 0;
     for (long long i = 2; i < T.Tot; ++i) {
         Ans = max(Ans, T.Len[i] * T.Cnt[i]);
     }

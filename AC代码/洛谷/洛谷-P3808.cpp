@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-using namespace std;
 
 const int maxn = 5e5 + 5;
 
@@ -7,9 +6,12 @@ struct AhoCorasickAutomaton {
     // 子节点记录数组
     int Son[maxn][26];
     int Val[maxn];
+    // 失配指针Fail数组
     int Fail[maxn];
+    // 节点数量
     int Tot;
 
+    // Trie Tree初始化
     void TrieInit() {
         Tot = 0;
         memset(Son, 0, sizeof(Son));
@@ -22,8 +24,9 @@ struct AhoCorasickAutomaton {
         return X - 'a';
     }
 
-    void Insert(string Str) {
-        int Cur = 0, Len = int(Str.length());
+    // 向Trie Tree中插入Str模式字符串
+    void Insert(char Str[]) {
+        int Cur = 0, Len = int(strlen(Str));
         for (int i = 0; i < Len; ++i) {
             int Index = Pos(Str[i]);
             if (!Son[Cur][Index]) {
@@ -34,8 +37,9 @@ struct AhoCorasickAutomaton {
         Val[Cur]++;
     }
 
+    // Bfs求得Trie Tree上失配指针
     void GetFail() {
-        queue<int> Que;
+        std::queue<int> Que;
         for (int i = 0; i < 26; ++i) {
             if (Son[0][i]) {
                 Fail[Son[0][1]] = 0;
@@ -56,8 +60,9 @@ struct AhoCorasickAutomaton {
         }
     }
 
-    int Query(string Str) {
-        int Len = int(Str.length());
+    // 询问Str中出现的模式串数量
+    int Query(char Str[]) {
+        int Len = int(strlen(Str));
         int Cur = 0, Ans = 0;
         for (int i = 0; i < Len; ++i) {
             Cur = Son[Cur][Pos(Str[i])];
@@ -70,18 +75,20 @@ struct AhoCorasickAutomaton {
     }
 };
 
+int N;
+char Str[maxn << 1];
+AhoCorasickAutomaton AC;
+
 int main(int argc, char *argv[]) {
-    AhoCorasickAutomaton AC;
     AC.TrieInit();
-    int N;
-    cin >> N;
-    string Str;
+    scanf("%d", &N);
     for (int i = 0; i < N; ++i) {
-        cin >> Str;
+        scanf("%s", Str);
         AC.Insert(Str);
     }
     AC.GetFail();
-    cin >> Str;
-    cout << AC.Query(Str) << endl;
+    scanf("%s", Str);
+    printf("%d\n", AC.Query(Str));
     return 0;
 }
+

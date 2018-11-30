@@ -49,11 +49,11 @@
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 线}
-\PYG{k}{struct} \PYG{n}{Segment} \PYG{p}{\PYGZob{}}
+\PYG{k}{struct} \PYG{n}{Line} \PYG{p}{\PYGZob{}}
     \PYG{n}{Point} \PYG{n}{S}\PYG{p}{,} \PYG{n}{T}\PYG{p}{;}
     
-    \PYG{n}{Segment}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
-    \PYG{n}{Segment}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{\PYGZus{}S}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{\PYGZus{}T}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Line}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
+    \PYG{n}{Line}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{\PYGZus{}S}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{\PYGZus{}T}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{n}{S} \PYG{o}{=} \PYG{n}{\PYGZus{}S}\PYG{p}{;}
         \PYG{n}{T} \PYG{o}{=} \PYG{n}{\PYGZus{}T}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
@@ -64,24 +64,24 @@
     \PYG{p}{\PYGZcb{}}
 
 	\PYG{c+c1}{// 向量叉积}
-    \PYG{k+kt}{double} \PYG{k}{operator} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Segment} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{double} \PYG{k}{operator} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Line} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
         \PYG{k}{return} \PYG{p}{(}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{);}
     \PYG{p}{\PYGZcb{}}
 
     \PYG{c+c1}{// 判断是否平行}
-    \PYG{k+kt}{bool} \PYG{n}{IsParallel}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Segment} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{bool} \PYG{n}{IsParallel}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Line} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
         \PYG{k}{return} \PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 
     \PYG{c+c1}{// 求交点}
-    \PYG{n}{Point} \PYG{k}{operator} \PYG{o}{\PYGZam{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Segment} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Point} \PYG{k}{operator} \PYG{o}{\PYGZam{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Line} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
         \PYG{k+kt}{double} \PYG{n}{Temp} \PYG{o}{=} \PYG{p}{((}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{/} \PYG{p}{((}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{));}
         \PYG{k}{return} \PYG{n+nf}{Point}\PYG{p}{(}\PYG{n}{S}\PYG{p}{.}\PYG{n}{X} \PYG{o}{+} \PYG{p}{(}\PYG{n}{T}\PYG{p}{.}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{.}\PYG{n}{X}\PYG{p}{)} \PYG{o}{*} \PYG{n}{Temp}\PYG{p}{,} \PYG{n}{S}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{+} \PYG{p}{(}\PYG{n}{T}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{)} \PYG{o}{*} \PYG{n}{Temp}\PYG{p}{);}
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{};}
 
 \PYG{c+c1}{// 判断线段A、B是否相交}
-\PYG{k+kt}{bool} \PYG{n+nf}{IsIntersect}\PYG{p}{(}\PYG{n}{Segment} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Segment} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{k+kt}{bool} \PYG{n+nf}{IsIntersect}\PYG{p}{(}\PYG{n}{Line} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Line} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k}{return}
         \PYG{n}{max}\PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{.}\PYG{n}{X}\PYG{p}{)} \PYG{o}{\PYGZgt{}=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{.}\PYG{n}{X}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}}
         \PYG{n}{max}\PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{.}\PYG{n}{X}\PYG{p}{)} \PYG{o}{\PYGZgt{}=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{.}\PYG{n}{X}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}}
@@ -92,12 +92,12 @@
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 判断线段A所在直线与线段B是否相交}
-\PYG{k+kt}{bool} \PYG{n+nf}{IsIntersect}\PYG{p}{(}\PYG{n}{Segment} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Segment} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{k+kt}{bool} \PYG{n+nf}{IsIntersect}\PYG{p}{(}\PYG{n}{Line} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Line} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k}{return} \PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{*} \PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{0}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 判断直线A、B是否相交}
-\PYG{k+kt}{bool} \PYG{n+nf}{IsIntersect}\PYG{p}{(}\PYG{n}{Segment} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Segment} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{k+kt}{bool} \PYG{n+nf}{IsIntersect}\PYG{p}{(}\PYG{n}{Line} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Line} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k}{return} \PYG{o}{!}\PYG{n}{Parallel}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{B}\PYG{p}{)} \PYG{o}{||} \PYG{p}{(}\PYG{n}{Parallel}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{B}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{o}{!}\PYG{p}{(}\PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{))} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{));}
 \PYG{p}{\PYGZcb{}}
 
@@ -160,7 +160,7 @@
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 半平面,表示S\PYGZhy{}\PYGZgt{}T逆时针(左侧)的半平面}
-\PYG{k}{struct} \PYG{n+nl}{HalfPlane}\PYG{p}{:}\PYG{k}{public} \PYG{n}{Segment} \PYG{p}{\PYGZob{}}
+\PYG{k}{struct} \PYG{n+nl}{HalfPlane}\PYG{p}{:}\PYG{k}{public} \PYG{n}{Line} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{double} \PYG{n}{Angle}\PYG{p}{;}
 
     \PYG{n}{HalfPlane}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
@@ -168,7 +168,7 @@
         \PYG{n}{S} \PYG{o}{=} \PYG{n}{\PYGZus{}S}\PYG{p}{;}
         \PYG{n}{T} \PYG{o}{=} \PYG{n}{\PYGZus{}T}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
-    \PYG{n}{HalfPlane}\PYG{p}{(}\PYG{n}{Segment} \PYG{n}{ST}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{HalfPlane}\PYG{p}{(}\PYG{n}{Line} \PYG{n}{ST}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{n}{S} \PYG{o}{=} \PYG{n}{ST}\PYG{p}{.}\PYG{n}{S}\PYG{p}{;}
         \PYG{n}{T} \PYG{o}{=} \PYG{n}{ST}\PYG{p}{.}\PYG{n}{T}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
