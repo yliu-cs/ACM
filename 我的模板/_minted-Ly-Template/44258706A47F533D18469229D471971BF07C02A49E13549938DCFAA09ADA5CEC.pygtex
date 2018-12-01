@@ -5,11 +5,11 @@
 
 \PYG{k+kt}{bool} \PYG{n}{IsPrime}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
 
-\PYG{k+kt}{void} \PYG{n+nf}{PrimeInit}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+\PYG{k+kt}{void} \PYG{n+nf}{Init}\PYG{p}{()} \PYG{p}{\PYGZob{}}
     \PYG{n}{memset}\PYG{p}{(}\PYG{n}{IsPrime}\PYG{p}{,} \PYG{n+nb}{true}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{IsPrime}\PYG{p}{));}
     \PYG{n}{IsPrime}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{IsPrime}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
     \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{maxn}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{IsPrime}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{IsPrime}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{p}{\PYGZob{}}
             \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{j} \PYG{o}{=} \PYG{n}{i} \PYG{o}{*} \PYG{n}{i}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{maxn}\PYG{p}{;} \PYG{n}{j} \PYG{o}{+=} \PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
                 \PYG{n}{IsPrime}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
             \PYG{p}{\PYGZcb{}}
