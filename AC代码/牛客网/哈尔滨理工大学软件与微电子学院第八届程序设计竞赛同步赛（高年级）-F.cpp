@@ -7,7 +7,6 @@ const int maxn = 2e2 + 5;
 struct Status {
     int X, Y;
     int Step;
-
 };
 
 int N, M, K;

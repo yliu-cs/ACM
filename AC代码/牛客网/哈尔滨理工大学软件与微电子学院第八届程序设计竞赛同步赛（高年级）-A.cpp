@@ -4,9 +4,6 @@ using namespace std;
 int main(int argc, char *argv[]) {
     long long N, M;
     scanf("%lld%lld", &N, &M);
-    if (N < M) {
-        swap(N, M);
-    }
     long long NX = N / 7, MX = M / 7;
     long long Ans = NX * MX * 7;
     Ans += (N % 7) * MX;

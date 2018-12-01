@@ -6,7 +6,6 @@ const int maxn = "Edit";
 struct Edge {
     // V:连接点，Dis:边权
     int V, Dis;
-    Edge(int _V = 0, int _Dis = 0): V(_V), Dis(_Dis) {}
 };
 
 // N:顶点数，E:边数

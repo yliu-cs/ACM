@@ -46,7 +46,7 @@ bool Bfs(int Start, int End) {
     while (!Que.empty()) {
         int Cur = Que.front();
         Que.pop();
-        for (int i = Head[Cur]; i != -1; i = edges[i].Next) {
+        for (int i = Head[Cur]; ~i; i = edges[i].Next) {
             if (Depth[edges[i].V] == -1 && edges[i].Weight > 0) {
                 Depth[edges[i].V] = Depth[Cur] + 1;
                 Que.push(edges[i].V);
@@ -65,7 +65,7 @@ int Dfs(int Cur, int End, int NowFlow) {
     // UsableFlow:可用流量，当达到NowFlow时不可再增加，FindFlow:递归深搜到的最大流
     int UsableFlow = 0, FindFlow;
     // &i=Current[Cur]为当前弧优化，每次更新Current[Cur]
-    for (int &i = Current[Cur]; i != -1; i = edges[i].Next) {
+    for (int &i = Current[Cur]; ~i; i = edges[i].Next) {
         if (edges[i].Weight > 0 && Depth[edges[i].V] == Depth[Cur] + 1) {
             FindFlow = Dfs(edges[i].V, End, std::min(NowFlow - UsableFlow, edges[i].Weight));
             if (FindFlow > 0) {

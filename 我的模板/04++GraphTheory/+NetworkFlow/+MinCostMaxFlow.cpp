@@ -51,7 +51,7 @@ bool SPFA(int Start, int End) {
         int U = Que.front();
         Que.pop();
         Vis[U] = false;
-        for (int i = Head[U]; i != -1; i = edges[i].Next) {
+        for (int i = Head[U]; ~i; i = edges[i].Next) {
             int V = edges[i].V;
             if (edges[i].Cap > edges[i].Flow && Dis[V] > Dis[U] + edges[i].Cost) {
                 Dis[V] = Dis[U] + edges[i].Cost;
@@ -72,12 +72,12 @@ int MinCostMaxFlow(int Start, int End, int &MinCost) {
     MinCost = 0;
     while (SPFA(Start, End)) {
         int Min = INF;
-        for (int i = Path[End]; i != -1; i = Path[edges[i ^ 1].V]) {
+        for (int i = Path[End]; ~i; i = Path[edges[i ^ 1].V]) {
             if (edges[i].Cap - edges[i].Flow < Min) {
                 Min = edges[i].Cap - edges[i].Flow;
             }
         }
-        for (int i = Path[End]; i != -1; i = Path[edges[i ^ 1].V]) {
+        for (int i = Path[End]; ~i; i = Path[edges[i ^ 1].V]) {
             edges[i].Flow += Min;
             edges[i ^ 1].Flow -= Min;
             MinCost += edges[i].Cost * Min;
