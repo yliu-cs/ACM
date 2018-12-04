@@ -24,6 +24,12 @@ int Find(int X) {
     while (Pre[R] != R) {
         R = Pre[R];
     }
+    int I = X, J;
+    while (I != R) {
+        J = Pre[I];
+        Pre[I] = R;
+        I = J;
+    }
     return R;
 }
 

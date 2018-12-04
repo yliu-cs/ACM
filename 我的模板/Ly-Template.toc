@@ -45,7 +45,7 @@
 \contentsline {subsubsection}{\numberline {4.2.3}MinCostMaxFlow}{48}{subsubsection.4.2.3}
 \contentsline {subsection}{\numberline {4.3}ShortestPath}{50}{subsection.4.3}
 \contentsline {subsubsection}{\numberline {4.3.1}BellmanFord}{50}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Dijkstra}{51}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.2}Dijkstra}{52}{subsubsection.4.3.2}
 \contentsline {subsubsection}{\numberline {4.3.3}Floyd}{53}{subsubsection.4.3.3}
 \contentsline {subsubsection}{\numberline {4.3.4}SPFA}{53}{subsubsection.4.3.4}
 \contentsline {section}{\numberline {5}DynamicProgramming}{56}{section.5}

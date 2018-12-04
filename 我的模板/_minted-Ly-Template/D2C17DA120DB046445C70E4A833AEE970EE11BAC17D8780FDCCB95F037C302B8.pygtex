@@ -25,6 +25,12 @@
     \PYG{k}{while} \PYG{p}{(}\PYG{n}{Pre}\PYG{p}{[}\PYG{n}{R}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{R}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{n}{R} \PYG{o}{=} \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{R}\PYG{p}{];}
     \PYG{p}{\PYGZcb{}}
+    \PYG{k+kt}{int} \PYG{n}{I} \PYG{o}{=} \PYG{n}{X}\PYG{p}{,} \PYG{n}{J}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{I} \PYG{o}{!=} \PYG{n}{R}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{J} \PYG{o}{=} \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{I}\PYG{p}{];}
+        \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{I}\PYG{p}{]} \PYG{o}{=} \PYG{n}{R}\PYG{p}{;}
+        \PYG{n}{I} \PYG{o}{=} \PYG{n}{J}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
     \PYG{k}{return} \PYG{n}{R}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 
