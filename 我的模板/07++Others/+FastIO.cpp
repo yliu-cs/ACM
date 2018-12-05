@@ -63,7 +63,7 @@ namespace fastIO {
         }
         return true;
     }
-}
+};
 
 // 超级读写挂
 namespace IO{ 

@@ -64,7 +64,7 @@
         \PYG{p}{\PYGZcb{}}
         \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
 
 \PYG{c+c1}{// 超级读写挂}
 \PYG{k}{namespace} \PYG{n}{IO}\PYG{p}{\PYGZob{}} 

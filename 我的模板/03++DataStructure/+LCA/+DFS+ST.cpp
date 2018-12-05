@@ -30,12 +30,12 @@ struct ST {
 };
 
 // 边
-struct Link {
+struct Edge {
     int V, Next;
 };
 
 // 链式前向星存树边图
-Link edges[maxn << 1];
+Edge edges[maxn << 1];
 int Head[maxn];
 int Tot;
 
@@ -55,7 +55,7 @@ void Init() {
 
 // 链式前向星存图添加一条由U至V的边
 void AddEdge(int U, int V) {
-    edges[Tot] = Link {V, Head[U]};
+    edges[Tot] = Edge {V, Head[U]};
     Head[U] = Tot++;
 }
 

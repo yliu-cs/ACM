@@ -31,12 +31,12 @@
 \PYG{p}{\PYGZcb{};}
 
 \PYG{c+c1}{// 边}
-\PYG{k}{struct} \PYG{n}{Link} \PYG{p}{\PYGZob{}}
+\PYG{k}{struct} \PYG{n}{Edge} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{int} \PYG{n}{V}\PYG{p}{,} \PYG{n}{Next}\PYG{p}{;}
 \PYG{p}{\PYGZcb{};}
 
 \PYG{c+c1}{// 链式前向星存树边图}
-\PYG{n}{Link} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{];}
+\PYG{n}{Edge} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{];}
 \PYG{k+kt}{int} \PYG{n}{Head}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
 \PYG{k+kt}{int} \PYG{n}{Tot}\PYG{p}{;}
 
@@ -56,7 +56,7 @@
 
 \PYG{c+c1}{// 链式前向星存图添加一条由U至V的边}
 \PYG{k+kt}{void} \PYG{n+nf}{AddEdge}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{U}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{V}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n}{edges}\PYG{p}{[}\PYG{n}{Tot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Link} \PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{,} \PYG{n}{Head}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]\PYGZcb{};}
+    \PYG{n}{edges}\PYG{p}{[}\PYG{n}{Tot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Edge} \PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{,} \PYG{n}{Head}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]\PYGZcb{};}
     \PYG{n}{Head}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Tot}\PYG{o}{++}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 
