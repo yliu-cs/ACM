@@ -43,8 +43,10 @@ int Tot;
 int Vertex[maxn << 1];
 // 节点在深搜中第一次出现的位置
 int First[maxn];
+// 记录父节点
+int Parent[maxn];
 // 遍历节点数量
-int Cnt;
+int LCATot;
 ST St;
 
 // 链式前向星存图初始化
@@ -60,25 +62,25 @@ void AddEdge(int U, int V) {
 }
 
 // 深搜，U:当前搜索节点，Pre:U的前驱节点，Depth:树上深度
-void Dfs(int U, int Pre, int Depth) {
-    Vertex[++Cnt] = U;
-    Rmq[Cnt] = Depth;
-    First[U] = Cnt;
-    for (int i = Head[U]; i != -1; i = edges[i].Next) {
-        int V = edges[i].V;
-        if (V == Pre) {
+void LCADfs(int Cur, int Pre, int Depth) {
+    Vertex[++LCATot] = Cur;
+    First[Cur] = LCATot;
+    Rmq[LCATot] = Depth;
+    Parent[Cur] = Pre;
+    for (int i = Head[Cur]; ~i; i = edges[i].Next) {
+        if (edges[i].V == Pre) {
             continue;
         }
-        Dfs(V, U, Depth + 1);
-        Vertex[++Cnt] = U;
-        Rmq[Cnt] = Depth;
+        LCADfs(edges[i].V, Cur, Depth + 1);
+        Vertex[++LCATot] = Cur;
+        Rmq[LCATot] = Depth;
     }
 }
 
 // LCA查询前的初始化，Root:根节点，NodeNum:节点数量
 void LCA_Init(int Root, int NodeNum) {
-    Cnt = 0;
-    Dfs(Root, Root, 0);
+    LCATot = 0;
+    LCADfs(Root, 0, 0);
     St.init(2 * NodeNum - 1);
 }
 
