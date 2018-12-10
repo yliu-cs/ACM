@@ -10,7 +10,7 @@
     \PYG{c+c1}{// 最小值对应下标}
     \PYG{k+kt}{int} \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+m+mi}{20}\PYG{p}{];}
     \PYG{c+c1}{// RMQ初始化}
-    \PYG{k+kt}{void} \PYG{n+nf}{init}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{void} \PYG{n+nf}{Init}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
             \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
         \PYG{p}{\PYGZcb{}}
@@ -21,12 +21,12 @@
         \PYG{p}{\PYGZcb{}}
     \PYG{p}{\PYGZcb{}}
     \PYG{c+c1}{// RMQ查询}
-    \PYG{k+kt}{int} \PYG{n+nf}{Query}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{A}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k}{if} \PYG{p}{(}\PYG{n}{A} \PYG{o}{\PYGZgt{}} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-            \PYG{n}{std}\PYG{o}{::}\PYG{n}{swap}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{B}\PYG{p}{);}
+    \PYG{k+kt}{int} \PYG{n+nf}{Query}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Left}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Right}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{Left} \PYG{o}{\PYGZgt{}} \PYG{n}{Right}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{std}\PYG{o}{::}\PYG{n}{swap}\PYG{p}{(}\PYG{n}{Left}\PYG{p}{,} \PYG{n}{Right}\PYG{p}{);}
         \PYG{p}{\PYGZcb{}}
-        \PYG{k+kt}{int} \PYG{n}{K} \PYG{o}{=} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{log2}\PYG{p}{(}\PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{n}{A} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{));}
-        \PYG{k}{return} \PYG{n}{Rmq}\PYG{p}{[}\PYG{n}{Dp}\PYG{p}{[}\PYG{n}{A}\PYG{p}{][}\PYG{n}{K}\PYG{p}{]]} \PYG{o}{\PYGZlt{}=} \PYG{n}{Rmq}\PYG{p}{[}\PYG{n}{Dp}\PYG{p}{[}\PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{K}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{K}\PYG{p}{]]} \PYG{o}{?} \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{A}\PYG{p}{][}\PYG{n}{K}\PYG{p}{]} \PYG{o}{:} \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{K}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{K}\PYG{p}{];}
+        \PYG{k+kt}{int} \PYG{n}{Len} \PYG{o}{=} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{log2}\PYG{p}{(}\PYG{n}{Right} \PYG{o}{\PYGZhy{}} \PYG{n}{Left} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{));}
+        \PYG{k}{return} \PYG{n}{Rmq}\PYG{p}{[}\PYG{n}{Dp}\PYG{p}{[}\PYG{n}{Left}\PYG{p}{][}\PYG{n}{Len}\PYG{p}{]]} \PYG{o}{\PYGZlt{}=} \PYG{n}{Rmq}\PYG{p}{[}\PYG{n}{Dp}\PYG{p}{[}\PYG{n}{Right} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{Len}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{Len}\PYG{p}{]]} \PYG{o}{?} \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{Left}\PYG{p}{][}\PYG{n}{Len}\PYG{p}{]} \PYG{o}{:} \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{Right} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{Len}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{Len}\PYG{p}{];}
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{};}
 
@@ -82,7 +82,7 @@
 \PYG{k+kt}{void} \PYG{n+nf}{LCA\PYGZus{}Init}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Root}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{NodeNum}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{n}{LCATot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
     \PYG{n}{LCADfs}\PYG{p}{(}\PYG{n}{Root}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
-    \PYG{n}{St}\PYG{p}{.}\PYG{n}{init}\PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{NodeNum} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{n}{St}\PYG{p}{.}\PYG{n}{Init}\PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{NodeNum} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{);}
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 查询节点U和节点V的LCA}

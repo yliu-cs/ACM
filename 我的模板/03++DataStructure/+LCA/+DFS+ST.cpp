@@ -9,7 +9,7 @@ struct ST {
     // 最小值对应下标
     int Dp[maxn << 1][20];
     // RMQ初始化
-    void init(int N) {
+    void Init(int N) {
         for (int i = 1; i <= N; ++i) {
             Dp[i][0] = i;
         }
@@ -20,12 +20,12 @@ struct ST {
         }
     }
     // RMQ查询
-    int Query(int A, int B) {
-        if (A > B) {
-            std::swap(A, B);
+    int Query(int Left, int Right) {
+        if (Left > Right) {
+            std::swap(Left, Right);
         }
-        int K = int(log2(B - A + 1));
-        return Rmq[Dp[A][K]] <= Rmq[Dp[B - (1 << K) + 1][K]] ? Dp[A][K] : Dp[B - (1 << K) + 1][K];
+        int Len = int(log2(Right - Left + 1));
+        return Rmq[Dp[Left][Len]] <= Rmq[Dp[Right - (1 << Len) + 1][Len]] ? Dp[Left][Len] : Dp[Right - (1 << Len) + 1][Len];
     }
 };
 
@@ -81,7 +81,7 @@ void LCADfs(int Cur, int Pre, int Depth) {
 void LCA_Init(int Root, int NodeNum) {
     LCATot = 0;
     LCADfs(Root, 0, 0);
-    St.init(2 * NodeNum - 1);
+    St.Init(2 * NodeNum - 1);
 }
 
 // 查询节点U和节点V的LCA
