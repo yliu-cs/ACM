@@ -35,7 +35,7 @@
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 牛逼读入挂}
-\PYG{k}{namespace} \PYG{n}{fastIO} \PYG{p}{\PYGZob{}}
+\PYG{k}{namespace} \PYG{n}{FastIO} \PYG{p}{\PYGZob{}}
     \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{MX} \PYG{o}{=} \PYG{l+m+mf}{4e7}\PYG{p}{;}
     \PYG{k+kt}{char} \PYG{n}{buf}\PYG{p}{[}\PYG{n}{MX}\PYG{p}{];}
     \PYG{k+kt}{int} \PYG{n}{c}\PYG{p}{,} \PYG{n}{sz}\PYG{p}{;}

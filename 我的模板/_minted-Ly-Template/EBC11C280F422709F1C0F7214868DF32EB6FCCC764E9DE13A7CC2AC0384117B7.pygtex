@@ -1,0 +1,99 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include} \PYG{c+cpf}{\PYGZlt{}bits/stdc++.h\PYGZgt{}}
+
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{c+c1}{// 链式前向星存图}
+\PYG{k}{struct} \PYG{n}{Edge} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{V}\PYG{p}{,} \PYG{n}{Weight}\PYG{p}{,} \PYG{n}{Next}\PYG{p}{;}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{n}{Edge} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{Head}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{Tot}\PYG{p}{;}
+
+\PYG{k+kt}{void} \PYG{n+nf}{Init}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Tot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{Head}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{Head}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{AddEdge}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{U}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{V}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Weight}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{edges}\PYG{p}{[}\PYG{n}{Tot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Edge} \PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{,} \PYG{n}{Weight}\PYG{p}{,} \PYG{n}{Head}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]\PYGZcb{};}
+    \PYG{n}{Head}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Tot}\PYG{o}{++}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{struct} \PYG{n}{LCAOnline} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// 节点深度}
+    \PYG{k+kt}{int} \PYG{n}{Rmq}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{];}
+    \PYG{c+c1}{// 深搜遍历顺序}
+    \PYG{k+kt}{int} \PYG{n}{Vertex}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{];}
+    \PYG{c+c1}{// 节点在深搜中第一次出现的位置}
+    \PYG{k+kt}{int} \PYG{n}{First}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+    \PYG{c+c1}{// 记录父节点}
+    \PYG{k+kt}{int} \PYG{n}{Parent}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+    \PYG{c+c1}{// 记录与根节点距离}
+    \PYG{k+kt}{int} \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+    \PYG{c+c1}{// 遍历节点数量}
+    \PYG{k+kt}{int} \PYG{n}{LCATot}\PYG{p}{;}
+    
+    \PYG{c+c1}{// 最小值对应下标}
+    \PYG{k+kt}{int} \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+m+mi}{20}\PYG{p}{];}
+    
+    \PYG{c+c1}{// RMQ初始化}
+    \PYG{k+kt}{void} \PYG{n+nf}{Work}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{j}\PYG{p}{)} \PYG{o}{\PYGZlt{}=} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{+} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{j}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}=} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Rmq}\PYG{p}{[}\PYG{n}{Dp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]]} \PYG{o}{\PYGZlt{}} \PYG{n}{Rmq}\PYG{p}{[}\PYG{n}{Dp}\PYG{p}{[}\PYG{n}{i} \PYG{o}{+} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{p}{(}\PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{))][}\PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]]} \PYG{o}{?} \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{:} \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{i} \PYG{o}{+} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{p}{(}\PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{))][}\PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{];}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+c1}{// 深搜}
+    \PYG{k+kt}{void} \PYG{n+nf}{Dfs}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Cur}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Pre}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Depth}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Vertex}\PYG{p}{[}\PYG{o}{++}\PYG{n}{LCATot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Cur}\PYG{p}{;}
+        \PYG{n}{First}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{]} \PYG{o}{=} \PYG{n}{LCATot}\PYG{p}{;}
+        \PYG{n}{Rmq}\PYG{p}{[}\PYG{n}{LCATot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Depth}\PYG{p}{;}
+        \PYG{n}{Parent}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Pre}\PYG{p}{;}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{Head}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{];} \PYG{o}{\PYGZti{}}\PYG{n}{i}\PYG{p}{;} \PYG{n}{i} \PYG{o}{=} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Next}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{V} \PYG{o}{==} \PYG{n}{Pre}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{k}{continue}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{V}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{]} \PYG{o}{+} \PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Weight}\PYG{p}{;}
+            \PYG{n}{Dfs}\PYG{p}{(}\PYG{n}{edges}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{V}\PYG{p}{,} \PYG{n}{Cur}\PYG{p}{,} \PYG{n}{Depth} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);}
+            \PYG{n}{Vertex}\PYG{p}{[}\PYG{o}{++}\PYG{n}{LCATot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Cur}\PYG{p}{;}
+            \PYG{n}{Rmq}\PYG{p}{[}\PYG{n}{LCATot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Depth}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+    
+    \PYG{c+c1}{// RMQ查询}
+    \PYG{k+kt}{int} \PYG{n+nf}{Query}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Left}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{Right}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{Left} \PYG{o}{\PYGZgt{}} \PYG{n}{Right}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{swap}\PYG{p}{(}\PYG{n}{Left}\PYG{p}{,} \PYG{n}{Right}\PYG{p}{);}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k+kt}{int} \PYG{n}{Len} \PYG{o}{=} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{log2}\PYG{p}{(}\PYG{n}{Right} \PYG{o}{\PYGZhy{}} \PYG{n}{Left} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{));}
+        \PYG{k}{return} \PYG{n}{Rmq}\PYG{p}{[}\PYG{n}{Dp}\PYG{p}{[}\PYG{n}{Left}\PYG{p}{][}\PYG{n}{Len}\PYG{p}{]]} \PYG{o}{\PYGZlt{}=} \PYG{n}{Rmq}\PYG{p}{[}\PYG{n}{Dp}\PYG{p}{[}\PYG{n}{Right} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{Len}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{Len}\PYG{p}{]]} \PYG{o}{?} \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{Left}\PYG{p}{][}\PYG{n}{Len}\PYG{p}{]} \PYG{o}{:} \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{Right} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{Len}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{Len}\PYG{p}{];}
+    \PYG{p}{\PYGZcb{}}
+    
+    \PYG{c+c1}{// LCA初始化}
+    \PYG{k+kt}{void} \PYG{n+nf}{Init}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{Root}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{NodeNum}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{memset}\PYG{p}{(}\PYG{n}{Dis}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{Dis}\PYG{p}{));}
+        \PYG{n}{LCATot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+        \PYG{n}{Dfs}\PYG{p}{(}\PYG{n}{Root}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{);}
+        \PYG{n}{Parent}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+        \PYG{n}{Work}\PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{NodeNum} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+c1}{// 查询节点U、V的距离}
+    \PYG{k+kt}{int} \PYG{n+nf}{GetDis}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{U}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{V}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]} \PYG{o}{+} \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{V}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{Dis}\PYG{p}{[}\PYG{n}{LCA}\PYG{p}{(}\PYG{n}{U}\PYG{p}{,} \PYG{n}{V}\PYG{p}{)];}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+c1}{// 查询节点U、V的最近公共祖先(LCA)}
+    \PYG{k+kt}{int} \PYG{n+nf}{LCA}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{U}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{V}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{Vertex}\PYG{p}{[}\PYG{n}{Query}\PYG{p}{(}\PYG{n}{First}\PYG{p}{[}\PYG{n}{U}\PYG{p}{],} \PYG{n}{First}\PYG{p}{[}\PYG{n}{V}\PYG{p}{])];}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}\PYG{n}{LCA}\PYG{p}{;}
+\end{Verbatim}

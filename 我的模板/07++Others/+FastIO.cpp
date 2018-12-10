@@ -34,7 +34,7 @@ inline void out(T x) {
 }
 
 // 牛逼读入挂
-namespace fastIO {
+namespace FastIO {
     const int MX = 4e7;
     char buf[MX];
     int c, sz;
