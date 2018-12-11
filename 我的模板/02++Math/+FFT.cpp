@@ -3,6 +3,7 @@
 const int maxn = "Edit";
 const double pi = acos(-1.0);
 
+// 复数
 struct Complex {
     double X, Y;
 
@@ -24,11 +25,13 @@ struct Complex {
     }
 };
 
+// 多项式系数数量
 int N, M;
 int L;
 int Limit;
 int R[maxn << 2];
 
+// 快速傅里叶变换(FFT)
 void FFT(Complex F[], int Op) {
     for (int i = 0; i < Limit; ++i) {
         if (i < R[i]) {
@@ -49,8 +52,10 @@ void FFT(Complex F[], int Op) {
     }
 }
 
+// 多项式系数
 Complex A[maxn], B[maxn];
 
+// 多项式卷积计算
 void Cal() {
     Limit = 1; L = 0;
     while (Limit <= N + M) {

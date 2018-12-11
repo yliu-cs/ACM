@@ -12,7 +12,7 @@
 \contentsline {subsubsection}{\numberline {2.3.3}Sieve}{12}{subsubsection.2.3.3}
 \contentsline {subsection}{\numberline {2.4}FFT}{13}{subsection.2.4}
 \contentsline {subsection}{\numberline {2.5}Fibonacci}{14}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}GeneratingFunction}{15}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.6}GeneratingFunction}{16}{subsection.2.6}
 \contentsline {subsection}{\numberline {2.7}InverseElement}{16}{subsection.2.7}
 \contentsline {subsubsection}{\numberline {2.7.1}ExtendGcd}{16}{subsubsection.2.7.1}
 \contentsline {subsubsection}{\numberline {2.7.2}Factorial}{17}{subsubsection.2.7.2}
@@ -22,7 +22,7 @@
 \contentsline {subsubsection}{\numberline {2.8.1}PrimeFactor}{19}{subsubsection.2.8.1}
 \contentsline {subsubsection}{\numberline {2.8.2}SieveOfEratosthenes}{19}{subsubsection.2.8.2}
 \contentsline {subsection}{\numberline {2.9}QuickPow}{20}{subsection.2.9}
-\contentsline {subsection}{\numberline {2.10}Stirling}{20}{subsection.2.10}
+\contentsline {subsection}{\numberline {2.10}Stirling}{21}{subsection.2.10}
 \contentsline {section}{\numberline {3}DataStructure}{22}{section.3}
 \contentsline {subsection}{\numberline {3.1}BinaryIndexedTree}{22}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}DfsOrder}{22}{subsection.3.2}
