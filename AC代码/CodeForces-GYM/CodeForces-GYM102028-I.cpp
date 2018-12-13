@@ -9,7 +9,6 @@ long long Left, Right;
 long long Cur;
 long long Ans;
 long long Pos[maxn];
-vector<long long> Dis;
 
 int main(int argc, char *argv[]) {
     scanf("%lld", &T);
@@ -17,7 +16,6 @@ int main(int argc, char *argv[]) {
         if (Case != 1) {
             printf("\n");
         }
-        Dis.clear();
         scanf("%lld", &N);
         Pos[1] = 0;
         for (long long i = 2, X; i <= N; ++i) {
@@ -33,9 +31,7 @@ int main(int argc, char *argv[]) {
             }
             else {
                 Right--;
-                long long New = Pos[Right] - Pos[Left];
-                Dis.push_back(New);
-                Cur += New;
+                Cur += Pos[Right] - Pos[Left];
                 Ans += Cur;
             }
             if (i != 1) {
