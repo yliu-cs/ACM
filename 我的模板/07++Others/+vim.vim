@@ -9,6 +9,10 @@ map <F9> :call Run()<CR>
 
 func! Run()
 	exec "w"
-	exec "!g++ -Wall % -o %<"
-	exec "!./%<"
+	if &filetype == "cpp"
+		exec "!g++ -Wall % -o %<"
+		exec "! ./%<"
+	elseif &filetype == "python"
+		exec "!python3 %"
+	endif
 endfunc
