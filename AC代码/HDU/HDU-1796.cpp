@@ -12,17 +12,22 @@ int Gcd(int A, int B) {
     return B ? Gcd(B, A % B) : A;
 }
 
-void Dfs(int Cur, int Cnt, int Lcm) {
-    Lcm = Number[Cur] / Gcd(Number[Cur], Lcm) * Lcm;
-    if (Cnt & 1) {
-        Ans += (N - 1) / Lcm;
+void Dfs(int Cur, int Cnt, int Limit, long long LCM) {
+    if (Cnt == Limit) {
+        if (Limit & 1) {
+            Ans += (N - 1) / LCM;
+        }
+        else {
+            Ans -= (N - 1) / LCM;
+        }
+        return;
     }
-    else {
-        Ans -= (N - 1) / Lcm;
+    if (Cur >= Tot) {
+        return;
     }
-    for (int i = Cur + 1; i < Tot; ++i) {
-        Dfs(i, Cnt + 1, Lcm);
-    }
+    long long NowLCM = LCM == -1 ? Number[Cur] : LCM;
+    Dfs(Cur + 1, Cnt + 1, Limit, Number[Cur] / Gcd(Number[Cur], NowLCM) * NowLCM);
+    Dfs(Cur + 1, Cnt, Limit, LCM);
 }
 
 int main(int argc, char *argv[]) {
@@ -36,7 +41,7 @@ int main(int argc, char *argv[]) {
         }
         Ans = 0;
         for (int i = 1; i < Tot; ++i) {
-            Dfs(i, 1, Number[i]);
+            Dfs(1, 0, i, -1);
         }
         printf("%lld\n", Ans);
     }
