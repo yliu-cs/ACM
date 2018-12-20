@@ -1,48 +1,48 @@
-#include <iostream>
-#include <cstdio>
-#include <string>
-#include <cstring>
-#include <algorithm>
-#include <iomanip>
-#include <cctype>
-#include <cmath>
-#include <stack>
-#include <queue>
-#include <vector>
-#include <cstdlib>
-#include <sstream>
-#include <set>
-
+#include<bits/stdc++.h>
 using namespace std;
-#define mem(a,b) memset(a,b,sizeof(a))
-typedef long long ll;
-const int INF = 0x3f3f3f3f;
-const int maxn = 1e5+5;
 
-double a, b;
+const double INF = 1e20;
 
-double Distance(double x, double y) {
-    return sqrt(pow(a - x, 2) + pow(b - y, 2));
-}
+struct Point {
+    double X, Y;
 
-bool cmp(double a, double b) {
-    return a < b;
-}
-
-int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    cin >> a >> b;
-    int n;
-    cin >> n;
-    double *num;
-    num = new double[n];
-    for (int i = 0; i < n; ++i) {
-        double x, y, v;
-        cin >> x >> y >> v;
-        num[i] = Distance(x, y) / v;
+    void Input() {
+        scanf("%lf%lf", &X, &Y);
     }
-    sort(num, num + n, cmp);
-    cout << setiosflags(ios::fixed) << setprecision(20) << num[0];
+
+    Point operator - (const Point &B) const {
+        return Point {X - B.X, Y - B.Y};
+    }
+
+    double operator * (const Point &B) const {
+        return X * B.X + Y * B.Y;
+    }
+
+    double operator ^ (const Point &B) const {
+        return X * B.Y - Y * B.X;
+    }
+};
+
+double Distance(Point A, Point B) {
+    return sqrt((B - A) * (B - A));
+}
+
+Point Basic;
+int N;
+Point X;
+double Speed;
+double Ans;
+
+int main(int argc, char *argv[]) {
+    Ans = INF;
+    Basic.Input();
+    scanf("%d", &N);
+    for (int i = 0; i < N; ++i) {
+        X.Input();
+        scanf("%lf", &Speed);
+        Ans = min(Ans, Distance(Basic, X) / Speed);
+    }
+    printf("%.20lf\n", Ans);
     return 0;
 }
+
