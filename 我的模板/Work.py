@@ -55,7 +55,7 @@ def SearchWrite(Address, Cnt):
                         Str = Str + 'sub'
                     Str = Str + 'section{' + Classify[1:StrIndex] + '}\n'
                     File.write(Str)
-                    Index = Address[26:];
+                    Index = Address[33:];
                     Str = '\\inputminted[breaklines]{c++}{' + Index  + '/' + Classify + '}\n'
                     File.write(Str)
                 else:
@@ -72,9 +72,9 @@ def Work():
     SearchWrite(ClassifyPos, 0)
 
 def Run():
-    os.system('xelatex -shell-escape Ly-Template.tex')
-    os.system('xelatex -shell-escape Ly-Template.tex')
-    os.system('xelatex -shell-escape Ly-Template.tex')
+    os.system('xelatex --shell-escape Ly-Template.tex')
+    os.system('xelatex --shell-escape Ly-Template.tex')
+    os.system('xelatex --shell-escape Ly-Template.tex')
 
 def main():
     File.write(TexHead)
