@@ -40,12 +40,11 @@ doub
         return X * B.Y - Y * B.X;
     }
 
+    // 两点间距离
+    double Dis(Point &B) {
+        return sqrt((B - *this) * (B - *this));
+    }
 };
-
-// 两点间距离
-double Distance(Point A, Point B) {
-	return sqrt((B - A) * (B - A));
-}
 
 // 线
 struct Line {

@@ -41,12 +41,11 @@
         \PYG{k}{return} \PYG{n}{X} \PYG{o}{*} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{Y} \PYG{o}{*} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 
+    \PYG{c+c1}{// 两点间距离}
+    \PYG{k+kt}{double} \PYG{n}{Dis}\PYG{p}{(}\PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{((}\PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{o}{*}\PYG{k}{this}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{o}{*}\PYG{k}{this}\PYG{p}{));}
+    \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{};}
-
-\PYG{c+c1}{// 两点间距离}
-\PYG{k+kt}{double} \PYG{n+nf}{Distance}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-	\PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{((}\PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{n}{A}\PYG{p}{));}
-\PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 线}
 \PYG{k}{struct} \PYG{n}{Line} \PYG{p}{\PYGZob{}}
