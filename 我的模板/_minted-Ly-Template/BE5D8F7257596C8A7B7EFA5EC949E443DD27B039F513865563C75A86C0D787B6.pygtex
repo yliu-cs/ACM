@@ -30,6 +30,11 @@
         \PYG{k}{return} \PYG{n}{Point} \PYG{p}{(}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{);}
     \PYG{p}{\PYGZcb{}}
 
+    \PYG{c+c1}{// 加法}
+    \PYG{n}{Point} \PYG{k}{operator} \PYG{o}{+} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{Point} \PYG{p}{(}\PYG{n}{X} \PYG{o}{+} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Y} \PYG{o}{+} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
 	\PYG{c+c1}{// 点积}
 	\PYG{k+kt}{double} \PYG{k}{operator} \PYG{o}{*} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
 		\PYG{k}{return} \PYG{n}{X} \PYG{o}{*} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X} \PYG{o}{+} \PYG{n}{Y} \PYG{o}{*} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{;}

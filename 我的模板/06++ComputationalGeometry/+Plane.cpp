@@ -29,6 +29,11 @@ struct Point {
         return Point (X - B.X, Y - B.Y);
     }
 
+    // 加法
+    Point operator + (const Point &B) const {
+        return Point (X + B.X, Y + B.Y);
+    }
+
 	// 点积
 	double operator * (const Point &B) const {
 		return X * B.X + Y * B.Y;
