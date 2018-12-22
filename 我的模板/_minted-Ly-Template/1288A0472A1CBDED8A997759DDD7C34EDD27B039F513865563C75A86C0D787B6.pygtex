@@ -73,7 +73,7 @@
     \PYG{p}{\PYGZcb{}}
 
     \PYG{c+c1}{// 判断是否平行}
-    \PYG{k+kt}{bool} \PYG{n}{IsParallel}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Line} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{bool} \PYG{n}{IsParallel}\PYG{p}{(}\PYG{n}{Line} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k}{return} \PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 

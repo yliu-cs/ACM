@@ -72,7 +72,7 @@ struct Line {
     }
 
     // 判断是否平行
-    bool IsParallel(const Line &B) const {
+    bool IsParallel(Line &B) {
         return Sgn((S - T) ^ (B.S - B.T)) == 0;
     }
 
