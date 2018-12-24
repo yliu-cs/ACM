@@ -25,9 +25,7 @@ def main():
             Up *= i
             Down *= i + 1
         Gcd = math.gcd(Up, Down)
-        Up //= Gcd
-        Down //= Gcd
-        print(str(Up) + '/' + str(Down))
+        print(str(Up // Gcd) + '/' + str(Down // Gcd))
 
 if __name__ == '__main__':
     main()
