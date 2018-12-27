@@ -4,6 +4,10 @@ const int maxn = "Edit";
 
 struct Edge {
     int U, V, Dis;
+
+    bool operator < (const Edge &B) const {
+        return Dis < B.Dis;
+    }
 };
 
 // N:顶点数，E:边数，Pre并查集

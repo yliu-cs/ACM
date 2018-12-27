@@ -5,6 +5,10 @@
 
 \PYG{k}{struct} \PYG{n}{Edge} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{int} \PYG{n}{U}\PYG{p}{,} \PYG{n}{V}\PYG{p}{,} \PYG{n}{Dis}\PYG{p}{;}
+
+    \PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Edge} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{Dis} \PYG{o}{\PYGZlt{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Dis}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{};}
 
 \PYG{c+c1}{// N:顶点数，E:边数，Pre并查集}
