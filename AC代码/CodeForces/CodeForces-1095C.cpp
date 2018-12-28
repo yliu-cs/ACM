@@ -27,7 +27,6 @@ int main(int argc, char *argv[]) {
     Ans.clear();
     for (int i = Index; i >= 0; --i) {
         while (N - Data[i] >= K - 1 && K >= 1 && N > 0) {
-//            printf("N=%lld Data[%d]=%lld K=%lld\n", N, i, Data[i], K);
             Ans.push_back(Data[i]);
             N -= Data[i];
             K--;
