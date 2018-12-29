@@ -27,12 +27,12 @@ int main(int argc, char *argv[]) {
             continue;
         }
         if (Str[i] == '(') {
-            if (Prefix[i - 1] > 0 && Prefix[i - 1] - 1 - Suffix[i + 1] == 0) {
+            if (Prefix[i - 1] > 0 && Prefix[i - 1] - Suffix[i + 1] == 1) {
                 ++Ans;
             }
         }
         else {
-            if (Prefix[i - 1] + 1 - Suffix[i + 1] == 0) {
+            if (Suffix[i + 1] - Prefix[i - 1] == 1) {
                 ++Ans;
             }
         }
