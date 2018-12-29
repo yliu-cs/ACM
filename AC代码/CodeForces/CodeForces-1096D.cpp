@@ -21,9 +21,6 @@ int main(int argc, char *argv[]) {
             Dp[i][0] += Cost[i];
         }
         else if (Str[i] == 'a') {
-            // 把i位置之前(包括i)的字符'a'全部清除
-            // 或
-            // 把i位置之前(不包括i)的字符'h'全部清除并清除i位置的字符'a'
             Dp[i][1] = min(Dp[i - 1][0], Dp[i][1] + Cost[i]);
         }
         else if (Str[i] == 'r') {
