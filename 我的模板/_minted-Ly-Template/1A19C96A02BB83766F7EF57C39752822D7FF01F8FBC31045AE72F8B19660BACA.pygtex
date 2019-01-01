@@ -21,8 +21,10 @@
     \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{Ans} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
     \PYG{k}{while} \PYG{p}{(}\PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k}{if} \PYG{p}{(}\PYG{n}{B} \PYG{o}{\PYGZam{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{c+c1}{// Ans = Ans * A \PYGZpc{} mod;}
             \PYG{n}{Ans} \PYG{o}{=} \PYG{n}{QuickMul}\PYG{p}{(}\PYG{n}{Ans}\PYG{p}{,} \PYG{n}{A}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{mod}\PYG{p}{;}
         \PYG{p}{\PYGZcb{}}
+        \PYG{c+c1}{// Ans = A * A \PYGZpc{} mod;}
         \PYG{n}{A} \PYG{o}{=} \PYG{n}{QuickMul}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{A}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{mod}\PYG{p}{;}
         \PYG{n}{B} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{l+m+mi}{1}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}

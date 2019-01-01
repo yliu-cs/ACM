@@ -15,39 +15,28 @@
     \PYG{c+c1}{// X:横坐标，Y:纵坐标}
     \PYG{k+kt}{double} \PYG{n}{X}\PYG{p}{,} \PYG{n}{Y}\PYG{p}{;}
 
-    \PYG{n}{Point}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
-    \PYG{n}{Point}\PYG{p}{(}\PYG{k+kt}{double} \PYG{n}{\PYGZus{}X}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{\PYGZus{}Y}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{n}{X} \PYG{o}{=} \PYG{n}{\PYGZus{}X}\PYG{p}{;}
-        \PYG{n}{Y} \PYG{o}{=} \PYG{n}{\PYGZus{}Y}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-
-    \PYG{k+kt}{void} \PYG{n}{input}\PYG{p}{()} \PYG{p}{\PYGZob{}}
-        \PYG{n}{scanf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}lf\PYGZpc{}lf\PYGZdq{}}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{X}\PYG{p}{,} \PYG{o}{\PYGZam{}}\PYG{n}{Y}\PYG{p}{);}
-    \PYG{p}{\PYGZcb{}}
-
     \PYG{c+c1}{// 减法}
-    \PYG{n}{Point} \PYG{k}{operator} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
-        \PYG{k}{return} \PYG{n}{Point} \PYG{p}{(}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{);}
+    \PYG{n}{Point} \PYG{k}{operator} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n}{Point} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{p}{(}\PYG{n}{Point}\PYG{p}{)\PYGZob{}}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{\PYGZcb{};}
     \PYG{p}{\PYGZcb{}}
 
     \PYG{c+c1}{// 加法}
-    \PYG{n}{Point} \PYG{k}{operator} \PYG{o}{+} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
-        \PYG{k}{return} \PYG{n}{Point} \PYG{p}{(}\PYG{n}{X} \PYG{o}{+} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Y} \PYG{o}{+} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{);}
+    \PYG{n}{Point} \PYG{k}{operator} \PYG{o}{+} \PYG{p}{(}\PYG{n}{Point} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{p}{(}\PYG{n}{Point}\PYG{p}{)\PYGZob{}}\PYG{n}{X} \PYG{o}{+} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X}\PYG{p}{,} \PYG{n}{Y} \PYG{o}{+} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{\PYGZcb{};}
     \PYG{p}{\PYGZcb{}}
 
-	\PYG{c+c1}{// 点积}
-	\PYG{k+kt}{double} \PYG{k}{operator} \PYG{o}{*} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
-		\PYG{k}{return} \PYG{n}{X} \PYG{o}{*} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X} \PYG{o}{+} \PYG{n}{Y} \PYG{o}{*} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{;}
-	\PYG{p}{\PYGZcb{}}
-\PYG{n}{doub}
+    \PYG{c+c1}{// 点积}
+    \PYG{k+kt}{double} \PYG{k}{operator} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Point} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{X} \PYG{o}{*} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X} \PYG{o}{+} \PYG{n}{Y} \PYG{o}{*} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
 
-	\PYG{c+c1}{// 叉积}
-    \PYG{k+kt}{double} \PYG{k}{operator} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// 叉积}
+    \PYG{k+kt}{double} \PYG{k}{operator} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{Point} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k}{return} \PYG{n}{X} \PYG{o}{*} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{Y} \PYG{o}{*} \PYG{n}{B}\PYG{p}{.}\PYG{n}{X}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 
     \PYG{c+c1}{// 两点间距离}
-    \PYG{k+kt}{double} \PYG{n}{Dis}\PYG{p}{(}\PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{double} \PYG{n}{Dis}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{((}\PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{o}{*}\PYG{k}{this}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{o}{*}\PYG{k}{this}\PYG{p}{));}
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{};}
@@ -55,30 +44,18 @@
 \PYG{c+c1}{// 线}
 \PYG{k}{struct} \PYG{n}{Line} \PYG{p}{\PYGZob{}}
     \PYG{n}{Point} \PYG{n}{S}\PYG{p}{,} \PYG{n}{T}\PYG{p}{;}
-    
-    \PYG{n}{Line}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
-    \PYG{n}{Line}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{\PYGZus{}S}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{\PYGZus{}T}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{n}{S} \PYG{o}{=} \PYG{n}{\PYGZus{}S}\PYG{p}{;}
-        \PYG{n}{T} \PYG{o}{=} \PYG{n}{\PYGZus{}T}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-
-    \PYG{k+kt}{void} \PYG{n}{Input}\PYG{p}{()} \PYG{p}{\PYGZob{}}
-        \PYG{n}{S}\PYG{p}{.}\PYG{n}{Input}\PYG{p}{();}
-        \PYG{n}{T}\PYG{p}{.}\PYG{n}{Input}\PYG{p}{();}
-    \PYG{p}{\PYGZcb{}}
-
-	\PYG{c+c1}{// 向量叉积}
-    \PYG{k+kt}{double} \PYG{k}{operator} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Line} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// 向量叉积}
+    \PYG{k+kt}{double} \PYG{k}{operator} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{Line} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k}{return} \PYG{p}{(}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{);}
     \PYG{p}{\PYGZcb{}}
 
     \PYG{c+c1}{// 判断是否平行}
-    \PYG{k+kt}{bool} \PYG{n}{IsParallel}\PYG{p}{(}\PYG{n}{Line} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{bool} \PYG{n}{IsParallel}\PYG{p}{(}\PYG{n}{Line} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k}{return} \PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 
     \PYG{c+c1}{// 求交点}
-    \PYG{n}{Point} \PYG{k}{operator} \PYG{o}{\PYGZam{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Line} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Point} \PYG{k}{operator} \PYG{o}{\PYGZam{}} \PYG{p}{(}\PYG{n}{Line} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k+kt}{double} \PYG{n}{Temp} \PYG{o}{=} \PYG{p}{((}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{/} \PYG{p}{((}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{));}
         \PYG{k}{return} \PYG{n+nf}{Point}\PYG{p}{(}\PYG{n}{S}\PYG{p}{.}\PYG{n}{X} \PYG{o}{+} \PYG{p}{(}\PYG{n}{T}\PYG{p}{.}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{.}\PYG{n}{X}\PYG{p}{)} \PYG{o}{*} \PYG{n}{Temp}\PYG{p}{,} \PYG{n}{S}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{+} \PYG{p}{(}\PYG{n}{T}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{)} \PYG{o}{*} \PYG{n}{Temp}\PYG{p}{);}
     \PYG{p}{\PYGZcb{}}
@@ -167,21 +144,11 @@
 \PYG{k}{struct} \PYG{n+nl}{HalfPlane}\PYG{p}{:}\PYG{k}{public} \PYG{n}{Line} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{double} \PYG{n}{Angle}\PYG{p}{;}
 
-    \PYG{n}{HalfPlane}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
-    \PYG{n}{HalfPlane}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{\PYGZus{}S}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{\PYGZus{}T}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{n}{S} \PYG{o}{=} \PYG{n}{\PYGZus{}S}\PYG{p}{;}
-        \PYG{n}{T} \PYG{o}{=} \PYG{n}{\PYGZus{}T}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-    \PYG{n}{HalfPlane}\PYG{p}{(}\PYG{n}{Line} \PYG{n}{ST}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{n}{S} \PYG{o}{=} \PYG{n}{ST}\PYG{p}{.}\PYG{n}{S}\PYG{p}{;}
-        \PYG{n}{T} \PYG{o}{=} \PYG{n}{ST}\PYG{p}{.}\PYG{n}{T}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-
-    \PYG{k+kt}{void} \PYG{n}{CalAngle}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{void} \PYG{n+nf}{CalAngle}\PYG{p}{()} \PYG{p}{\PYGZob{}}
         \PYG{n}{Angle} \PYG{o}{=} \PYG{n}{atan2}\PYG{p}{(}\PYG{n}{T}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{,} \PYG{n}{T}\PYG{p}{.}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{.}\PYG{n}{X}\PYG{p}{);}
     \PYG{p}{\PYGZcb{}}
 
-    \PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{HalfPlane} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{n}{HalfPlane} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k}{if} \PYG{p}{(}\PYG{n}{fabs}\PYG{p}{(}\PYG{n}{Angle} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Angle}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{n}{eps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
             \PYG{k}{return} \PYG{n}{Angle} \PYG{o}{\PYGZlt{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{Angle}\PYG{p}{;}
         \PYG{p}{\PYGZcb{}}

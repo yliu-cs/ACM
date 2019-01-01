@@ -20,8 +20,10 @@ long long QuickPow(long long A, long long B) {
     long long Ans = 1;
     while (B) {
         if (B & 1) {
+            // Ans = Ans * A % mod;
             Ans = QuickMul(Ans, A) % mod;
         }
+        // Ans = A * A % mod;
         A = QuickMul(A, A) % mod;
         B >>= 1;
     }

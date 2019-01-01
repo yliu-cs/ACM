@@ -4,22 +4,22 @@
 const int maxn = "Edit";
 
 // 树状数组
-int C[maxn];
+int Array[maxn];
 
 // 更新树状数组信息
 void Update(int X, int Val) {
     while (X < maxn) {
-        C[X] += Val;
+        Array[X] += Val;
         X += lowbit(X);
     }
 }
 
-// 求和
-int GetSum(int X) {
-    int Res = 0;
+// 查询
+int Query(int X) {
+    int Ans = 0;
     while (X > 0) {
-        Res += C[X];
+        Ans += Array[X];
         X -= lowbit(X);
     }
-    return Res;
+    return Ans;
 }

@@ -14,39 +14,28 @@ struct Point {
     // X:横坐标，Y:纵坐标
     double X, Y;
 
-    Point() {}
-    Point(double _X, double _Y) {
-        X = _X;
-        Y = _Y;
-    }
-
-    void input() {
-        scanf("%lf%lf", &X, &Y);
-    }
-
     // 减法
-    Point operator - (const Point &B) const {
-        return Point (X - B.X, Y - B.Y);
+    Point operator - (Point B) {
+        return (Point){X - B.X, Y - B.Y};
     }
 
     // 加法
-    Point operator + (const Point &B) const {
-        return Point (X + B.X, Y + B.Y);
+    Point operator + (Point B) {
+        return (Point){X + B.X, Y + B.Y};
     }
 
-	// 点积
-	double operator * (const Point &B) const {
-		return X * B.X + Y * B.Y;
-	}
-doub
+    // 点积
+    double operator * (Point B) {
+        return X * B.X + Y * B.Y;
+    }
 
-	// 叉积
-    double operator ^ (const Point &B) const {
+    // 叉积
+    double operator ^ (Point B) {
         return X * B.Y - Y * B.X;
     }
 
     // 两点间距离
-    double Dis(Point &B) {
+    double Dis(Point B) {
         return sqrt((B - *this) * (B - *this));
     }
 };
@@ -54,30 +43,18 @@ doub
 // 线
 struct Line {
     Point S, T;
-    
-    Line() {}
-    Line(Point _S, Point _T) {
-        S = _S;
-        T = _T;
-    }
-
-    void Input() {
-        S.Input();
-        T.Input();
-    }
-
-	// 向量叉积
-    double operator ^ (const Line &B) const {
+    // 向量叉积
+    double operator ^ (Line B) {
         return (T - S) ^ (B.T - B.S);
     }
 
     // 判断是否平行
-    bool IsParallel(Line &B) {
+    bool IsParallel(Line B) {
         return Sgn((S - T) ^ (B.S - B.T)) == 0;
     }
 
     // 求交点
-    Point operator & (const Line &B) const {
+    Point operator & (Line B) {
         double Temp = ((S - B.S) ^ (B.S - B.T)) / ((S - T) ^ (B.S - B.T));
         return Point(S.X + (T.X - S.X) * Temp, S.Y + (T.Y - S.Y) * Temp);
     }
@@ -166,21 +143,11 @@ double ConvexHull(std::vector<Point> points) {
 struct HalfPlane:public Line {
     double Angle;
 
-    HalfPlane() {}
-    HalfPlane(Point _S, Point _T) {
-        S = _S;
-        T = _T;
-    }
-    HalfPlane(Line ST) {
-        S = ST.S;
-        T = ST.T;
-    }
-
     void CalAngle() {
         Angle = atan2(T.Y - S.Y, T.X - S.X);
     }
 
-    bool operator < (const HalfPlane &B) const {
+    bool operator < (HalfPlane B) {
         if (fabs(Angle - B.Angle) > eps) {
             return Angle < B.Angle;
         }
