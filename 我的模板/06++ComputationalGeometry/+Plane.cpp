@@ -43,6 +43,7 @@ struct Point {
 // 线
 struct Line {
     Point S, T;
+
     // 向量叉积
     double operator ^ (Line B) {
         return (T - S) ^ (B.T - B.S);
@@ -56,7 +57,7 @@ struct Line {
     // 求交点
     Point operator & (Line B) {
         double Temp = ((S - B.S) ^ (B.S - B.T)) / ((S - T) ^ (B.S - B.T));
-        return Point(S.X + (T.X - S.X) * Temp, S.Y + (T.Y - S.Y) * Temp);
+        return (Point){S.X + (T.X - S.X) * Temp, S.Y + (T.Y - S.Y) * Temp};
     }
 };
 
@@ -78,7 +79,7 @@ bool IsIntersect(Line A, Line B) {
 
 // 判断直线A、B是否相交
 bool IsIntersect(Line A, Line B) {
-    return !Parallel(A, B) || (Parallel(A, B) && !(Sgn((A.S - B.S) ^ (B.T - B.S)) == 0));
+    return !A.IsParallel(B) || (A.IsParallel(B) && !(Sgn((A.S - B.S) ^ (B.T - B.S)) == 0));
 }
 
 // 判断N个点(下标1~N-1)能否组成凸包

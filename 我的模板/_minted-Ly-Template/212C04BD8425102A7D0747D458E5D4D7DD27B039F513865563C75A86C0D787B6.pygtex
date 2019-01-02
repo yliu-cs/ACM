@@ -44,6 +44,7 @@
 \PYG{c+c1}{// 线}
 \PYG{k}{struct} \PYG{n}{Line} \PYG{p}{\PYGZob{}}
     \PYG{n}{Point} \PYG{n}{S}\PYG{p}{,} \PYG{n}{T}\PYG{p}{;}
+
     \PYG{c+c1}{// 向量叉积}
     \PYG{k+kt}{double} \PYG{k}{operator} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{Line} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k}{return} \PYG{p}{(}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{);}
@@ -57,7 +58,7 @@
     \PYG{c+c1}{// 求交点}
     \PYG{n}{Point} \PYG{k}{operator} \PYG{o}{\PYGZam{}} \PYG{p}{(}\PYG{n}{Line} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k+kt}{double} \PYG{n}{Temp} \PYG{o}{=} \PYG{p}{((}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{/} \PYG{p}{((}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{T}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{T}\PYG{p}{));}
-        \PYG{k}{return} \PYG{n+nf}{Point}\PYG{p}{(}\PYG{n}{S}\PYG{p}{.}\PYG{n}{X} \PYG{o}{+} \PYG{p}{(}\PYG{n}{T}\PYG{p}{.}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{.}\PYG{n}{X}\PYG{p}{)} \PYG{o}{*} \PYG{n}{Temp}\PYG{p}{,} \PYG{n}{S}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{+} \PYG{p}{(}\PYG{n}{T}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{)} \PYG{o}{*} \PYG{n}{Temp}\PYG{p}{);}
+        \PYG{k}{return} \PYG{p}{(}\PYG{n}{Point}\PYG{p}{)\PYGZob{}}\PYG{n}{S}\PYG{p}{.}\PYG{n}{X} \PYG{o}{+} \PYG{p}{(}\PYG{n}{T}\PYG{p}{.}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{.}\PYG{n}{X}\PYG{p}{)} \PYG{o}{*} \PYG{n}{Temp}\PYG{p}{,} \PYG{n}{S}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{+} \PYG{p}{(}\PYG{n}{T}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{S}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{)} \PYG{o}{*} \PYG{n}{Temp}\PYG{p}{\PYGZcb{};}
     \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{};}
 
@@ -79,7 +80,7 @@
 
 \PYG{c+c1}{// 判断直线A、B是否相交}
 \PYG{k+kt}{bool} \PYG{n+nf}{IsIntersect}\PYG{p}{(}\PYG{n}{Line} \PYG{n}{A}\PYG{p}{,} \PYG{n}{Line} \PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{o}{!}\PYG{n}{Parallel}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{B}\PYG{p}{)} \PYG{o}{||} \PYG{p}{(}\PYG{n}{Parallel}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,} \PYG{n}{B}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{o}{!}\PYG{p}{(}\PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{))} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{));}
+    \PYG{k}{return} \PYG{o}{!}\PYG{n}{A}\PYG{p}{.}\PYG{n}{IsParallel}\PYG{p}{(}\PYG{n}{B}\PYG{p}{)} \PYG{o}{||} \PYG{p}{(}\PYG{n}{A}\PYG{p}{.}\PYG{n}{IsParallel}\PYG{p}{(}\PYG{n}{B}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{o}{!}\PYG{p}{(}\PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{A}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{B}\PYG{p}{.}\PYG{n}{S}\PYG{p}{))} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{));}
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 判断N个点(下标1\PYGZti{}N\PYGZhy{}1)能否组成凸包}
