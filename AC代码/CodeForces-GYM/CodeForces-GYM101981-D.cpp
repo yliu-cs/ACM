@@ -14,6 +14,24 @@ struct Point {
     }
 };
 
+typedef Point Vector;
+
+Vector operator + (Point Key1, Point Key2) {
+    return (Vector){Key1.X + Key2.X, Key1.Y + Key2.Y, Key1.Z + Key2.Z};
+}
+
+Vector operator - (Point Key1, Point Key2) {
+    return (Vector){Key1.X - Key2.X, Key1.Y - Key2.Y, Key1.Z - Key2.Z};
+}
+
+Point operator * (Point Key1, double Key2) {
+    return (Point){Key1.X * Key2, Key1.Y * Key2, Key1.Z * Key2};
+}
+
+Point operator / (Point Key1, double Key2) {
+    return (Point){Key1.X / Key2, Key1.Y / Key2, Key1.Z / Key2};
+}
+
 double Distance(Point A, Point B) {
     return sqrt((A.X - B.X) * (A.X - B.X) + (A.Y - B.Y) * (A.Y - B.Y) + (A.Z - B.Z) * (A.Z - B.Z));
 }
@@ -31,11 +49,9 @@ double MinimumSphereCoverage() {
                 Book = i;
             }
         }
-        double Redius = Distance(Cur, points[Book]);
-        Ans = min(Ans, Redius);
-        Cur.X += (points[Book].X - Cur.X) / Redius * Probability;
-        Cur.Y += (points[Book].Y - Cur.Y) / Redius * Probability;
-        Cur.Z += (points[Book].Z - Cur.Z) / Redius * Probability;
+        double Radius = Distance(Cur, points[Book]);
+        Ans = min(Ans, Radius);
+        Cur = Cur + (points[Book] - Cur) / Radius * Probability;
         Probability *= delta;
     }
     return Ans;
