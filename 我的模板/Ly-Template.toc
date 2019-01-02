@@ -56,9 +56,11 @@
 \contentsline {subsection}{\numberline {5.4}LIS}{60}{subsection.5.4}
 \contentsline {subsection}{\numberline {5.5}Pack}{61}{subsection.5.5}
 \contentsline {section}{\numberline {6}ComputationalGeometry}{62}{section.6}
-\contentsline {section}{\numberline {7}Others}{63}{section.7}
-\contentsline {subsection}{\numberline {7.1}Factorial}{63}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}FastIO}{64}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}LeepYear}{68}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}NimGame}{68}{subsection.7.4}
-\contentsline {subsection}{\numberline {7.5}vim}{69}{subsection.7.5}
+\contentsline {subsection}{\numberline {6.1}Plane}{62}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Stereoscopic}{68}{subsection.6.2}
+\contentsline {section}{\numberline {7}Others}{71}{section.7}
+\contentsline {subsection}{\numberline {7.1}Factorial}{71}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}FastIO}{72}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}LeepYear}{76}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}NimGame}{76}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.5}vim}{77}{subsection.7.5}

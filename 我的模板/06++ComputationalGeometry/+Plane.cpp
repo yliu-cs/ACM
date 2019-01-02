@@ -248,8 +248,3 @@ namespace Geometry {
     };
 };
 using namespace Geometry;
-
-int main(int argc, char *argv[]) {
-    return 0;
-}
-

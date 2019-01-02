@@ -82,7 +82,4 @@ namespace Geometry3D {
 
     typedef Line Segment;
 };
-
-int main(int argc, char *argv[]) {
-    return 0;
-}
+using namespace Geometry3D;
