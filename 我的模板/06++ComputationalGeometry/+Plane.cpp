@@ -1,9 +1,8 @@
 #include<bits/stdc++.h>
-using namespace std;
 
 namespace Geometry {
     const double INF = 1e20;
-    const int maxn = "Edit";
+    const int maxn = 1;
     const double eps = 1e-8;
     const double delta = 0.98;
 
@@ -57,7 +56,8 @@ namespace Geometry {
         return sqrt((Key2 - Key1) * (Key2 - Key1));
     }
 
-    bool IsConvexHull(Point points[], int N) {
+    bool IsConvexHull(vector<Point> points) {
+        int N = (int)points.size();
         for (int i = 0; i < N; ++i) {
             if (Sgn((points[(i + 1) % N] - points[i]) ^ (points[(i + 2) % N] - points[(i + 1) % N])) < 0) {
                 return false;
@@ -66,53 +66,47 @@ namespace Geometry {
         return true;
     }
 
-    double ConvexHull(Point points[], int N) {
-        if (N == 1) {
-            return 0;
-        }
-        else if (N == 2) {
-            return Distance(points[0], points[1]);
+    /*----------多边形----------*/
+    typedef vector<Point> Polygon;
+
+    Polygon ConvexHull(vector<Point> points) {
+        int N = (int)points.size();
+        Polygon Ans;
+        if (N < 3) {
+            return Ans;
         }
         int Basic = 0;
         for (int i = 0; i < N; ++i) {
-            if (points[i].Y > points[Basic].Y || 
-                (points[i].Y == points[Basic].Y && points[i].X < points[Basic].X)) {
+            if (points[i].Y > points[Basic].Y || (points[i].Y == points[Basic].Y && points[i].X < points[Basic].X)) {
                     Basic = i;
             }
         }
         std::swap(points[0], points[Basic]);
-        std::sort(points + 1, points + N, [&] (Point &A, Point &B) {
-            double Temp = (A - points[0]) ^ (B - points[0]);
+        std::sort(points.begin() + 1, points.end(), [&] (Point &Key1, Point &Key2) {
+            double Temp = (Key1 - points[0]) ^ (Key2 - points[0]);
             if (Temp > 0) {
                 return true;
             }
-            else if (!Temp && Distance(A, points[0]) < Distance(B, points[0])) {
+            else if (!Temp && Distance(Key1, points[0]) < Distance(Key2, points[0])) {
                 return true;
             }
             return false;
         });
-        Point Stack[maxn];
-        int Count = 0;
-        Stack[Count++] = points[0];
+        Ans.push_back(points[0]);
         for (int i = 2; i < N; ++i) {
-            while (Count >= 2 && Sgn((Stack[Count - 1] - Stack[Count - 2]) ^ (points[i] - Stack[Count - 2])) <= 0) {
-                Count--;
+            while ((int)Ans.size() >= 2 && Sgn((Ans.back() - Ans[(Ans.size()) - 2]) ^ (points[i] - Ans[(int)Ans.size() - 2])) <= 0) {
+                Ans.pop_back();
             }
-        }
-        Stack[Count++] = points[0];
-        double Ans = 0;
-        for (int i = 1; i < Count; ++i) {
-            Ans += Distance(Stack[i], Stack[i - 1]);
         }
         return Ans;
     }
 
-    double MinimimCircleCoverage(Point points[], int N) {
+    double MinimimCircleCoverage(vector<Point> points) {
         Point Cur = points[0];
         double Probability = 10000, Ans = INF;
         while (Probability > eps) {
             int Book = 0;
-            for (int i = 0; i < N; ++i) {
+            for (int i = 0; i < (int)points.size(); ++i) {
                 if (Distance(Cur, points[i]) > Distance(Cur, points[Book])) {
                     Book = i;
                 }
@@ -248,3 +242,4 @@ namespace Geometry {
     };
 };
 using namespace Geometry;
+

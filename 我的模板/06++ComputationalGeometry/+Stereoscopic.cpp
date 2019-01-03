@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-using namespace std;
 
 namespace Geometry3D {
     const double INF = 1e20;
@@ -54,15 +53,15 @@ namespace Geometry3D {
     }
 
     double Distance(Point Key1, Point Key2) {
-        return sqrt((Key1.X - Key2.X) * (Key1.X - Key2.X) + (Key1.Y - Key2.Y) * (Key1.Y - Key2.Y) + (Key1.Z - Key2.Z) * (Key1.Z - Key2.Z));
+        return sqrt((Key1 - Key2) * (Key1 - Key2));
     }
 
-    double MinimimSphereCoverage(Point points[], int N) {
+    double MinimimSphereCoverage(vector<Point> points, int N) {
         Point Cur = points[0];
         double Probability = 10000, Ans = INF;
         while (Probability > eps) {
             int Book = 0;
-            for (int i = 0; i < N; ++i) {
+            for (int i = 0; i < (int)points.size(); ++i) {
                 if (Distance(Cur, points[i]) > Distance(Cur, points[Book])) {
                     Book = i;
                 }
@@ -83,3 +82,4 @@ namespace Geometry3D {
     typedef Line Segment;
 };
 using namespace Geometry3D;
+

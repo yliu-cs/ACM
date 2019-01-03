@@ -1,6 +1,5 @@
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}bits/stdc++.h\PYGZgt{}}
-\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
 
 \PYG{k}{namespace} \PYG{n}{Geometry3D} \PYG{p}{\PYGZob{}}
     \PYG{k}{const} \PYG{k+kt}{double} \PYG{n}{INF} \PYG{o}{=} \PYG{l+m+mf}{1e20}\PYG{p}{;}
@@ -55,15 +54,15 @@
     \PYG{p}{\PYGZcb{}}
 
     \PYG{k+kt}{double} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{((}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{X}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{X}\PYG{p}{)} \PYG{o}{+} \PYG{p}{(}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{)} \PYG{o}{+} \PYG{p}{(}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Z} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Z}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Z} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Z}\PYG{p}{));}
+        \PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{((}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{));}
     \PYG{p}{\PYGZcb{}}
 
-    \PYG{k+kt}{double} \PYG{n}{MinimimSphereCoverage}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{points}\PYG{p}{[],} \PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{double} \PYG{n}{MinimimSphereCoverage}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Point}\PYG{o}{\PYGZgt{}} \PYG{n}{points}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{n}{Point} \PYG{n}{Cur} \PYG{o}{=} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{];}
         \PYG{k+kt}{double} \PYG{n}{Probability} \PYG{o}{=} \PYG{l+m+mi}{10000}\PYG{p}{,} \PYG{n}{Ans} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{;}
         \PYG{k}{while} \PYG{p}{(}\PYG{n}{Probability} \PYG{o}{\PYGZgt{}} \PYG{n}{eps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
             \PYG{k+kt}{int} \PYG{n}{Book} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
-            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{points}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
                 \PYG{k}{if} \PYG{p}{(}\PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Cur}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{o}{\PYGZgt{}} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Cur}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Book}\PYG{p}{]))} \PYG{p}{\PYGZob{}}
                     \PYG{n}{Book} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
                 \PYG{p}{\PYGZcb{}}
