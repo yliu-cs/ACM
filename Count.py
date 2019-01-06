@@ -23,7 +23,7 @@ def main():
     Work()
     README.close()
     os.system("git add .")
-    os.system("git commit -m 'Update'")
+    os.system("git commit -m Update")
     os.system("git push origin master")
 
 if __name__ == '__main__':
