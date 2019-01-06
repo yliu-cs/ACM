@@ -36,8 +36,12 @@ namespace Geometry3D {
         return Key1.X * Key2.X + Key1.Y * Key2.Y + Key1.Z * Key2.Z;
     }
 
-    Point operator ^ (Point Key1, Point Key2) {
-        return (Point){Key1.Y * Key2.Z - Key1.Z * Key2.Y, Key1.Z * Key2.X - Key1.X * Key2.Z, Key1.X * Key2.Y - Key1.Y * Key2.X};
+    double Length(Vector Key) {
+        return sqrt(Key * Key);
+    }
+
+    double operator ^ (Vector Key1, Vector Key2) {
+        return Length((Vector){Key1.Y * Key2.Z - Key1.Z * Key2.Y, Key1.Z * Key2.X - Key1.X * Key2.Z, Key1.X * Key2.Y - Key1.Y * Key2.X});
     }
 
     Vector operator * (Vector Key1, double Key2) {
@@ -48,12 +52,12 @@ namespace Geometry3D {
         return (Vector){Key1.X / Key2, Key1.Y / Key2, Key1.Z / Key2};
     }
 
-    double Length(Vector Key) {
-        return sqrt(Key * Key);
+    double DisPointToPoint(Point Key1, Point Key2) {
+        return sqrt((Key1 - Key2) * (Key1 - Key2));
     }
 
-    double Distance(Point Key1, Point Key2) {
-        return sqrt((Key1 - Key2) * (Key1 - Key2));
+    double GetAngle(Vector Key1, Vector Key2) {
+        return fabs(atan2(fabs(Key1 ^ Key2), Key1 * Key2));
     }
 
     double MinimimSphereCoverage(vector<Point> points, int N) {
@@ -80,6 +84,26 @@ namespace Geometry3D {
     };
 
     typedef Line Segment;
+
+    double Length(Segment Key) {
+        return DisPointToPoint(Key.S, Key.T);
+    }
+
+    double DisPointToLine(Point Key1, Line Key2) {
+        return fabs((Key1 - Key2.S) ^ (Key2.T - Key2.S)) / Length(Key2);
+    }
+
+    double DisPointToSegment(Point Key1, Segment Key2) {
+        if (Sgn((Key1 - Key2.S) * (Key2.T - Key2.S)) < 0 || Sgn((Key1 - Key2.T) * (Key2.S - Key2.T)) < 0) {
+            return min(DisPointToPoint(Key1, Key2.S), DisPointToPoint(Key1, Key2.T));
+        }
+        return DisPointToLine(Key1, Key2);
+    }
+
+    /*----------球----------*/
+    struct Sphere {
+        Point Center;
+        double Radius;
+    };
 };
 using namespace Geometry3D;
-

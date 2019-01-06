@@ -36,8 +36,12 @@ namespace Geometry {
         return Key1.X * Key2.X + Key1.Y * Key2.Y;
     }
 
+    double Length(Vector Key) {
+        return sqrt(Key * Key);
+    }
+
     double operator ^ (Vector Key1, Vector Key2) {
-        return Key1.X * Key2.Y - Key1.Y * Key2.X;
+        return Length((Vector){Key1.X * Key2.Y - Key1.Y * Key2.X});
     }
 
     Vector operator * (Vector Key1, double Key2) {
@@ -48,12 +52,12 @@ namespace Geometry {
         return (Vector){Key1.X / Key2, Key1.Y / Key2};
     }
 
-    double Length(Vector Key) {
-        return sqrt(Key * Key);
+    double DisPointToPoint(Point Key1, Point Key2) {
+        return sqrt((Key1 - Key2) * (Key1 - Key2));
     }
 
-    double Distance(Point Key1, Point Key2) {
-        return sqrt((Key2 - Key1) * (Key2 - Key1));
+    double GetAngle(Vector Key1, Vector Key2) {
+        return fabs(atan2(fabs(Key1 ^ Key2), Key1 * Key2));
     }
 
     bool IsConvexHull(vector<Point> points) {
@@ -125,6 +129,21 @@ namespace Geometry {
     };
 
     typedef Line Segment;
+
+    double Length(Segment Key) {
+        return DisPointToPoint(Key.S, Key.T);
+    }
+
+    double DisPointToLine(Point Key1, Line Key2) {
+        return fabs((Key1 - Key2.S) ^ (Key2.T - Key2.S)) / Length(Key2);
+    }
+
+    double DisPointToSegment(Point Key1, Segment Key2) {
+        if (Sgn((Key1 - Key2.S) * (Key2.T - Key2.S)) < 0 || Sgn((Key1 - Key2.T) * (Key2.S - Key2.T)) < 0) {
+            return min(DisPointToPoint(Key1, Key2.S), DisPointToPoint(Key1, Key2.T));
+        }
+        return DisPointToLine(Key1, Key2);
+    }
 
     bool IsParallel(Line Key1, Line Key2) {
         return Sgn((Key1.S - Key1.T) ^ (Key2.S - Key2.T)) == 0;

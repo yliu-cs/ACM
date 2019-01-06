@@ -1,3 +1,0 @@
-C:/Users/Tony5t4rk/Desktop/ACM/Workspace/cmake-build-debug/CMakeFiles/Workspace.dir
-C:/Users/Tony5t4rk/Desktop/ACM/Workspace/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Tony5t4rk/Desktop/ACM/Workspace/cmake-build-debug/CMakeFiles/rebuild_cache.dir
