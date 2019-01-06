@@ -1,28 +1,8 @@
-# -*- coding:utf-8 -*-
-
 import os
 
 AllCnt = 0
 
 README = open('README.md', 'w')
-
-def Change(Str):
-    Ans = ""
-    for Char in Str:
-        InsideCode = ord(Char)
-        if InsideCode == 32:
-            InsideCode = 12288
-        elif InsideCode >= 32 and InsideCode <= 126:
-            InsideCode += 65248
-        Ans += chr(InsideCode)
-    return Ans
-
-def Add(Str, Tar):
-    Len = len(Str)
-    if Len < Tar:
-        for i in range(Tar - Len):
-            Str += ' '
-    return Str
 
 def Work():
     global AllCnt
@@ -33,15 +13,18 @@ def Work():
     for OJ in OJs:
         Cnt = len(os.listdir(Index + '/' + OJ))
         AllCnt += Cnt
-        README.write(Change(Add(OJ, 16)))
-        README.write(Change(str(Cnt)))
+        README.write(OJ)
+        README.write('--------------------')
+        README.write(str(Cnt))
         README.write('  \n')
     README.write('#### `Total:' + str(AllCnt) + '`\n')
 
 def main():
     Work()
     README.close()
+    os.system("git add .")
+    os.system("git commit -m 'Update'")
+    os.system("git push origin master")
 
 if __name__ == '__main__':
     main()
-
