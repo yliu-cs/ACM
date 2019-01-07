@@ -37,8 +37,12 @@
         \PYG{k}{return} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{X} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{X} \PYG{o}{+} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{+} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Z} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Z}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 
-    \PYG{n}{Point} \PYG{k}{operator} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{Point} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k}{return} \PYG{p}{(}\PYG{n}{Point}\PYG{p}{)\PYGZob{}}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Z} \PYG{o}{\PYGZhy{}} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Z} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{,} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Z} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{X} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Z}\PYG{p}{,} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{X} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{X}\PYG{p}{\PYGZcb{};}
+    \PYG{k+kt}{double} \PYG{n}{Length}\PYG{p}{(}\PYG{n}{Vector} \PYG{n}{Key}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{Key} \PYG{o}{*} \PYG{n}{Key}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kt}{double} \PYG{k}{operator} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{Vector} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Vector} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{Length}\PYG{p}{((}\PYG{n}{Vector}\PYG{p}{)\PYGZob{}}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Z} \PYG{o}{\PYGZhy{}} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Z} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Y}\PYG{p}{,} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Z} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{X} \PYG{o}{\PYGZhy{}} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{X} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Z}\PYG{p}{,} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{X} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{\PYGZhy{}} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{X}\PYG{p}{\PYGZcb{});}
     \PYG{p}{\PYGZcb{}}
 
     \PYG{n}{Vector} \PYG{k}{operator} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Vector} \PYG{n}{Key1}\PYG{p}{,} \PYG{k+kt}{double} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
@@ -49,12 +53,12 @@
         \PYG{k}{return} \PYG{p}{(}\PYG{n}{Vector}\PYG{p}{)\PYGZob{}}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{X} \PYG{o}{/} \PYG{n}{Key2}\PYG{p}{,} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{/} \PYG{n}{Key2}\PYG{p}{,} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Z} \PYG{o}{/} \PYG{n}{Key2}\PYG{p}{\PYGZcb{};}
     \PYG{p}{\PYGZcb{}}
 
-    \PYG{k+kt}{double} \PYG{n}{Length}\PYG{p}{(}\PYG{n}{Vector} \PYG{n}{Key}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{Key} \PYG{o}{*} \PYG{n}{Key}\PYG{p}{);}
+    \PYG{k+kt}{double} \PYG{n}{DisPointToPoint}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{((}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{));}
     \PYG{p}{\PYGZcb{}}
 
-    \PYG{k+kt}{double} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{((}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{));}
+    \PYG{k+kt}{double} \PYG{n}{GetAngle}\PYG{p}{(}\PYG{n}{Vector} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Vector} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{fabs}\PYG{p}{(}\PYG{n}{atan2}\PYG{p}{(}\PYG{n}{fabs}\PYG{p}{(}\PYG{n}{Key1} \PYG{o}{\PYGZca{}} \PYG{n}{Key2}\PYG{p}{),} \PYG{n}{Key1} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{));}
     \PYG{p}{\PYGZcb{}}
 
     \PYG{k+kt}{double} \PYG{n}{MinimimSphereCoverage}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Point}\PYG{o}{\PYGZgt{}} \PYG{n}{points}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{)} \PYG{p}{\PYGZob{}}
@@ -81,6 +85,27 @@
     \PYG{p}{\PYGZcb{};}
 
     \PYG{k}{typedef} \PYG{n}{Line} \PYG{n}{Segment}\PYG{p}{;}
+
+    \PYG{k+kt}{double} \PYG{n+nf}{Length}\PYG{p}{(}\PYG{n}{Segment} \PYG{n}{Key}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{DisPointToPoint}\PYG{p}{(}\PYG{n}{Key}\PYG{p}{.}\PYG{n}{S}\PYG{p}{,} \PYG{n}{Key}\PYG{p}{.}\PYG{n}{T}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kt}{double} \PYG{n+nf}{DisPointToLine}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Line} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{n}{fabs}\PYG{p}{((}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{Key2}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{S}\PYG{p}{))} \PYG{o}{/} \PYG{n}{Length}\PYG{p}{(}\PYG{n}{Key2}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kt}{double} \PYG{n+nf}{DisPointToSegment}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Segment} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{S}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Key2}\PYG{p}{.}\PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{S}\PYG{p}{))} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0} \PYG{o}{||} \PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{T}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Key2}\PYG{p}{.}\PYG{n}{S} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{T}\PYG{p}{))} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{return} \PYG{n}{min}\PYG{p}{(}\PYG{n}{DisPointToPoint}\PYG{p}{(}\PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{S}\PYG{p}{),} \PYG{n}{DisPointToPoint}\PYG{p}{(}\PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{T}\PYG{p}{));}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{return} \PYG{n}{DisPointToLine}\PYG{p}{(}\PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Key2}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+cm}{/*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}球\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*/}
+    \PYG{k}{struct} \PYG{n}{Sphere} \PYG{p}{\PYGZob{}}
+        \PYG{n}{Point} \PYG{n}{Center}\PYG{p}{;}
+        \PYG{k+kt}{double} \PYG{n}{Radius}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{};}
 \PYG{p}{\PYGZcb{};}
 \PYG{k}{using} \PYG{k}{namespace} \PYG{n}{Geometry3D}\PYG{p}{;}
 \end{Verbatim}

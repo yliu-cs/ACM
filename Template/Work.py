@@ -8,6 +8,7 @@ TexHead = r"""\documentclass[a4paper,11pt]{article}
 \usepackage{zh_CN-Adobefonts_external}
 \usepackage{fancyhdr}
 \usepackage{minted}
+\usepackage{geometry}
 \usepackage[colorlinks]{hyperref}
 \setlength{\headheight}{15pt}
 
@@ -21,6 +22,7 @@ TexHead = r"""\documentclass[a4paper,11pt]{article}
 \author{Liu Yang}
 \title{Algorithm Library}
 
+\geometry{a4paper,scale=0.8}
 \begin{document} 
 \maketitle
 \newpage
@@ -55,8 +57,7 @@ def SearchWrite(Address, Cnt):
                         Str = Str + 'sub'
                     Str = Str + 'section{' + Classify[1:StrIndex] + '}\n'
                     File.write(Str)
-                    Index = Address[39:]
-                    print(Index)
+                    Index = Address[48:]
                     Str = '\\inputminted[breaklines]{c++}{' + Index  + '/' + Classify + '}\n'
                     File.write(Str)
                 else:
