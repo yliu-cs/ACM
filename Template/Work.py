@@ -33,7 +33,7 @@ TexTail = r"""
 \end{document}
 """
 
-File = open('Ly-Template.tex', 'w')
+File = open('Ly-Template.tex', 'w', encoding='utf-8')
 
 def SearchWrite(Address, Cnt):
     Classifies = os.listdir(Address)
@@ -55,7 +55,8 @@ def SearchWrite(Address, Cnt):
                         Str = Str + 'sub'
                     Str = Str + 'section{' + Classify[1:StrIndex] + '}\n'
                     File.write(Str)
-                    Index = Address[33:];
+                    Index = Address[39:]
+                    print(Index)
                     Str = '\\inputminted[breaklines]{c++}{' + Index  + '/' + Classify + '}\n'
                     File.write(Str)
                 else:
@@ -71,17 +72,11 @@ def Work():
     ClassifyPos = os.getcwd()
     SearchWrite(ClassifyPos, 0)
 
-def Run():
-    os.system('xelatex --shell-escape Ly-Template.tex')
-    os.system('xelatex --shell-escape Ly-Template.tex')
-    os.system('xelatex --shell-escape Ly-Template.tex')
-
 def main():
     File.write(TexHead)
     Work()
     File.write(TexTail)
     File.close()
-    Run()
 
 if __name__ == '__main__':
     main()
