@@ -7,21 +7,21 @@
 \PYG{k}{struct} \PYG{n}{Matrix} \PYG{p}{\PYGZob{}}
     \PYG{c+c1}{// 矩阵}
     \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{Mat}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{][}\PYG{l+m+mi}{2}\PYG{p}{];}
-    \PYG{n}{Matrix}\PYG{p}{()} \PYG{p}{\PYGZob{}\PYGZcb{}}
-    \PYG{c+c1}{// 重载矩阵乘法}
-    \PYG{n}{Matrix} \PYG{k}{operator} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Matrix} \PYG{k}{const} \PYG{o}{\PYGZam{}}\PYG{n}{A}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
-        \PYG{n}{Matrix} \PYG{n}{Res}\PYG{p}{;}
-        \PYG{n}{memset}\PYG{p}{(}\PYG{n}{Res}\PYG{p}{.}\PYG{n}{Mat}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{Res}\PYG{p}{.}\PYG{n}{Mat}\PYG{p}{));}
-        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-                \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{o}{++}\PYG{n}{k}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-                    \PYG{n}{Res}\PYG{p}{.}\PYG{n}{Mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{Res}\PYG{p}{.}\PYG{n}{Mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{+} \PYG{n}{Mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{k}\PYG{p}{]} \PYG{o}{*} \PYG{n}{A}\PYG{p}{.}\PYG{n}{Mat}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZpc{}} \PYG{n}{mod}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{mod}\PYG{p}{;}
-                \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{// 重载矩阵乘法}
+\PYG{n}{Matrix} \PYG{k}{operator} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Matrix} \PYG{o}{\PYGZam{}}\PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Matrix} \PYG{o}{\PYGZam{}}\PYG{n}{Key2}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+    \PYG{n}{Matrix} \PYG{n}{Res}\PYG{p}{;}
+    \PYG{n}{memset}\PYG{p}{(}\PYG{n}{Res}\PYG{p}{.}\PYG{n}{Mat}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{Res}\PYG{p}{.}\PYG{n}{Mat}\PYG{p}{));}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{o}{++}\PYG{n}{k}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{Res}\PYG{p}{.}\PYG{n}{Mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{Res}\PYG{p}{.}\PYG{n}{Mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{+} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{k}\PYG{p}{]} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Mat}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZpc{}} \PYG{n}{mod}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{mod}\PYG{p}{;}
             \PYG{p}{\PYGZcb{}}
         \PYG{p}{\PYGZcb{}}
-        \PYG{k}{return} \PYG{n}{Res}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
-\PYG{p}{\PYGZcb{};}
+    \PYG{k}{return} \PYG{n}{Res}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 重载矩阵快速幂}
 \PYG{n}{Matrix} \PYG{k}{operator} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{Matrix} \PYG{n}{Base}\PYG{p}{,} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{K}\PYG{p}{)} \PYG{p}{\PYGZob{}}

@@ -4,7 +4,7 @@ AllCnt = 0
 
 README = open('README.md', 'w')
 
-def Work():
+def GetREADME():
     global AllCnt
     README.write('# Count of Solved Problems  \n```\n')
     Index = os.getcwd() + '/ACCode'
@@ -17,11 +17,11 @@ def Work():
     README.write('```\n#### `Total:' + str(AllCnt) + '`\n')
 
 def main():
-    Work()
+    GetREADME()
     README.close()
-    os.system("git add .")
-    os.system("git commit -m Update")
-    os.system("git push origin master")
+    os.system('git add .')
+    os.system('git commit -m Update')
+    os.system('git push origin master')
 
 if __name__ == '__main__':
     main()
