@@ -14,7 +14,7 @@ LightOJ                  5
 LuoGu                    14  
 MiOJ                     6  
 NYOJ                     1  
-NowCoder                 82  
+NowCoder                 83  
 POJ                      91  
 PTA                      32  
 SPOJ                     1  
@@ -25,4 +25,4 @@ ZZNUOJ                   3
 ZZULIOJ                  7  
 hihoCoder                6  
 ```
-#### `Total:676`
+#### `Total:677`
