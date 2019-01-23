@@ -105,5 +105,29 @@ namespace Geometry3D {
         Point Center;
         double Radius;
     };
+
+    double CalVolume(Sphere Key) {
+        return 4.0 / 3.0 * pi * Key.Radius * Key.Radius * Key.Radius;
+    }
+
+    double SphereIntersectVolume(Sphere Key1, Sphere Key2) {
+        double Ans = 0.0;
+        double Dis = DisPointToPoint(Key1.Center, Key2.Center);
+        if (Sgn(Dis - Key1.Radius - Key2.Radius) >= 0) {
+            return Ans;
+        }
+        if (Sgn(Key2.Radius - (Dis + Key1.Radius)) >= 0) {
+            return CalVolume(Key1);
+        }
+        else if (Sgn(Key1.Radius - (Dis + Key2.Radius)) >= 0) {
+            return CalVolume(Key2);
+        }
+        double Length1 = ((Key1.Radius * Key1.Radius - Key2.Radius * Key2.Radius) / Dis + Dis) / 2;
+        double Length2 = Dis - Length1;
+        double X1 = Key1.Radius - Length1, X2 = Key2.Radius - Length2;
+        double V1 = pi * X1 * X1 * (Key1.Radius - X1 / 3.0);
+        double V2 = pi * X2 * X2 * (Key2.Radius - X2 / 3.0);
+        return V1 + V2;
+    }
 };
 using namespace Geometry3D;

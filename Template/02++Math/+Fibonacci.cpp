@@ -6,21 +6,21 @@ const int mod = 1e9 + 7;
 struct Matrix {
     // 矩阵
     long long Mat[2][2];
-    Matrix() {}
-    // 重载矩阵乘法
-    Matrix operator * (Matrix const &A) const {
-        Matrix Res;
-        memset(Res.Mat, 0, sizeof(Res.Mat));
-        for (int i = 0; i < 2; ++i) {
-            for (int j = 0; j < 2; ++j) {
-                for (int k = 0; k < 2; ++k) {
-                    Res.Mat[i][j] = (Res.Mat[i][j] + Mat[i][k] * A.Mat[k][j] % mod) % mod;
-                }
+};
+
+// 重载矩阵乘法
+Matrix operator * (Matrix &Key1, Matrix &Key2) const {
+    Matrix Res;
+    memset(Res.Mat, 0, sizeof(Res.Mat));
+    for (int i = 0; i < 2; ++i) {
+        for (int j = 0; j < 2; ++j) {
+            for (int k = 0; k < 2; ++k) {
+                Res.Mat[i][j] = (Res.Mat[i][j] + Key1.Mat[i][k] * Key2.Mat[k][j] % mod) % mod;
             }
         }
-        return Res;
     }
-};
+    return Res;
+}
 
 // 重载矩阵快速幂
 Matrix operator ^ (Matrix Base, long long K) {
