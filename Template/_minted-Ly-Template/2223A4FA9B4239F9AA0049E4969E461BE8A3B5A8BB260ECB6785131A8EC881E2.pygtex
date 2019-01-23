@@ -106,6 +106,30 @@
         \PYG{n}{Point} \PYG{n}{Center}\PYG{p}{;}
         \PYG{k+kt}{double} \PYG{n}{Radius}\PYG{p}{;}
     \PYG{p}{\PYGZcb{};}
+
+    \PYG{k+kt}{double} \PYG{n+nf}{CalVolume}\PYG{p}{(}\PYG{n}{Sphere} \PYG{n}{Key}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{return} \PYG{l+m+mf}{4.0} \PYG{o}{/} \PYG{l+m+mf}{3.0} \PYG{o}{*} \PYG{n}{pi} \PYG{o}{*} \PYG{n}{Key}\PYG{p}{.}\PYG{n}{Radius} \PYG{o}{*} \PYG{n}{Key}\PYG{p}{.}\PYG{n}{Radius} \PYG{o}{*} \PYG{n}{Key}\PYG{p}{.}\PYG{n}{Radius}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kt}{double} \PYG{n+nf}{SphereIntersectVolume}\PYG{p}{(}\PYG{n}{Sphere} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Sphere} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{double} \PYG{n}{Ans} \PYG{o}{=} \PYG{l+m+mf}{0.0}\PYG{p}{;}
+        \PYG{k+kt}{double} \PYG{n}{Dis} \PYG{o}{=} \PYG{n}{DisPointToPoint}\PYG{p}{(}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Center}\PYG{p}{,} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Center}\PYG{p}{);}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{Sgn}\PYG{p}{(}\PYG{n}{Dis} \PYG{o}{\PYGZhy{}} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Radius} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Radius}\PYG{p}{)} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{return} \PYG{n}{Ans}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{Sgn}\PYG{p}{(}\PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Radius} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n}{Dis} \PYG{o}{+} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Radius}\PYG{p}{))} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{return} \PYG{n}{CalVolume}\PYG{p}{(}\PYG{n}{Key1}\PYG{p}{);}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{Sgn}\PYG{p}{(}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Radius} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n}{Dis} \PYG{o}{+} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Radius}\PYG{p}{))} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{return} \PYG{n}{CalVolume}\PYG{p}{(}\PYG{n}{Key2}\PYG{p}{);}
+        \PYG{p}{\PYGZcb{}}
+        \PYG{k+kt}{double} \PYG{n}{Length1} \PYG{o}{=} \PYG{p}{((}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Radius} \PYG{o}{*} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Radius} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Radius} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Radius}\PYG{p}{)} \PYG{o}{/} \PYG{n}{Dis} \PYG{o}{+} \PYG{n}{Dis}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{;}
+        \PYG{k+kt}{double} \PYG{n}{Length2} \PYG{o}{=} \PYG{n}{Dis} \PYG{o}{\PYGZhy{}} \PYG{n}{Length1}\PYG{p}{;}
+        \PYG{k+kt}{double} \PYG{n}{X1} \PYG{o}{=} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Radius} \PYG{o}{\PYGZhy{}} \PYG{n}{Length1}\PYG{p}{,} \PYG{n}{X2} \PYG{o}{=} \PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Radius} \PYG{o}{\PYGZhy{}} \PYG{n}{Length2}\PYG{p}{;}
+        \PYG{k+kt}{double} \PYG{n}{V1} \PYG{o}{=} \PYG{n}{pi} \PYG{o}{*} \PYG{n}{X1} \PYG{o}{*} \PYG{n}{X1} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Radius} \PYG{o}{\PYGZhy{}} \PYG{n}{X1} \PYG{o}{/} \PYG{l+m+mf}{3.0}\PYG{p}{);}
+        \PYG{k+kt}{double} \PYG{n}{V2} \PYG{o}{=} \PYG{n}{pi} \PYG{o}{*} \PYG{n}{X2} \PYG{o}{*} \PYG{n}{X2} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Key2}\PYG{p}{.}\PYG{n}{Radius} \PYG{o}{\PYGZhy{}} \PYG{n}{X2} \PYG{o}{/} \PYG{l+m+mf}{3.0}\PYG{p}{);}
+        \PYG{k}{return} \PYG{n}{V1} \PYG{o}{+} \PYG{n}{V2}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{};}
 \PYG{k}{using} \PYG{k}{namespace} \PYG{n}{Geometry3D}\PYG{p}{;}
 \end{Verbatim}
