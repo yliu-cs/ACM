@@ -3,6 +3,7 @@
 51Nod                    1  
 AYITOJ                   4  
 Aizu                     5  
+BZOJ                     1  
 CodeForces               192  
 FZU                      4  
 HDU                      194  
@@ -26,4 +27,4 @@ ZZULIOJ                  7
 cometOJ                  10  
 hihoCoder                6  
 ```
-#### `Total:692`
+#### `Total:693`
