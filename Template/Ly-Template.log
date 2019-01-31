@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  26 JAN 2019 14:14
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  31 JAN 2019 14:32
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1124,68 +1124,70 @@ EBB18D9E.pygtex [14])
 766C252E.pygtex)
 (./_minted-Ly-Template/C35121D5D18E862CC73ABA700049E50F60931939733ADAE24D73A9CE
 5B551B9A.pygtex)
+(./_minted-Ly-Template/F71AC273D174989A6F79E23D0CD16B9B03E7C59AB008E9D6D3E85CD1
+9BBA4E8D.pygtex [16])
 (./_minted-Ly-Template/4F8B6DC41553337D7AD03BCF3B69173CAAC619B0D11A6D449BBACE24
-5ADF54C8.pygtex [16])
+5ADF54C8.pygtex [17])
 (./_minted-Ly-Template/ECA318CFB280EAB84BB2213AD09DD019F07C02A49E13549938DCFAA0
 9ADA5CEC.pygtex)
 (./_minted-Ly-Template/E2B6BFCFC23F776A9186BD3D124B12B4D7FF01F8FBC31045AE72F8B1
-9660BACA.pygtex [17])
+9660BACA.pygtex [18])
 (./_minted-Ly-Template/305C3F546BA44DB5D5754E8E9F868546DDF9036F95F8068368A4CE37
-DCD9BA64.pygtex) [18]
+DCD9BA64.pygtex) [19]
 (./_minted-Ly-Template/7067A8212680486867358D9652D3F2A86A0CD10BDC37637F926B3B9F
 0F83430F.pygtex)
 (./_minted-Ly-Template/1C72D2C007B5EF6B6083FD810AF1D01EF7D989F64426F3A3C8DA9D99
-94C9D9B5.pygtex [19])
+94C9D9B5.pygtex [20])
 (./_minted-Ly-Template/1EC27C456F5F885B4461E15426A98268CFF8BDC98AB16CFDA0DDB780
-8AB6A486.pygtex [20] [21])
+8AB6A486.pygtex [21] [22])
 (./_minted-Ly-Template/C7E3065F94946233A2A3E8AEDF1372F8A2EA823C89F20CA04155D12C
-9F1B6F7D.pygtex [22] [23])
+9F1B6F7D.pygtex [23] [24])
 (./_minted-Ly-Template/48336D4E7049EAD26E5621354D49E7401B4011324043CA395CE7560E
-B0788821.pygtex [24] [25] [26] [27])
+B0788821.pygtex [25] [26] [27] [28])
 (./_minted-Ly-Template/AC5F880B677CC529C83EAECFA9BAD523FBCF1A8C03DEAE1F1E5B9642
-E402DD14.pygtex [28] [29] [30] [31])
+E402DD14.pygtex [29] [30] [31] [32])
 (./_minted-Ly-Template/8F8A01966E639100C70C5C538C45A71594D69DF5C0212F7EFD520755
-F054EA76.pygtex [32]) [33]
+F054EA76.pygtex [33]) [34]
 (./_minted-Ly-Template/3A452D034B9D4C9087E1EFAF64F11AADEB6FCCC764E9DE13A7CC2AC0
-384117B7.pygtex [34] [35])
+384117B7.pygtex [35] [36])
 (./_minted-Ly-Template/E8A98024031830477AA62CD0F668186C5662D3366AC5C94858089A3C
-2EBED838.pygtex [36] [37])
+2EBED838.pygtex [37] [38])
 (./_minted-Ly-Template/D84A296BDC517703D7A62A7F7521E9A40EE11BAC17D8780FDCCB95F0
-37C302B8.pygtex [38])
+37C302B8.pygtex [39])
 (./_minted-Ly-Template/4D68BAED2F1D9DA8144256B27C8E385391E80371ABAE635286A90297
-E80A367E.pygtex [39])
+E80A367E.pygtex [40])
 (./_minted-Ly-Template/8ABC08377E00C2308EB750B802A77A9F97521492E92BA0244F7E6C62
-F6529622.pygtex [40] [41])
+F6529622.pygtex [41] [42])
 (./_minted-Ly-Template/6CE484FB87FDB9EA1D9F8871DB6EC27D858B12F5898F8274EAF6294E
-6527FAD4.pygtex [42])
+6527FAD4.pygtex [43])
 (./_minted-Ly-Template/F40303B3AC87026A3868CC0122E9928ECE0C45110FAFD3849BA3E48F
-7BAF6253.pygtex [43] [44])
+7BAF6253.pygtex [44] [45])
 (./_minted-Ly-Template/050A7CC6DD732D552729114B2FDD1555F9EBE109293DEC8498F59C2D
-2E7C8FEF.pygtex [45])
+2E7C8FEF.pygtex [46])
 (./_minted-Ly-Template/9C68AB2CDE638F2E06E63696F7C4E625E1AE1CC4226B74DEE297AE4C
-ED068338.pygtex [46])
+ED068338.pygtex [47])
 (./_minted-Ly-Template/51391EAC7DB04B1ADC16A95A44CF0B2ADDFDF2BAF9823068AB3D683B
-79916922.pygtex [47])
+79916922.pygtex [48])
 (./_minted-Ly-Template/DEA981300AA705DA3A408F95CACF7F6BD76318DC70B8803DD378142A
-A2526FAF.pygtex [48]) [49]
+A2526FAF.pygtex [49]) [50]
 (./_minted-Ly-Template/E03D500356C3F6489418BDC81828561BA7C6DB1543B7C03356B4A377
 1EC7CEFE.pygtex)
 (./_minted-Ly-Template/BB40C33E068CCA988C0D745AF3D1184059C06C14C0072F1DE0699A1D
-635B43EE.pygtex [50])
+635B43EE.pygtex [51])
 (./_minted-Ly-Template/6E7E02860024D78CEFD1E642F5D365E531EF3142441A8BF0C1A6490D
-CAADE8E6.pygtex [51])
+CAADE8E6.pygtex [52])
 (./_minted-Ly-Template/74D6C70797D0CB7C122876E708F12F244D4A558F81F9A5CC8EDC3F5B
 8D330A92.pygtex)
 (./_minted-Ly-Template/4120E089AB75D896BF76EC7C667E468609F55665607EA32620E9416C
-1BCFE16D.pygtex [52]) [53]
+1BCFE16D.pygtex [53]) [54]
 (./_minted-Ly-Template/A283A98D6EC2B4B4ADF258ABACEA25E2DD27B039F513865563C75A86
-C0D787B6.pygtex [54] [55] [56] [57] [58])
+C0D787B6.pygtex [55] [56] [57] [58] [59])
 (./_minted-Ly-Template/2223A4FA9B4239F9AA0049E4969E461BE8A3B5A8BB260ECB6785131A
-8EC881E2.pygtex [59] [60] [61]) [62]
+8EC881E2.pygtex [60] [61] [62]) [63]
 (./_minted-Ly-Template/49CEB8C4F6AB32E2CF098A09A27CB2C60591F112019D4356064F3C3F
 719BFD8E.pygtex)
 (./_minted-Ly-Template/F54E04B4EFF218BFB325C71532789078E3AEBA6EE1AD0EA284FD2DD3
-C58D1FF7.pygtex [63] [64] [65] [66]
+C58D1FF7.pygtex [64] [65] [66] [67]
 Overfull \hbox (56.62552pt too wide) in paragraph at lines 162--162
 []\TU/lmtt/m/n/10.95 1000000000[],[]10000000000LL[],[]100000000000LL[],[]100000
 0000000LL[],[]10000000000000LL[],|  
@@ -1201,28 +1203,28 @@ Overfull \hbox (91.11801pt too wide) in paragraph at lines 163--163
 (./_minted-Ly-Template/701AF22CDB2B355C94DE2E60099C6F9596A5BDFAB0F4491192E91DF1
 49EDA0E8.pygtex)
 (./_minted-Ly-Template/2DE9BA294831DCB0C58FFD7168A20468C3E15E5C71828FB0B2778B8B
-6CDF2A09.pygtex [67])
+6CDF2A09.pygtex [68])
 (./_minted-Ly-Template/118AB54897283D4CAE4A35332B33E2FC7BC1637C03EBD192262865E9
-1E115C37.pygtex) [68]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 167.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 167.
+1E115C37.pygtex) [69]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 169.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 169.
  (./Ly-Template.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 167.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 167.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 169.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 169.
 Package rerunfilecheck Info: File `Ly-Template.out' has not changed.
-(rerunfilecheck)             Checksum: 4B7B6F9EB8707A5878F81D88A5012F2D.
+(rerunfilecheck)             Checksum: 3F92023F322094B02F32052DC328CDF6.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 24683 strings out of 492933
- 493425 string characters out of 6136538
- 641875 words of memory out of 5000000
- 28373 multiletter control sequences out of 15000+600000
+ 24687 strings out of 492933
+ 493758 string characters out of 6136538
+ 642100 words of memory out of 5000000
+ 28374 multiletter control sequences out of 15000+600000
  536510 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  48i,12n,75p,1091b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Ly-Template.pdf (68 pages).
+Output written on Ly-Template.pdf (69 pages).
