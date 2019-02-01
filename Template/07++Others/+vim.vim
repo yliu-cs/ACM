@@ -4,15 +4,19 @@ set tabstop=4
 set shiftwidth=4
 set cindent
 set mouse=a
+set expandtab
+set backspace=indent,eol,start
 
-map <F9> :call Run()<CR>
+map <F2> :call SetTitle()<CR>
 
-func! Run()
-	exec "w"
-	if &filetype == "cpp"
-		exec "!g++ -Wall % -o %<"
-		exec "! ./%<"
-	elseif &filetype == "python"
-		exec "!python3 %"
-	endif
+func SetTitle()
+    let l = 0
+    let l = l + 1 | call setline(l, "#include <bits/stdc++.h>")
+    let l = l + 1 | call setline(l, "using namespace std;")
+    let l = l + 1 | call setline(l, "")
+    let l = l + 1 | call setline(l, "int main(int argc, char *argv[]) {")
+    let l = l + 1 | call setline(l, "    return 0;")
+    let l = l + 1 | call setline(l, "}")
+    let l = l + 1 | call setline(l, "")
 endfunc
+
