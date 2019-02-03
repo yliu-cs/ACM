@@ -1,6 +1,6 @@
 # Count of Solved Problems  
 ```
-51Nod                    1  
+51Nod                    3  
 AYITOJ                   4  
 Aizu                     5  
 BZOJ                     2  
@@ -28,4 +28,4 @@ ZZULIOJ                  7
 cometOJ                  15  
 hihoCoder                6  
 ```
-#### `Total:709`
+#### `Total:711`
