@@ -24,17 +24,7 @@ void Init() {
 
 // 并查集查询
 int Find(int X) {
-    int R = X;
-    while (Pre[R] != R) {
-        R = Pre[R];
-    }
-    int I = X, J;
-    while (I != R) {
-        J = Pre[I];
-        Pre[I] = R;
-        I = J;
-    }
-    return R;
+    return Pre[X] == X ? X : Pre[X] = Find(Pre[X]);
 }
 
 // 并查集合并

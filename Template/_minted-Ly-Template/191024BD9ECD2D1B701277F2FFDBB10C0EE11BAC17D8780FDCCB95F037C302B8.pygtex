@@ -25,17 +25,7 @@
 
 \PYG{c+c1}{// 并查集查询}
 \PYG{k+kt}{int} \PYG{n+nf}{Find}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{X}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k+kt}{int} \PYG{n}{R} \PYG{o}{=} \PYG{n}{X}\PYG{p}{;}
-    \PYG{k}{while} \PYG{p}{(}\PYG{n}{Pre}\PYG{p}{[}\PYG{n}{R}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{R}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{n}{R} \PYG{o}{=} \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{R}\PYG{p}{];}
-    \PYG{p}{\PYGZcb{}}
-    \PYG{k+kt}{int} \PYG{n}{I} \PYG{o}{=} \PYG{n}{X}\PYG{p}{,} \PYG{n}{J}\PYG{p}{;}
-    \PYG{k}{while} \PYG{p}{(}\PYG{n}{I} \PYG{o}{!=} \PYG{n}{R}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{n}{J} \PYG{o}{=} \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{I}\PYG{p}{];}
-        \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{I}\PYG{p}{]} \PYG{o}{=} \PYG{n}{R}\PYG{p}{;}
-        \PYG{n}{I} \PYG{o}{=} \PYG{n}{J}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-    \PYG{k}{return} \PYG{n}{R}\PYG{p}{;}
+    \PYG{k}{return} \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{X}\PYG{p}{]} \PYG{o}{==} \PYG{n}{X} \PYG{o}{?} \PYG{n+nl}{X} \PYG{p}{:} \PYG{n}{Pre}\PYG{p}{[}\PYG{n}{X}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Find}\PYG{p}{(}\PYG{n}{Pre}\PYG{p}{[}\PYG{n}{X}\PYG{p}{]);}
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 并查集合并}

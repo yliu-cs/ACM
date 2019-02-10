@@ -22,14 +22,11 @@
             \PYG{n}{Prime}\PYG{p}{[}\PYG{n}{Tot}\PYG{o}{++}\PYG{p}{]} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
             \PYG{n}{Phi}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;}
         \PYG{p}{\PYGZcb{}}
-        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{Tot}\PYG{p}{;} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-            \PYG{k}{if} \PYG{p}{(}\PYG{n}{i} \PYG{o}{*} \PYG{n}{Prime}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{maxn}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-                \PYG{k}{break}\PYG{p}{;}
-            \PYG{p}{\PYGZcb{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{n}{Tot} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{i} \PYG{o}{*} \PYG{n}{Prime}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{maxn}\PYG{p}{;} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)} \PYG{p}{\PYGZob{}}
             \PYG{n}{IsPrime}\PYG{p}{[}\PYG{n}{i} \PYG{o}{*} \PYG{n}{Prime}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
             \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZpc{}} \PYG{n}{Prime}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]))} \PYG{p}{\PYGZob{}}
                 \PYG{n}{Phi}\PYG{p}{[}\PYG{n}{i} \PYG{o}{*} \PYG{n}{Prime}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]]} \PYG{o}{=} \PYG{n}{Phi}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{n}{Prime}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
-            \PYG{k}{break}\PYG{p}{;}
+                \PYG{k}{break}\PYG{p}{;}
             \PYG{p}{\PYGZcb{}}
             \PYG{k}{else} \PYG{p}{\PYGZob{}}
                 \PYG{n}{Phi}\PYG{p}{[}\PYG{n}{i} \PYG{o}{*} \PYG{n}{Prime}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]]} \PYG{o}{=} \PYG{n}{Phi}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Prime}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{);}

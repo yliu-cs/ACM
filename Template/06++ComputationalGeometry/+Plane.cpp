@@ -1,65 +1,27 @@
 #include<bits/stdc++.h>
 
 namespace Geometry {
-    const double INF = 1e20;
+    typedef double db;
+    const db INF = 1e20;
     const int maxn = 1;
-    const double eps = 1e-8;
-    const double delta = 0.98;
+    const db eps = 1e-8;
+    const db delta = 0.98;
 
-    int Sgn(double Key) {
-        if (fabs(Key) < eps) {
-            return 0;
-        }
-        return Key < 0 ? -1 : 1;
-    }
+    int Sgn(db Key) { return fabs(Key) < eps ? 0 : (Key < 0 ? -1 : 1);}
 
     /*----------点(向量)----------*/
-    struct Point {
-        double X, Y;
-    };
-
+    struct Point {db X, Y;};
     typedef Point Vector;
-
-    bool operator == (Point Key1, Point Key2) {
-        return Sgn(Key1.X - Key2.X) == 0 && Sgn(Key1.Y - Key2.Y) == 0;
-    }
-
-    Vector operator + (Vector Key1, Vector Key2) {
-        return (Vector){Key1.X + Key2.X, Key1.Y + Key2.Y};
-    }
-
-    Vector operator - (Vector Key1, Vector Key2) {
-        return (Vector){Key1.X - Key2.X, Key1.Y - Key2.Y};
-    }
-
-    double operator * (Vector Key1, Vector Key2) {
-        return Key1.X * Key2.X + Key1.Y * Key2.Y;
-    }
-
-    double Length(Vector Key) {
-        return sqrt(Key * Key);
-    }
-
-    double operator ^ (Vector Key1, Vector Key2) {
-        return Length((Vector){Key1.X * Key2.Y - Key1.Y * Key2.X});
-    }
-
-    Vector operator * (Vector Key1, double Key2) {
-        return (Vector){Key1.X * Key2, Key1.Y * Key2};
-    }
-
-    Vector operator / (Vector Key1, double Key2) {
-        return (Vector){Key1.X / Key2, Key1.Y / Key2};
-    }
-
-    double DisPointToPoint(Point Key1, Point Key2) {
-        return sqrt((Key1 - Key2) * (Key1 - Key2));
-    }
-
-    double GetAngle(Vector Key1, Vector Key2) {
-        return fabs(atan2(fabs(Key1 ^ Key2), Key1 * Key2));
-    }
-
+    bool operator == (Point Key1, Point Key2) {return Sgn(Key1.X - Key2.X) == 0 && Sgn(Key1.Y - Key2.Y) == 0;}
+    Vector operator + (Vector Key1, Vector Key2) {return (Vector){Key1.X + Key2.X, Key1.Y + Key2.Y};}
+    Vector operator - (Vector Key1, Vector Key2) {return (Vector){Key1.X - Key2.X, Key1.Y - Key2.Y};}
+    db operator * (Vector Key1, Vector Key2) {return Key1.X * Key2.X + Key1.Y * Key2.Y;}
+    db operator ^ (Vector Key1, Vector Key2) {return Key1.X * Key2.Y - Key1.Y * Key2.X;}
+    Vector operator * (Vector Key1, db Key2) {return (Vector){Key1.X * Key2, Key1.Y * Key2};}
+    Vector operator / (Vector Key1, db Key2) {return (Vector){Key1.X / Key2, Key1.Y / Key2};}
+    db Length(Vector Key) {return sqrt(Key * Key);}
+    db DisPointToPoint(Point Key1, Point Key2) {return sqrt((Key1 - Key2) * (Key1 - Key2));}
+    db GetAngle(Vector Key1, Vector Key2) {return fabs(atan2(fabs(Key1 ^ Key2), Key1 * Key2));}
     bool IsConvexHull(vector<Point> points) {
         int N = (int)points.size();
         for (int i = 0; i < N; ++i) {
@@ -72,7 +34,6 @@ namespace Geometry {
 
     /*----------多边形----------*/
     typedef vector<Point> Polygon;
-
     Polygon ConvexHull(vector<Point> points) {
         int N = (int)points.size();
         Polygon Ans;
@@ -105,9 +66,9 @@ namespace Geometry {
         return Ans;
     }
 
-    double MinimimCircleCoverage(vector<Point> points) {
+    db MinimimCircleCoverage(vector<Point> points) {
         Point Cur = points[0];
-        double Probability = 10000, Ans = INF;
+        db Probability = 10000, Ans = INF;
         while (Probability > eps) {
             int Book = 0;
             for (int i = 0; i < (int)points.size(); ++i) {
@@ -115,7 +76,7 @@ namespace Geometry {
                     Book = i;
                 }
             }
-            double Radius = Distance(Cur, points[Book]);
+            db Radius = Distance(Cur, points[Book]);
             Ans = min(Ans, Radius);
             Cur = Cur + (points[Book] - Cur) / Radius * Probability;
             Probability *= delta;
@@ -124,31 +85,17 @@ namespace Geometry {
     }
 
     /*----------线(线段)----------*/
-    struct Line {
-        Point S, T;
-    };
-
+    struct Line {Point S, T;};
     typedef Line Segment;
-
-    double Length(Segment Key) {
-        return DisPointToPoint(Key.S, Key.T);
-    }
-
-    double DisPointToLine(Point Key1, Line Key2) {
-        return fabs((Key1 - Key2.S) ^ (Key2.T - Key2.S)) / Length(Key2);
-    }
-
-    double DisPointToSegment(Point Key1, Segment Key2) {
+    db Length(Segment Key) {return DisPointToPoint(Key.S, Key.T);}
+    db DisPointToLine(Point Key1, Line Key2) {return fabs((Key1 - Key2.S) ^ (Key2.T - Key2.S)) / Length(Key2);}
+    db DisPointToSegment(Point Key1, Segment Key2) {
         if (Sgn((Key1 - Key2.S) * (Key2.T - Key2.S)) < 0 || Sgn((Key1 - Key2.T) * (Key2.S - Key2.T)) < 0) {
             return min(DisPointToPoint(Key1, Key2.S), DisPointToPoint(Key1, Key2.T));
         }
         return DisPointToLine(Key1, Key2);
     }
-
-    bool IsParallel(Line Key1, Line Key2) {
-        return Sgn((Key1.S - Key1.T) ^ (Key2.S - Key2.T)) == 0;
-    }
-
+    bool IsParallel(Line Key1, Line Key2) {return Sgn((Key1.S - Key1.T) ^ (Key2.S - Key2.T)) == 0;}
     bool IsSegInterSeg(Segment Key1, Segment Key2) {
         return
             max(Key1.S.X, Key1.T.X) >= min(Key2.S.X, Key2.T.X) &&
@@ -158,37 +105,27 @@ namespace Geometry {
             Sgn((Key2.S - Key1.T) ^ (Key1.S - Key1.T)) * Sgn((Key2.T - Key1.T) ^ (Key1.S - Key1.T)) <= 0 &&
             Sgn((Key1.S - Key2.T) ^ (Key2.S - Key2.T)) * Sgn((Key1.T - Key2.T) ^ (Key2.S - Key2.T)) <= 0;
     }
-
     bool IsLineInterSeg(Line Key1, Segment Key2) {
         return Sgn((Key2.S - Key1.T) ^ (Key1.S - Key1.T)) * Sgn((Key2.T - Key1.T) ^ (Key1.S - Key1.T)) <= 0;
     }
-
     bool IsLineInterLine(Line Key1, Line Key2) {
         return !IsParallel(Key1, Key2) || (IsParallel(Key1, Key2) && !(Sgn((Key1.S - Key2.S) ^ (Key2.T - Key2.S)) == 0));
     }
-
     Point Cross(Line Key1, Line Key2) {
-        double Temp = ((Key1.S - Key2.S) ^ (Key2.S - Key2.T)) / ((Key1.S - Key1.T) ^ (Key2.S - Key2.T));
+        db Temp = ((Key1.S - Key2.S) ^ (Key2.S - Key2.T)) / ((Key1.S - Key1.T) ^ (Key2.S - Key2.T));
         return (Point){Key1.S.X + (Key1.T.X - Key1.S.X) * Temp, Key1.S.Y + (Key1.T.Y - Key1.S.Y) * Temp};
     }
 
     /*----------半平面----------*/
     // 表示S->T逆时针(左侧)的半平面
-    struct HalfPlane:public Line {
-        double Angle;
-    };
-
-    void CalAngle(HalfPlane Key) {
-        Key.Angle = atan2(Key.T.Y - Key.S.Y, Key.T.X - Key.S.X);
-    }
-
+    struct HalfPlane:public Line {db Angle;};
+    void CalAngle(HalfPlane Key) {Key.Angle = atan2(Key.T.Y - Key.S.Y, Key.T.X - Key.S.X);}
     bool operator < (HalfPlane Key1, HalfPlane Key2) {
         if (Sgn(Key1.Angle - Key2.Angle) > 0) {
             return Key1.Angle < Key2.Angle;
         }
         return Sgn((Key1.S - Key2.S) ^ (Key2.T - Key2.S)) < 0;
     }
-
     struct HalfPlaneInsert {
         int Tot;
         HalfPlane halfplanes[maxn];
@@ -257,7 +194,7 @@ namespace Geometry {
     /*----------圆----------*/
     struct Circle {
         Point Center;
-        double Radius;
+        db Radius;
     };
 };
 using namespace Geometry;
