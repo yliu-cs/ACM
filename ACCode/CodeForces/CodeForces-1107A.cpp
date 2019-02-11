@@ -1,15 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int Q;
-int N;
-string Str;
-bool Flag;
-
 int main(int argc, char *argv[]) {
-    cin >> Q;
+    int Q; cin >> Q;
     for (int Query = 1; Query <= Q; ++Query) {
-        cin >> N >> Str;
+        int N; string Str; cin >> N >> Str;
         if (N == 2 && Str[0] >= Str[1]) {
             cout << "NO" << endl;
             continue;
