@@ -2,8 +2,6 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
     int n, m, p; cin >> n >> m >> p;
     vector<int> s(p);
     for (auto &it : s) cin >> it;
@@ -44,7 +42,7 @@ int main(int argc, char *argv[]) {
             }
         }
     };
-    bool flag = true;
+    bool flag(true);
     while (flag) {
         flag = false;
         for (int i = 0; i < p; ++i) {
