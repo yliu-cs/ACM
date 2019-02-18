@@ -19,7 +19,7 @@ MiOJ                     6
 NYOJ                     1  
 NowCoder                 85  
 POJ                      91  
-PTA                      33  
+PTA                      47  
 SPOJ                     1  
 UVA                      8  
 UVALive                  1  
@@ -29,4 +29,4 @@ ZZULIOJ                  7
 cometOJ                  18  
 hihoCoder                6  
 ```
-#### `Total:750`
+#### `Total:764`
