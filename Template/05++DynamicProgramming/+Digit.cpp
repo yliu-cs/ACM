@@ -13,7 +13,7 @@ long long Dfs(long long Site, long long Statu, bool Pre, bool Limit) {
     if (!Limit && ~Dp[Site][Statu]) {
         return Dp[Site][Statu];
     }
-    long long Max = Limie ? Digit[Site] : 9;
+    long long Max = Limit ? Digit[Site] : 9;
     long long Ans = 0;
     for (int i = 0; i <= Max; ++i) {
         long long NowStatu = /*状态转移*/;

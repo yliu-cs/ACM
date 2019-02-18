@@ -8,6 +8,7 @@ namespace Geometry {
     const db delta = 0.98;
 
     int Sgn(db Key) { return fabs(Key) < eps ? 0 : (Key < 0 ? -1 : 1);}
+    int Cmp(db Key1, db Key2) {return Sgn(Key1 - Key2);}
 
     /*----------点(向量)----------*/
     struct Point {db X, Y;};
@@ -21,6 +22,7 @@ namespace Geometry {
     Vector operator / (Vector Key1, db Key2) {return (Vector){Key1.X / Key2, Key1.Y / Key2};}
     db Length(Vector Key) {return sqrt(Key * Key);}
     db DisPointToPoint(Point Key1, Point Key2) {return sqrt((Key1 - Key2) * (Key1 - Key2));}
+    db DisPointToPoint2(Point Key1, Point Key2) {return (Key1 - Key2) * (Key1 - Key2);}
     db GetAngle(Vector Key1, Vector Key2) {return fabs(atan2(fabs(Key1 ^ Key2), Key1 * Key2));}
     bool IsConvexHull(vector<Point> points) {
         int N = (int)points.size();
@@ -32,25 +34,30 @@ namespace Geometry {
 
     /*----------多边形----------*/
     typedef vector<Point> Polygon;
-    Polygon GrahamScan(vector<Point> points) {
-        int N = (int)points.size();
+    Polygon GrahamScan(Point points, int N) {
         Polygon Ans;
-        if (N < 3) return Ans;
+        if (N < 3) {
+            for (int i = 0; i < N; ++i) Ans.push_back(points[i]);
+            return Ans;
+        }
         int Basic = 0;
         for (int i = 0; i < N; ++i)
             if (points[i].Y > points[Basic].Y || (points[i].Y == points[Basic].Y && points[i].X < points[Basic].X))
                 Basic = i;
         std::swap(points[0], points[Basic]);
-        std::sort(points.begin() + 1, points.end(), [&] (Point Key1, Point Key2) {
+        std::sort(points + 1, points + N, [&](Point Key1, Point Key2) {
             double Temp = (Key1 - points[0]) ^ (Key2 - points[0]);
             if (Sgn(Temp) > 0) return true;
-            else if (Sgn(Temp) == 0 && Distance(Key1, points[0]) < Distance(Key2, points[0])) return true;
+            else if (Sgn(Temp) == 0 && Cmp(Distance(Key2, points[0]), Distance(Key1, points[0])) > 0) return true;
             return false;
         });
         Ans.push_back(points[0]);
-        for (int i = 1; i < N; ++i)
-            while ((int)Ans.size() >= 2 && Sgn((Ans.back() - Ans[(Ans.size()) - 2]) ^ (points[i] - Ans[(int)Ans.size() - 2])) <= 0)
+        for (int i = 1; i < N; ++i) {
+            while ((int)Ans.size() >= 2 && Sgn((Ans.back() - Ans[(Ans.size()) - 2]) ^ (points[i] - Ans[(int)Ans.size() - 2])) <= 0) {
                 Ans.pop_back();
+            }
+            Ans.push_back(points[i]);
+        }
         return Ans;
     }
 

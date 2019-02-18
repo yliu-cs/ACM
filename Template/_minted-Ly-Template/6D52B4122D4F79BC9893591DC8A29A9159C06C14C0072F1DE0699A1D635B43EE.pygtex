@@ -14,7 +14,7 @@
     \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{Limit} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{o}{\PYGZti{}}\PYG{n}{Dp}\PYG{p}{[}\PYG{n}{Site}\PYG{p}{][}\PYG{n}{Statu}\PYG{p}{])} \PYG{p}{\PYGZob{}}
         \PYG{k}{return} \PYG{n}{Dp}\PYG{p}{[}\PYG{n}{Site}\PYG{p}{][}\PYG{n}{Statu}\PYG{p}{];}
     \PYG{p}{\PYGZcb{}}
-    \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{Max} \PYG{o}{=} \PYG{n}{Limie} \PYG{o}{?} \PYG{n}{Digit}\PYG{p}{[}\PYG{n}{Site}\PYG{p}{]} \PYG{o}{:} \PYG{l+m+mi}{9}\PYG{p}{;}
+    \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{Max} \PYG{o}{=} \PYG{n}{Limit} \PYG{o}{?} \PYG{n}{Digit}\PYG{p}{[}\PYG{n}{Site}\PYG{p}{]} \PYG{o}{:} \PYG{l+m+mi}{9}\PYG{p}{;}
     \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{Ans} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
     \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{Max}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{NowStatu} \PYG{o}{=} \PYG{c+cm}{/*状态转移*/}\PYG{p}{;}

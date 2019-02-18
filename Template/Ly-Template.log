@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  10 FEB 2019 13:39
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  18 FEB 2019 16:58
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1172,7 +1172,7 @@ ED068338.pygtex [47])
 A2526FAF.pygtex [49]) [50]
 (./_minted-Ly-Template/E03D500356C3F6489418BDC81828561BA7C6DB1543B7C03356B4A377
 1EC7CEFE.pygtex)
-(./_minted-Ly-Template/BB40C33E068CCA988C0D745AF3D1184059C06C14C0072F1DE0699A1D
+(./_minted-Ly-Template/6D52B4122D4F79BC9893591DC8A29A9159C06C14C0072F1DE0699A1D
 635B43EE.pygtex [51])
 (./_minted-Ly-Template/6E7E02860024D78CEFD1E642F5D365E531EF3142441A8BF0C1A6490D
 CAADE8E6.pygtex [52])
@@ -1180,14 +1180,73 @@ CAADE8E6.pygtex [52])
 8D330A92.pygtex)
 (./_minted-Ly-Template/4120E089AB75D896BF76EC7C667E468609F55665607EA32620E9416C
 1BCFE16D.pygtex [53]) [54]
-(./_minted-Ly-Template/2BAC15C3DD705150E9B99DA28C86F3AFDD27B039F513865563C75A86
-C0D787B6.pygtex [55] [56] [57] [58])
+(./_minted-Ly-Template/F3023501F10651ECF8AACAE124F82285CC38B06CFCE0506D0D96B6E8
+80D38090.pygtex [55]
+Overfull \hbox (22.13303pt too wide) in paragraph at lines 73--73
+\TU/lmtt/m/n/10.95 min(min(disSP(k1,k2,k3),disSP(k1,k2,k4)),min(disSP(k3,k4,k1)
+,disSP(k3,k4,k2)));|  
+ []
+
+[56] [57]
+Overfull \hbox (27.88177pt too wide) in paragraph at lines 140--140
+\TU/lmtt/m/n/10.95 a[]=[](k2.o[]-[]k1.o).abs2(),cosA[]=[](k1.r[]*[]k1.r[]+[]a[]
+-[]k2.r[]*[]k2.r)[]/[]([]2[][]*[]k1.r[]*[]sqrt(max(a,(db)[]0.0[])));|  
+ []
+
+
+Overfull \hbox (16.38428pt too wide) in paragraph at lines 155--155
+\TU/lmtt/m/n/10.95 {(line){k1.o[]-[]del[]*[]k1.r,k2.o[]-[]del[]*[]k2.r},(line){
+k1.o[]+[]del[]*[]k1.r,k2.o[]+[]del[]*[]k2.r}};|  
+ []
+
+[58] [59] [60] [61]
+Overfull \hbox (4.88678pt too wide) in paragraph at lines 339--339
+\TU/lmtt/m/n/10.95 w1[]=[]clockwise(U[where1[]-[][]1[]],U[where1],k),w2[]=[]clo
+ckwise(D[where2[]-[][]1[]],D[where2],k);|  
+ []
+
+[62]
+Overfull \hbox (10.63553pt too wide) in paragraph at lines 371--371
+\TU/lmtt/m/n/10.95 ((k.x[]==[]lx[]&&[]k.y[]>[]U[[]0[]].y)[]||[](where1[]&&[]clo
+ckwise(U[where1[]-[][]1[]],U[where1],k)[]==[][]1[])){|  
+ []
+
+[63]
+Overfull \hbox (27.88177pt too wide) in paragraph at lines 413--413
+\TU/lmtt/m/n/10.95 ans.x[]=[]p.x[]*[](l.x[]*[]l.x[]*[]([]1[][]-[]c)[]+[]c)[]+[]
+p.y[]*[](l.x[]*[]l.y[]*[]([]1[][]-[]c)[]-[]l.z[]*[]s)[]+[]p.z[]*[](l.x[]*[]l.z[
+]*[]([]1[][]-[]c)[]+[]l.y[]*[]s);|  
+ []
+
+
+Overfull \hbox (27.88177pt too wide) in paragraph at lines 414--414
+\TU/lmtt/m/n/10.95 ans.y[]=[]p.x[]*[](l.x[]*[]l.y[]*[]([]1[][]-[]c)[]+[]l.z[]*[
+]s)[]+[]p.y[]*[](l.y[]*[]l.y[]*[]([]1[][]-[]c)[]+[]c)[]+[]p.z[]*[](l.y[]*[]l.z[
+]*[]([]1[][]-[]c)[]-[]l.x[]*[]s);|  
+ []
+
+
+Overfull \hbox (27.88177pt too wide) in paragraph at lines 415--415
+\TU/lmtt/m/n/10.95 ans.z[]=[]p.x[]*[](l.x[]*[]l.z[]*[]([]1[][]-[]c)[]-[]l.y[]*[
+]s)[]+[]p.y[]*[](l.y[]*[]l.z[]*[]([]1[][]-[]c)[]+[]l.x[]*[]s)[]+[]p.z[]*[](l.x[
+]*[]l.x[]*[]([]1[][]-[]c)[]+[]c);|  
+ []
+
+[64] [65]
+Overfull \hbox (56.62552pt too wide) in paragraph at lines 528--528
+\TU/lmtt/m/n/10.95 dif[]|=[](sign(dot(dir,cross(nowF[(i[]+[][]1[])[]%[]n][]-[]n
+owF[i],nowF[(i[]+[][]1[])[]%[]n][]-[]nowF[i])))[]==-[][]1[]);|  
+ []
+
+[66])
+(./_minted-Ly-Template/6E481C5C04DA181EDA11E5C1B8D020DEDD27B039F513865563C75A86
+C0D787B6.pygtex [67] [68] [69] [70])
 (./_minted-Ly-Template/2223A4FA9B4239F9AA0049E4969E461BE8A3B5A8BB260ECB6785131A
-8EC881E2.pygtex [59] [60] [61]) [62]
+8EC881E2.pygtex [71] [72] [73]) [74]
 (./_minted-Ly-Template/49CEB8C4F6AB32E2CF098A09A27CB2C60591F112019D4356064F3C3F
 719BFD8E.pygtex)
 (./_minted-Ly-Template/F54E04B4EFF218BFB325C71532789078E3AEBA6EE1AD0EA284FD2DD3
-C58D1FF7.pygtex [63] [64] [65] [66]
+C58D1FF7.pygtex [75] [76] [77] [78]
 Overfull \hbox (56.62552pt too wide) in paragraph at lines 162--162
 []\TU/lmtt/m/n/10.95 1000000000[],[]10000000000LL[],[]100000000000LL[],[]100000
 0000000LL[],[]10000000000000LL[],|  
@@ -1203,28 +1262,28 @@ Overfull \hbox (91.11801pt too wide) in paragraph at lines 163--163
 (./_minted-Ly-Template/701AF22CDB2B355C94DE2E60099C6F9596A5BDFAB0F4491192E91DF1
 49EDA0E8.pygtex)
 (./_minted-Ly-Template/2DE9BA294831DCB0C58FFD7168A20468C3E15E5C71828FB0B2778B8B
-6CDF2A09.pygtex [67])
+6CDF2A09.pygtex [79])
 (./_minted-Ly-Template/D994027F782A20A54C08D9B96BEF8C4B7BC1637C03EBD192262865E9
-1E115C37.pygtex) [68]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 169.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 169.
+1E115C37.pygtex) [80]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
  (./Ly-Template.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 169.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 169.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 171.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 171.
 Package rerunfilecheck Info: File `Ly-Template.out' has not changed.
-(rerunfilecheck)             Checksum: EB013EEC1E60FBEEF1C37FCB27385363.
+(rerunfilecheck)             Checksum: 35FC973782AAF7E35C83C46B85096A66.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 24687 strings out of 492933
- 493758 string characters out of 6136538
- 644100 words of memory out of 5000000
- 28374 multiletter control sequences out of 15000+600000
+ 24691 strings out of 492933
+ 494091 string characters out of 6136538
+ 652300 words of memory out of 5000000
+ 28375 multiletter control sequences out of 15000+600000
  536510 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 48i,12n,75p,1091b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,12n,75p,1163b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Ly-Template.pdf (68 pages).
+Output written on Ly-Template.pdf (80 pages).

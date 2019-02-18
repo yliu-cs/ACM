@@ -9,6 +9,7 @@
     \PYG{k}{const} \PYG{n}{db} \PYG{n}{delta} \PYG{o}{=} \PYG{l+m+mf}{0.98}\PYG{p}{;}
 
     \PYG{k+kt}{int} \PYG{n+nf}{Sgn}\PYG{p}{(}\PYG{n}{db} \PYG{n}{Key}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{fabs}\PYG{p}{(}\PYG{n}{Key}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{eps} \PYG{o}{?} \PYG{l+m+mi}{0} \PYG{o}{:} \PYG{p}{(}\PYG{n}{Key} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0} \PYG{o}{?} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{:} \PYG{l+m+mi}{1}\PYG{p}{);\PYGZcb{}}
+    \PYG{k+kt}{int} \PYG{n+nf}{Cmp}\PYG{p}{(}\PYG{n}{db} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{db} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{Sgn}\PYG{p}{(}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{);\PYGZcb{}}
 
     \PYG{c+cm}{/*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}点(向量)\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*/}
     \PYG{k}{struct} \PYG{n}{Point} \PYG{p}{\PYGZob{}}\PYG{n}{db} \PYG{n}{X}\PYG{p}{,} \PYG{n}{Y}\PYG{p}{;\PYGZcb{};}
@@ -22,47 +23,41 @@
     \PYG{n}{Vector} \PYG{k}{operator} \PYG{o}{/} \PYG{p}{(}\PYG{n}{Vector} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{db} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{p}{(}\PYG{n}{Vector}\PYG{p}{)\PYGZob{}}\PYG{n}{Key1}\PYG{p}{.}\PYG{n}{X} \PYG{o}{/} \PYG{n}{Key2}\PYG{p}{,} \PYG{n}{Key1}\PYG{p}{.}\PYG{n}{Y} \PYG{o}{/} \PYG{n}{Key2}\PYG{p}{\PYGZcb{};\PYGZcb{}}
     \PYG{n}{db} \PYG{n}{Length}\PYG{p}{(}\PYG{n}{Vector} \PYG{n}{Key}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{Key} \PYG{o}{*} \PYG{n}{Key}\PYG{p}{);\PYGZcb{}}
     \PYG{n}{db} \PYG{n}{DisPointToPoint}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{sqrt}\PYG{p}{((}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{));\PYGZcb{}}
+    \PYG{n}{db} \PYG{n}{DisPointToPoint2}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{p}{(}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{)} \PYG{o}{*} \PYG{p}{(}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{Key2}\PYG{p}{);\PYGZcb{}}
     \PYG{n}{db} \PYG{n}{GetAngle}\PYG{p}{(}\PYG{n}{Vector} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Vector} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{fabs}\PYG{p}{(}\PYG{n}{atan2}\PYG{p}{(}\PYG{n}{fabs}\PYG{p}{(}\PYG{n}{Key1} \PYG{o}{\PYGZca{}} \PYG{n}{Key2}\PYG{p}{),} \PYG{n}{Key1} \PYG{o}{*} \PYG{n}{Key2}\PYG{p}{));\PYGZcb{}}
     \PYG{k+kt}{bool} \PYG{n}{IsConvexHull}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Point}\PYG{o}{\PYGZgt{}} \PYG{n}{points}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k+kt}{int} \PYG{n}{N} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{points}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();}
-        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-            \PYG{k}{if} \PYG{p}{(}\PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{points}\PYG{p}{[(}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{N}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{points}\PYG{p}{[(}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{N}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{points}\PYG{p}{[(}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{N}\PYG{p}{]))} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{points}\PYG{p}{[(}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{N}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{points}\PYG{p}{[(}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{N}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{points}\PYG{p}{[(}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{N}\PYG{p}{]))} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{0}\PYG{p}{)}
                 \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
-            \PYG{p}{\PYGZcb{}}
-        \PYG{p}{\PYGZcb{}}
         \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 
     \PYG{c+cm}{/*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}多边形\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*/}
     \PYG{k}{typedef} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Point}\PYG{o}{\PYGZgt{}} \PYG{n}{Polygon}\PYG{p}{;}
-    \PYG{n}{Polygon} \PYG{n+nf}{ConvexHull}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Point}\PYG{o}{\PYGZgt{}} \PYG{n}{points}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k+kt}{int} \PYG{n}{N} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{points}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();}
+    \PYG{n}{Polygon} \PYG{n+nf}{GrahamScan}\PYG{p}{(}\PYG{n}{Point} \PYG{n}{points}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{N}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{n}{Polygon} \PYG{n}{Ans}\PYG{p}{;}
         \PYG{k}{if} \PYG{p}{(}\PYG{n}{N} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{3}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{n}{Ans}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
             \PYG{k}{return} \PYG{n}{Ans}\PYG{p}{;}
         \PYG{p}{\PYGZcb{}}
         \PYG{k+kt}{int} \PYG{n}{Basic} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
-        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-            \PYG{k}{if} \PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Y} \PYG{o}{\PYGZgt{}} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Basic}\PYG{p}{].}\PYG{n}{Y} \PYG{o}{||} \PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Y} \PYG{o}{==} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Basic}\PYG{p}{].}\PYG{n}{Y} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{X} \PYG{o}{\PYGZlt{}} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Basic}\PYG{p}{].}\PYG{n}{X}\PYG{p}{))} \PYG{p}{\PYGZob{}}
-                    \PYG{n}{Basic} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
-            \PYG{p}{\PYGZcb{}}
-        \PYG{p}{\PYGZcb{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Y} \PYG{o}{\PYGZgt{}} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Basic}\PYG{p}{].}\PYG{n}{Y} \PYG{o}{||} \PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{Y} \PYG{o}{==} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Basic}\PYG{p}{].}\PYG{n}{Y} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{X} \PYG{o}{\PYGZlt{}} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Basic}\PYG{p}{].}\PYG{n}{X}\PYG{p}{))}
+                \PYG{n}{Basic} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
         \PYG{n}{std}\PYG{o}{::}\PYG{n}{swap}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Basic}\PYG{p}{]);}
-        \PYG{n}{std}\PYG{o}{::}\PYG{n}{sort}\PYG{p}{(}\PYG{n}{points}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{()} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{points}\PYG{p}{.}\PYG{n}{end}\PYG{p}{(),} \PYG{p}{[}\PYG{o}{\PYGZam{}}\PYG{p}{]} \PYG{p}{(}\PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Point} \PYG{o}{\PYGZam{}}\PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{std}\PYG{o}{::}\PYG{n}{sort}\PYG{p}{(}\PYG{n}{points} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{points} \PYG{o}{+} \PYG{n}{N}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZam{}}\PYG{p}{](}\PYG{n}{Point} \PYG{n}{Key1}\PYG{p}{,} \PYG{n}{Point} \PYG{n}{Key2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
             \PYG{k+kt}{double} \PYG{n}{Temp} \PYG{o}{=} \PYG{p}{(}\PYG{n}{Key1} \PYG{o}{\PYGZhy{}} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{Key2} \PYG{o}{\PYGZhy{}} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]);}
-            \PYG{k}{if} \PYG{p}{(}\PYG{n}{Temp} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-                \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
-            \PYG{p}{\PYGZcb{}}
-            \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{Temp} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Key1}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])} \PYG{o}{\PYGZlt{}} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Key2}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]))} \PYG{p}{\PYGZob{}}
-                \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
-            \PYG{p}{\PYGZcb{}}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{Sgn}\PYG{p}{(}\PYG{n}{Temp}\PYG{p}{)} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+            \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{Sgn}\PYG{p}{(}\PYG{n}{Temp}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{Cmp}\PYG{p}{(}\PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Key2}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]),} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Key1}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]))} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
             \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
         \PYG{p}{\PYGZcb{});}
         \PYG{n}{Ans}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]);}
-        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{N}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
             \PYG{k}{while} \PYG{p}{((}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{Ans}\PYG{p}{.}\PYG{n}{size}\PYG{p}{()} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{2} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{Sgn}\PYG{p}{((}\PYG{n}{Ans}\PYG{p}{.}\PYG{n}{back}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{n}{Ans}\PYG{p}{[(}\PYG{n}{Ans}\PYG{p}{.}\PYG{n}{size}\PYG{p}{())} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}\PYG{p}{])} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{Ans}\PYG{p}{[(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{Ans}\PYG{p}{.}\PYG{n}{size}\PYG{p}{()} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}\PYG{p}{]))} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
                 \PYG{n}{Ans}\PYG{p}{.}\PYG{n}{pop\PYGZus{}back}\PYG{p}{();}
             \PYG{p}{\PYGZcb{}}
+            \PYG{n}{Ans}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
         \PYG{p}{\PYGZcb{}}
         \PYG{k}{return} \PYG{n}{Ans}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
@@ -72,11 +67,9 @@
         \PYG{n}{db} \PYG{n}{Probability} \PYG{o}{=} \PYG{l+m+mi}{10000}\PYG{p}{,} \PYG{n}{Ans} \PYG{o}{=} \PYG{n}{INF}\PYG{p}{;}
         \PYG{k}{while} \PYG{p}{(}\PYG{n}{Probability} \PYG{o}{\PYGZgt{}} \PYG{n}{eps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
             \PYG{k+kt}{int} \PYG{n}{Book} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
-            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{points}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-                \PYG{k}{if} \PYG{p}{(}\PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Cur}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{o}{\PYGZgt{}} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Cur}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Book}\PYG{p}{]))} \PYG{p}{\PYGZob{}}
+            \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{points}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)}
+                \PYG{k}{if} \PYG{p}{(}\PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Cur}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{o}{\PYGZgt{}} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Cur}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Book}\PYG{p}{]))}
                     \PYG{n}{Book} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
-                \PYG{p}{\PYGZcb{}}
-            \PYG{p}{\PYGZcb{}}
             \PYG{n}{db} \PYG{n}{Radius} \PYG{o}{=} \PYG{n}{Distance}\PYG{p}{(}\PYG{n}{Cur}\PYG{p}{,} \PYG{n}{points}\PYG{p}{[}\PYG{n}{Book}\PYG{p}{]);}
             \PYG{n}{Ans} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{Ans}\PYG{p}{,} \PYG{n}{Radius}\PYG{p}{);}
             \PYG{n}{Cur} \PYG{o}{=} \PYG{n}{Cur} \PYG{o}{+} \PYG{p}{(}\PYG{n}{points}\PYG{p}{[}\PYG{n}{Book}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{Cur}\PYG{p}{)} \PYG{o}{/} \PYG{n}{Radius} \PYG{o}{*} \PYG{n}{Probability}\PYG{p}{;}
