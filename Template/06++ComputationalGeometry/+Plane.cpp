@@ -24,45 +24,33 @@ namespace Geometry {
     db GetAngle(Vector Key1, Vector Key2) {return fabs(atan2(fabs(Key1 ^ Key2), Key1 * Key2));}
     bool IsConvexHull(vector<Point> points) {
         int N = (int)points.size();
-        for (int i = 0; i < N; ++i) {
-            if (Sgn((points[(i + 1) % N] - points[i]) ^ (points[(i + 2) % N] - points[(i + 1) % N])) < 0) {
+        for (int i = 0; i < N; ++i)
+            if (Sgn((points[(i + 1) % N] - points[i]) ^ (points[(i + 2) % N] - points[(i + 1) % N])) < 0)
                 return false;
-            }
-        }
         return true;
     }
 
     /*----------多边形----------*/
     typedef vector<Point> Polygon;
-    Polygon ConvexHull(vector<Point> points) {
+    Polygon GrahamScan(vector<Point> points) {
         int N = (int)points.size();
         Polygon Ans;
-        if (N < 3) {
-            return Ans;
-        }
+        if (N < 3) return Ans;
         int Basic = 0;
-        for (int i = 0; i < N; ++i) {
-            if (points[i].Y > points[Basic].Y || (points[i].Y == points[Basic].Y && points[i].X < points[Basic].X)) {
-                    Basic = i;
-            }
-        }
+        for (int i = 0; i < N; ++i)
+            if (points[i].Y > points[Basic].Y || (points[i].Y == points[Basic].Y && points[i].X < points[Basic].X))
+                Basic = i;
         std::swap(points[0], points[Basic]);
-        std::sort(points.begin() + 1, points.end(), [&] (Point &Key1, Point &Key2) {
+        std::sort(points.begin() + 1, points.end(), [&] (Point Key1, Point Key2) {
             double Temp = (Key1 - points[0]) ^ (Key2 - points[0]);
-            if (Temp > 0) {
-                return true;
-            }
-            else if (!Temp && Distance(Key1, points[0]) < Distance(Key2, points[0])) {
-                return true;
-            }
+            if (Sgn(Temp) > 0) return true;
+            else if (Sgn(Temp) == 0 && Distance(Key1, points[0]) < Distance(Key2, points[0])) return true;
             return false;
         });
         Ans.push_back(points[0]);
-        for (int i = 2; i < N; ++i) {
-            while ((int)Ans.size() >= 2 && Sgn((Ans.back() - Ans[(Ans.size()) - 2]) ^ (points[i] - Ans[(int)Ans.size() - 2])) <= 0) {
+        for (int i = 1; i < N; ++i)
+            while ((int)Ans.size() >= 2 && Sgn((Ans.back() - Ans[(Ans.size()) - 2]) ^ (points[i] - Ans[(int)Ans.size() - 2])) <= 0)
                 Ans.pop_back();
-            }
-        }
         return Ans;
     }
 
@@ -71,11 +59,9 @@ namespace Geometry {
         db Probability = 10000, Ans = INF;
         while (Probability > eps) {
             int Book = 0;
-            for (int i = 0; i < (int)points.size(); ++i) {
-                if (Distance(Cur, points[i]) > Distance(Cur, points[Book])) {
+            for (int i = 0; i < (int)points.size(); ++i)
+                if (Distance(Cur, points[i]) > Distance(Cur, points[Book]))
                     Book = i;
-                }
-            }
             db Radius = Distance(Cur, points[Book]);
             Ans = min(Ans, Radius);
             Cur = Cur + (points[Book] - Cur) / Radius * Probability;
