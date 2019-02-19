@@ -8,8 +8,14 @@
 \PYG{n}{set} \PYG{n}{expandtab}
 \PYG{n}{set} \PYG{n}{backspace}\PYG{o}{=}\PYG{n}{indent}\PYG{p}{,}\PYG{n}{eol}\PYG{p}{,}\PYG{n}{start}
 
-\PYG{n}{map} \PYG{o}{\PYGZlt{}}\PYG{n}{F2}\PYG{o}{\PYGZgt{}} \PYG{o}{:}\PYG{n}{call} \PYG{n}{SetTitle}\PYG{p}{()}\PYG{o}{\PYGZlt{}}\PYG{n}{CR}\PYG{o}{\PYGZgt{}}
+\PYG{n}{map} \PYG{o}{\PYGZlt{}}\PYG{n}{F9}\PYG{o}{\PYGZgt{}} \PYG{o}{:}\PYG{n}{call} \PYG{n}{Run}\PYG{p}{()}\PYG{o}{\PYGZlt{}}\PYG{n}{CR}\PYG{o}{\PYGZgt{}}
+\PYG{n}{func}\PYG{o}{!} \PYG{n}{Run}\PYG{p}{()}
+    \PYG{n}{exec} \PYG{l+s}{\PYGZdq{}w\PYGZdq{}}
+    \PYG{n}{exec} \PYG{l+s}{\PYGZdq{}!g++ \PYGZpc{} \PYGZhy{}o \PYGZpc{}\PYGZlt{}\PYGZdq{}}
+    \PYG{n}{exec} \PYG{l+s}{\PYGZdq{}! \PYGZpc{}\PYGZlt{}\PYGZdq{}}
+\PYG{n}{endfunc}
 
+\PYG{n}{map} \PYG{o}{\PYGZlt{}}\PYG{n}{F2}\PYG{o}{\PYGZgt{}} \PYG{o}{:}\PYG{n}{call} \PYG{n}{SetTitle}\PYG{p}{()}\PYG{o}{\PYGZlt{}}\PYG{n}{CR}\PYG{o}{\PYGZgt{}}
 \PYG{n}{func} \PYG{n}{SetTitle}\PYG{p}{()}
     \PYG{n}{let} \PYG{n}{l} \PYG{o}{=} \PYG{l+m+mi}{0}
     \PYG{n}{let} \PYG{n}{l} \PYG{o}{=} \PYG{n}{l} \PYG{o}{+} \PYG{l+m+mi}{1} \PYG{o}{|} \PYG{n}{call} \PYG{n}{setline}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}\PYGZsh{}include \PYGZlt{}bits/stdc++.h\PYGZgt{}\PYGZdq{}}\PYG{p}{)}
