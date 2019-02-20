@@ -42,13 +42,13 @@ namespace Geometry {
         }
         int Basic = 0;
         for (int i = 0; i < N; ++i)
-            if (points[i].Y > points[Basic].Y || (points[i].Y == points[Basic].Y && points[i].X < points[Basic].X))
+            if (Cmp(points[i].X, points[Basic].X) < 0 || (Cmp(points[i].X, points[Basic].X) == 0 && Cmp(points[i].Y, points[Basic].Y) < 0))
                 Basic = i;
         std::swap(points[0], points[Basic]);
         std::sort(points + 1, points + N, [&](Point Key1, Point Key2) {
             double Temp = (Key1 - points[0]) ^ (Key2 - points[0]);
             if (Sgn(Temp) > 0) return true;
-            else if (Sgn(Temp) == 0 && Cmp(Distance(Key2, points[0]), Distance(Key1, points[0])) > 0) return true;
+            else if (Sgn(Temp) == 0 && Cmp(DisPointToPoint(Key2, points[0]), DisPointToPoint(Key1, points[0])) > 0) return true;
             return false;
         });
         Ans.push_back(points[0]);
@@ -70,7 +70,7 @@ namespace Geometry {
                 if (Distance(Cur, points[i]) > Distance(Cur, points[Book]))
                     Book = i;
             db Radius = Distance(Cur, points[Book]);
-            Ans = min(Ans, Radius);
+            if (Cmp(Radius, Ans) < 0) Ans = Radius;
             Cur = Cur + (points[Book] - Cur) / Radius * Probability;
             Probability *= delta;
         }

@@ -5,7 +5,7 @@ AYITOJ                   4
 Aizu                     5  
 AtCoder                  3  
 BZOJ                     2  
-CodeForces               233  
+CodeForces               236  
 FZU                      4  
 HDU                      194  
 HRBUST                   1  
@@ -14,11 +14,11 @@ JiSuanKe                 7
 Kattis                   1  
 LibreOJ                  2  
 LightOJ                  5  
-LuoGu                    16  
+LuoGu                    17  
 MiOJ                     6  
 NYOJ                     1  
 NowCoder                 85  
-POJ                      91  
+POJ                      92  
 PTA                      65  
 SPOJ                     1  
 UVA                      8  
@@ -29,4 +29,4 @@ ZZULIOJ                  7
 cometOJ                  18  
 hihoCoder                6  
 ```
-#### `Total:786`
+#### `Total:791`
