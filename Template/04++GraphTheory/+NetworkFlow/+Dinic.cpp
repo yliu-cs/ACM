@@ -23,7 +23,7 @@ int Depth[maxn];
 int Current[maxn];
 
 // 链式向前星初始化
-void Init() {
+void GraphInit() {
     Tot = 0;
     memset(Head, -1, sizeof(Head));
 }
@@ -59,9 +59,7 @@ bool Bfs(int Start, int End) {
 // Dfs搜索增广路径，Cur:当前搜索顶点，End:终点，NowFlow:当前最大流
 int Dfs(int Cur, int End, int NowFlow) {
     // 搜索到终点或者可用当前最大流为0返回
-    if (Cur == End || NowFlow == 0) {
-        return NowFlow;
-    }
+    if (Cur == End || NowFlow == 0) return NowFlow;
     // UsableFlow:可用流量，当达到NowFlow时不可再增加，FindFlow:递归深搜到的最大流
     int UsableFlow = 0, FindFlow;
     // &i=Current[Cur]为当前弧优化，每次更新Current[Cur]
@@ -73,27 +71,21 @@ int Dfs(int Cur, int End, int NowFlow) {
                 // 反边
                 edges[i ^ 1].Weight += FindFlow;
                 UsableFlow += FindFlow;
-                if (UsableFlow == NowFlow) {
-                    return NowFlow;
-                }
+                if (UsableFlow == NowFlow) return NowFlow;
             }
         }
     }
     // 炸点优化
-    if (!UsableFlow) {
-        Depth[Cur] = -2;
-    }
+    if (!UsableFlow) Depth[Cur] = -2;
     return UsableFlow;
 }
 
-// Dinic算法，Start:起点，End:终点
+// Dinic算法，Start:起点，End:终点（图中所有顶点均在[Start,End]范围内）
 int Dinic(int Start, int End) {
     int MaxFlow = 0;
     while (Bfs(Start, End)) {
         // 当前弧优化
-        for (int i = 1; i <= N; ++i) {
-            Current[i] = Head[i];
-        }
+        for (int i = Start; i <= End; ++i) Current[i] = Head[i];
         MaxFlow += Dfs(Start, End, INF);
     }
     // 返回结果

@@ -34,6 +34,21 @@ namespace Geometry {
 
     /*----------多边形----------*/
     typedef vector<Point> Polygon;
+    void RotateCaliper() {
+        Ans = -1e20;
+        if (ConvexHull.size() == 3) {
+            if (Cmp(DisPointToPoint2(ConvexHull[0], ConvexHull[1]), Ans) > 0) Ans = DisPointToPoint2(ConvexHull[0], ConvexHull[1]);
+            if (Cmp(DisPointToPoint2(ConvexHull[0], ConvexHull[2]), Ans) > 0) Ans = DisPointToPoint2(ConvexHull[0], ConvexHull[2]);
+            if (Cmp(DisPointToPoint2(ConvexHull[1], ConvexHull[2]), Ans) > 0) Ans = DisPointToPoint2(ConvexHull[1], ConvexHull[2]);
+            return;
+        }
+        int Cur = 2, Size = ConvexHull.size();
+        for (int i = 0; i < Size; ++i) {
+            while (Cmp(fabs((ConvexHull[i] - ConvexHull[(i + 1) % Size]) ^ (ConvexHull[Cur] - ConvexHull[(i + 1) % Size])), fabs((ConvexHull[i] - ConvexHull[(i + 1) % Size]) ^ (ConvexHull[(Cur + 1) % Size] - ConvexHull[(i + 1) % Size]))) < 0) Cur = (Cur + 1) % Size;
+            if (Cmp(DisPointToPoint2(ConvexHull[i], ConvexHull[Cur]), Ans) > 0) Ans = DisPointToPoint2(ConvexHull[i], ConvexHull[Cur]);
+        }
+    }
+
     Polygon GrahamScan(Point points, int N) {
         Polygon Ans;
         if (N < 3) {
@@ -82,7 +97,7 @@ namespace Geometry {
     typedef Line Segment;
     db Length(Segment Key) {return DisPointToPoint(Key.S, Key.T);}
     db DisPointToLine(Point Key1, Line Key2) {return fabs((Key1 - Key2.S) ^ (Key2.T - Key2.S)) / Length(Key2);}
-    db DisPointToSegment(Point Key1, Segment Key2) {
+    db DisPointToSeg(Point Key1, Segment Key2) {
         if (Sgn((Key1 - Key2.S) * (Key2.T - Key2.S)) < 0 || Sgn((Key1 - Key2.T) * (Key2.S - Key2.T)) < 0) {
             return min(DisPointToPoint(Key1, Key2.S), DisPointToPoint(Key1, Key2.T));
         }
@@ -103,6 +118,9 @@ namespace Geometry {
     }
     bool IsLineInterLine(Line Key1, Line Key2) {
         return !IsParallel(Key1, Key2) || (IsParallel(Key1, Key2) && !(Sgn((Key1.S - Key2.S) ^ (Key2.T - Key2.S)) == 0));
+    }
+    bool IsPointOnSeg(Point Key1, Segment Key2) {
+        return Sgn((Key1 - Key2.S) ^ (Key2.T - Key2.S)) == 0 && Sgn((Key1 - Key2.S) * (Key1 - Key2.T)) <= 0;
     }
     Point Cross(Line Key1, Line Key2) {
         db Temp = ((Key1.S - Key2.S) ^ (Key2.S - Key2.T)) / ((Key1.S - Key1.T) ^ (Key2.S - Key2.T));
@@ -127,24 +145,18 @@ namespace Geometry {
         Point Res[maxn];
         int Front, Tail;
 
-        void Push(HalfPlane Key) {
-            halfplanes[Tot++] = Key;
-        }
+        void Push(HalfPlane Key) {halfplanes[Tot++] = Key;}
 
         void Unique() {
             int Cnt = 1;
-            for (int i = 1; i < Tot; ++i) {
-                if (fabs(halfplanes[i].Angle - halfplanes[i - 1].Angle) > eps) {
+            for (int i = 1; i < Tot; ++i)
+                if (fabs(halfplanes[i].Angle - halfplanes[i - 1].Angle) > eps)
                     halfplanes[Cnt++] = halfplanes[i];
-                }
-            }
             Tot = Cnt;
         }
 
         bool IsHalfPlaneInsert() {
-            for (int i = 0; i < Tot; ++i) {
-                CalAngle(halfplanes[i]);
-            }
+            for (int i = 0; i < Tot; ++i) CalAngle(halfplanes[i]);
             sort(halfplanes, halfplanes + Tot);
             Unique();
             Deque[Front = 0] = halfplanes[0];
@@ -175,20 +187,13 @@ namespace Geometry {
 
         void GetHalfPlaneInsertConvex() {
             int Cnt = 0;
-            for (int i = Front; i < Tail; ++i) {
-                Res[Cnt++] = Cross(Deque[i], Deque[i + 1]);
-            }
-            if (Front < Tail - 1) {
-                Res[Cnt++] = Cross(Deque[Front], Deque[Tail]);
-            }
+            for (int i = Front; i < Tail; ++i) Res[Cnt++] = Cross(Deque[i], Deque[i + 1]);
+            if (Front < Tail - 1) Res[Cnt++] = Cross(Deque[Front], Deque[Tail]);
         }
     };
 
     /*----------圆----------*/
-    struct Circle {
-        Point Center;
-        db Radius;
-    };
+    struct Circle {Point Center; db Radius;};
 };
 using namespace Geometry;
 
