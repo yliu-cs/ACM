@@ -132,9 +132,7 @@ namespace Geometry {
     struct HalfPlane:public Line {db Angle;};
     void CalAngle(HalfPlane Key) {Key.Angle = atan2(Key.T.Y - Key.S.Y, Key.T.X - Key.S.X);}
     bool operator < (HalfPlane Key1, HalfPlane Key2) {
-        if (Sgn(Key1.Angle - Key2.Angle) > 0) {
-            return Key1.Angle < Key2.Angle;
-        }
+        if (Sgn(Key1.Angle - Key2.Angle) > 0) return Key1.Angle < Key2.Angle;
         return Sgn((Key1.S - Key2.S) ^ (Key2.T - Key2.S)) < 0;
     }
     struct HalfPlaneInsert {
@@ -162,23 +160,13 @@ namespace Geometry {
             Deque[Front = 0] = halfplanes[0];
             Deque[Tail = 1] = halfplanes[1];
             for (int i = 2; i < Tot; ++i) {
-                if (fabs((Deque[Tail].T - Deque[Tail].S) ^ (Deque[Tail - 1].T - Deque[Tail - 1].S)) < eps || fabs((Deque[Front].T - Deque[Front].S) ^ (Deque[Front + 1].T - Deque[Front + 1].S)) < eps) {
-                    return false;
-                }
-                while (Front < Tail && ((Cross(Deque[Tail], Deque[Tail - 1]) - halfplanes[i].S) ^ (halfplanes[i].T - halfplanes[i].S)) > eps) {
-                    Tail--;
-                }
-                while (Front < Tail && ((Cross(Deque[Front], Deque[Front + 1]) - halfplanes[i].S) ^ (halfplanes[i].T - halfplanes[i].S)) > eps) {
-                    Front++;
-                }
+                if (fabs((Deque[Tail].T - Deque[Tail].S) ^ (Deque[Tail - 1].T - Deque[Tail - 1].S)) < eps || fabs((Deque[Front].T - Deque[Front].S) ^ (Deque[Front + 1].T - Deque[Front + 1].S)) < eps) return false;
+                while (Front < Tail && ((Cross(Deque[Tail], Deque[Tail - 1]) - halfplanes[i].S) ^ (halfplanes[i].T - halfplanes[i].S)) > eps) Tail--;
+                while (Front < Tail && ((Cross(Deque[Front], Deque[Front + 1]) - halfplanes[i].S) ^ (halfplanes[i].T - halfplanes[i].S)) > eps) Front++;
                 Deque[++Tail] = halfplanes[i];
             }
-            while (Front < Tail && ((Cross(Deque[Tail], Deque[Tail - 1]) - Deque[Front].S) ^ (Deque[Front].T - Deque[Front].S)) > eps) {
-                Tail--;
-            }
-            while (Front < Tail && ((Cross(Deque[Front], Deque[Front - 1]) - Deque[Tail].S) ^ (Deque[Tail].T - Deque[Tail].T)) > eps) {
-                Front++;
-            }
+            while (Front < Tail && ((Cross(Deque[Tail], Deque[Tail - 1]) - Deque[Front].S) ^ (Deque[Front].T - Deque[Front].S)) > eps) Tail--;
+            while (Front < Tail && ((Cross(Deque[Front], Deque[Front - 1]) - Deque[Tail].S) ^ (Deque[Tail].T - Deque[Tail].T)) > eps) Front++;
             if (Tail <= Front + 1) {
                 return false;
             }
