@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  21 FEB 2019 17:59
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  25 FEB 2019 21:26
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1239,14 +1239,14 @@ owF[i],nowF[(i[]+[][]1[])[]%[]n][]-[]nowF[i])))[]==-[][]1[]);|
  []
 
 [66])
-(./_minted-Ly-Template/A7F70D495B2321B62BEDBB8CE7DE39F7DD27B039F513865563C75A86
+(./_minted-Ly-Template/58371F39444E0CA15572F7712A66F157DD27B039F513865563C75A86
 C0D787B6.pygtex [67] [68] [69] [70] [71])
-(./_minted-Ly-Template/2223A4FA9B4239F9AA0049E4969E461BE8A3B5A8BB260ECB6785131A
-8EC881E2.pygtex [72] [73] [74]) [75]
+(./_minted-Ly-Template/BBAC366F3182B11C43E2D8817E4437C2E8A3B5A8BB260ECB6785131A
+8EC881E2.pygtex [72] [73]) [74]
 (./_minted-Ly-Template/49CEB8C4F6AB32E2CF098A09A27CB2C60591F112019D4356064F3C3F
 719BFD8E.pygtex)
 (./_minted-Ly-Template/F54E04B4EFF218BFB325C71532789078E3AEBA6EE1AD0EA284FD2DD3
-C58D1FF7.pygtex [76] [77] [78] [79]
+C58D1FF7.pygtex [75] [76] [77] [78]
 Overfull \hbox (56.62552pt too wide) in paragraph at lines 162--162
 []\TU/lmtt/m/n/10.95 1000000000[],[]10000000000LL[],[]100000000000LL[],[]100000
 0000000LL[],[]10000000000000LL[],|  
@@ -1262,9 +1262,9 @@ Overfull \hbox (91.11801pt too wide) in paragraph at lines 163--163
 (./_minted-Ly-Template/701AF22CDB2B355C94DE2E60099C6F9596A5BDFAB0F4491192E91DF1
 49EDA0E8.pygtex)
 (./_minted-Ly-Template/2DE9BA294831DCB0C58FFD7168A20468C3E15E5C71828FB0B2778B8B
-6CDF2A09.pygtex [80])
+6CDF2A09.pygtex [79])
 (./_minted-Ly-Template/F0A7D1ACD41386C3FF94EE74997BB66C7BC1637C03EBD192262865E9
-1E115C37.pygtex) [81]
+1E115C37.pygtex) [80]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
  (./Ly-Template.aux)
@@ -1286,4 +1286,4 @@ Here is how much of TeX's memory you used:
  1348 hyphenation exceptions out of 8191
  48i,12n,75p,1304b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Ly-Template.pdf (81 pages).
+Output written on Ly-Template.pdf (80 pages).

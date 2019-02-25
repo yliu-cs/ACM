@@ -60,9 +60,9 @@
 \contentsline {subsection}{\numberline {6.1}JlsGeo}{55}{subsection.6.1}% 
 \contentsline {subsection}{\numberline {6.2}Plane}{67}{subsection.6.2}% 
 \contentsline {subsection}{\numberline {6.3}Stereoscopic}{72}{subsection.6.3}% 
-\contentsline {section}{\numberline {7}Others}{76}{section.7}% 
-\contentsline {subsection}{\numberline {7.1}Factorial}{76}{subsection.7.1}% 
-\contentsline {subsection}{\numberline {7.2}FastIO}{76}{subsection.7.2}% 
-\contentsline {subsection}{\numberline {7.3}LeepYear}{80}{subsection.7.3}% 
-\contentsline {subsection}{\numberline {7.4}NimGame}{81}{subsection.7.4}% 
-\contentsline {subsection}{\numberline {7.5}vim}{81}{subsection.7.5}% 
+\contentsline {section}{\numberline {7}Others}{75}{section.7}% 
+\contentsline {subsection}{\numberline {7.1}Factorial}{75}{subsection.7.1}% 
+\contentsline {subsection}{\numberline {7.2}FastIO}{75}{subsection.7.2}% 
+\contentsline {subsection}{\numberline {7.3}LeepYear}{79}{subsection.7.3}% 
+\contentsline {subsection}{\numberline {7.4}NimGame}{80}{subsection.7.4}% 
+\contentsline {subsection}{\numberline {7.5}vim}{80}{subsection.7.5}% 
