@@ -13,7 +13,7 @@ namespace Geometry {
     /*----------点(向量)----------*/
     struct Point {db X, Y;};
     typedef Point Vector;
-    bool operator == (Point Key1, Point Key2) {return Sgn(Key1.X - Key2.X) == 0 && Sgn(Key1.Y - Key2.Y) == 0;}
+    bool operator == (Point Key1, Point Key2) {return Cmp(Key1.X, Key2.X) == 0 && Cmp(Key1.Y, Key2.Y) == 0;}
     Vector operator + (Vector Key1, Vector Key2) {return (Vector){Key1.X + Key2.X, Key1.Y + Key2.Y};}
     Vector operator - (Vector Key1, Vector Key2) {return (Vector){Key1.X - Key2.X, Key1.Y - Key2.Y};}
     db operator * (Vector Key1, Vector Key2) {return Key1.X * Key2.X + Key1.Y * Key2.Y;}
@@ -24,6 +24,8 @@ namespace Geometry {
     db DisPointToPoint(Point Key1, Point Key2) {return sqrt((Key1 - Key2) * (Key1 - Key2));}
     db DisPointToPoint2(Point Key1, Point Key2) {return (Key1 - Key2) * (Key1 - Key2);}
     db GetAngle(Vector Key1, Vector Key2) {return fabs(atan2(fabs(Key1 ^ Key2), Key1 * Key2));}
+    Vector Rotate(Vector Key, db Angle) {return (Vector){Key.X * cos(Angle) - Key.Y * sin(Angle), Key.X * sin(Angle) + Key.Y * cos(Angle)};}
+    Vector Rotate90(Vector Key) {return (Vector){-Key.Y, Key.X};}
     bool IsConvexHull(vector<Point> points) {
         int N = (int)points.size();
         for (int i = 0; i < N; ++i)

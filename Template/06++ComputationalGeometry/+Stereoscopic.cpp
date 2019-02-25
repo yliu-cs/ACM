@@ -78,5 +78,24 @@ namespace Geometry3D {
         db V2 = pi * X2 * X2 * (Key2.Radius - X2 / 3.0);
         return V1 + V2;
     }
+
+    bool IsRayInterSphere(Ray Key1, Sphere Key2, db &Dis) {
+        db A = Key1.Dir * Key1.Dir;
+        db B = (Key1.Origin - Key2.Center) * Key1.Dir * 2.0;
+        db C = ((Key1.Origin - Key2.Center) * (Key1.Origin - Key2.Center)) - (Key2.Radius * Key2.Radius);
+        db Delta = B * B - 4.0 * A * C;
+        if (Sgn(Delta) < 0) return false;
+        db X1 = (-B - sqrt(Delta)) / (2.0 * A), X2 = (-B + sqrt(Delta)) / (2.0 * A);
+        if (Cmp(X1, X2) > 0) swap(X1, X2);
+        if (Sgn(X1) <= 0) return false;
+        Dis = X1;
+        return true;
+    }
+
+    void Reflect(Ray &Key1, Sphere Key2, db Dis) {
+        Point Pos = Key1.Origin + (Key1.Dir * Dis);
+        Vector Temp = Key2.Center + (((Pos - Key2.Center) * ((Pos - Key2.Center) * (Key1.Origin - Key2.Center))) / GetLen2(Pos - Key2.Center));
+        Key1.Dir = Temp * 2.0 - Key1.Origin - Pos; Key1.Origin = Pos;
+    }
 };
 using namespace Geometry3D;

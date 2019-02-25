@@ -21,7 +21,7 @@ NYOJ                     1
 NowCoder                 85  
 POJ                      92  
 PTA                      84  
-SGU                      1  
+SGU                      2  
 SPOJ                     1  
 UVA                      8  
 UVALive                  1  
@@ -31,4 +31,4 @@ ZZULIOJ                  7
 cometOJ                  18  
 hihoCoder                6  
 ```
-#### `Total:820`
+#### `Total:821`
