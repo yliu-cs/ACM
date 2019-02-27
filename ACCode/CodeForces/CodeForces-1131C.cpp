@@ -6,7 +6,6 @@ int main(int argc, char *argv[]) {
     vector<int> a(n);
     for (auto &it : a) cin >> it;
     sort(a.begin(), a.end());
-    reverse(a.begin(), a.end());
     deque<int> Deq;
     bool Flag = true;
     for (auto &it : a) {
