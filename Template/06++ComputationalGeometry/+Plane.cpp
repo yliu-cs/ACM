@@ -51,7 +51,7 @@ namespace Geometry {
         }
     }
 
-    Polygon GrahamScan(Point points, int N) {
+    Polygon GrahamScan(Point points[], int N) {
         Polygon Ans;
         if (N < 3) {
             for (int i = 0; i < N; ++i) Ans.push_back(points[i]);
