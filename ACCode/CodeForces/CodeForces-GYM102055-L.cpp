@@ -1,31 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int maxn = 1e8 + 5;
+const int maxn = 1e3 + 5;
 typedef long long ll;
 
-bool isPrime[maxn];
+bool is_prime[maxn];
 vector<int> prime;
 
-bool _isPrime(ll key) {
+bool IsPrime(ll key) {
     for (ll i = 2; i * i <= key; ++i) {
         if (key % i == 0) return false;
     }
     return true;
 }
 
-void _sieve() {
-    memset(isPrime, true, sizeof(isPrime));
+void Sieve() {
+    memset(is_prime, true, sizeof(is_prime));
     for (ll i = 2; i < maxn; ++i) {
-        if (isPrime[i]) {
+        if (is_prime[i]) {
             prime.push_back(i);
-            for (ll j = i * i; j < maxn; j += i) isPrime[j] = false;
+            for (ll j = i * i; j < maxn; j += i) is_prime[j] = false;
         }
     }
 }
 
-void _solve(ll x) {
+void Solve(ll x) {
     for (auto &p : prime) {
-        if (_isPrime(x - p)) {
+        if (IsPrime(x - p)) {
             cout << p << " " << x - p << endl;
             break;
         }
@@ -33,7 +33,7 @@ void _solve(ll x) {
 }
 
 int main() {
-    _sieve();
+    Sieve();
     int t; cin >> t;
     for (int Case = 1; Case <= t; ++Case) {
         ll n; cin >> n;
@@ -50,7 +50,7 @@ int main() {
             cout << 2 << " " << 2 << " " << 2 << " " << 2 << " ";
             n -= 8;
         }
-        _solve(n);
+        Solve(n);
     }
     return 0;
 }
