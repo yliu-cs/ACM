@@ -57,15 +57,15 @@ namespace Geometry {
     void RotateCaliper() {
         ans = -1e20;
         if (ConvexHull.size() == 3) {
-            if (Cmp(Dispointtopoint2(ConvexHull[0], ConvexHull[1]), ans) > 0) ans = Dispointtopoint2(ConvexHull[0], ConvexHull[1]);
-            if (Cmp(Dispointtopoint2(ConvexHull[0], ConvexHull[2]), ans) > 0) ans = Dispointtopoint2(ConvexHull[0], ConvexHull[2]);
-            if (Cmp(Dispointtopoint2(ConvexHull[1], ConvexHull[2]), ans) > 0) ans = Dispointtopoint2(ConvexHull[1], ConvexHull[2]);
+            if (Cmp(DisP2P(ConvexHull[0], ConvexHull[1]), ans) > 0) ans = DisP2P(ConvexHull[0], ConvexHull[1]);
+            if (Cmp(DisP2P(ConvexHull[0], ConvexHull[2]), ans) > 0) ans = DisP2P(ConvexHull[0], ConvexHull[2]);
+            if (Cmp(DisP2P(ConvexHull[1], ConvexHull[2]), ans) > 0) ans = DisP2P(ConvexHull[1], ConvexHull[2]);
             return;
         }
         int cur = 2, size = ConvexHull.size();
         for (int i = 0; i < size; ++i) {
             while (Cmp(fabs((ConvexHull[i] - ConvexHull[(i + 1) % size]) ^ (ConvexHull[cur] - ConvexHull[(i + 1) % size])), fabs((ConvexHull[i] - ConvexHull[(i + 1) % size]) ^ (ConvexHull[(cur + 1) % size] - ConvexHull[(i + 1) % size]))) < 0) cur = (cur + 1) % size;
-            if (Cmp(Dispointtopoint2(ConvexHull[i], ConvexHull[cur]), ans) > 0) ans = Dispointtopoint2(ConvexHull[i], ConvexHull[cur]);
+            if (Cmp(DisP2P(ConvexHull[i], ConvexHull[cur]), ans) > 0) ans = DisP2P(ConvexHull[i], ConvexHull[cur]);
         }
     }
 
@@ -83,7 +83,7 @@ namespace Geometry {
         std::sort(points + 1, points + N, [&](point k1, point k2) {
             double temp = (k1 - points[0]) ^ (k2 - points[0]);
             if (Sgn(temp) > 0) return true;
-            else if (Sgn(temp) == 0 && Cmp(Dispointtopoint(k2, points[0]), Dispointtopoint(k1, points[0])) > 0) return true;
+            else if (Sgn(temp) == 0 && Cmp(DisP2P(k2, points[0]), DisP2P(k1, points[0])) > 0) return true;
             return false;
         });
         ans.push_back(points[0]);
@@ -102,9 +102,9 @@ namespace Geometry {
         while (Probability > eps) {
             int Book = 0;
             for (int i = 0; i < (int)points.size(); ++i)
-                if (Distance(cur, points[i]) > Distance(cur, points[Book]))
+                if (DisP2P(cur, points[i]) > DisP2P(cur, points[Book]))
                     Book = i;
-            db r = Distance(cur, points[Book]);
+            db r = DisP2P(cur, points[Book]);
             if (Cmp(r, ans) < 0) ans = r;
             cur = cur + (points[Book] - cur) / r * Probability;
             Probability *= delta;
@@ -116,12 +116,12 @@ namespace Geometry {
     struct line {point s, t;};
     typedef line seg;
     db GetLen(seg k) {return Disp2p(k.s, k.t);}
-    db DisP2Line(point k1, line k2) {return fabs((k1 - k2.s) ^ (k2.t - k2.s)) / Length(k2);}
+    db DisP2Line(point k1, line k2) {return fabs((k1 - k2.s) ^ (k2.t - k2.s)) / GetLen(k2);}
     db DisP2Seg(point k1, seg k2) {
         if (Sgn((k1 - k2.s) * (k2.t - k2.s)) < 0 || Sgn((k1 - k2.t) * (k2.s - k2.t)) < 0) {
-            return min(Dispointtopoint(k1, k2.s), Dispointtopoint(k1, k2.t));
+            return min(DisP2P(k1, k2.s), DisP2P(k1, k2.t));
         }
-        return Dispointtoline(k1, k2);
+        return DisP2P(k1, k2);
     }
     bool IsParallel(line k1, line k2) {return Sgn((k1.s - k1.t) ^ (k2.s - k2.t)) == 0;}
     bool IsSegInterSeg(seg k1, seg k2) {
@@ -150,7 +150,7 @@ namespace Geometry {
     /*----------半平面----------*/
     // 表示s->t逆时针(左侧)的半平面
     struct hulfplane:public line {db ang;};
-    void CalAng(halfplane k) {k.ang = atan2(k.t.Y - k.s.Y, k.t.X - k.s.X);}
+    void GetAng(halfplane k) {k.ang = atan2(k.t.Y - k.s.Y, k.t.X - k.s.X);}
     bool operator < (halfplane k1, halfplane k2) {
         if (Sgn(k1.ang - k2.ang) > 0) return k1.ang < k2.ang;
         return Sgn((k1.s - k2.s) ^ (k2.t - k2.s)) < 0;
@@ -174,7 +174,7 @@ namespace Geometry {
         }
 
         bool IsHalfPlaneInsert() {
-            for (int i = 0; i < tot; ++i) CalAngle(hp[i]);
+            for (int i = 0; i < tot; ++i) GetAng(hp[i]);
             sort(hp, hp + tot);
             Unique();
             deq[front = 0] = hp[0];

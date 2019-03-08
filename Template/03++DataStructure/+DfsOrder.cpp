@@ -27,12 +27,12 @@ int Cnt;
 int InIndex[maxn], OutIndex[maxn];
 
 // Dfs序
-void DfsSequence(int Cur, int Pre) {
+void DfsOrder(int Cur, int Pre) {
     Cnt++;
     InIndex[Cur] = Cnt;
     for (int i = Head[Cur]; i != -1; i = edges[i].Next) {
         if (edges[i].V != Pre) {
-            DfsSequence(edges[i].V, Node);
+            DfsOrder(edges[i].V, Node);
         }
     }
     OutIndex[Cur] = Cnt;

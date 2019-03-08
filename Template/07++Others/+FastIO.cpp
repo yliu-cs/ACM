@@ -34,16 +34,16 @@ inline void out(T x) {
 }
 
 // 牛逼读入挂
-namespace FastIO {
+namespace fastIO {
     const int MX = 4e7;
     char buf[MX];
     int c, sz;
-    void begin() {
+    void Begin() {
         c = 0;
         sz = fread(buf, 1, MX, stdin);
     }
     template <class T>
-    inline bool read(T &t) {
+    inline bool Read(T &t) {
         while (c < sz && buf[c] != '-' && (buf[c] < '0' || buf[c] > '9')) {
             c++;
         }
