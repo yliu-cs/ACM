@@ -1,4 +1,7 @@
-const int maxn = "Edit";
+#include <bits/stdc++.h>
+using namespace std;
+const int inf = 0x3f3f3f3f;
+const int maxn = 1e6 + 5;
 
 class splay_tree {
   public:
@@ -9,6 +12,9 @@ class splay_tree {
 
     splay_tree() {
       rt = tot = 0;
+      memset(fa, 0, sizeof(fa)); memset(son, 0, sizeof(son));
+      memset(val, 0, sizeof(val)); memset(cnt, 0, sizeof(cnt));
+      memset(sz, 0, sizeof(sz));
     }
 
     void Push(int o) {
@@ -97,7 +103,7 @@ class splay_tree {
       }
     }
 
-    // after insert
+    // after insert, before delete
     int GetPrev() {
       int cur = son[rt][0];
       while (son[cur][1]) cur = son[cur][1];
@@ -144,3 +150,27 @@ class splay_tree {
       Push(rt);
     }
 };
+
+splay_tree spt;
+
+int main() {
+  ios::sync_with_stdio(false); cin.tie(0);
+  int n; cin >> n;
+  int ans = 0;
+  for (int i = 0, x; i < n; ++i) {
+    cin >> x;
+    if (i == 0) {
+      spt.Insert(x);
+      ans += x;
+      spt.Insert(inf); spt.Insert(-inf);
+    }
+    else {
+      spt.Insert(x);
+      if (spt.cnt[spt.rt] > 1) continue;
+      ans += min(x - spt.val[spt.GetPrev()], spt.val[spt.GetNext()] - x);
+    }
+  }
+  cout << ans << endl;
+  return 0;
+}
+

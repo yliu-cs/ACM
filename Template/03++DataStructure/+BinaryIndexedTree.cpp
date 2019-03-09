@@ -1,25 +1,24 @@
-#include <bits/stdc++.h>
-#define lowbit(x) (x&(-x))
-
 const int maxn = "Edit";
 
-// 树状数组
-int Array[maxn];
+class binary_indexed_tree {
+#define lowbit(x) (x&(-x))
+  public:
+    int arr[maxn];
 
-// 更新树状数组信息
-void Update(int X, int Val) {
-    while (X < maxn) {
-        Array[X] += Val;
-        X += lowbit(X);
+    void Update(int x, int v) {
+      while (x < maxn) {
+        arr[x] += v;
+        x += lowbit(x);
+      }
     }
-}
 
-// 查询
-int Query(int X) {
-    int Ans = 0;
-    while (X > 0) {
-        Ans += Array[X];
-        X -= lowbit(X);
+    int GetSum(int x) {
+      int ans = 0;
+      while (x > 0) {
+        ans += arr[x];
+        x -= lowbit(x);
+      }
     }
-    return Ans;
-}
+#undef
+};
+

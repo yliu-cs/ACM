@@ -1,9 +1,6 @@
-#include <cstdio>
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
-const int maxn = 2e5 + 5;
+const int maxn = 1e5 + 5;
 
 class func_seg_tree {
   public:
@@ -69,15 +66,18 @@ func_seg_tree fsgt;
 
 int main() {
   ios::sync_with_stdio(false); cin.tie(0);
-  int n, m; cin >> n >> m;
-  vector<int> arr(n);
-  for (int i = 0; i < n; ++i) cin >> arr[i];
-  Hash h(arr);
-  fsgt.Init(n);
-  for (int i = 1; i <= n; ++i) fsgt.rt[i] = fsgt.Modify(fsgt.rt[i - 1], 1, h.size, h.Get(arr[i - 1]) + 1);
-  for (int i = 0, l, r, k; i < m; ++i) {
-    cin >> l >> r >> k;
-    cout << h.arr[fsgt.Query(fsgt.rt[l - 1], fsgt.rt[r], 1, h.size, k) - 1] << endl;
+  int t; cin >> t;
+  for (int cas = 1; cas <= t; ++cas) {
+    int n, m; cin >> n >> m;
+    vector<int> arr(n);
+    for (auto &it : arr) cin >> it;
+    Hash h(arr);
+    fsgt.Init(n);
+    for (int i = 1; i <= n; ++i) fsgt.rt[i] = fsgt.Modify(fsgt.rt[i - 1], 1, h.size, h.Get(arr[i - 1]) + 1);
+    for (int i = 0, l, r, k; i < m; ++i) {
+      cin >> l >> r >> k;
+      cout << h.arr[fsgt.Query(fsgt.rt[l - 1], fsgt.rt[r], 1, h.size, k) - 1] << endl;
+    }
   }
   return 0;
 }

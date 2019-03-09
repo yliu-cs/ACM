@@ -3,7 +3,7 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-const int maxn = 2e5 + 5;
+const int maxn = 1e5 + 5;
 
 class func_seg_tree {
   public:

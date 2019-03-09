@@ -1,94 +1,61 @@
-#include <bits/stdc++.h>
-
-const int INF = "Edit";
+const int inf = 0x3f3f3f3f;
 const int maxn = "Edit";
 
-// 边
-struct Edge {
-    // V:连接点，Weight:权值，Next:上一条边的编号
-    int V, Weight, Next;
-};
+struct edge {int v, flow, next;};
 
-// 边，一定要开到足够大
-Edge edges[maxn << 1];
-// Head[i]为点i上最后一条边的编号
-int Head[maxn];
-// 增加边时更新编号
-int Tot;
-// N:顶点数，E:边数
-int N, E;
-// Bfs分层深度
-int Depth[maxn];
-// 当前弧优化
-int Current[maxn];
+edge g[maxn << 2];
+int head[maxn];
+int tot;
+int dep[maxn];
+int cur[maxn];
 
-// 链式向前星初始化
-void GraphInit() {
-    Tot = 0;
-    memset(Head, -1, sizeof(Head));
+void AddEdge(int u, int v, int flow, int rev = 0) {
+  g[tot] = (edge){v, flow, head[u]};
+  head[u] = tot++;
+  g[tot] = (edge){u, rev, head[v]};
+  head[v] = tot++;
 }
 
-// 添加一条由U至V权值为Weight的边
-void AddEdge(int U, int V, int Weight, int ReverseWeight = 0) {
-    edges[Tot] = Edge (V, Weight, Head[U]);
-    Head[U] = Tot++;
-    // 反向建边
-    edges[Tot] = Edge (U, ReverseWeight, Head[V]);
-    Head[V] = Tot++;
-}
-
-// Bfs搜索分层图，Start:起点，End:终点
-bool Bfs(int Start, int End) {
-    memset(Depth, -1, sizeof(Depth));
-    std::queue<int> Que;
-    Depth[Start] = 0;
-    Que.push(Start);
-    while (!Que.empty()) {
-        int Cur = Que.front();
-        Que.pop();
-        for (int i = Head[Cur]; ~i; i = edges[i].Next) {
-            if (Depth[edges[i].V] == -1 && edges[i].Weight > 0) {
-                Depth[edges[i].V] = Depth[Cur] + 1;
-                Que.push(edges[i].V);
-            }
-        }
+bool Bfs(int s, int t) {
+  memset(dep, -1, sizeof(dep));
+  queue<int> que;
+  dep[s] = 0;
+  que.push(s);
+  while (!que.empty()) {
+    int u = que.front(); que.pop();
+    for (int i = head[u]; ~i; i = g[i].next) {
+      if (dep[g[i].v] == -1 && g[i].flow > 0) {
+        dep[g[i].v] = dep[u] + 1;
+        que.push(g[i].v);
+      }
     }
-    return Depth[End] != -1;
+  }
+  return dep[t] != -1;
 }
 
-// Dfs搜索增广路径，Cur:当前搜索顶点，End:终点，NowFlow:当前最大流
-int Dfs(int Cur, int End, int NowFlow) {
-    // 搜索到终点或者可用当前最大流为0返回
-    if (Cur == End || NowFlow == 0) return NowFlow;
-    // UsableFlow:可用流量，当达到NowFlow时不可再增加，FindFlow:递归深搜到的最大流
-    int UsableFlow = 0, FindFlow;
-    // &i=Current[Cur]为当前弧优化，每次更新Current[Cur]
-    for (int &i = Current[Cur]; ~i; i = edges[i].Next) {
-        if (edges[i].Weight > 0 && Depth[edges[i].V] == Depth[Cur] + 1) {
-            FindFlow = Dfs(edges[i].V, End, std::min(NowFlow - UsableFlow, edges[i].Weight));
-            if (FindFlow > 0) {
-                edges[i].Weight -= FindFlow;
-                // 反边
-                edges[i ^ 1].Weight += FindFlow;
-                UsableFlow += FindFlow;
-                if (UsableFlow == NowFlow) return NowFlow;
-            }
-        }
+int Dfs(int u, int t, int flow) {
+  if (u == t || flow == 0) return flow;
+  int max_flow = 0, find_flow;
+  for (int &i = cur[u]; ~i; i = g[i].next) {
+    if (g[i].flow > 0 && dep[g[i].v] == dep[u] + 1) {
+      find_flow = Dfs(g[o].v, t, min(flow, max_flow, g[i].flow));
+      if (find_flow > 0) {
+        g[i].flow -= find_flow;
+        g[i ^ 1].flow += find_flow;
+        max_flow += find_flow;
+        if (max_flow == flow) return flow;
+      }
     }
-    // 炸点优化
-    if (!UsableFlow) Depth[Cur] = -2;
-    return UsableFlow;
+  }
+  if (!max_flow) dep[u] = -2;
+  return max_flow;
 }
 
-// Dinic算法，Start:起点，End:终点（图中所有顶点均在[Start,End]范围内）
-int Dinic(int Start, int End) {
-    int MaxFlow = 0;
-    while (Bfs(Start, End)) {
-        // 当前弧优化
-        for (int i = Start; i <= End; ++i) Current[i] = Head[i];
-        MaxFlow += Dfs(Start, End, INF);
-    }
-    // 返回结果
-    return MaxFlow;
+int Dinic(int s, int t) {
+  int ans = 0;
+  while (Bfs(s, t)) {
+    for (int i = s, i <= t; ++i) cur[i] = head[i];
+    ans += Dfs(s, t, inf);
+  }
+  return ans;
 }
-

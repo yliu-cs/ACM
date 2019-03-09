@@ -1,4 +1,8 @@
-const int maxn = "Edit";
+#include <bits/stdc++.h>
+using namespace std;
+const int inf = 0x3f3f3f3f;
+const int maxn = 1e5 + 5;
+const int mod = 1000000;
 
 class splay_tree {
   public:
@@ -144,3 +148,63 @@ class splay_tree {
       Push(rt);
     }
 };
+
+splay_tree spt;
+
+int main() {
+  ios::sync_with_stdio(false); cin.tie(0);
+  int n; cin >> n;
+  int cur = 0, ans = 0;
+  spt.Insert(inf); spt.Insert(-inf);
+  for (int i = 0, a, b; i < n; ++i) {
+    cin >> a >> b;
+    if (cur == 0) {
+      spt.Insert(b);
+      if (a == 0) ++cur;
+      else --cur;
+    }
+    else if (cur > 0) {
+      if (a == 0) {
+        spt.Insert(b);
+        ++cur;
+      }
+      else {
+        spt.Insert(b);
+        int pre = spt.val[spt.GetPrev()], nxt = spt.val[spt.GetNext()];
+        if (abs(b - pre) <= abs(b - nxt)) {
+          ans = (ans + abs(b - pre)) % mod;
+          spt.Delete(pre);
+        }
+        else {
+          ans = (ans + abs(b - nxt)) % mod;
+          spt.Delete(nxt);
+        }
+        spt.Delete(b);
+        --cur;
+      }
+    }
+    else {
+      if (a == 0) {
+        spt.Insert(b);
+        int pre = spt.val[spt.GetPrev()], nxt = spt.val[spt.GetNext()];
+        if (abs(b - pre) <= abs(b - nxt)) {
+          ans = (ans + abs(b - pre)) % mod;
+          spt.Delete(pre);
+        }
+        else {
+          ans = (ans + abs(b - nxt)) % mod;
+          spt.Delete(nxt);
+        }
+        spt.Delete(b);
+        ++cur;
+      }
+      else {
+        spt.Insert(b);
+        --cur;
+      }
+    }
+  }
+  cout << ans << endl;
+  return 0;
+}
+

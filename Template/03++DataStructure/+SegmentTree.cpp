@@ -1,8 +1,10 @@
 // 求和线段树
+const int maxn = "Edit"
+
 class seg_tree {
   public:
     int n;
-    vector<long long> sum, lazy;
+    long long sum[maxn << 2], lazy[maxn << 2];
 
     void Pull(int o) {
       sum[o] = sum[o << 1] + sum[o << 1 | 1];
@@ -35,8 +37,6 @@ class seg_tree {
     template <typename t>
     seg_tree(const vector<t> &v) {
       n = v.size();
-      sum.resize(n << 2);
-      lazy.resize(n << 2);
       Build(1, 1, n, v);
     }
 

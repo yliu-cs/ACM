@@ -1,0 +1,47 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// 主席树，静态区间第k小}
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{k}{class} \PYG{n+nc}{func\PYGZus{}seg\PYGZus{}tree} \PYG{p}{\PYGZob{}}
+  \PYG{k}{public}\PYG{o}{:}
+    \PYG{k+kt}{int} \PYG{n}{tot}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{rt}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+    \PYG{k+kt}{int} \PYG{n}{lson}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{5}\PYG{p}{],} \PYG{n}{rson}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{5}\PYG{p}{];}
+    \PYG{k+kt}{int} \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{5}\PYG{p}{];}
+
+    \PYG{k+kt}{int} \PYG{n+nf}{Build}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{t} \PYG{o}{=} \PYG{o}{++}\PYG{n}{tot}\PYG{p}{;}
+      \PYG{k+kt}{int} \PYG{n}{m} \PYG{o}{=} \PYG{p}{(}\PYG{n}{l} \PYG{o}{+} \PYG{n}{r}\PYG{p}{)} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{l} \PYG{o}{!=} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{lson}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Build}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,} \PYG{n}{m}\PYG{p}{);}
+        \PYG{n}{rson}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Build}\PYG{p}{(}\PYG{n}{m} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{r}\PYG{p}{);}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{return} \PYG{n}{t}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kt}{void} \PYG{n+nf}{Init}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{tot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+      \PYG{n}{rt}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Build}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kt}{int} \PYG{n+nf}{Modify}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{prev}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{r}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{t} \PYG{o}{=} \PYG{o}{++}\PYG{n}{tot}\PYG{p}{;}
+      \PYG{n}{lson}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{=} \PYG{n}{lson}\PYG{p}{[}\PYG{n}{prev}\PYG{p}{];} \PYG{n}{rson}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{=} \PYG{n}{rson}\PYG{p}{[}\PYG{n}{prev}\PYG{p}{];}
+      \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{=} \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{prev}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+      \PYG{k+kt}{int} \PYG{n}{m} \PYG{o}{=} \PYG{p}{(}\PYG{n}{l} \PYG{o}{+} \PYG{n}{r}\PYG{p}{)} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{l} \PYG{o}{!=} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZlt{}=} \PYG{n}{m}\PYG{p}{)} \PYG{n}{lson}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Modify}\PYG{p}{(}\PYG{n}{lson}\PYG{p}{[}\PYG{n}{t}\PYG{p}{],} \PYG{n}{l}\PYG{p}{,} \PYG{n}{m}\PYG{p}{,} \PYG{n}{x}\PYG{p}{);}
+        \PYG{k}{else} \PYG{n}{rson}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Modify}\PYG{p}{(}\PYG{n}{rson}\PYG{p}{[}\PYG{n}{t}\PYG{p}{],} \PYG{n}{m} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{r}\PYG{p}{,} \PYG{n}{x}\PYG{p}{);}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{return} \PYG{n}{t}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k+kt}{int} \PYG{n+nf}{Query}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{r}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{k}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{l} \PYG{o}{==} \PYG{n}{r}\PYG{p}{)} \PYG{k}{return} \PYG{n}{l}\PYG{p}{;}
+      \PYG{k+kt}{int} \PYG{n}{m} \PYG{o}{=} \PYG{p}{(}\PYG{n}{l} \PYG{o}{+} \PYG{n}{r}\PYG{p}{)} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{;}
+      \PYG{k+kt}{int} \PYG{n}{num} \PYG{o}{=} \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{lson}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]]} \PYG{o}{\PYGZhy{}} \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{lson}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]];}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{num} \PYG{o}{\PYGZgt{}=} \PYG{n}{k}\PYG{p}{)} \PYG{k}{return} \PYG{n}{Query}\PYG{p}{(}\PYG{n}{lson}\PYG{p}{[}\PYG{n}{u}\PYG{p}{],} \PYG{n}{lson}\PYG{p}{[}\PYG{n}{v}\PYG{p}{],} \PYG{n}{l}\PYG{p}{,} \PYG{n}{m}\PYG{p}{,} \PYG{n}{k}\PYG{p}{);}
+      \PYG{k}{return} \PYG{n}{Query}\PYG{p}{(}\PYG{n}{rson}\PYG{p}{[}\PYG{n}{u}\PYG{p}{],} \PYG{n}{rson}\PYG{p}{[}\PYG{n}{v}\PYG{p}{],} \PYG{n}{m} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{r}\PYG{p}{,} \PYG{n}{k} \PYG{o}{\PYGZhy{}} \PYG{n}{num}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

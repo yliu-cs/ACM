@@ -1,10 +1,12 @@
 // 主席树，静态区间第k小
+const int maxn = "Edit";
+
 class func_seg_tree {
   public:
     int tot;
-    vector<int> rt;
-    vector<int> lson, rson;
-    vector<int> cnt;
+    int rt[maxn];
+    int lson[maxn << 5], rson[maxn << 5];
+    int cnt[maxn << 5];
 
     int Build(int l, int r) {
       int t = ++tot;
@@ -16,12 +18,8 @@ class func_seg_tree {
       return t;
     }
 
-    func_seg_tree(int n) {
+    void Init(int n) {
       tot = 0;
-      rt.resize(n + 5);
-      lson.resize((n << 5) + 5);
-      rson.resize((n << 5) + 5);
-      cnt.resize((n << 5) + 5);
       rt[0] = Build(1, n);
     }
 

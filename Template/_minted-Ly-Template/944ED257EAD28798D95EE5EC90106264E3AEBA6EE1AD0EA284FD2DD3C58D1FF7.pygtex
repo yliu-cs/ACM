@@ -35,16 +35,16 @@
 \PYG{p}{\PYGZcb{}}
 
 \PYG{c+c1}{// 牛逼读入挂}
-\PYG{k}{namespace} \PYG{n}{FastIO} \PYG{p}{\PYGZob{}}
+\PYG{k}{namespace} \PYG{n}{fastIO} \PYG{p}{\PYGZob{}}
     \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{MX} \PYG{o}{=} \PYG{l+m+mf}{4e7}\PYG{p}{;}
     \PYG{k+kt}{char} \PYG{n}{buf}\PYG{p}{[}\PYG{n}{MX}\PYG{p}{];}
     \PYG{k+kt}{int} \PYG{n}{c}\PYG{p}{,} \PYG{n}{sz}\PYG{p}{;}
-    \PYG{k+kt}{void} \PYG{n+nf}{begin}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{void} \PYG{n+nf}{Begin}\PYG{p}{()} \PYG{p}{\PYGZob{}}
         \PYG{n}{c} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
         \PYG{n}{sz} \PYG{o}{=} \PYG{n}{fread}\PYG{p}{(}\PYG{n}{buf}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{MX}\PYG{p}{,} \PYG{n}{stdin}\PYG{p}{);}
     \PYG{p}{\PYGZcb{}}
     \PYG{k}{template} \PYG{o}{\PYGZlt{}}\PYG{k}{class} \PYG{n+nc}{T}\PYG{o}{\PYGZgt{}}
-    \PYG{k+kr}{inline} \PYG{k+kt}{bool} \PYG{n}{read}\PYG{p}{(}\PYG{n}{T} \PYG{o}{\PYGZam{}}\PYG{n}{t}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kr}{inline} \PYG{k+kt}{bool} \PYG{n}{Read}\PYG{p}{(}\PYG{n}{T} \PYG{o}{\PYGZam{}}\PYG{n}{t}\PYG{p}{)} \PYG{p}{\PYGZob{}}
         \PYG{k}{while} \PYG{p}{(}\PYG{n}{c} \PYG{o}{\PYGZlt{}} \PYG{n}{sz} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{buf}\PYG{p}{[}\PYG{n}{c}\PYG{p}{]} \PYG{o}{!=} \PYG{l+s+sc}{\PYGZsq{}\PYGZhy{}\PYGZsq{}} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{p}{(}\PYG{n}{buf}\PYG{p}{[}\PYG{n}{c}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{l+s+sc}{\PYGZsq{}0\PYGZsq{}} \PYG{o}{||} \PYG{n}{buf}\PYG{p}{[}\PYG{n}{c}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{l+s+sc}{\PYGZsq{}9\PYGZsq{}}\PYG{p}{))} \PYG{p}{\PYGZob{}}
             \PYG{n}{c}\PYG{o}{++}\PYG{p}{;}
         \PYG{p}{\PYGZcb{}}
