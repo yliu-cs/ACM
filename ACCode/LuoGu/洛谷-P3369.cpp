@@ -1,216 +1,169 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 const int maxn = 1e5 + 5;
 
-// Root:Splay Tree根节点
-int Root, Tot;
-// Son[i][0]:i节点的左孩子，Son[i][0]:i节点的右孩子
-int Son[maxn][2];
-// Pre[i]:i节点的父节点
-int Pre[maxn];
-// Val[i]:i节点的权值
-int Val[maxn];
-// Size[i]:以i节点为根的Splay Tree的节点数(包含自身)
-int Size[maxn];
-// Cnt[i]:节点i的权值的出现次数
-int Cnt[maxn];
+class splay_tree {
+  public:
+    int rt, tot;
+    int fa[maxn], son[maxn][2];
+    int val[maxn], cnt[maxn];
+    int sz[maxn];
 
-void PushUp(int X) {
-    Size[X] = Size[Son[X][0]] + Size[Son[X][1]] + Cnt[X];
-}
-
-// 判断X节点是其父节点的左孩子还是右孩子
-bool Self(int X) {
-    return X == Son[Pre[X]][1];
-}
-
-void Clear(int X) {
-    Son[X][0] = Son[X][1] = Pre[X] = Val[X] = Size[X] = Cnt[X] = 0;
-}
-
-// 旋转
-void Rotate(int X) {
-    int Fa = Pre[X], FaFa = Pre[Fa], XJ = Self(X);
-    Son[Fa][XJ] = Son[X][XJ ^ 1];
-    Pre[Son[Fa][XJ]] = Pre[X];
-    Son[X][XJ ^ 1] = Pre[X];
-    Pre[Fa] = X;
-    Pre[X] = FaFa;
-    if (FaFa) {
-        Son[FaFa][Fa == Son[FaFa][1]] = X;
+    void Push(int o) {
+      sz[o] = sz[son[o][0]] + sz[son[o][1]] + cnt[o];
     }
-    PushUp(Fa);
-    PushUp(X);
-}
 
-// 旋转X节点到根节点
-void Splay(int X) {
-    for (int i = Pre[X]; i = Pre[X]; Rotate(X)) {
-        if (Pre[i]) {
-            Rotate(Self(X) == Self(i) ? i : X);
-        }
+    bool Get(int o) {
+      return o == son[fa[o]][1];
     }
-    Root = X;
-}
 
-// 插入数X
-void Insert(int X) {
-    if (!Root) {
-        Val[++Tot] = X;
-        Cnt[Tot]++;
-        Root = Tot;
-        PushUp(Root);
+    void Clear(int o) {
+      son[o][0] = son[o][1] = fa[o] = val[o] = sz[o] = cnt[o] = 0;
+    }
+
+    void Rotate(int o) {
+      int p = fa[o], q = fa[p], ck = Get(o);
+      son[p][ck] = son[o][ck ^ 1];
+      fa[son[o][ck ^ 1]] = p;
+      son[o][ck ^ 1] = p;
+      fa[p] = o; fa[o] = q;
+      if (q) son[q][p == son[q][1]] = o;
+      Push(p); Push(o);
+    }
+
+    void Splay(int o) {
+      for (int f = fa[o]; f = fa[o], f; Rotate(o))
+        if (fa[f]) Rotate(Get(o) == Get(f) ? f : o);
+      rt = o;
+    }
+
+    void Insert(int x) {
+      if (!rt) {
+        val[++tot] = x;
+        cnt[tot]++;
+        rt = tot;
+        Push(rt);
         return;
-    }
-    int Cur = Root, F = 0;
-    while (true) {
-        if (Val[Cur] == X) {
-            Cnt[Cur]++;
-            PushUp(Cur);
-            PushUp(F);
-            Splay(Cur);
-            break;
+      }
+      int cur = rt, f = 0;
+      while (true) {
+        if (val[cur] == x) {
+          cnt[cur]++;
+          Push(cur); Push(f);
+          Splay(cur);
+          break;
         }
-        F = Cur;
-        Cur = Son[Cur][Val[Cur] < X];
-        if (!Cur) {
-            Val[++Tot] = X;
-            Cnt[Tot]++;
-            Pre[Tot] = F;
-            Son[F][Val[F] < X] = Tot;
-            PushUp(Tot);
-            PushUp(F);
-            Splay(Tot);
-            break;
+        f = cur;
+        cur = son[cur][val[cur] < x];
+        if (!cur) {
+          val[++tot] = x;
+          cnt[tot]++;
+          fa[tot] = f;
+          son[f][val[f] < x] = tot;
+          Push(tot); Push(f);
+          Splay(tot);
+          break;
         }
+      }
     }
-}
 
-// 查询X的排名
-int Rank(int X) {
-    int Ans = 0, Cur = Root;
-    while (true) {
-        if (X < Val[Cur]) {
-            Cur = Son[Cur][0];
-        }
+    int GetRank(int x) {
+      int ans = 0, cur = rt;
+      while (true) {
+        if (x < val[cur]) cur = son[cur][0];
         else {
-            Ans += Size[Son[Cur][0]];
-            if (X == Val[Cur]) {
-                Splay(Cur);
-                return Ans + 1;
-            }
-            Ans += Cnt[Cur];
-            Cur = Son[Cur][1];
+          ans += sz[son[cur][0]];
+          if (x == val[cur]) {
+            Splay(cur);
+            return ans + 1;
+          }
+          ans += cnt[cur];
+          cur = son[cur][1];
         }
+      }
     }
-}
 
-// 查询排名为X的数
-int Kth(int X) {
-    int Cur = Root;
-    while (true) {
-        if (Son[Cur][0] && X <= Size[Son[Cur][0]]) {
-            Cur = Son[Cur][0];
-        }
+    int GetKth(int k) {
+      int cur = rt;
+      while (true) {
+        if (son[cur][0] && k <= sz[son[cur][0]]) cur = son[cur][0];
         else {
-            X -= Cnt[Cur] + Size[Son[Cur][0]];
-            if (X <= 0) {
-                return Val[Cur];
-            }
-            Cur = Son[Cur][1];
+          k -= cnt[cur] + sz[son[cur][0]];
+          if (k <= 0) return cur;
+          cur = son[cur][1];
         }
+      }
     }
-}
 
-/*
- * 在Insert操作时X已经Splay到根了
- * 所以X的前驱就是X的左子树的最右边的节点
- * 后继就是X的右子树的最左边的节点
- */
-
-// 求前驱
-int Path() {
-    int Cur = Son[Root][0];
-    while (Son[Cur][1]) {
-        Cur = Son[Cur][1];
+    // after insert, before delete
+    int GetPrev() {
+      int cur = son[rt][0];
+      while (son[cur][1]) cur = son[cur][1];
+      return cur;
     }
-    return Cur;
-}
 
-// 求后继
-int Next() {
-    int Cur = Son[Root][1];
-    while (Son[Cur][0]) {
-        Cur = Son[Cur][0];
+    int GetNext() {
+      int cur = son[rt][1];
+      while (son[cur][0]) cur = son[cur][0];
+      return cur;
     }
-    return Cur;
-}
 
-// 删除节点X
-void Delete(int X) {
-    // 将X旋转到根
-    Rank(X);
-    if (Cnt[Root] > 1) {
-        Cnt[Root]--;
-        PushUp(Root);
+    void Delete(int x) {
+      GetRank(x);
+      if (cnt[rt] > 1) {
+        cnt[rt]--;
+        Push(rt);
         return;
-    }
-    if (!Son[Root][0] && !Son[Root][1]) {
-        Clear(Root);
-        Root = 0;
+      }
+      if (!son[rt][0] && !son[rt][1]) {
+        Clear(rt);
+        rt = 0;
         return;
-    }
-    if (!Son[Root][0]) {
-        int Temp = Root;
-        Root = Son[Root][1];
-        Pre[Root] = 0;
-        Clear(Temp);
+      }
+      if (!son[rt][0]) {
+        int cur = rt;
+        rt = son[rt][1];
+        fa[rt] = 0;
+        Clear(cur);
         return;
-    }
-    if (!Son[Root][1]) {
-        int Temp = Root;
-        Root = Son[Root][0];
-        Pre[Root] = 0;
-        Clear(Temp);
+      }
+      if (!son[rt][1]) {
+        int cur = rt;
+        rt = son[rt][0];
+        fa[rt] = 0;
+        Clear(cur);
         return;
+      }
+      int p = GetPrev(), cur = rt;
+      Splay(p);
+      fa[son[cur][1]] = p;
+      son[p][1] = son[cur][1];
+      Clear(cur);
+      Push(rt);
     }
-    int Temp = Path(), Old = Root;
-    Splay(Temp);
-    Pre[Son[Old][1]] = Temp;
-    Son[Temp][1] = Son[Old][1];
-    Clear(Old);
-    PushUp(Root);
-}
+};
 
-int main(int argc, char *argv[]) {
-    int N;
-    scanf("%d", &N);
-    for (int i = 0, Op, Num; i < N; ++i) {
-        scanf("%d%d", &Op, &Num);
-        if (Op == 1) {
-            Insert(Num);
-        }
-        else if (Op == 2) {
-            Delete(Num);
-        }
-        else if (Op == 3) {
-            printf("%d\n", Rank(Num));
-        }
-        else if (Op == 4) {
-            printf("%d\n", Kth(Num));
-        }
-        else if (Op == 5) {
-            Insert(Num);
-            printf("%d\n", Val[Path()]);
-            Delete(Num);
-        }
-        else if (Op == 6) {
-            Insert(Num);
-            printf("%d\n", Val[Next()]);
-            Delete(Num);
-        }
-    }
-    return 0;
-}
+splay_tree spt;
 
+int main() {
+  ios::sync_with_stdio(false); cin.tie(0);
+  int n; cin >> n;
+  for (int i = 0, op, x; i < n; ++i) {
+    cin >> op >> x;
+    if (op == 1) spt.Insert(x);
+    else if (op == 2) spt.Delete(x);
+    else if (op == 3) cout << spt.GetRank(x) << endl;
+    else if (op == 4) cout << spt.val[spt.GetKth(x)] << endl;
+    else if (op == 5) {
+      spt.Insert(x);
+      cout << spt.val[spt.GetPrev()] << endl;
+      spt.Delete(x);
+    }
+    else if (op == 6) {
+      spt.Insert(x);
+      cout << spt.val[spt.GetNext()] << endl;
+      spt.Delete(x);
+    }
+  }
+  return 0;
+}

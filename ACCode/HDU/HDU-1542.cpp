@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef double db;
-const int maxn = 1e2 + 5;
+const int maxn = 2e2 + 5;
 const db eps = 1e-9;
 
 int Sgn(db Key) {return fabs(Key) < eps ? 0 : (Key < 0 ? -1 : 1);}
@@ -37,7 +37,7 @@ struct Node {
     int Cnt;
     db Len;
 };
-Node SGT[maxn << 4];
+Node SGT[maxn << 2];
 
 void PushUp(int Root) {
     if (SGT[Root].Cnt) SGT[Root].Len = Pos[SGT[Root].Right + 1] - Pos[SGT[Root].Left];
