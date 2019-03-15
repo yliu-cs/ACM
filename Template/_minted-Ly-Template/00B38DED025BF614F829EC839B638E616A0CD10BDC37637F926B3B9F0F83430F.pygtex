@@ -1,9 +1,8 @@
 \begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}define lowbit(x) (x\PYGZam{}(\PYGZhy{}x))}
 \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
 
-\PYG{k}{class} \PYG{n+nc}{binary\PYGZus{}indexed\PYGZus{}tree} \PYG{p}{\PYGZob{}}
-\PYG{c+cp}{\PYGZsh{}define lowbit(x) (x\PYGZam{}(\PYGZhy{}x))}
-  \PYG{k}{public}\PYG{o}{:}
+\PYG{k}{namespace} \PYG{n}{binary\PYGZus{}indexed\PYGZus{}tree} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
 
     \PYG{k+kt}{void} \PYG{n+nf}{Update}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{)} \PYG{p}{\PYGZob{}}
@@ -20,6 +19,5 @@
         \PYG{n}{x} \PYG{o}{\PYGZhy{}=} \PYG{n}{lowbit}\PYG{p}{(}\PYG{n}{x}\PYG{p}{);}
       \PYG{p}{\PYGZcb{}}
     \PYG{p}{\PYGZcb{}}
-\PYG{c+cp}{\PYGZsh{}undef}
 \PYG{p}{\PYGZcb{};}
 \end{Verbatim}

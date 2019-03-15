@@ -1,8 +1,7 @@
 // 主席树，静态区间第k小
 const int maxn = "Edit";
 
-class func_seg_tree {
-  public:
+namespace FuncSegTree {
     int tot;
     int rt[maxn];
     int lson[maxn << 5], rson[maxn << 5];
@@ -16,11 +15,6 @@ class func_seg_tree {
         rson[t] = Build(m + 1, r);
       }
       return t;
-    }
-
-    void Init(int n) {
-      tot = 0;
-      rt[0] = Build(1, n);
     }
 
     int Modify(int prev, int l, int r, int x) {

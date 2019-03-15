@@ -1,8 +1,7 @@
 // 求和线段树
 const int maxn = "Edit"
 
-class seg_tree {
-  public:
+namespace SegTree {
     int n;
     long long sum[maxn << 2], lazy[maxn << 2];
 
@@ -35,7 +34,7 @@ class seg_tree {
     }
 
     template <typename t>
-    seg_tree(const vector<t> &v) {
+    void Init(const vector<t> &v) {
       n = v.size();
       Build(1, 1, n, v);
     }

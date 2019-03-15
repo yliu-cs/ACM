@@ -1,7 +1,6 @@
 const int maxn = "Edit";
 
-class graph {
-  public:
+namespace graph {
     struct edge {int v, flow, next;};
 
     edge g[maxn << 2];

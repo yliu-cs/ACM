@@ -1,7 +1,7 @@
 const int inf = "Edit"
 const int maxn = "Edit";
 
-namespace splay_tree {
+namespace SplayTree {
     int rt, tot;
     int fa[maxn], son[maxn][2];
     int val[maxn], cnt[maxn];

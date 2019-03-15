@@ -1,7 +1,6 @@
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{c+c1}{// 离散化}
-\PYG{k}{class} \PYG{n+nc}{Hash} \PYG{p}{\PYGZob{}}
-  \PYG{k}{public}\PYG{o}{:}
+\PYG{k}{namespace} \PYG{n}{Hash} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{int} \PYG{n}{size}\PYG{p}{;}
     \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{arr}\PYG{p}{;}
 

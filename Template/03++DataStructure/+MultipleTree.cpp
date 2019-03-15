@@ -15,7 +15,7 @@ const int maxm = maxn * 25;
 int n;
 int arr[maxn];
 
-namespace splay_tree {
+namespace SplayTree {
     int rt[maxm], tot;
     int fa[maxm], son[maxm][2];
     int val[maxm], cnt[maxm];
@@ -199,11 +199,11 @@ namespace splay_tree {
     }
 };
 
-namespace seg_tree {
+namespace SegTree {
     int tree[maxn << 2];
 
     void Build(int o, int l, int r) {
-      for (int i = l; i <= r; ++i) splay_tree::Insert(tree[o], arr[i - 1]);
+      for (int i = l; i <= r; ++i) SplayTree::Insert(tree[o], arr[i - 1]);
       if (l == r) return;
       int m = (l + r) >> 1;
       Build(o << 1, l, m);
@@ -211,7 +211,7 @@ namespace seg_tree {
     }
 
     void Modify(int o, int l, int r, int ll, int rr, int u, int v) {
-      splay_tree::Delete(tree[o], u); splay_tree::Insert(tree[o], v);
+      SplayTree::Delete(tree[o], u); SplayTree::Insert(tree[o], v);
       if (l == r) return;
       int m = (l + r) >> 1;
       if (ll <= m) Modify(o << 1, l, m, ll, rr, u, v);
@@ -219,7 +219,7 @@ namespace seg_tree {
     }
 
     int QueryRank(int o, int l, int r, int ll, int rr, int v) {
-      if (ll <= l && rr >= r) return splay_tree::GetRank(tree[o], v);
+      if (ll <= l && rr >= r) return SplayTree::GetRank(tree[o], v);
       int m = (l + r) >> 1, ans = 0;
       if (ll <= m) ans += QueryRank(o << 1, l, m, ll, rr, v);
       if (rr > m) ans += QueryRank(o << 1 | 1, m + 1, r, ll, rr, v);
@@ -227,7 +227,7 @@ namespace seg_tree {
     }
 
     int QueryPrev(int o, int l, int r, int ll, int rr, int v) {
-      if (ll <= l && rr >= r) return splay_tree::GetPrevVal(tree[o], v);
+      if (ll <= l && rr >= r) return SplayTree::GetPrevVal(tree[o], v);
       int m = (l + r) >> 1, ans = -inf;
       if (ll <= m) ans = max(ans, QueryPrev(o << 1, l, m, ll, rr, v));
       if (rr > m) ans = max(ans, QueryPrev(o << 1 | 1, m + 1, r, ll, rr, v));
@@ -235,7 +235,7 @@ namespace seg_tree {
     }
 
     int QueryNext(int o, int l, int r, int ll, int rr, int v) {
-      if (ll <= l && rr >= r) return splay_tree::GetNextVal(tree[o], v);
+      if (ll <= l && rr >= r) return SplayTree::GetNextVal(tree[o], v);
       int m = (l + r) >> 1, ans = inf;
       if (ll <= m) ans = min(ans, QueryNext(o << 1, l, m, ll, rr, v));
       if (rr > m) ans = min(ans, QueryNext(o << 1 | 1, m + 1, r, ll, rr, v));
@@ -257,30 +257,30 @@ int main() {
   ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
   int m; cin >> n >> m;
   for (int i = 0; i < n; ++i) cin >> arr[i];
-  splay_tree::tot = 0;
-  seg_tree::Build(1, 1, n);
+  SplayTree::tot = 0;
+  SegTree::Build(1, 1, n);
   for (int i = 0, op, l, r, pos, k; i < m; ++i) {
     cin >> op;
     if (op == 1) {
       cin >> l >> r >> k;
-      cout << seg_tree::QueryRank(1, 1, n, l, r, k) + 1 << endl;
+      cout << SegTree::QueryRank(1, 1, n, l, r, k) + 1 << endl;
     }
     else if (op == 2) {
       cin >> l >> r >> k;
-      cout << seg_tree::QueryKth(l, r, k) << endl;
+      cout << SegTree::QueryKth(l, r, k) << endl;
     }
     else if (op == 3) {
       cin >> pos >> k;
-      seg_tree::Modify(1, 1, n, pos, pos, arr[pos - 1], k);
+      SegTree::Modify(1, 1, n, pos, pos, arr[pos - 1], k);
       arr[pos - 1] = k;
     }
     else if (op == 4) {
       cin >> l >> r >> k;
-      cout << seg_tree::QueryPrev(1, 1, n, l, r, k) << endl;
+      cout << SegTree::QueryPrev(1, 1, n, l, r, k) << endl;
     }
     else if (op == 5) {
       cin >> l >> r >> k;
-      cout << seg_tree::QueryNext(1, 1, n, l, r, k) << endl;
+      cout << SegTree::QueryNext(1, 1, n, l, r, k) << endl;
     }
   }
   return 0;

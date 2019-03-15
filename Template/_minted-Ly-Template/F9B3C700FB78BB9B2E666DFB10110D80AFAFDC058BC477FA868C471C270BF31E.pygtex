@@ -2,8 +2,7 @@
 \PYG{c+c1}{// 主席树，静态区间第k小}
 \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
 
-\PYG{k}{class} \PYG{n+nc}{func\PYGZus{}seg\PYGZus{}tree} \PYG{p}{\PYGZob{}}
-  \PYG{k}{public}\PYG{o}{:}
+\PYG{k}{namespace} \PYG{n}{FuncSegTree} \PYG{p}{\PYGZob{}}
     \PYG{k+kt}{int} \PYG{n}{tot}\PYG{p}{;}
     \PYG{k+kt}{int} \PYG{n}{rt}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
     \PYG{k+kt}{int} \PYG{n}{lson}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{5}\PYG{p}{],} \PYG{n}{rson}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{5}\PYG{p}{];}
@@ -17,11 +16,6 @@
         \PYG{n}{rson}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Build}\PYG{p}{(}\PYG{n}{m} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{r}\PYG{p}{);}
       \PYG{p}{\PYGZcb{}}
       \PYG{k}{return} \PYG{n}{t}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-
-    \PYG{k+kt}{void} \PYG{n+nf}{Init}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{n}{tot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
-      \PYG{n}{rt}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Build}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{n}\PYG{p}{);}
     \PYG{p}{\PYGZcb{}}
 
     \PYG{k+kt}{int} \PYG{n+nf}{Modify}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{prev}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{l}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{r}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}

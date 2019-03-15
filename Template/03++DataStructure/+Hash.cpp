@@ -1,6 +1,5 @@
 // 离散化
-class Hash {
-  public:
+namespace Hash {
     int size;
     vector<int> arr;
 
