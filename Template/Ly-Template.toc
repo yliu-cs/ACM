@@ -59,9 +59,10 @@
 \contentsline {section}{\numberline {6}ComputationalGeometry}{54}{section.6}% 
 \contentsline {subsection}{\numberline {6.1}JlsGeo}{54}{subsection.6.1}% 
 \contentsline {subsection}{\numberline {6.2}Plane}{66}{subsection.6.2}% 
-\contentsline {subsection}{\numberline {6.3}Stereoscopic}{71}{subsection.6.3}% 
-\contentsline {section}{\numberline {7}Others}{74}{section.7}% 
-\contentsline {subsection}{\numberline {7.1}Factorial}{74}{subsection.7.1}% 
-\contentsline {subsection}{\numberline {7.2}FastIO}{74}{subsection.7.2}% 
-\contentsline {subsection}{\numberline {7.3}LeepYear}{78}{subsection.7.3}% 
-\contentsline {subsection}{\numberline {7.4}vim}{79}{subsection.7.4}% 
+\contentsline {subsection}{\numberline {6.3}Simpson}{71}{subsection.6.3}% 
+\contentsline {subsection}{\numberline {6.4}Stereoscopic}{71}{subsection.6.4}% 
+\contentsline {section}{\numberline {7}Others}{75}{section.7}% 
+\contentsline {subsection}{\numberline {7.1}Factorial}{75}{subsection.7.1}% 
+\contentsline {subsection}{\numberline {7.2}FastIO}{75}{subsection.7.2}% 
+\contentsline {subsection}{\numberline {7.3}LeepYear}{79}{subsection.7.3}% 
+\contentsline {subsection}{\numberline {7.4}vim}{80}{subsection.7.4}% 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  15 MAR 2019 10:15
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  18 MAR 2019 21:39
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1245,12 +1245,14 @@ owF[i],nowF[(i[]+[][]1[])[]%[]n][]-[]nowF[i])))[]==-[][]1[]);|
 [65])
 (./_minted-Ly-Template/2C2FB96FD4E815E78B91704FA5F4E53EDD27B039F513865563C75A86
 C0D787B6.pygtex [66] [67] [68] [69] [70])
+(./_minted-Ly-Template/DDEA8C20F7CDE828ECEB9B3A00C86B8E62CFF4AB242957A434D7FC09
+7F359FFF.pygtex)
 (./_minted-Ly-Template/BBAC366F3182B11C43E2D8817E4437C2E8A3B5A8BB260ECB6785131A
-8EC881E2.pygtex [71] [72]) [73]
+8EC881E2.pygtex [71] [72] [73]) [74]
 (./_minted-Ly-Template/49CEB8C4F6AB32E2CF098A09A27CB2C60591F112019D4356064F3C3F
 719BFD8E.pygtex)
 (./_minted-Ly-Template/944ED257EAD28798D95EE5EC90106264E3AEBA6EE1AD0EA284FD2DD3
-C58D1FF7.pygtex [74] [75] [76] [77]
+C58D1FF7.pygtex [75] [76] [77] [78]
 Overfull \hbox (56.62552pt too wide) in paragraph at lines 162--162
 []\TU/lmtt/m/n/10.95 1000000000[],[]10000000000LL[],[]100000000000LL[],[]100000
 0000000LL[],[]10000000000000LL[],|  
@@ -1266,26 +1268,26 @@ Overfull \hbox (91.11801pt too wide) in paragraph at lines 163--163
 (./_minted-Ly-Template/701AF22CDB2B355C94DE2E60099C6F9596A5BDFAB0F4491192E91DF1
 49EDA0E8.pygtex)
 (./_minted-Ly-Template/A36BF2B5B7F9D43D708E65509788C69D7BC1637C03EBD192262865E9
-1E115C37.pygtex [78]) [79]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 169.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 169.
+1E115C37.pygtex [79]) [80]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 171.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 171.
  (./Ly-Template.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 169.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 169.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 171.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 171.
 Package rerunfilecheck Info: File `Ly-Template.out' has not changed.
-(rerunfilecheck)             Checksum: F93822764BE862CA2709289F5401EA1E.
+(rerunfilecheck)             Checksum: ABE980E74140A8D1D004B2896F60EEBB.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 24713 strings out of 492933
- 496121 string characters out of 6136538
- 652823 words of memory out of 5000000
- 28394 multiletter control sequences out of 15000+600000
+ 24717 strings out of 492933
+ 496454 string characters out of 6136538
+ 652896 words of memory out of 5000000
+ 28395 multiletter control sequences out of 15000+600000
  536510 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  48i,12n,75p,1304b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Ly-Template.pdf (79 pages).
+Output written on Ly-Template.pdf (80 pages).
