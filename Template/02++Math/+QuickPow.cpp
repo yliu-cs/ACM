@@ -23,7 +23,7 @@ long long QuickPow(long long A, long long B) {
             // Ans = Ans * A % mod;
             Ans = QuickMul(Ans, A) % mod;
         }
-        // Ans = A * A % mod;
+        // A = A * A % mod;
         A = QuickMul(A, A) % mod;
         B >>= 1;
     }

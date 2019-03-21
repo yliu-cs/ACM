@@ -9,7 +9,6 @@ struct tuple {int u, v, w;};
 std::vector<tuple> ans;
 
 bool Dfs(int cur, int pre = -1) {
-  std::cerr << "cur: " << cur + 1 << " pre: " << pre + 1 << '\n';
   cnt[cur] = ++tot;
   vis[cur] = true;
   int v = -1;
