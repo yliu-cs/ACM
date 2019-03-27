@@ -21,7 +21,7 @@ int main() {
       std::cin >> col[j];
       cnt.insert(col[j]);
     }
-    if ((int)cnt.size() > k) {
+    if ((int)cnt.size() != k) {
       std::cout << "No";
       if (i != n - 1) std::cout << '\n';
       continue;
