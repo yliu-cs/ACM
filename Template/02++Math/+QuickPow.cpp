@@ -1,31 +1,21 @@
-#include <bits/stdc++.h>
+const int mod = "edit";
 
-const int mod = 1e9 + 7;
-
-// 快速乘求A*B%mod
-long long QuickMul(long long A, long long B) {
-    long long Ans = 0;
-    while (B) {
-        if (B & 1) {
-            Ans = (Ans + A) % mod;
-        }
-        A = (A + A) % mod;
-        B >>= 1;
+int Mul(int x, int y) {
+    int ret = 0;
+    while (y) {
+        if (y) ret = (ret + x) % mod;
+        x = (x + x) % mod;
+        y >>= 1;
     }
-    return Ans;
+    return ret;
 }
 
-// 快速幂求A^B%mod
-long long QuickPow(long long A, long long B) {
-    long long Ans = 1;
-    while (B) {
-        if (B & 1) {
-            // Ans = Ans * A % mod;
-            Ans = QuickMul(Ans, A) % mod;
-        }
-        // A = A * A % mod;
-        A = QuickMul(A, A) % mod;
-        B >>= 1;
-    }
-    return Ans;
+int Pow(int x, int n) {
+  int ret = 1;
+  while (n) {
+    if (n & 1) ret = (ret + x) % mod;
+    x = 1ll * x * x % mod;
+    n >>= 1;
+  }
+  return ret;
 }
