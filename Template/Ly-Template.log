@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  22 MAR 2019 14:53
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  2 APR 2019 14:08
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1134,7 +1134,7 @@ EBB18D9E.pygtex [16])
 5ADF54C8.pygtex [19])
 (./_minted-Ly-Template/52E700B6B57D98DED047EE1F2B87B190F07C02A49E13549938DCFAA0
 9ADA5CEC.pygtex)
-(./_minted-Ly-Template/6191DA065AEA9C3AB2BBADE3AA22B304D7FF01F8FBC31045AE72F8B1
+(./_minted-Ly-Template/129B39A0F17B4748CC3348F2A6F60139D7FF01F8FBC31045AE72F8B1
 9660BACA.pygtex [20])
 (./_minted-Ly-Template/305C3F546BA44DB5D5754E8E9F868546DDF9036F95F8068368A4CE37
 DCD9BA64.pygtex) [21]
@@ -1245,12 +1245,12 @@ owF[i],nowF[(i[]+[][]1[])[]%[]n][]-[]nowF[i])))[]==-[][]1[]);|
  []
 
 [66])
-(./_minted-Ly-Template/2C2FB96FD4E815E78B91704FA5F4E53EDD27B039F513865563C75A86
+(./_minted-Ly-Template/E78B7E0DD8E50CDD5B7193F57D5B7335DD27B039F513865563C75A86
 C0D787B6.pygtex [67] [68] [69] [70] [71])
 (./_minted-Ly-Template/DDEA8C20F7CDE828ECEB9B3A00C86B8E62CFF4AB242957A434D7FC09
-7F359FFF.pygtex)
+7F359FFF.pygtex [72])
 (./_minted-Ly-Template/BBAC366F3182B11C43E2D8817E4437C2E8A3B5A8BB260ECB6785131A
-8EC881E2.pygtex [72] [73] [74]) [75]
+8EC881E2.pygtex [73] [74]) [75]
 (./_minted-Ly-Template/49CEB8C4F6AB32E2CF098A09A27CB2C60591F112019D4356064F3C3F
 719BFD8E.pygtex)
 (./_minted-Ly-Template/944ED257EAD28798D95EE5EC90106264E3AEBA6EE1AD0EA284FD2DD3
@@ -1290,6 +1290,6 @@ Here is how much of TeX's memory you used:
  28396 multiletter control sequences out of 15000+600000
  536510 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 48i,12n,75p,1304b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,12n,75p,1300b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on Ly-Template.pdf (81 pages).

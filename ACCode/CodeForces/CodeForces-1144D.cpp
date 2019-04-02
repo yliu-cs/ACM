@@ -36,14 +36,12 @@ int main() {
     return 0;
   }
 
-  // for (auto &it : seg) std::cerr << it.first << ' ' << it.second << '\n';
-
   auto Check = [&](long long x, long long y) -> bool {
-    if (x >= 0 && y > 0) {
+    if (x >= 0 && y >= 0) {
       if (y > x) return true;
       else return false;
     }
-    else if (x < 0 && y <= 0) {
+    else if (x <= 0 && y <= 0) {
       if (y < x) return false;
       else return true;
     }
