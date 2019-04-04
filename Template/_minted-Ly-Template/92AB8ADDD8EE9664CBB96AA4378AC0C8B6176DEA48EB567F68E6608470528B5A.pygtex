@@ -2,7 +2,8 @@
 \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{inf} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}
 \PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
 
-\PYG{k}{namespace} \PYG{n}{SplayTree} \PYG{p}{\PYGZob{}}
+\PYG{k}{class} \PYG{n+nc}{splay\PYGZus{}tree} \PYG{p}{\PYGZob{}}
+  \PYG{k}{public}\PYG{o}{:}
     \PYG{k+kt}{int} \PYG{n}{rt}\PYG{p}{,} \PYG{n}{tot}\PYG{p}{;}
     \PYG{k+kt}{int} \PYG{n}{fa}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{],} \PYG{n}{son}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{][}\PYG{l+m+mi}{2}\PYG{p}{];}
     \PYG{k+kt}{int} \PYG{n}{val}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{],} \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
@@ -31,7 +32,7 @@
     \PYG{p}{\PYGZcb{}}
 
     \PYG{k+kt}{void} \PYG{n+nf}{Splay}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{o}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{f} \PYG{o}{=} \PYG{n}{fa}\PYG{p}{[}\PYG{n}{o}\PYG{p}{];} \PYG{p}{(}\PYG{n}{f} \PYG{o}{=} \PYG{n}{fa}\PYG{p}{[}\PYG{n}{o}\PYG{p}{]);} \PYG{n}{Rotate}\PYG{p}{(}\PYG{n}{o}\PYG{p}{))}
+      \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{f} \PYG{o}{=} \PYG{n}{fa}\PYG{p}{[}\PYG{n}{o}\PYG{p}{];} \PYG{n}{f} \PYG{o}{=} \PYG{n}{fa}\PYG{p}{[}\PYG{n}{o}\PYG{p}{],} \PYG{n}{f}\PYG{p}{;} \PYG{n}{Rotate}\PYG{p}{(}\PYG{n}{o}\PYG{p}{))}
         \PYG{k}{if} \PYG{p}{(}\PYG{n}{fa}\PYG{p}{[}\PYG{n}{f}\PYG{p}{])} \PYG{n}{Rotate}\PYG{p}{(}\PYG{n}{Get}\PYG{p}{(}\PYG{n}{o}\PYG{p}{)} \PYG{o}{==} \PYG{n}{Get}\PYG{p}{(}\PYG{n}{f}\PYG{p}{)} \PYG{o}{?} \PYG{n+nl}{f} \PYG{p}{:} \PYG{n}{o}\PYG{p}{);}
       \PYG{n}{rt} \PYG{o}{=} \PYG{n}{o}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
@@ -94,40 +95,17 @@
       \PYG{p}{\PYGZcb{}}
     \PYG{p}{\PYGZcb{}}
 
+    \PYG{c+c1}{// after insert, before delete}
     \PYG{k+kt}{int} \PYG{n+nf}{GetPrev}\PYG{p}{()} \PYG{p}{\PYGZob{}}
       \PYG{k+kt}{int} \PYG{n}{cur} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{rt}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{];}
       \PYG{k}{while} \PYG{p}{(}\PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{])} \PYG{n}{cur} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{];}
       \PYG{k}{return} \PYG{n}{cur}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-    \PYG{k+kt}{int} \PYG{n+nf}{GetPrevVal}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k+kt}{int} \PYG{n}{ans} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n}{inf}\PYG{p}{,} \PYG{n}{cur} \PYG{o}{=} \PYG{n}{rt}\PYG{p}{;}
-      \PYG{k}{while} \PYG{p}{(}\PYG{n}{cur}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZgt{}} \PYG{n}{val}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{])} \PYG{p}{\PYGZob{}}
-          \PYG{n}{ans} \PYG{o}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{ans}\PYG{p}{,} \PYG{n}{val}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{]);}
-          \PYG{n}{cur} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{];}
-          \PYG{k}{continue}\PYG{p}{;}
-        \PYG{p}{\PYGZcb{}}
-        \PYG{n}{cur} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{];}
-      \PYG{p}{\PYGZcb{}}
-      \PYG{k}{return} \PYG{n}{ans}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 
     \PYG{k+kt}{int} \PYG{n+nf}{GetNext}\PYG{p}{()} \PYG{p}{\PYGZob{}}
       \PYG{k+kt}{int} \PYG{n}{cur} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{rt}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{];}
       \PYG{k}{while} \PYG{p}{(}\PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{])} \PYG{n}{cur} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{];}
       \PYG{k}{return} \PYG{n}{cur}\PYG{p}{;}
-    \PYG{p}{\PYGZcb{}}
-    \PYG{k+kt}{int} \PYG{n+nf}{GetNextVal}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-      \PYG{k+kt}{int} \PYG{n}{ans} \PYG{o}{=} \PYG{n}{inf}\PYG{p}{,} \PYG{n}{cur} \PYG{o}{=} \PYG{n}{rt}\PYG{p}{;}
-      \PYG{k}{while} \PYG{p}{(}\PYG{n}{cur}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-        \PYG{k}{if} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZlt{}} \PYG{n}{val}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{])} \PYG{p}{\PYGZob{}}
-          \PYG{n}{ans} \PYG{o}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{ans}\PYG{p}{,} \PYG{n}{val}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{]);}
-          \PYG{n}{cur} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{];}
-          \PYG{k}{continue}\PYG{p}{;}
-        \PYG{p}{\PYGZcb{}}
-        \PYG{n}{cur} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{];}
-      \PYG{p}{\PYGZcb{}}
-      \PYG{k}{return} \PYG{n}{ans}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
 
     \PYG{k+kt}{void} \PYG{n+nf}{Delete}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}

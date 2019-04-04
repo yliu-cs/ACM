@@ -1,7 +1,8 @@
 // 主席树，静态区间第k小
 const int maxn = "Edit";
 
-namespace FuncSegTree {
+class FuncSegTree {
+  public:
     int tot;
     int rt[maxn];
     int lson[maxn << 5], rson[maxn << 5];

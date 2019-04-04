@@ -1,7 +1,8 @@
 #define lowbit(x) (x&(-x))
 const int maxn = "Edit";
 
-namespace binary_indexed_tree {
+class binary_indexed_tree {
+  public:
     int arr[maxn];
 
     void Update(int x, int v) {

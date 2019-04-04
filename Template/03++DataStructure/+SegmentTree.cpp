@@ -1,30 +1,40 @@
 // 求和线段树
-const int maxn = "Edit"
+template <typename type>
+class segtree {
+  public:
+    struct node {
+      type v, lazy;
+      node() {v = 0; lazy = 0;}
+    };
 
-namespace SegTree {
     int n;
-    long long sum[maxn << 2], lazy[maxn << 2];
+    std::vector<node> tree;
+
+    node Unite(const node &k1, const node &k2) {
+      node ret;
+      ret.v = k1.v + k2.v;
+      return ret;
+    }
 
     void Pull(int o) {
-      sum[o] = sum[o << 1] + sum[o << 1 | 1];
+      tree[o] = Unite(tree[o << 1], tree[o << 1 | 1]);
     }
 
     void Push(int o, int l, int r) {
       int m = (l + r) >> 1;
-      if (lazy[o] != 0) {
-        sum[o << 1] += (m - l + 1) * lazy[o];
-        sum[o << 1 | 1] += (r - m) * lazy[o];
-        lazy[o << 1] += lazy[o];
-        lazy[o << 1 | 1] += lazy[o];
-        lazy[o] = 0;
+      if (tree[o].lazy != 0) {
+        tree[o << 1].v += (m - l + 1) * tree[o].lazy;
+        tree[o << 1 | 1].v += (r - m) * tree[o].lazy;
+        tree[o << 1].lazy += tree[o].lazy;
+        tree[o << 1 | 1].lazy += tree[o].lazy;
+        tree[o].lazy = 0;
       }
     }
 
     template <typename t>
-    void Build(int o, int l, int r, const vector<t> &v) {
-      sum[o] = 0; lazy[o] = 0;
+    void Build(int o, int l, int r, const std::vector<t> &v) {
       if (l == r) {
-        sum[o] = v[l - 1];
+        tree[o].v = v[l - 1];
         return;
       }
       int m = (l + r) >> 1;
@@ -34,16 +44,17 @@ namespace SegTree {
     }
 
     template <typename t>
-    void Init(const vector<t> &v) {
+    segtree(const std::vector<t> &v) {
       n = v.size();
+      tree.resize((n << 2) + 1);
       Build(1, 1, n, v);
     }
 
     template <typename t>
     void Modify(int o, int l, int r, int ll, int rr, t v) {
       if (ll <= l && rr >= r) {
-        sum[o] += (r - l + 1) * v;
-        lazy[o] += v;
+        tree[o].v += (r - l + 1) * v;
+        tree[o].lazy += v;
         return;
       }
       Push(o, l, r);
@@ -57,16 +68,16 @@ namespace SegTree {
       Modify(1, 1, n, ll, rr, v);
     }
 
-    long long Query(int o, int l, int r, int ll, int rr) {
-      if (ll <= l && rr >= r) return sum[o];
+    node Query(int o, int l, int r, int ll, int rr) {
+      if (ll <= l && rr >= r) return tree[o];
       Push(o, l, r);
       int m = (l + r) >> 1;
-      long long ans = 0;
-      if (ll <= m) ans += Query(o << 1, l, m, ll, rr);
-      if (rr > m) ans += Query(o << 1 | 1, m + 1, r, ll, rr);
-      return ans;
+      node ret;
+      if (ll <= m) ret = Unite(ret, Query(o << 1, l, m, ll, rr));
+      if (rr > m) ret = Unite(ret, Query(o << 1 | 1, m + 1, r, ll, rr));
+      return ret;
     }
-    long long Query(int ll, int rr) {
+    node Query(int ll, int rr) {
       return Query(1, 1, n, ll, rr);
     }
 };

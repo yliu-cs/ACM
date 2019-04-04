@@ -1,7 +1,8 @@
 const int inf = "Edit"
 const int maxn = "Edit";
 
-namespace SplayTree {
+class splay_tree {
+  public:
     int rt, tot;
     int fa[maxn], son[maxn][2];
     int val[maxn], cnt[maxn];
@@ -30,7 +31,7 @@ namespace SplayTree {
     }
 
     void Splay(int o) {
-      for (int f = fa[o]; (f = fa[o]); Rotate(o))
+      for (int f = fa[o]; f = fa[o], f; Rotate(o))
         if (fa[f]) Rotate(Get(o) == Get(f) ? f : o);
       rt = o;
     }
@@ -93,40 +94,17 @@ namespace SplayTree {
       }
     }
 
+    // after insert, before delete
     int GetPrev() {
       int cur = son[rt][0];
       while (son[cur][1]) cur = son[cur][1];
       return cur;
-    }
-    int GetPrevVal(int x) {
-      int ans = -inf, cur = rt;
-      while (cur) {
-        if (x > val[cur]) {
-          ans = max(ans, val[cur]);
-          cur = son[cur][1];
-          continue;
-        }
-        cur = son[cur][0];
-      }
-      return ans;
     }
 
     int GetNext() {
       int cur = son[rt][1];
       while (son[cur][0]) cur = son[cur][0];
       return cur;
-    }
-    int GetNextVal(int x) {
-      int ans = inf, cur = rt;
-      while (cur) {
-        if (x < val[cur]) {
-          ans = min(ans, val[cur]);
-          cur = son[cur][0];
-          continue;
-        }
-        cur = son[cur][1];
-      }
-      return ans;
     }
 
     void Delete(int x) {
