@@ -1,90 +1,70 @@
-#include <bits/stdc++.h>
-
-const int INF = "Edit";
+const int inf = "Edit";
 const int maxn = "Edit";
 
-// 边
-struct Edge {
-    // V:连接点，Flow:流量，Cost:费用
-    int V, Cap, Cost, Flow, Next;
-};
+struct edge {int v, cap, cost, flow, next;};
+int n, e;
+int head[maxn];
+int path[maxn];
+int dis[maxn];
+bool vis[maxn];
+int tot;
+edge g[maxn];
 
-// N:顶点数，E:边数
-int N, E;
-int Head[maxn];
-// 前驱记录数组
-int Path[maxn];
-int Dis[maxn];
-// 访问标记数组
-bool Vis[maxn];
-int Tot;
-// 链式前向星
-Edge edges[maxn];
-
-// 链式前向星初始化
 void Init() {
-    Tot = 0;
-    memset(Head, -1, sizeof(Head));
+  tot = 0;
+  memset(head, -1, sizeof(head));
 }
 
-// 建图加边，U、V之间建立一条费用为Cost的边
-void AddEdge(int U, int V, int Cap, int Cost) {
-    edges[Tot] = Edge {V, Cap, Cost, 0, Head[U]};
-    Head[U] = Tot++;
-    edges[Tot] = Edge {U, 0, -Cost, 0, Head[V]};
-    Head[V] = Tot++;
+void AddEdge(int u, int v, int cap, int cost) {
+  g[tot] = (edge){v, cap, cost, 0, head[u]};
+  head[u] = tot++;
+  g[tot] = (edge){u, 0, -cost, 0, head[v]};
+  head[v] = tot++;
 }
 
-//  SPFA算法，Start:起点，End:终点
-bool SPFA(int Start, int End) {
-    memset(Dis, INF, sizeof(Dis));
-    memset(Vis, false, sizeof(Vis));
-    memset(Path, -1, sizeof(Path));
-    Dis[Start] = 0;
-    Vis[Start] = true;
-    std::queue<int> Que;
-    while (!Que.empty()) {
-        Que.pop();
-    }
-    Que.push(Start);
-    while (!Que.empty()) {
-        int U = Que.front();
-        Que.pop();
-        Vis[U] = false;
-        for (int i = Head[U]; ~i; i = edges[i].Next) {
-            int V = edges[i].V;
-            if (edges[i].Cap > edges[i].Flow && Dis[V] > Dis[U] + edges[i].Cost) {
-                Dis[V] = Dis[U] + edges[i].Cost;
-                Path[V] = i;
-                if (!Vis[V]) {
-                    Vis[V] = true;
-                    Que.push(V);
-                }
-            }
+bool SPFA(int s, int t) {
+  memset(dis, inf, sizeof(dis));
+  memset(vis, false, sizeof(vis));
+  memset(path, -1, sizeof(path));
+  dis[s] = 0;
+  vis[s] = true;
+  std::queue<int> que;
+  while (!que.empty()) que.pop();
+  que.push(s);
+  while (!que.empty()) {
+    int U = que.front();
+    que.pop();
+    vis[U] = false;
+    for (int i = head[U]; ~i; i = g[i].next) {
+      int v = g[i].v;
+      if (g[i].cap > g[i].flow && dis[v] > dis[U] + g[i].cost) {
+        dis[v] = dis[U] + g[i].cost;
+        path[v] = i;
+        if (!vis[v]) {
+          vis[v] = true;
+          que.push(v);
         }
+      }
     }
-    return Path[End] != -1;
+  }
+  return path[t] != -1;
 }
 
-// 最小费用最大流，Start:起点，End:终点，Cost:最小费用
-int MinCostMaxFlow(int Start, int End, int &MinCost) {
-    int MaxFlow = 0;
-    MinCost = 0;
-    while (SPFA(Start, End)) {
-        int Min = INF;
-        for (int i = Path[End]; ~i; i = Path[edges[i ^ 1].V]) {
-            if (edges[i].Cap - edges[i].Flow < Min) {
-                Min = edges[i].Cap - edges[i].Flow;
-            }
-        }
-        for (int i = Path[End]; ~i; i = Path[edges[i ^ 1].V]) {
-            edges[i].Flow += Min;
-            edges[i ^ 1].Flow -= Min;
-            MinCost += edges[i].Cost * Min;
-        }
-        MaxFlow += Min;
+int MinCostMaxflow(int s, int t, int &min_cost) {
+  int max_flow = 0;
+  min_cost = 0;
+  while (SPFA(s, t)) {
+    int min = inf;
+    for (int i = path[t]; ~i; i = path[g[i ^ 1].v]) {
+      if (g[i].cap - g[i].flow < min) min = g[i].cap - g[i].flow;
     }
-    // 返回最大流
-    return MaxFlow;
+    for (int i = path[t]; ~i; i = path[g[i ^ 1].v]) {
+      g[i].flow += min;
+      g[i ^ 1].flow -= min;
+      min_cost += g[i].cost * min;
+    }
+    max_flow += min;
+  }
+  return max_flow;
 }
 

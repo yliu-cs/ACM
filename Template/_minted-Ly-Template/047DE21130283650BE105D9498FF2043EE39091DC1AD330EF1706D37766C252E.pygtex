@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{mod} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{c+c1}{// 快速幂、费马小定理求逆元}
+\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n+nf}{Inv}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k}{return} \PYG{n}{Pow}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{mod} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

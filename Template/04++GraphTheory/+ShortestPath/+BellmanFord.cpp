@@ -1,42 +1,28 @@
-#include <bits/stdc++.h>
-
-const int INF = "Edit";
+const int inf = "Edit";
 const int maxn = "Edit";
 
-struct Edge {
-    // U、V:顶点，Dis:边权
-    int U, V;
-    int Dis;
-};
-// 松弛更新数组
-int Dis[maxn];
-// 边
-std::vector<Edge> edges;
+int n;
+struct edge {int u, v, dis;};
+int dis[maxn];
+std::vector<edge> g;
 
 // Bellman_Ford算法判断是否存在负环回路
-bool BellmanFord(int Start, int N) {
-    memset(Dis, INF, sizeof(Dis));
-    Dis[Start] = 0;
-    // 最多做N-1次
-    for (int i = 1; i < N; ++i) {
-        bool flag = false;
-        for (int j = 0; j < int(edges.size()); ++j) {
-            if (Dis[edges[j].V] > Dis[edges[j].U] + edges[j].Dis) {
-                Dis[edges[j].V] = Dis[edges[j].U] + edges[j].Dis;
-                flag = true;
-            }
-        }
-        // 没有负环回路
-        if (!flag) {
-            return true;
-        }
+bool BellmanFord(int s) {
+  memset(dis, inf, sizeof(dis));
+  dis[s] = 0;
+  // 最多做N-1次
+  for (int i = 1; i < n; ++i) {
+    bool flag = false;
+    for (int j = 0; j < (int)g.size(); ++j) {
+      if (dis[g[j].v] > dis[g[j].u] + g[j].dis) {
+        dis[g[j].v] = dis[g[j].u] + g[j].dis;
+        flag = true;
+      }
     }
-    // 有负环回路
-    for (int j = 0; j < int(edges.size()); ++j) {
-        if (Dis[edges[j].V] > Dis[edges[j].U] + edges[j].Dis) {
-            return false;
-        }
-    }
-    // 没有负环回路
-    return true;
+    if (!flag) return true;
+  }
+  for (int j = 0; j < (int)g.size(); ++j) {
+    if (dis[g[j].v] > dis[g[j].u] + g[j].dis) return false;
+  }
+  return true;
 }

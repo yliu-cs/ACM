@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{bool} \PYG{n+nf}{IsLeep}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{year}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k}{return} \PYG{p}{(}\PYG{o}{!}\PYG{p}{(}\PYG{n}{year} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{4}\PYG{p}{)} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{p}{(}\PYG{n}{year} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{100}\PYG{p}{))} \PYG{o}{||} \PYG{o}{!}\PYG{p}{(}\PYG{n}{year} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{400}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

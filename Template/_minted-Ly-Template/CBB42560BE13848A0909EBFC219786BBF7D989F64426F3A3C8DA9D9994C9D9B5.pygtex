@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{g}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{dfs\PYGZus{}clock}\PYG{p}{;}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{in}\PYG{p}{,} \PYG{n}{out}\PYG{p}{;}
+
+\PYG{c+c1}{// Dfs序}
+\PYG{k+kt}{void} \PYG{n+nf}{DfsOrder}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{cur}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{pre}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{in}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{]} \PYG{o}{=} \PYG{o}{++}\PYG{n}{dfs\PYGZus{}clock}\PYG{p}{;}
+  \PYG{k}{for} \PYG{p}{(}\PYG{k}{auto} \PYG{o}{\PYGZam{}}\PYG{n+nl}{it} \PYG{p}{:} \PYG{n}{g}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{it} \PYG{o}{==} \PYG{n}{pre}\PYG{p}{)} \PYG{k}{continue}\PYG{p}{;}
+    \PYG{n}{DfsOrder}\PYG{p}{(}\PYG{n}{it}\PYG{p}{,} \PYG{n}{cur}\PYG{p}{);}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{n}{out}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dfs\PYGZus{}clock}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

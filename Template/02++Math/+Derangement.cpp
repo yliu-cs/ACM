@@ -1,18 +1,11 @@
-#include <bits/stdc++.h>
-
 const int maxn = "Edit";
-const int mod = 1e9 + 7;
+const int mod = "Edit";
 
-// Staggered:错排数
-long long Staggered[maxn];
+long long staggered[maxn];
 
-// 求错排数
-void StaggeredInit() {
-    Staggered[1] = 0;
-    Staggered[2] = 1;
-    // 递推求错排数
-    for (int i = 3; i < maxn; ++i) {
-        Staggered[i] = (i - 1) * (Staggered[i - 1] + Staggered[i - 2]) % mod;
-    }
+// 错排
+void GetStaggered() {
+  staggered[1] = 0; staggered[2] = 1;
+  for (int i = 3; i < maxn; ++i) staggered[i] = (i - 1) * (staggered[i - 1] + staggered[i - 2]) % mod;
 }
 

@@ -1,20 +1,16 @@
-#include <bits/stdc++.h>
-
-// 最长不下降子序列(LIS)，Num:序列
-int LIS(std::vector<int> &Num) {
-    int Ans = 1;
-    // Last[i]为长度为i的不下降子序列末尾元素的最小值
-    std::vector<int> Last(int(Num.size()) + 1, 0);
-    Last[1] = Num[1];
-    for (int i = 2; i <= int(Num.size()); ++i) {
-        if (Num[i] >= Last[Ans]) {
-            Last[++Ans] = Num[i];
-        }
-        else {
-            int Index = std::upper_bound(Last.begin() + 1, Last.end(), Num[i]) - Last.begin();
-            Last[Index] = Num[i];
-        }
+// 最长不下降子序列(LIS)，arr:序列
+int GetLIS(std::vector<int> &arr) {
+  int ret = 1;
+  // last[i]为长度为i的不下降子序列末尾元素的最小值
+  std::vector<int> last(int(arr.size()) + 1, 0);
+  last[1] = arr[1];
+  for (int i = 2; i <= int(arr.size()); ++i) {
+    if (arr[i] >= last[ret]) last[++ret] = arr[i];
+    else {
+      int pos = std::upper_bound(last.begin() + 1, last.end(), arr[i]) - last.begin();
+      last[pos] = arr[i];
     }
-    // 返回结果
-    return Ans;
+  }
+  // 返回结果
+  return ret;
 }

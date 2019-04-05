@@ -1,54 +1,24 @@
-#include <bits/stdc++.h>
-
 const int maxn = "Edit";
 
-struct Edge {
-    int U, V, Dis;
+struct edge {int u, v, c;};
+bool operator < (edge k1 edge k2) {return k1.c < k2.c;}
 
-    bool operator < (const Edge &B) const {
-        return Dis < B.Dis;
-    }
-};
+int n, e, pre[maxn];
+std::vector<edge> g;
 
-// N:顶点数，E:边数，Pre并查集
-int N, E, Pre[maxn];
-// edges:边
-Edge edges[maxn];
+void Init() {for (int i = 0; i <= n; ++i) pre[i] = i;}
+int Find(int x) {return pre[x] == x ? x : pre[x] = Find(pre[x]);}
+void Union(int x, int y) {pre[Find(x)] = Find(y);}
 
-void Init() {
-    // 并查集初始化
-    for (int i = 0; i <= N; ++i) {
-        Pre[i] = i;
-    }
-}
-
-// 并查集查询
-int Find(int X) {
-    return Pre[X] == X ? X : Pre[X] = Find(Pre[X]);
-}
-
-// 并查集合并
-void Join(int X, int Y) {
-    int XX = Find(X);
-    int YY = Find(Y);
-    if (XX != YY) {
-        Pre[XX] = YY;
-    }
-}
-
-// Kruskal算法
 int Kruskal() {
-    // 贪心排序
-    std::sort(edges + 1, edges + E + 1);
-    Init();
-    int Res = 0;
-    // 选边计算
-    for (int i = 1; i <= E; ++i) {
-        Edge Temp = edges[i];
-        if (Find(Temp.U) != Find(Temp.V)) {
-            Join(Temp.U, Temp.V);
-            Res += Temp.Dis;
-        }
+  std::sort(g.begin(), g.end());
+  Init();
+  int ret = 0;
+  for (auto &e : g) {
+    if (Find(e.u) != Find(e.v)) {
+      Union(e.u, e.v);
+      ret += e.c;
     }
-    return Res;
+  }
+  return ret;
 }

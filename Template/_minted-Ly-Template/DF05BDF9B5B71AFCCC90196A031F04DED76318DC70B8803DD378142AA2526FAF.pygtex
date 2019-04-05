@@ -1,0 +1,45 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{inf} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{k}{struct} \PYG{n}{Edge} \PYG{p}{\PYGZob{}}\PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{,} \PYG{n}{dis}\PYG{p}{;\PYGZcb{};}
+\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,} \PYG{n}{e}\PYG{p}{;}
+\PYG{k+kt}{bool} \PYG{n}{vis}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{Edge}\PYG{o}{\PYGZgt{}} \PYG{n}{g}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+
+\PYG{k+kt}{void} \PYG{n+nf}{AddEdge} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{c}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{g}\PYG{p}{[}\PYG{n}{u}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{((}\PYG{n}{Edge}\PYG{p}{)\PYGZob{}}\PYG{n}{v}\PYG{p}{,} \PYG{n}{c}\PYG{p}{\PYGZcb{});}
+  \PYG{n}{g}\PYG{p}{[}\PYG{n}{v}\PYG{p}{].}\PYG{n}{push\PYGZus{}back}\PYG{p}{((}\PYG{n}{Edge}\PYG{p}{)\PYGZob{}}\PYG{n}{u}\PYG{p}{,} \PYG{n}{c}\PYG{p}{\PYGZcb{});}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{bool} \PYG{n+nf}{SPFA}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{memset}\PYG{p}{(}\PYG{n}{vis}\PYG{p}{,} \PYG{n+nb}{false}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{vis}\PYG{p}{));}
+  \PYG{n}{memset}\PYG{p}{(}\PYG{n}{dis}\PYG{p}{,} \PYG{n}{inf}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{dis}\PYG{p}{));}
+  \PYG{n}{memset}\PYG{p}{(}\PYG{n}{cnt}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{cnt}\PYG{p}{));}
+  \PYG{n}{vis}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+  \PYG{n}{dis}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+  \PYG{n}{std}\PYG{o}{::}\PYG{n}{queue}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{que}\PYG{p}{;}
+  \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{que}\PYG{p}{.}\PYG{n}{empty}\PYG{p}{())} \PYG{n}{que}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}
+  \PYG{n}{que}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{s}\PYG{p}{);}
+  \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{que}\PYG{p}{.}\PYG{n}{empty}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{U} \PYG{o}{=} \PYG{n}{que}\PYG{p}{.}\PYG{n}{front}\PYG{p}{();}
+    \PYG{n}{que}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}
+    \PYG{n}{vis}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{g}\PYG{p}{[}\PYG{n}{U}\PYG{p}{].}\PYG{n}{size}\PYG{p}{();} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{v} \PYG{o}{=} \PYG{n}{g}\PYG{p}{[}\PYG{n}{U}\PYG{p}{][}\PYG{n}{i}\PYG{p}{].}\PYG{n}{v}\PYG{p}{;}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{dis}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]} \PYG{o}{+} \PYG{n}{g}\PYG{p}{[}\PYG{n}{U}\PYG{p}{][}\PYG{n}{i}\PYG{p}{].}\PYG{n}{dis}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{dis}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{U}\PYG{p}{]} \PYG{o}{+} \PYG{n}{g}\PYG{p}{[}\PYG{n}{U}\PYG{p}{][}\PYG{n}{i}\PYG{p}{].}\PYG{n}{dis}\PYG{p}{;}
+        \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{vis}\PYG{p}{[}\PYG{n}{v}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+          \PYG{n}{vis}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{true}\PYG{p}{;}
+          \PYG{n}{que}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{v}\PYG{p}{);}
+          \PYG{k}{if} \PYG{p}{(}\PYG{o}{++}\PYG{n}{cnt}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{N}\PYG{p}{)} \PYG{k}{return} \PYG{n+nb}{false}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+      \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k}{return} \PYG{n+nb}{true}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

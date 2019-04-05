@@ -1,0 +1,73 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{k}{class} \PYG{n+nc}{AhoCorasickAutomaton} \PYG{p}{\PYGZob{}}
+  \PYG{k}{public}\PYG{o}{:}
+    \PYG{c+c1}{// 子节点记录数组}
+    \PYG{k+kt}{int} \PYG{n}{son}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{][}\PYG{l+m+mi}{26}\PYG{p}{];}
+    \PYG{k+kt}{int} \PYG{n}{val}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+    \PYG{c+c1}{// 失配指针Fail数组}
+    \PYG{k+kt}{int} \PYG{n}{fail}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+    \PYG{c+c1}{// 节点数量}
+    \PYG{k+kt}{int} \PYG{n}{tot}\PYG{p}{;}
+
+    \PYG{c+c1}{// Trie Tree初始化}
+    \PYG{k+kt}{void} \PYG{n+nf}{TrieInit}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+      \PYG{n}{tot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+      \PYG{n}{memset}\PYG{p}{(}\PYG{n}{son}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{son}\PYG{p}{));}
+      \PYG{n}{memset}\PYG{p}{(}\PYG{n}{val}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{val}\PYG{p}{));}
+      \PYG{n}{memset}\PYG{p}{(}\PYG{n}{fail}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{fail}\PYG{p}{));}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+c1}{// 计算字母下标}
+    \PYG{k+kt}{int} \PYG{n+nf}{Pos}\PYG{p}{(}\PYG{k+kt}{char} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k}{return} \PYG{n}{x} \PYG{o}{\PYGZhy{}} \PYG{l+s+sc}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+c1}{// 向Trie Tree中插入Str模式字符串}
+    \PYG{k+kt}{void} \PYG{n+nf}{Insert}\PYG{p}{(}\PYG{n}{string} \PYG{n}{str}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{cur} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{Len} \PYG{o}{=} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{str}\PYG{p}{.}\PYG{n}{length}\PYG{p}{());}
+      \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{Len}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{index} \PYG{o}{=} \PYG{n}{Pos}\PYG{p}{(}\PYG{n}{str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]);}
+        \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{n}{index}\PYG{p}{])} \PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{n}{index}\PYG{p}{]} \PYG{o}{=} \PYG{o}{++}\PYG{n}{tot}\PYG{p}{;}
+        \PYG{n}{cur} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{n}{index}\PYG{p}{];}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{n}{val}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{]}\PYG{o}{++}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+c1}{// Bfs求得Trie Tree上失配指针}
+    \PYG{k+kt}{void} \PYG{n+nf}{GetFail}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+      \PYG{n}{std}\PYG{o}{::}\PYG{n}{queue}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{que}\PYG{p}{;}
+      \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{26}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{son}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{n}{i}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+          \PYG{n}{fail}\PYG{p}{[}\PYG{n}{son}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+          \PYG{n}{que}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{son}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]);}
+        \PYG{p}{\PYGZcb{}}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{que}\PYG{p}{.}\PYG{n}{empty}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+        \PYG{k+kt}{int} \PYG{n}{cur} \PYG{o}{=} \PYG{n}{que}\PYG{p}{.}\PYG{n}{front}\PYG{p}{();} \PYG{n}{que}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{26}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+          \PYG{k}{if} \PYG{p}{(}\PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{n}{i}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+            \PYG{n}{fail}\PYG{p}{[}\PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]]} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{fail}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{]][}\PYG{n}{i}\PYG{p}{];}
+            \PYG{n}{que}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]);}
+          \PYG{p}{\PYGZcb{}}
+          \PYG{k}{else} \PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{fail}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{]][}\PYG{n}{i}\PYG{p}{];}
+        \PYG{p}{\PYGZcb{}}
+      \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+c1}{// 询问Str中出现的模式串数量}
+    \PYG{k+kt}{int} \PYG{n+nf}{Query}\PYG{p}{(}\PYG{n}{string} \PYG{n}{str}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{len} \PYG{o}{=} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{str}\PYG{p}{.}\PYG{n}{length}\PYG{p}{());}
+      \PYG{k+kt}{int} \PYG{n}{cur} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{ret} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+      \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{len}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{cur} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{cur}\PYG{p}{][}\PYG{n}{Pos}\PYG{p}{(}\PYG{n}{str}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])];}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{n}{cur}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{o}{\PYGZti{}}\PYG{n}{val}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];} \PYG{n}{j} \PYG{o}{=} \PYG{n}{fail}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+          \PYG{n}{ret} \PYG{o}{+=} \PYG{n}{val}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
+          \PYG{n}{val}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+      \PYG{p}{\PYGZcb{}}
+      \PYG{k}{return} \PYG{n}{ret}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

@@ -3,12 +3,12 @@
 const int maxn = "Edit";
 
 bool is_prime[maxn];
-vector<int> prime;
+std::vector<int> prime;
 int mu[maxn];
 
 void Sieve() {
   memset(is_prime, true, sizeof(is_prime));
-  mu[1] = 1;
+  mu[1] = 1; is_prime[0] = is_prime[1] = false;
   for (int i = 2; i < maxn; ++i) {
     if (is_prime[i]) {
       prime.emplace_back(i);

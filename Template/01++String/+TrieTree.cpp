@@ -1,65 +1,57 @@
-#include <bits/stdc++.h>
-
 const int maxn = "Edit";
 
-struct Trie {
+class Trie {
+  public:
     // Trie Tree节点
-    int Son[maxn][26];
+    int son[maxn][26];
     // Trie Tree节点数量
-    int Tot;
+    int tot;
 
     // 字符串数量统计数组
-    int Cnt[maxn];
+    int cnt[maxn];
 
     // Trie Tree初始化
     void TrieInit() {
-        Tot = 0;
-        memset(Cnt, 0, sizeof(Cnt));
-        memset(Son, 0, sizeof(Son));
+      tot = 0;
+      memset(cnt, 0, sizeof(cnt));
+      memset(son, 0, sizeof(son));
     }
 
     // 计算字母下标
-    int Pos(char X) {
-        return X - 'a';
+    int Pos(char x) {
+      return x - 'a';
     }
 
     // 向Trie Tree中插入字符串Str
-    void Insert(string Str) {
-        int Cur = 0, Len = int(Str.length());
-        for (int i = 0; i < Len; ++i) {
-            int Index = Pos(Str[i]);
-            if (!Son[Cur][Index]) {
-                Son[Cur][Index] = ++Tot;
-            }
-            Cur = Son[Cur][Index];
-
-            Cnt[Cur]++;
-        }
+    void Insert(string str) {
+      int cur = 0, len = int(str.length());
+      for (int i = 0; i < len; ++i) {
+        int index = Pos(str[i]);
+        if (!son[cur][index]) son[cur][index] = ++tot;
+        cur = son[cur][index];
+        cnt[cur]++;
+      }
     }
 
-    // 查找字符串Str，存在返回true，不存在返回false
-    bool Find(string Str) {
-        int Cur = 0, Len = int(Str.length());
-        for (int i = 0; i < Len; ++i) {
-            int Index = Pos(Str[i]);
-            if (!Son[Cur][Index]) {
-                return false;
-            }
-            Cur = Son[Cur][Index];
-        }
-        return true;
+    // 查找字符串str，存在返回true，不存在返回false
+    bool Find(string str) {
+      int cur = 0, len = int(str.length());
+      for (int i = 0; i < len; ++i) {
+        int index = Pos(str[i]);
+        if (!son[cur][index]) return false;
+        cur = son[cur][index];
+      }
+      return true;
     }
 
-    // 查询字典树中以Str为前缀的字符串数量
-    int PathCnt(string Str) {
-        int Cur = 0, Len = int(Str.length());
-        for (int i = 0; i < Len; ++i) {
-            int Index = Pos(Str[i]);
-            if (!Son[Cur][Index]) {
-                return 0;
-            }
-            Cur = Son[Cur][Index];
-        }
-        return Cnt[Cur];
+    // 查询字典树中以str为前缀的字符串数量
+    int PathCnt(string str) {
+      int cur = 0, len = int(str.length());
+      for (int i = 0; i < len; ++i) {
+        int index = Pos(Str[i]);
+        if (!son[cur][index]) return 0;
+        cur = son[cur][index];
+      }
+      return cnt[cur];
     }
 };

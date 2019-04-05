@@ -1,49 +1,12 @@
-#include <bits/stdc++.h>
-
-const int mod = 1e9 + 7;
+const int mod = "Edit";
 const int maxn = "Edit";
 
-// 快速乘
-long long QuickMul(long long A, long long B) {
-    long long Ans = 0;
-    while (B) {
-        if (B & 1) {
-            Ans = (Ans + A) % mod;
-        }
-        A = (A + A) % mod;
-        B >>= 1;
-    }
-    return Ans;
-}
+// fac:阶乘，facinv:阶乘逆元
+long long fac[maxn], facinv[maxn];
 
-// 快速幂
-long long QuickPow(long long A, long long B) {
-    long long Ans = 1;
-    while (B) {
-        if (B & 1) {
-            Ans = QuickMul(Ans, A) % mod;
-        }
-        A = QuickMul(A, A) % mod;
-        B >>= 1;
-    }
-    return Ans;
-}
-
-// Factorial:阶乘，FactorialInv:阶乘逆元
-long long Factorial[maxn], FactorialInv[maxn];
-
-// 求阶乘逆元
-void FactorialInvInit() {
-    // 求阶乘
-    Factorial[0] = 0;
-    Factorial[1] = 1;
-    for (int i = 2; i < maxn; ++i) {
-        Factorial[i] = (Factorial[i - 1] * i) % mod;
-    }
-    // 飞马小定理求最大值阶乘逆元
-    FactorialInv[maxn - 1] = QuickPow(Factorial[maxn - 1], mod - 2);
-    // 递推求阶乘逆元
-    for (int i = maxn - 2; i >= 0; --i) {
-        FactorialInv[i] = (FactorialInv[i + 1] * (i + 1)) % mod;
-    }
+void GetFacInv() {
+  fac[0] = 0; fac[1] = 1;
+  for (int i = 2; i < maxn; ++i) fac[i] = (fac[i - 1] * i) % mod;
+  facinv[maxn - 1] = Pow(fac[maxn - 1], mod - 2);
+  for (int i = maxn - 2; i >= 0; --i) facinv[i] = (facinv[i + 1] * (i + 1)) % mod;
 }

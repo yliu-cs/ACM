@@ -1,98 +1,83 @@
-#include <bits/stdc++.h>
-
 const int maxn = "Edit";
 
 // 链式前向星存图
-struct Edge {
-    int V, Weight, Next;
-};
+struct edge {int v, c, next;};
 
-Edge edges[maxn << 1];
-int Head[maxn];
-int Tot;
+edge edges[maxn << 1];
+int head[maxn];
+int tot;
 
-void Init() {
-    Tot = 0;
-    memset(Head, -1, sizeof(Head));
+void AddEdge(int u, int v, int c) {
+  edges[tot] = edge {v, c, head[u]};
+  head[u] = tot++;
 }
 
-void AddEdge(int U, int V, int Weight) {
-    edges[Tot] = Edge {V, Weight, Head[U]};
-    Head[U] = Tot++;
+namespace LCAOnline {
+  // 节点深度
+  int rmq[maxn << 1];
+  // 深搜遍历顺序
+  int vertex[maxn << 1];
+  // 节点在深搜中第一次出现的位置
+  int first[maxn];
+  // 记录父节点
+  int fa[maxn];
+  // 记录与根节点距离
+  int dis[maxn];
+  // 遍历节点数量
+  int lca_tot;
+  
+  // 最小值对应下标
+  int dp[maxn << 1][20];
+  
+  // rmq初始化
+  void Work(int n) {
+    for (int i = 1; i <= n; ++i) dp[i][0] = i;
+    for (int j = 1; (1 << j) <= n; ++j) {
+      for (int i = 1; i + (1 << j) - 1 <= n; ++i) {
+        dp[i][j] = rmq[dp[i][j - 1]] < rmq[dp[i + (1 << (j - 1))][j - 1]] ? dp[i][j - 1] : dp[i + (1 << (j - 1))][j - 1];
+      }
+    }
+  }
+
+  // 深搜
+  void Dfs(int cur, int pre, int dep) {
+    vertex[++lca_tot] = cur;
+    first[cur] = lca_tot;
+    rmq[lca_tot] = dep;
+    fa[cur] = pre;
+    for (int i = head[cur]; ~i; i = edges[i].next) {
+      if (edges[i].v == pre) continue;
+      dis[edges[i].v] = dis[cur] + edges[i].c;
+      Dfs(edges[i].v, cur, dep + 1);
+      vertex[++lca_tot] = cur;
+      rmq[lca_tot] = dep;
+    }
+  }
+  
+  // rmq查询
+  int Query(int l, int r) {
+    if (l > r) swap(l, r);
+    int len = int(log2(r - l + 1));
+    return rmq[dp[l][len]] <= rmq[dp[r - (1 << len) + 1][len]] ? dp[l][len] : dp[r - (1 << len) + 1][len];
+  }
+  
+  // LCA初始化
+  void Init(int rt, int num) {
+    memset(dis, 0, sizeof(dis));
+    lca_tot = 0;
+    Dfs(rt, 0, 0);
+    fa[1] = 0;
+    Work(2 * num - 1);
+  }
+
+  // 查询节点U、v的距离
+  int GetDis(int u, int v) {
+    return dis[u] + dis[v] - 2 * dis[LCA(u, v)];
+  }
+
+  // 查询节点u、v的最近公共祖先(LCA)
+  int GetLCA(int u, int v) {
+    return vertex[Query(first[u], first[v])];
+  }
 }
-
-struct LCAOnline {
-    // 节点深度
-    int Rmq[maxn << 1];
-    // 深搜遍历顺序
-    int Vertex[maxn << 1];
-    // 节点在深搜中第一次出现的位置
-    int First[maxn];
-    // 记录父节点
-    int Parent[maxn];
-    // 记录与根节点距离
-    int Dis[maxn];
-    // 遍历节点数量
-    int LCATot;
-    
-    // 最小值对应下标
-    int Dp[maxn << 1][20];
-    
-    // RMQ初始化
-    void Work(int N) {
-        for (int i = 1; i <= N; ++i) {
-            Dp[i][0] = i;
-        }
-        for (int j = 1; (1 << j) <= N; ++j) {
-            for (int i = 1; i + (1 << j) - 1 <= N; ++i) {
-                Dp[i][j] = Rmq[Dp[i][j - 1]] < Rmq[Dp[i + (1 << (j - 1))][j - 1]] ? Dp[i][j - 1] : Dp[i + (1 << (j - 1))][j - 1];
-            }
-        }
-    }
-
-    // 深搜
-    void Dfs(int Cur, int Pre, int Depth) {
-        Vertex[++LCATot] = Cur;
-        First[Cur] = LCATot;
-        Rmq[LCATot] = Depth;
-        Parent[Cur] = Pre;
-        for (int i = Head[Cur]; ~i; i = edges[i].Next) {
-            if (edges[i].V == Pre) {
-                continue;
-            }
-            Dis[edges[i].V] = Dis[Cur] + edges[i].Weight;
-            Dfs(edges[i].V, Cur, Depth + 1);
-            Vertex[++LCATot] = Cur;
-            Rmq[LCATot] = Depth;
-        }
-    }
-    
-    // RMQ查询
-    int Query(int Left, int Right) {
-        if (Left > Right) {
-            swap(Left, Right);
-        }
-        int Len = int(log2(Right - Left + 1));
-        return Rmq[Dp[Left][Len]] <= Rmq[Dp[Right - (1 << Len) + 1][Len]] ? Dp[Left][Len] : Dp[Right - (1 << Len) + 1][Len];
-    }
-    
-    // LCA初始化
-    void Init(int Root, int NodeNum) {
-        memset(Dis, 0, sizeof(Dis));
-        LCATot = 0;
-        Dfs(Root, 0, 0);
-        Parent[1] = 0;
-        Work(2 * NodeNum - 1);
-    }
-
-    // 查询节点U、V的距离
-    int GetDis(int U, int V) {
-        return Dis[U] + Dis[V] - 2 * Dis[LCA(U, V)];
-    }
-
-    // 查询节点U、V的最近公共祖先(LCA)
-    int LCA(int U, int V) {
-        return Vertex[Query(First[U], First[V])];
-    }
-}LCA;
 

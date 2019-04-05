@@ -5,7 +5,7 @@ set shiftwidth=2
 set cindent
 set mouse=a
 set expandtab
-set backspace=indent,eol,start
+" set backspace=indent,eol,start
 
 "map <F9> :call Run()<CR>
 "func! Run()

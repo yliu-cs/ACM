@@ -1,17 +1,13 @@
-const int maxn = "Edit";
-
-vector<vector<int>> g;
-
+std::vector<std::vector<int>> g;
 int dfs_clock;
-int in[maxn], out[maxn];
+std::vector<int> in, out;
 
 // Dfs序
 void DfsOrder(int cur, int pre) {
-    dfs_clock++;
-    in[cur] = dfs_clock;
-    for (auto &it : g) {
-        if (it == pre) continue;
-        DfsOrder(it, cur);
-    }
-    out[cur] = dfs_clock;
+  in[cur] = ++dfs_clock;
+  for (auto &it : g) {
+    if (it == pre) continue;
+    DfsOrder(it, cur);
+  }
+  out[cur] = dfs_clock;
 }

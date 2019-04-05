@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{c+c1}{// dp[i][j]:str1[1]\PYGZti{}str1[i]和str2[1]\PYGZti{}str2[j]对应的公共子序列长度}
+\PYG{k+kt}{int} \PYG{n}{dp}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{][}\PYG{n}{maxn}\PYG{p}{];}
+
+\PYG{c+c1}{// 最长公共子序列(LCS)}
+\PYG{k+kt}{void} \PYG{n+nf}{GetLCS}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{str1}\PYG{p}{,} \PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{str2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{str1}\PYG{p}{.}\PYG{n}{length}\PYG{p}{());} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{k+kt}{int}\PYG{p}{(}\PYG{n}{str2}\PYG{p}{.}\PYG{n}{length}\PYG{p}{());} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{str1}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{str2}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{n}{dp}\PYG{p}{[}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+      \PYG{k}{else} \PYG{n}{dp}\PYG{p}{[}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{std}\PYG{o}{::}\PYG{n}{max}\PYG{p}{(}\PYG{n}{dp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{dp}\PYG{p}{[}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]);}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

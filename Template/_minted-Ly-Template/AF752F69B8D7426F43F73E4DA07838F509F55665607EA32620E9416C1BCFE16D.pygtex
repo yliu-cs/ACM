@@ -1,0 +1,31 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{n}{dp}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{c+c1}{// cap:背包容量，cnt:总物品数}
+\PYG{k+kt}{int} \PYG{n}{cap}\PYG{p}{,} \PYG{n}{cnt}\PYG{p}{;}
+
+\PYG{c+c1}{// 01背包，代价为cost，获得的价值为weight}
+\PYG{k+kt}{void} \PYG{n+nf}{ZeroOnePack}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{cost}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{weight}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{cap}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{n}{cost}\PYG{p}{;} \PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{i}\PYG{p}{)} \PYG{n}{dp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{std}\PYG{o}{::}\PYG{n}{max}\PYG{p}{(}\PYG{n}{dp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{dp}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{cost}\PYG{p}{]} \PYG{o}{+} \PYG{n}{weight}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 完全背包，代价为cost，获得的价值为weight}
+\PYG{k+kt}{void} \PYG{n+nf}{CompletePack}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{cost}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{weight}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{cost}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{cap}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{n}{dp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{std}\PYG{o}{::}\PYG{n}{max}\PYG{p}{(}\PYG{n}{dp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{dp}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{cost}\PYG{p}{]} \PYG{o}{+} \PYG{n}{weight}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 多重背包，代价为cost，获得的价值为weight，数量为amount}
+\PYG{k+kt}{void} \PYG{n+nf}{MultiplePack}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{cost}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{weight}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{amount}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{cost} \PYG{o}{*} \PYG{n}{amount} \PYG{o}{\PYGZgt{}=} \PYG{n}{cap}\PYG{p}{)} \PYG{n}{CompletePack}\PYG{p}{(}\PYG{n}{cost}\PYG{p}{,} \PYG{n}{weight}\PYG{p}{);}
+  \PYG{k}{else} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{n}{amount}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{ZeroOnePack}\PYG{p}{(}\PYG{n}{k} \PYG{o}{*} \PYG{n}{cost}\PYG{p}{,} \PYG{n}{k} \PYG{o}{*} \PYG{n}{weight}\PYG{p}{);}
+      \PYG{n}{amount} \PYG{o}{\PYGZhy{}=} \PYG{n}{k}\PYG{p}{;}
+      \PYG{n}{k} \PYG{o}{\PYGZlt{}\PYGZlt{}=} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{ZeroOnePack}\PYG{p}{(}\PYG{n}{amount} \PYG{o}{*} \PYG{n}{cost}\PYG{p}{,} \PYG{n}{amount} \PYG{o}{*} \PYG{n}{weight}\PYG{p}{);}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

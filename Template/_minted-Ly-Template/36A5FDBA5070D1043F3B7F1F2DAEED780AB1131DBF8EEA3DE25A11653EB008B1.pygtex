@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{bool} \PYG{n+nf}{GetNim}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{arr}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k+kt}{int} \PYG{n}{ret} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{k}{for} \PYG{p}{(}\PYG{k}{auto} \PYG{o}{\PYGZam{}}\PYG{n+nl}{v} \PYG{p}{:} \PYG{n}{arr}\PYG{p}{)} \PYG{n}{ret} \PYG{o}{\PYGZca{}=} \PYG{n}{v}\PYG{p}{;}
+  \PYG{c+c1}{// ret不为零则先手赢，否则为后手赢}
+  \PYG{k}{return} \PYG{n}{ret} \PYG{o}{!=} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1,19 +1,17 @@
-#include <bits/stdc++.h>
-
 const int maxn = "Edit";
 
-// N:顶点数
-int N;
-// Dis[i][j]为i点到j点的最短路
-int Dis[maxn][maxn];
+// n:顶点数
+int n;
+// dis[i][j]为i点到j点的最短路
+int dis[maxn][maxn];
 
 // Floyd算法
 void Floyd() {
-    for (int k = 1; k <= N; ++k) {
-        for (int i = 1; i <= N; ++i) {
-            for (int j = 1; j <= N; ++j) {
-                Dis[i][j] = std::min(Dis[i][j], Dis[i][k] + Dis[k][j]);
-            }
-        }
+  for (int k = 1; k <= n; ++k) {
+    for (int i = 1; i <= n; ++i) {
+      for (int j = 1; j <= n; ++j) {
+        dis[i][j] = std::min(dis[i][j], dis[i][k] + dis[k][j]);
+      }
     }
+  }
 }
