@@ -25,7 +25,6 @@ int main() {
   for (int i = 0, u, v, c; i < m; ++i) {
     std::cin >> u >> v >> c;
     --u; --v;
-    // g[u].push_back((edge){v, c});
     g[v].push_back((edge){u, c});
   }
 
