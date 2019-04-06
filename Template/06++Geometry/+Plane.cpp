@@ -24,7 +24,7 @@ namespace Geometry {
   db GetAng(point k1, point k2) {return fabs(atan2(fabs(k1 ^ k2), k1 * k2));}
   point Rotate(point k, db ang) {return (point){k.X * cos(ang) - k.Y * sin(ang), k.X * sin(ang) + k.Y * cos(ang)};}
   point Rotate90(point k) {return (point){-k.Y, k.X};}
-  bool IsConvexHull(std::vector<point> points) {
+  bool IsConvexhull(std::vector<point> points) {
     int N = (int)points.size();
     for (int i = 0; i < N; ++i)
       if (Sgn((points[(i + 1) % N] - points[i]) ^ (points[(i + 2) % N] - points[(i + 1) % N])) < 0)

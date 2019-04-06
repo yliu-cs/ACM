@@ -1,16 +1,16 @@
 const int inf = "Edit";
 const int maxn = "Edit";
 
-struct Edge {int v, dis;};
+struct edge {int v, dis;};
 int n, e;
 bool vis[maxn];
 int cnt[maxn];
 int dis[maxn];
-std::vector<Edge> g[maxn];
+std::vector<edge> g[maxn];
 
 void AddEdge (int u, int v, int c) {
-  g[u].push_back((Edge){v, c});
-  g[v].push_back((Edge){u, c});
+  g[u].push_back((edge){v, c});
+  g[v].push_back((edge){u, c});
 }
 
 bool SPFA(int s) {
