@@ -11,7 +11,7 @@ FZU                      4
 HDU                      199  
 HRBUST                   1  
 HenuOJ                   6  
-JiSuanKe                 7  
+JiSuanKe                 14  
 Kattis                   2  
 LibreOJ                  2  
 LightOJ                  5  
@@ -31,4 +31,4 @@ ZZULIOJ                  7
 cometOJ                  19  
 hihoCoder                6  
 ```
-#### `Total:947`
+#### `Total:954`
