@@ -1,3 +1,4 @@
+// CodeForces 70D 动态凸包
 #include <bits/stdc++.h>
 typedef double db;
 const int maxn = 1e5 + 5;
