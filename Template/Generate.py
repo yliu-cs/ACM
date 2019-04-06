@@ -19,7 +19,7 @@ TexHead = r"""\documentclass[a4paper,11pt]{article}
 \cfoot{\thepage}
 \rfoot{}
 
-\author{Liu Yang}
+\author{Tony5t4rk}
 \title{Algorithm Library}
 
 \geometry{a4paper,scale=0.8}

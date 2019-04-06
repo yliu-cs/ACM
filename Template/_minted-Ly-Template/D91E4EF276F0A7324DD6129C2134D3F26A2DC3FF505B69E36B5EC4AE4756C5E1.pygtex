@@ -3,12 +3,9 @@
 
 \PYG{k}{class} \PYG{n+nc}{AhoCorasickAutomaton} \PYG{p}{\PYGZob{}}
   \PYG{k}{public}\PYG{o}{:}
-    \PYG{c+c1}{// 子节点记录数组}
     \PYG{k+kt}{int} \PYG{n}{son}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{][}\PYG{l+m+mi}{26}\PYG{p}{];}
     \PYG{k+kt}{int} \PYG{n}{val}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
-    \PYG{c+c1}{// 失配指针Fail数组}
     \PYG{k+kt}{int} \PYG{n}{fail}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
-    \PYG{c+c1}{// 节点数量}
     \PYG{k+kt}{int} \PYG{n}{tot}\PYG{p}{;}
 
     \PYG{c+c1}{// Trie Tree初始化}

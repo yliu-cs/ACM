@@ -5,7 +5,6 @@
 \PYG{k+kt}{int} \PYG{n}{phi}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
 \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{prime}\PYG{p}{;}
 
-\PYG{c+c1}{// 同时求得欧拉函数和素数表}
 \PYG{k+kt}{void} \PYG{n+nf}{Sieve}\PYG{p}{()} \PYG{p}{\PYGZob{}}
   \PYG{n}{memset}\PYG{p}{(}\PYG{n}{is\PYGZus{}prime}\PYG{p}{,} \PYG{n+nb}{true}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{is\PYGZus{}prime}\PYG{p}{));}
   \PYG{n}{phi}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{is\PYGZus{}prime}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{is\PYGZus{}prime}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{n+nb}{false}\PYG{p}{;}

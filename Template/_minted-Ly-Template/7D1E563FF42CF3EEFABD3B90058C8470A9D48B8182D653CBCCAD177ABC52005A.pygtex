@@ -39,7 +39,6 @@
   \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
 
-\PYG{c+c1}{// 多项式系数}
 \PYG{n}{complex} \PYG{n}{a}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{],} \PYG{n}{b}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
 
 \PYG{c+c1}{// 多项式卷积计算}

@@ -2,12 +2,9 @@ const int maxn = "Edit";
 
 class AhoCorasickAutomaton {
   public:
-    // 子节点记录数组
     int son[maxn][26];
     int val[maxn];
-    // 失配指针Fail数组
     int fail[maxn];
-    // 节点数量
     int tot;
 
     // Trie Tree初始化

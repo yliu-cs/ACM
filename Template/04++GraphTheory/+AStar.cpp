@@ -10,7 +10,6 @@ edge rev_g[maxn << 1];
 int rev_head[maxn];
 int rev_tot;
 
-// 链式前向星存图初始化
 void Init() {
   tot = 0;
   memset(head, -1, sizeof(head));
@@ -65,17 +64,13 @@ int AStar(int s, int t, int k) {
   priority_queue<node> que;
   // 注意特盘相同点是否算最短路
   if (s == t) k++;
-  // 起点与终点不连通
   if (dis[s] == inf) return -1;
   que.push(node {dis[s], 0, s});
   while (!que.empty()) {
     node keep = que.top(); que.pop();
     if (keep.p == t) {
       cnt++;
-      if (cnt == k) {
-        // 返回第k短路长度
-        return keep.g;
-      }
+      if (cnt == k) return keep.g;
     }
     for (int i = head[keep.p]; i != -1; i = g[i].next) {
       node tmp;

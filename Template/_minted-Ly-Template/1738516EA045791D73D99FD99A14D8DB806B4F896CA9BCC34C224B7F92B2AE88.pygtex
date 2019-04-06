@@ -3,7 +3,6 @@
 
 \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{catalan}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
 
-\PYG{c+c1}{// 递推求卡特兰数}
 \PYG{k+kt}{void} \PYG{n+nf}{GetCalalan}\PYG{p}{()} \PYG{p}{\PYGZob{}}
   \PYG{n}{memset}\PYG{p}{(}\PYG{n}{catalan}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{catalan}\PYG{p}{));}
   \PYG{n}{catalan}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{catalan}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}

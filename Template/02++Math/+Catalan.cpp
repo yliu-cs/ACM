@@ -2,7 +2,6 @@ const int maxn = "Edit";
 
 long long catalan[maxn];
 
-// 递推求卡特兰数
 void GetCalalan() {
   memset(catalan, 0, sizeof(catalan));
   catalan[0] = catalan[1] = 1;

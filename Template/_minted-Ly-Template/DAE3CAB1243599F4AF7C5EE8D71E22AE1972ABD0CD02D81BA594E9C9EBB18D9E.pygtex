@@ -1,7 +1,8 @@
 \begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{mod} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
 \PYG{c+c1}{// 扩展欧几里得，a*x+b*y=d}
 \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n+nf}{ExtendGcd}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{b}\PYG{p}{,} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{o}{\PYGZam{}}\PYG{n}{x}\PYG{p}{,} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{o}{\PYGZam{}}\PYG{n}{y}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-  \PYG{c+c1}{// 无最大公约数}
   \PYG{k}{if} \PYG{p}{(}\PYG{n}{a} \PYG{o}{==} \PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{b} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
   \PYG{k}{if} \PYG{p}{(}\PYG{n}{b} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{n}{x} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
@@ -13,11 +14,11 @@
   \PYG{k}{return} \PYG{n}{d}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 
-\PYG{c+c1}{// 逆元，ax = 1(mod M)}
-\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n+nf}{GetInv}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{a}\PYG{p}{,} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{N}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{c+c1}{// 逆元，ax = 1(mod mod)}
+\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n+nf}{GetInv}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{a}\PYG{p}{)} \PYG{p}{\PYGZob{}}
   \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{;}
-  \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{d} \PYG{o}{=} \PYG{n}{ExtendGcd}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{N}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{);}
-  \PYG{k}{if} \PYG{p}{(}\PYG{n}{d} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{k}{return} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZpc{}} \PYG{n}{N} \PYG{o}{+} \PYG{n}{N}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{N}\PYG{p}{;}
+  \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{d} \PYG{o}{=} \PYG{n}{ExtendGcd}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n}{mod}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{);}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{d} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{k}{return} \PYG{p}{(}\PYG{n}{x} \PYG{o}{\PYGZpc{}} \PYG{n}{mod} \PYG{o}{+} \PYG{n}{mod}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{mod}\PYG{p}{;}
   \PYG{k}{else} \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \end{Verbatim}

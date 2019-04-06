@@ -38,7 +38,6 @@ void FFT(complex f[], int op) {
   }
 }
 
-// 多项式系数
 complex a[maxn], b[maxn];
 
 // 多项式卷积计算

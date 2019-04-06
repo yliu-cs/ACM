@@ -1,5 +1,4 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{c+c1}{// 单独求解欧拉函数}
 \PYG{k+kt}{int} \PYG{n+nf}{GetPhi}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
   \PYG{k+kt}{int} \PYG{n}{ret} \PYG{o}{=} \PYG{n}{x}\PYG{p}{;}
   \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{n}{i} \PYG{o}{*} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{x}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}

@@ -1,5 +1,3 @@
-#include<bits/stdc++.h>
-
 namespace Geometry3D {
   typedef double db;
   const db inf = 1e20;
@@ -10,7 +8,6 @@ namespace Geometry3D {
   int Sgn(db k) {return fabs(k) < eps ? 0 : (k < 0 ? -1 : 1);}
   int Cmp(db k1, db k2) {return Sgn(k1 - k2);}
 
-  /*----------点(向量)----------*/
   struct point {db x, y, z;};
   bool operator == (point k1, point k2) {return Sgn(k1.x - k2.x) == 0 && Sgn(k1.y - k2.y) == 0 && Sgn(k1.z - k1.z) == 0;}
   point operator + (point k1, point k2) {return (point){k1.x + k2.x, k1.y + k2.y, k1.z + k2.z};}
@@ -41,27 +38,26 @@ namespace Geometry3D {
     return ret;
   }
 
-  /*----------线(线段)----------*/
   struct line {point s, t;};
   typedef line seg;
   db GetLen(seg k) {return GetDisP2P(k.s, k.t);}
-  db DisP2Line(point k1, line k2) {return fabs((k1 - k2.s) ^ (k2.t - k2.s)) / GetLen(k2);}
-  db DisP2Seg(point k1, seg k2) {
+  db GetLe2(seg k) {return GetDisP2P2(k.s, k.t);}
+  db GetDisP2Line(point k1, line k2) {return fabs((k1 - k2.s) ^ (k2.t - k2.s)) / GetLen(k2);}
+  db GetDisP2Seg(point k1, seg k2) {
     if (Sgn((k1 - k2.s) * (k2.T - k2.s)) < 0 || Sgn((k1 - k2.t) * (k2.s - k2.t)) < 0) {
       return min(GetDisP2P(k1, k2.s), GetDisP2P(k1, k2.t));
     }
-    return DisP2Line(k1, k2);
+    return GetDisP2Line(k1, k2);
   }
 
-  /*----------球----------*/
   struct sphere {point o;db r;};
-  db GetVolume(sphere k) {return 4.0 / 3.0 * pi * k.r * k.r * k.r;}
-  db GetSphereInterVolume(sphere k1, sphere k2) {
+  db GetV(sphere k) {return 4.0 / 3.0 * pi * k.r * k.r * k.r;}
+  db GetSphereInterV(sphere k1, sphere k2) {
     db ret = 0.0;
     db dis = GetDisP2P(k1.o, k2.o);
     if (Sgn(dis - k1.r - k2.r) >= 0) return ret;
-    if (Sgn(k2.r - (dis + k1.r)) >= 0) return CalVolume(k1);
-    else if (Sgn(k1.r - (dis + k2.r)) >= 0) return CalVolume(k2);
+    if (Sgn(k2.r - (dis + k1.r)) >= 0) return GetV(k1);
+    else if (Sgn(k1.r - (dis + k2.r)) >= 0) return GetV(k2);
     db len1 = ((k1.r * k1.r - k2.r * k2.r) / dis + dis) / 2;
     db len2 = dis - len1;
     db x1 = k1.r - len1, x2 = k2.r - len2;

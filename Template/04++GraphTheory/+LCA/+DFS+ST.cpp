@@ -1,6 +1,5 @@
 const int maxn = "Edit";
 
-// 链式前向星存图
 struct edge {int v, c, next;};
 
 edge edges[maxn << 1];
@@ -19,11 +18,8 @@ namespace LCAOnline {
   int vertex[maxn << 1];
   // 节点在深搜中第一次出现的位置
   int first[maxn];
-  // 记录父节点
   int fa[maxn];
-  // 记录与根节点距离
   int dis[maxn];
-  // 遍历节点数量
   int lca_tot;
   
   // 最小值对应下标

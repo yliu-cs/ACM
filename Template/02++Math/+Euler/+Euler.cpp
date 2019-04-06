@@ -1,4 +1,3 @@
-// 单独求解欧拉函数
 int GetPhi(int x) {
   int ret = x;
   for (int i = 2; i * i <= x; ++i) {

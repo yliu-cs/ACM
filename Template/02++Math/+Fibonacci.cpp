@@ -1,9 +1,7 @@
 const int mod = "Edit";
 
-// 矩阵
 struct matrix {long long mat[2][2];
 
-// 重载矩阵乘法
 matrix operator * (matrix &k1, matrix &k2) const {
   matrix ret;
   memset(ret.mat, 0, sizeof(ret.mat));
@@ -17,7 +15,7 @@ matrix operator * (matrix &k1, matrix &k2) const {
   return ret;
 }
 
-// 重载矩阵快速幂
+// 矩阵快速幂
 matrix operator ^ (matrix base, long long k) {
   matrix ret;
   memset(ret.mat, 0, sizeof(ret.mat));
@@ -30,7 +28,7 @@ matrix operator ^ (matrix base, long long k) {
   return ret;
 }
 
-// 斐波那契数列中第X项
+// 斐波那契数列中第x项
 long long Fib(long long x) {
   matrix base;
   base.mat[0][0] = base.mat[1][0] = base.mat[0][1] = 1;

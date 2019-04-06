@@ -13,7 +13,7 @@ int Mul(int x, int y) {
 int Pow(int x, int n) {
   int ret = 1;
   while (n) {
-    if (n & 1) ret = (ret + x) % mod;
+    if (n & 1) ret = (ret * x) % mod;
     x = 1ll * x * x % mod;
     n >>= 1;
   }

@@ -4,7 +4,6 @@ bool is_prime[maxn];
 int phi[maxn];
 std::vector<int> prime;
 
-// 同时求得欧拉函数和素数表
 void Sieve() {
   memset(is_prime, true, sizeof(is_prime));
   phi[1] = 1; is_prime[0] = is_prime[1] = false;

@@ -10,7 +10,6 @@ namespace Geometry {
   db max(db k1, db k2) {return Cmp(k1, k2) > 0 ? k1 : k2;}
   db min(db k1, db k2) {return Cmp(k1, k2) < 0 ? k1 : k2;}
 
-  /*----------点(向量)----------*/
   struct point {db X, Y;};
   bool operator == (point k1, point k2) {return Cmp(k1.X, k2.X) == 0 && Cmp(k1.Y, k2.Y) == 0;}
   point operator + (point k1, point k2) {return (point){k1.X + k2.X, k1.Y + k2.Y};}
@@ -37,22 +36,21 @@ namespace Geometry {
     if (l + 1 == r) return GetDisP2P(p[l], p[r]);
     if (l + 2 == r) return min(GetDisP2P(p[l + 1], p[r]), min(GetDisP2P(p[l], p[l + 1]), GetDisP2P(p[l], p[r])));
     int mid = (l + r) >> 1;
-    db ans = min(solve(l, mid), solve(mid + 1, r));
+    db ret = min(ClosestP2P(l, mid), ClosestP2P(mid + 1, r));
     std::vector<point> mid_p;
     for (int i = l; i <= r; ++i) {
-      if (Cmp(fabs(p[i].x - p[mid].x), ans) <= 0) mid_p.push_back(p[i]);
+      if (Cmp(fabs(p[i].x - p[mid].x), ret) <= 0) mid_p.push_back(p[i]);
     }
-    sort(mid_p.begin(), mid_p.end(), [&](point k1, point k2) {return Cmp(k1.y, k2.y) < 0;});
-    for (int i = 0; i < mid_p.size(); ++i) {
-      for (int j = i + 1; j < mid_p.size(); ++j) {
-        if (Cmp(mid_p[j].y - mid_p[i].y, ans) >= 0) break;
-        ans = min(ans, GetDisP2P(mid_p[i], mid_p[j]));
+    std::sort(mid_p.begin(), mid_p.end(), [&](point k1, point k2) {return Cmp(k1.y, k2.y) < 0;});
+    for (int i = 0; i < (int)mid_p.size(); ++i) {
+      for (int j = i + 1; j < (int)mid_p.size(); ++j) {
+        if (Cmp(mid_p[j].y - mid_p[i].y, ret) >= 0) break;
+        ret = min(ret, GetDisP2P(mid_p[i], mid_p[j]));
       }
     }
-    return ans;
+    return ret;
   }
 
-  /*----------多边形----------*/
   typedef std::vector<point> poly;
   void RotateCaliper() {
     ans = -1e20;
@@ -75,15 +73,15 @@ namespace Geometry {
       for (int i = 0; i < (int)p.size(); ++i) ans.push_back(p[i]);
       return ans;
     }
-    int Basic = 0;
+    int low = 0;
     for (int i = 0; i < (int)p.size(); ++i)
-      if (Cmp(p[i].X, p[Basic].X) < 0 || (Cmp(p[i].X, p[Basic].X) == 0 && Cmp(p[i].Y, p[Basic].Y) < 0))
-        Basic = i;
-    std::swap(p[0], p[Basic]);
+      if (Cmp(p[i].X, p[low].X) < 0 || (Cmp(p[i].X, p[low].X) == 0 && Cmp(p[i].Y, p[low].Y) < 0))
+        low = i;
+    std::swap(p[0], p[low]);
     std::sort(p.begin() + 1, p.end(), [&](point k1, point k2) {
-      double temp = (k1 - p[0]) ^ (k2 - p[0]);
-      if (Sgn(temp) > 0) return true;
-      else if (Sgn(temp) == 0 && Cmp(GetDisP2P(k2, p[0]), GetDisP2P(k1, p[0])) > 0) return true;
+      double tmp = (k1 - p[0]) ^ (k2 - p[0]);
+      if (Sgn(tmp) > 0) return true;
+      else if (Sgn(tmp) == 0 && Cmp(GetDisP2P(k2, p[0]), GetDisP2P(k1, p[0])) > 0) return true;
       return false;
     });
     ans.push_back(p[0]);
@@ -100,19 +98,18 @@ namespace Geometry {
     point cur = p[0];
     db pro = 10000, ans = inf;
     while (pro > eps) {
-      int Book = 0;
+      int book = 0;
       for (int i = 0; i < (int)p.size(); ++i)
-        if (GetDisP2P(cur, p[i]) > GetDisP2P(cur, p[Book]))
-          Book = i;
-      db r = GetDisP2P(cur, p[Book]);
+        if (GetDisP2P(cur, p[i]) > GetDisP2P(cur, p[book]))
+          book = i;
+      db r = GetDisP2P(cur, p[book]);
       if (Cmp(r, ans) < 0) ans = r;
-      cur = cur + (p[Book] - cur) / r * pro;
+      cur = cur + (p[book] - cur) / r * pro;
       pro *= delta;
     }
     return ans;
   }
 
-  /*----------线(线段)----------*/
   struct line {point s, t;};
   typedef line seg;
   db GetLen(seg k) {return GetDisP2P(k.s, k.t);}
@@ -147,7 +144,6 @@ namespace Geometry {
     return (point){k1.s.X + (k1.t.X - k1.s.X) * temp, k1.s.Y + (k1.t.Y - k1.s.Y) * temp};
   }
 
-  /*----------半平面----------*/
   // 表示s->t逆时针(左侧)的半平面
   struct hulfplane:public line {db ang;};
   void GetAng(halfplane k) {k.ang = atan2(k.t.Y - k.s.Y, k.t.X - k.s.X);}
@@ -166,11 +162,11 @@ namespace Geometry {
     void Push(halfplane k) {hp[tot++] = k;}
 
     void Unique() {
-      int Cnt = 1;
+      int cnt = 1;
       for (int i = 1; i < tot; ++i)
         if (fabs(hp[i].ang - hp[i - 1].ang) > eps)
-          hp[Cnt++] = hp[i];
-      tot = Cnt;
+          hp[cnt++] = hp[i];
+      tot = cnt;
     }
 
     bool IsHalfPlaneInsert() {
@@ -192,15 +188,13 @@ namespace Geometry {
     }
 
     void GetHalfPlaneInsertConvex() {
-      int Cnt = 0;
-      for (int i = front; i < tail; ++i) res[Cnt++] = Cross(deq[i], deq[i + 1]);
-      if (front < tail - 1) res[Cnt++] = Cross(deq[front], deq[tail]);
+      int cnt = 0;
+      for (int i = front; i < tail; ++i) res[cnt++] = Cross(deq[i], deq[i + 1]);
+      if (front < tail - 1) res[cnt++] = Cross(deq[front], deq[tail]);
     }
   };
 
-  /*----------圆----------*/
   struct circle {point o; db r;};
-
   circle GetCircle(point k1, point k2, point k3) {
     db a1 = k2.x - k1.x, b1 = k2.y - k1.y, c1 = (a1 * a1 + b1 * b1) / 2;
     db a2 = k3.x - k1.x, b2 = k3.y - k1.y, c2 = (a2 * a2 + b2 * b2) / 2;
@@ -210,7 +204,7 @@ namespace Geometry {
   }
 
   circle GetMinCircle(std::vector<point> p) {
-    random_shuffle(p.begin(), p.end());
+    std::random_shuffle(p.begin(), p.end());
     int n = (int)p.size();
     circle ret = (circle){p[0], 0.0};
     for (int i = 1; i < n; ++i) {

@@ -2,22 +2,16 @@ const int maxn = "Edit";
 
 class Trie {
   public:
-    // Trie Tree节点
     int son[maxn][26];
-    // Trie Tree节点数量
     int tot;
-
-    // 字符串数量统计数组
     int cnt[maxn];
 
-    // Trie Tree初始化
     void TrieInit() {
       tot = 0;
       memset(cnt, 0, sizeof(cnt));
       memset(son, 0, sizeof(son));
     }
 
-    // 计算字母下标
     int Pos(char x) {
       return x - 'a';
     }
