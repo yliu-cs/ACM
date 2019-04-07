@@ -8,13 +8,6 @@ class splay_tree {
     long long val[maxn << 1];
     long long sz[maxn << 1], cnt[maxn << 1];
 
-    void Init() {
-      rt = tot = 0;
-      memset(fa, 0, sizeof(fa)); memset(son, 0, sizeof(son));
-      memset(val, 0, sizeof(val)); memset(cnt, 0, sizeof(cnt));
-      memset(sz, 0, sizeof(sz));
-    }
-
     void Push(long long o) {
       sz[o] = sz[son[o][0]] + sz[son[o][1]] + cnt[o];
     }

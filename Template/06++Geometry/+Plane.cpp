@@ -24,10 +24,10 @@ namespace Geometry {
   db GetAng(point k1, point k2) {return fabs(atan2(fabs(k1 ^ k2), k1 * k2));}
   point Rotate(point k, db ang) {return (point){k.X * cos(ang) - k.Y * sin(ang), k.X * sin(ang) + k.Y * cos(ang)};}
   point Rotate90(point k) {return (point){-k.Y, k.X};}
-  bool IsConvexhull(std::vector<point> points) {
-    int N = (int)points.size();
+  bool IsConvexhull(std::vector<point> &p) {
+    int N = (int)p.size();
     for (int i = 0; i < N; ++i)
-      if (Sgn((points[(i + 1) % N] - points[i]) ^ (points[(i + 2) % N] - points[(i + 1) % N])) < 0)
+      if (Sgn((p[(i + 1) % N] - p[i]) ^ (p[(i + 2) % N] - p[(i + 1) % N])) < 0)
         return false;
     return true;
   }
@@ -148,8 +148,8 @@ namespace Geometry {
   struct hulfplane:public line {db ang;};
   void GetAng(halfplane k) {k.ang = atan2(k.t.Y - k.s.Y, k.t.X - k.s.X);}
   bool operator < (halfplane k1, halfplane k2) {
-      if (Sgn(k1.ang - k2.ang) > 0) return k1.ang < k2.ang;
-      return Sgn((k1.s - k2.s) ^ (k2.t - k2.s)) < 0;
+    if (Sgn(k1.ang - k2.ang) > 0) return k1.ang < k2.ang;
+    return Sgn((k1.s - k2.s) ^ (k2.t - k2.s)) < 0;
   }
   struct HalfPlaneInsert {
     int tot;
