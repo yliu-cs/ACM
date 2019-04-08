@@ -1,7 +1,7 @@
 const int inf = "Edit"
 const int maxn = "Edit";
 
-class splay_tree {
+class SplayTree {
   public:
     int rt, tot;
     int fa[maxn], son[maxn][2];

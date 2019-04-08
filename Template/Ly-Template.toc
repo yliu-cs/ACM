@@ -33,11 +33,12 @@
 \contentsline {subsection}{\numberline {3.3}FunctionalSegmentTree}{19}{subsection.3.3}% 
 \contentsline {subsection}{\numberline {3.4}Hash}{20}{subsection.3.4}% 
 \contentsline {subsection}{\numberline {3.5}MultipleTree}{21}{subsection.3.5}% 
-\contentsline {subsection}{\numberline {3.6}SegmentTree}{27}{subsection.3.6}% 
-\contentsline {subsubsection}{\numberline {3.6.1}AreaCombination}{27}{subsubsection.3.6.1}% 
-\contentsline {subsubsection}{\numberline {3.6.2}AreaXorCombination}{29}{subsubsection.3.6.2}% 
-\contentsline {subsubsection}{\numberline {3.6.3}SegmentTree}{31}{subsubsection.3.6.3}% 
-\contentsline {subsection}{\numberline {3.7}SplayTree}{33}{subsection.3.7}% 
+\contentsline {subsection}{\numberline {3.6}STTable}{27}{subsection.3.6}% 
+\contentsline {subsection}{\numberline {3.7}SegmentTree}{27}{subsection.3.7}% 
+\contentsline {subsubsection}{\numberline {3.7.1}AreaCombination}{27}{subsubsection.3.7.1}% 
+\contentsline {subsubsection}{\numberline {3.7.2}AreaXorCombination}{29}{subsubsection.3.7.2}% 
+\contentsline {subsubsection}{\numberline {3.7.3}SegmentTree}{32}{subsubsection.3.7.3}% 
+\contentsline {subsection}{\numberline {3.8}SplayTree}{33}{subsection.3.8}% 
 \contentsline {section}{\numberline {4}GraphTheory}{37}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}AStar}{37}{subsection.4.1}% 
 \contentsline {subsection}{\numberline {4.2}LCA}{38}{subsection.4.2}% 

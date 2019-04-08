@@ -10,20 +10,20 @@ namespace Geometry {
   db max(db k1, db k2) {return Cmp(k1, k2) > 0 ? k1 : k2;}
   db min(db k1, db k2) {return Cmp(k1, k2) < 0 ? k1 : k2;}
 
-  struct point {db X, Y;};
-  bool operator == (point k1, point k2) {return Cmp(k1.X, k2.X) == 0 && Cmp(k1.Y, k2.Y) == 0;}
-  point operator + (point k1, point k2) {return (point){k1.X + k2.X, k1.Y + k2.Y};}
-  point operator - (point k1, point k2) {return (point){k1.X - k2.X, k1.Y - k2.Y};}
-  db operator * (point k1, point k2) {return k1.X * k2.X + k1.Y * k2.Y;}
-  db operator ^ (point k1, point k2) {return k1.X * k2.Y - k1.Y * k2.X;}
-  point operator * (point k1, db k2) {return (point){k1.X * k2, k1.Y * k2};}
-  point operator / (point k1, db k2) {return (point){k1.X / k2, k1.Y / k2};}
+  struct point {db x, y;};
+  bool operator == (point k1, point k2) {return Cmp(k1.x, k2.x) == 0 && Cmp(k1.y, k2.y) == 0;}
+  point operator + (point k1, point k2) {return (point){k1.x + k2.x, k1.y + k2.y};}
+  point operator - (point k1, point k2) {return (point){k1.x - k2.x, k1.y - k2.y};}
+  db operator * (point k1, point k2) {return k1.x * k2.x + k1.y * k2.y;}
+  db operator ^ (point k1, point k2) {return k1.x * k2.y - k1.y * k2.x;}
+  point operator * (point k1, db k2) {return (point){k1.x * k2, k1.y * k2};}
+  point operator / (point k1, db k2) {return (point){k1.x / k2, k1.y / k2};}
   db GetLen(point k) {return sqrt(k * k);}
   db GetDisP2P(point k1, point k2) {return sqrt((k1 - k2) * (k1 - k2));}
   db GetDisP2P2(point k1, point k2) {return (k1 - k2) * (k1 - k2);}
   db GetAng(point k1, point k2) {return fabs(atan2(fabs(k1 ^ k2), k1 * k2));}
-  point Rotate(point k, db ang) {return (point){k.X * cos(ang) - k.Y * sin(ang), k.X * sin(ang) + k.Y * cos(ang)};}
-  point Rotate90(point k) {return (point){-k.Y, k.X};}
+  point Rotate(point k, db ang) {return (point){k.x * cos(ang) - k.y * sin(ang), k.x * sin(ang) + k.y * cos(ang)};}
+  point Rotate90(point k) {return (point){-k.y, k.x};}
   bool IsConvexhull(std::vector<point> &p) {
     int N = (int)p.size();
     for (int i = 0; i < N; ++i)
@@ -75,7 +75,7 @@ namespace Geometry {
     }
     int low = 0;
     for (int i = 0; i < (int)p.size(); ++i)
-      if (Cmp(p[i].X, p[low].X) < 0 || (Cmp(p[i].X, p[low].X) == 0 && Cmp(p[i].Y, p[low].Y) < 0))
+      if (Cmp(p[i].x, p[low].x) < 0 || (Cmp(p[i].x, p[low].x) == 0 && Cmp(p[i].y, p[low].y) < 0))
         low = i;
     std::swap(p[0], p[low]);
     std::sort(p.begin() + 1, p.end(), [&](point k1, point k2) {
@@ -123,10 +123,10 @@ namespace Geometry {
   bool IsParallel(line k1, line k2) {return Sgn((k1.s - k1.t) ^ (k2.s - k2.t)) == 0;}
   bool IsSegInterSeg(seg k1, seg k2) {
     return
-      max(k1.s.X, k1.t.X) >= min(k2.s.X, k2.t.X) &&
-      max(k2.s.X, k2.t.X) >= min(k1.s.X, k1.t.X) &&
-      max(k1.s.Y, k1.t.Y) >= min(k2.s.Y, k2.t.Y) &&
-      max(k2.s.Y, k2.t.Y) >= min(k1.s.Y, k1.t.Y) &&
+      max(k1.s.x, k1.t.x) >= min(k2.s.x, k2.t.x) &&
+      max(k2.s.x, k2.t.x) >= min(k1.s.x, k1.t.x) &&
+      max(k1.s.y, k1.t.y) >= min(k2.s.y, k2.t.y) &&
+      max(k2.s.y, k2.t.y) >= min(k1.s.y, k1.t.y) &&
       Sgn((k2.s - k1.t) ^ (k1.s - k1.t)) * Sgn((k2.t - k1.t) ^ (k1.s - k1.t)) <= 0 &&
       Sgn((k1.s - k2.t) ^ (k2.s - k2.t)) * Sgn((k1.t - k2.t) ^ (k2.s - k2.t)) <= 0;
   }
@@ -141,12 +141,12 @@ namespace Geometry {
   }
   point Cross(line k1, line k2) {
     db temp = ((k1.s - k2.s) ^ (k2.s - k2.t)) / ((k1.s - k1.t) ^ (k2.s - k2.t));
-    return (point){k1.s.X + (k1.t.X - k1.s.X) * temp, k1.s.Y + (k1.t.Y - k1.s.Y) * temp};
+    return (point){k1.s.x + (k1.t.x - k1.s.x) * temp, k1.s.y + (k1.t.y - k1.s.y) * temp};
   }
 
   // 表示s->t逆时针(左侧)的半平面
   struct hulfplane:public line {db ang;};
-  void GetAng(halfplane k) {k.ang = atan2(k.t.Y - k.s.Y, k.t.X - k.s.X);}
+  void GetAng(halfplane k) {k.ang = atan2(k.t.y - k.s.y, k.t.x - k.s.x);}
   bool operator < (halfplane k1, halfplane k2) {
     if (Sgn(k1.ang - k2.ang) > 0) return k1.ang < k2.ang;
     return Sgn((k1.s - k2.s) ^ (k2.t - k2.s)) < 0;

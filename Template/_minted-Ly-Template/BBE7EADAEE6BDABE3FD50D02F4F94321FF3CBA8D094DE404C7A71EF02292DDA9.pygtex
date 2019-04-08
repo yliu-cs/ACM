@@ -33,7 +33,7 @@
   \PYG{k+kt}{void} \PYG{n}{print}\PYG{p}{()\PYGZob{}}\PYG{n}{printf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZpc{}.11lf \PYGZpc{}.11lf}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{p}{);\PYGZcb{}}
   \PYG{n}{db} \PYG{n}{getw}\PYG{p}{()\PYGZob{}}\PYG{k}{return} \PYG{n}{atan2}\PYG{p}{(}\PYG{n}{y}\PYG{p}{,}\PYG{n}{x}\PYG{p}{);\PYGZcb{}} 
   \PYG{n}{point} \PYG{n}{getdel}\PYG{p}{()\PYGZob{}}\PYG{k}{if} \PYG{p}{(}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{==\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{||}\PYG{p}{(}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)}\PYG{o}{==\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{))} \PYG{k}{return} \PYG{p}{(}\PYG{o}{*}\PYG{k}{this}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);} \PYG{k}{else} \PYG{n+nf}{return} \PYG{p}{(}\PYG{o}{*}\PYG{k}{this}\PYG{p}{);\PYGZcb{}}
-	\PYG{k+kt}{int} \PYG{n}{getP}\PYG{p}{()} \PYG{k}{const}\PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{sign}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{1}\PYG{o}{||}\PYG{p}{(}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{==\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);\PYGZcb{}}
+  \PYG{k+kt}{int} \PYG{n}{getP}\PYG{p}{()} \PYG{k}{const}\PYG{p}{\PYGZob{}}\PYG{k}{return} \PYG{n}{sign}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{1}\PYG{o}{||}\PYG{p}{(}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{y}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}\PYG{o}{==\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);\PYGZcb{}}
 \PYG{p}{\PYGZcb{};}
 \PYG{k+kt}{int} \PYG{n+nf}{inmid}\PYG{p}{(}\PYG{n}{point} \PYG{n}{k1}\PYG{p}{,}\PYG{n}{point} \PYG{n}{k2}\PYG{p}{,}\PYG{n}{point} \PYG{n}{k3}\PYG{p}{)\PYGZob{}}\PYG{k}{return} \PYG{n}{inmid}\PYG{p}{(}\PYG{n}{k1}\PYG{p}{.}\PYG{n}{x}\PYG{p}{,}\PYG{n}{k2}\PYG{p}{.}\PYG{n}{x}\PYG{p}{,}\PYG{n}{k3}\PYG{p}{.}\PYG{n}{x}\PYG{p}{)}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{n}{inmid}\PYG{p}{(}\PYG{n}{k1}\PYG{p}{.}\PYG{n}{y}\PYG{p}{,}\PYG{n}{k2}\PYG{p}{.}\PYG{n}{y}\PYG{p}{,}\PYG{n}{k3}\PYG{p}{.}\PYG{n}{y}\PYG{p}{);\PYGZcb{}}
 \PYG{n}{db} \PYG{n+nf}{cross}\PYG{p}{(}\PYG{n}{point} \PYG{n}{k1}\PYG{p}{,}\PYG{n}{point} \PYG{n}{k2}\PYG{p}{)\PYGZob{}}\PYG{k}{return} \PYG{n}{k1}\PYG{p}{.}\PYG{n}{x}\PYG{o}{*}\PYG{n}{k2}\PYG{p}{.}\PYG{n}{y}\PYG{o}{\PYGZhy{}}\PYG{n}{k1}\PYG{p}{.}\PYG{n}{y}\PYG{o}{*}\PYG{n}{k2}\PYG{p}{.}\PYG{n}{x}\PYG{p}{;\PYGZcb{}}
@@ -294,27 +294,27 @@
   \PYG{k}{return} \PYG{n}{flag}\PYG{o}{==}\PYG{l+m+mi}{2}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \PYG{k+kt}{int} \PYG{n}{checkinp}\PYG{p}{(}\PYG{n}{point} \PYG{n}{r}\PYG{p}{,}\PYG{n}{point} \PYG{n}{l}\PYG{p}{,}\PYG{n}{point} \PYG{n}{m}\PYG{p}{)\PYGZob{}}
-	\PYG{k}{if} \PYG{p}{(}\PYG{n}{compareangle}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{r}\PYG{p}{))\PYGZob{}}\PYG{k}{return} \PYG{n}{compareangle}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{m}\PYG{p}{)}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{n}{compareangle}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,}\PYG{n}{r}\PYG{p}{);\PYGZcb{}}
-	\PYG{k}{return} \PYG{n}{compareangle}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{m}\PYG{p}{)}\PYG{o}{||}\PYG{n}{compareangle}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,}\PYG{n}{r}\PYG{p}{);}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{compareangle}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{r}\PYG{p}{))\PYGZob{}}\PYG{k}{return} \PYG{n}{compareangle}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{m}\PYG{p}{)}\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{n}{compareangle}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,}\PYG{n}{r}\PYG{p}{);\PYGZcb{}}
+  \PYG{k}{return} \PYG{n}{compareangle}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,}\PYG{n}{m}\PYG{p}{)}\PYG{o}{||}\PYG{n}{compareangle}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,}\PYG{n}{r}\PYG{p}{);}
 \PYG{p}{\PYGZcb{}}
 \PYG{k+kt}{int} \PYG{n}{checkPosFast}\PYG{p}{(}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{point}\PYG{o}{\PYGZgt{}}\PYG{n}{A}\PYG{p}{,}\PYG{n}{point} \PYG{n}{k1}\PYG{p}{,}\PYG{n}{point} \PYG{n}{k2}\PYG{p}{)\PYGZob{}} \PYG{c+c1}{// 快速检查线段是否和多边形严格相交}
-	\PYG{k}{if} \PYG{p}{(}\PYG{n}{contain}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{k1}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{2}\PYG{o}{||}\PYG{n}{contain}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{k2}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{k}{if} \PYG{p}{(}\PYG{n}{k1}\PYG{o}{==}\PYG{n}{k2}\PYG{p}{)} \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
-	\PYG{n}{A}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]);} \PYG{n}{A}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]);}
-	\PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{\PYGZlt{}}\PYG{n}{A}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
-		\PYG{k}{if} \PYG{p}{(}\PYG{n}{checkLL}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],}\PYG{n}{k1}\PYG{p}{,}\PYG{n}{k2}\PYG{p}{))\PYGZob{}}
-			\PYG{n}{point} \PYG{n}{now}\PYG{o}{=}\PYG{n}{getLL}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],}\PYG{n}{k1}\PYG{p}{,}\PYG{n}{k2}\PYG{p}{);}
-			\PYG{k}{if} \PYG{p}{(}\PYG{n}{inmid}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],}\PYG{n}{now}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{o}{||}\PYG{n}{inmid}\PYG{p}{(}\PYG{n}{k1}\PYG{p}{,}\PYG{n}{k2}\PYG{p}{,}\PYG{n}{now}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{continue}\PYG{p}{;}
-			\PYG{k}{if} \PYG{p}{(}\PYG{n}{now}\PYG{o}{==}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])\PYGZob{}}
-				\PYG{k}{if} \PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{==}\PYG{n}{k2}\PYG{p}{)} \PYG{k}{continue}\PYG{p}{;}
-				\PYG{n}{point} \PYG{n}{pre}\PYG{o}{=}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{ne}\PYG{o}{=}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{];}
-				\PYG{k}{if} \PYG{p}{(}\PYG{n}{checkinp}\PYG{p}{(}\PYG{n}{pre}\PYG{o}{\PYGZhy{}}\PYG{n}{now}\PYG{p}{,}\PYG{n}{ne}\PYG{o}{\PYGZhy{}}\PYG{n}{now}\PYG{p}{,}\PYG{n}{k2}\PYG{o}{\PYGZhy{}}\PYG{n}{now}\PYG{p}{))} \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
-			\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{now}\PYG{o}{==}\PYG{n}{k1}\PYG{p}{)\PYGZob{}}
-				\PYG{k}{if} \PYG{p}{(}\PYG{n}{k1}\PYG{o}{==}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{||}\PYG{n}{k1}\PYG{o}{==}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{k}{continue}\PYG{p}{;}
-				\PYG{k}{if} \PYG{p}{(}\PYG{n}{checkinp}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{k1}\PYG{p}{,}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{k1}\PYG{p}{,}\PYG{n}{k2}\PYG{o}{\PYGZhy{}}\PYG{n}{k1}\PYG{p}{))} \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
-			\PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{now}\PYG{o}{==}\PYG{n}{k2}\PYG{o}{||}\PYG{n}{now}\PYG{o}{==}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])} \PYG{k}{continue}\PYG{p}{;}
-			\PYG{k}{else} \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
-		\PYG{p}{\PYGZcb{}}
-	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{contain}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{k1}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{2}\PYG{o}{||}\PYG{n}{contain}\PYG{p}{(}\PYG{n}{A}\PYG{p}{,}\PYG{n}{k2}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{k}{if} \PYG{p}{(}\PYG{n}{k1}\PYG{o}{==}\PYG{n}{k2}\PYG{p}{)} \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{n}{A}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]);} \PYG{n}{A}\PYG{p}{.}\PYG{n}{push\PYGZus{}back}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]);}
+  \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{o}{\PYGZlt{}}\PYG{n}{A}\PYG{p}{.}\PYG{n}{size}\PYG{p}{();}\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{checkLL}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],}\PYG{n}{k1}\PYG{p}{,}\PYG{n}{k2}\PYG{p}{))\PYGZob{}}
+      \PYG{n}{point} \PYG{n}{now}\PYG{o}{=}\PYG{n}{getLL}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],}\PYG{n}{k1}\PYG{p}{,}\PYG{n}{k2}\PYG{p}{);}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{inmid}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],}\PYG{n}{now}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{o}{||}\PYG{n}{inmid}\PYG{p}{(}\PYG{n}{k1}\PYG{p}{,}\PYG{n}{k2}\PYG{p}{,}\PYG{n}{now}\PYG{p}{)}\PYG{o}{==}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k}{continue}\PYG{p}{;}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{now}\PYG{o}{==}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{==}\PYG{n}{k2}\PYG{p}{)} \PYG{k}{continue}\PYG{p}{;}
+        \PYG{n}{point} \PYG{n}{pre}\PYG{o}{=}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{],}\PYG{n}{ne}\PYG{o}{=}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{];}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{checkinp}\PYG{p}{(}\PYG{n}{pre}\PYG{o}{\PYGZhy{}}\PYG{n}{now}\PYG{p}{,}\PYG{n}{ne}\PYG{o}{\PYGZhy{}}\PYG{n}{now}\PYG{p}{,}\PYG{n}{k2}\PYG{o}{\PYGZhy{}}\PYG{n}{now}\PYG{p}{))} \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{now}\PYG{o}{==}\PYG{n}{k1}\PYG{p}{)\PYGZob{}}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{k1}\PYG{o}{==}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{||}\PYG{n}{k1}\PYG{o}{==}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{])} \PYG{k}{continue}\PYG{p}{;}
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{checkinp}\PYG{p}{(}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{k1}\PYG{p}{,}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{\PYGZhy{}}\PYG{n}{k1}\PYG{p}{,}\PYG{n}{k2}\PYG{o}{\PYGZhy{}}\PYG{n}{k1}\PYG{p}{))} \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{k}{if} \PYG{p}{(}\PYG{n}{now}\PYG{o}{==}\PYG{n}{k2}\PYG{o}{||}\PYG{n}{now}\PYG{o}{==}\PYG{n}{A}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])} \PYG{k}{continue}\PYG{p}{;}
+      \PYG{k}{else} \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \PYG{c+c1}{// 拆分凸包成上下凸壳 凸包尽量都随机旋转一个角度来避免出现相同横坐标 }
 \PYG{c+c1}{// 尽量特判只有一个点的情况 凸包逆时针}

@@ -32,7 +32,7 @@ struct point{
   void print(){printf("%.11lf %.11lf\n",x,y);}
   db getw(){return atan2(y,x);} 
   point getdel(){if (sign(x)==-1||(sign(x)==0&&sign(y)==-1)) return (*this)*(-1); else return (*this);}
-	int getP() const{return sign(y)==1||(sign(y)==0&&sign(x)==-1);}
+  int getP() const{return sign(y)==1||(sign(y)==0&&sign(x)==-1);}
 };
 int inmid(point k1,point k2,point k3){return inmid(k1.x,k2.x,k3.x)&&inmid(k1.y,k2.y,k3.y);}
 db cross(point k1,point k2){return k1.x*k2.y-k1.y*k2.x;}
@@ -293,27 +293,27 @@ int checkPoS(vector<point>A,point k1,point k2){
   return flag==2;
 }
 int checkinp(point r,point l,point m){
-	if (compareangle(l,r)){return compareangle(l,m)&&compareangle(m,r);}
-	return compareangle(l,m)||compareangle(m,r);
+  if (compareangle(l,r)){return compareangle(l,m)&&compareangle(m,r);}
+  return compareangle(l,m)||compareangle(m,r);
 }
 int checkPosFast(vector<point>A,point k1,point k2){ // 快速检查线段是否和多边形严格相交
-	if (contain(A,k1)==2||contain(A,k2)==2) return 1; if (k1==k2) return 0;
-	A.push_back(A[0]); A.push_back(A[1]);
-	for (int i=1;i+1<A.size();i++)
-		if (checkLL(A[i-1],A[i],k1,k2)){
-			point now=getLL(A[i-1],A[i],k1,k2);
-			if (inmid(A[i-1],A[i],now)==0||inmid(k1,k2,now)==0) continue;
-			if (now==A[i]){
-				if (A[i]==k2) continue;
-				point pre=A[i-1],ne=A[i+1];
-				if (checkinp(pre-now,ne-now,k2-now)) return 1;
-			} else if (now==k1){
-				if (k1==A[i-1]||k1==A[i]) continue;
-				if (checkinp(A[i-1]-k1,A[i]-k1,k2-k1)) return 1;
-			} else if (now==k2||now==A[i-1]) continue;
-			else return 1;
-		}
-	return 0;
+  if (contain(A,k1)==2||contain(A,k2)==2) return 1; if (k1==k2) return 0;
+  A.push_back(A[0]); A.push_back(A[1]);
+  for (int i=1;i+1<A.size();i++)
+    if (checkLL(A[i-1],A[i],k1,k2)){
+      point now=getLL(A[i-1],A[i],k1,k2);
+      if (inmid(A[i-1],A[i],now)==0||inmid(k1,k2,now)==0) continue;
+      if (now==A[i]){
+        if (A[i]==k2) continue;
+        point pre=A[i-1],ne=A[i+1];
+        if (checkinp(pre-now,ne-now,k2-now)) return 1;
+      } else if (now==k1){
+        if (k1==A[i-1]||k1==A[i]) continue;
+        if (checkinp(A[i-1]-k1,A[i]-k1,k2-k1)) return 1;
+      } else if (now==k2||now==A[i-1]) continue;
+      else return 1;
+    }
+  return 0;
 }
 // 拆分凸包成上下凸壳 凸包尽量都随机旋转一个角度来避免出现相同横坐标 
 // 尽量特判只有一个点的情况 凸包逆时针
