@@ -5,7 +5,7 @@ int len[maxn << 1];
 
 // Manacher算法求Str字符串最长回文子串长度
 int Manacher(char Str[]) {
-  int L = 0, str_len = int(strlen(Str));
+  int L = 0, str_len = (int)strlen(Str);
   convert_str[L++] = '$'; convert_str[L++] = '#';
   for (int i = 0; i < str_len; ++i) {
     convert_str[L++] = Str[i];
