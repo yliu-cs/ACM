@@ -57,7 +57,7 @@ def SearchWrite(Address, Cnt):
                         Str = Str + 'sub'
                     Str = Str + 'section{' + Classify[1:StrIndex] + '}\n'
                     File.write(Str)
-                    Index = Address[48:]
+                    Index = Address[50:]
                     Str = '\\inputminted[breaklines]{c++}{' + Index  + '/' + Classify + '}\n'
                     File.write(Str)
                 else:

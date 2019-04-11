@@ -17,6 +17,7 @@ LibreOJ                  2
 LightOJ                  5  
 LuoGu                    30  
 MiOJ                     6  
+NEUQOJ                   6  
 NYOJ                     1  
 NowCoder                 88  
 POJ                      93  
@@ -31,4 +32,4 @@ ZZULIOJ                  7
 cometOJ                  19  
 hihoCoder                6  
 ```
-#### `Total:962`
+#### `Total:968`

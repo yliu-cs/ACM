@@ -1,0 +1,28 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{syntax} \PYG{n}{on}
+\PYG{n}{set} \PYG{n}{nu}
+\PYG{n}{set} \PYG{n}{tabstop}\PYG{o}{=}\PYG{l+m+mi}{2}
+\PYG{n}{set} \PYG{n}{shiftwidth}\PYG{o}{=}\PYG{l+m+mi}{2}
+\PYG{n}{set} \PYG{n}{cindent}
+\PYG{n}{set} \PYG{n}{mouse}\PYG{o}{=}\PYG{n}{a}
+\PYG{n}{set} \PYG{n}{expandtab}
+
+\PYG{l+s}{\PYGZdq{}map \PYGZlt{}F9\PYGZgt{} :call Run()\PYGZlt{}CR\PYGZgt{}}
+\PYG{l+s}{\PYGZdq{}func! Run()}
+\PYG{l+s}{\PYGZdq{}    exec \PYGZdq{}}\PYG{n}{w}\PYG{l+s}{\PYGZdq{}}
+\PYG{l+s}{\PYGZdq{}    exec \PYGZdq{}}\PYG{o}{!}\PYG{n}{g}\PYG{o}{++} \PYG{o}{\PYGZpc{}} \PYG{o}{\PYGZhy{}}\PYG{n}{o} \PYG{o}{\PYGZpc{}\PYGZlt{}}\PYG{l+s}{\PYGZdq{}}
+\PYG{l+s}{\PYGZdq{}    exec \PYGZdq{}}\PYG{o}{!} \PYG{o}{\PYGZpc{}\PYGZlt{}}\PYG{l+s}{\PYGZdq{}}
+\PYG{l+s}{\PYGZdq{}endfunc}
+
+\PYG{l+s}{\PYGZdq{}map \PYGZlt{}F2\PYGZgt{} :call SetTitle()\PYGZlt{}CR\PYGZgt{}}
+\PYG{l+s}{\PYGZdq{}func SetTitle()}
+\PYG{l+s}{\PYGZdq{}    let l = 0}
+\PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}}\PYG{err}{\PYGZsh{}}\PYG{n}{include} \PYG{o}{\PYGZlt{}}\PYG{n}{bits}\PYG{o}{/}\PYG{n}{stdc}\PYG{o}{++}\PYG{p}{.}\PYG{n}{h}\PYG{o}{\PYGZgt{}}\PYG{l+s}{\PYGZdq{})}
+\PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}}\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}\PYG{l+s}{\PYGZdq{})}
+\PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}\PYGZdq{})}
+\PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}}\PYG{k+kt}{int} \PYG{n}{main}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{argc}\PYG{p}{,} \PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{argv}\PYG{p}{[])} \PYG{p}{\PYGZob{}}\PYG{l+s}{\PYGZdq{})}
+\PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}}    \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}\PYG{l+s}{\PYGZdq{})}
+\PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}}\PYG{p}{\PYGZcb{}}\PYG{l+s}{\PYGZdq{})}
+\PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}\PYGZdq{})}
+\PYG{l+s}{\PYGZdq{}endfunc}
+\end{Verbatim}
