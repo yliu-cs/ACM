@@ -27,12 +27,12 @@ namespace fastIO {
   const int MX = 4e7;
   char buf[MX];
   int c, sz;
-  void Begin() {
+  void begin() {
     c = 0;
     sz = fread(buf, 1, MX, stdin);
   }
   template <class T>
-  inline bool Read(T &t) {
+  inline bool read(T &t) {
     while (c < sz && buf[c] != '-' && (buf[c] < '0' || buf[c] > '9')) c++;
     if (c >= sz) return false;
     bool flag = 0;

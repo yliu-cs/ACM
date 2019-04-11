@@ -21,7 +21,9 @@
 \PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}}\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}\PYG{l+s}{\PYGZdq{})}
 \PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}\PYGZdq{})}
 \PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}}\PYG{k+kt}{int} \PYG{n}{main}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{argc}\PYG{p}{,} \PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{argv}\PYG{p}{[])} \PYG{p}{\PYGZob{}}\PYG{l+s}{\PYGZdq{})}
-\PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}}    \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}\PYG{l+s}{\PYGZdq{})}
+\PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}}  \PYG{n}{std}\PYG{o}{::}\PYG{n}{ios}\PYG{o}{::}\PYG{n}{sync\PYGZus{}with\PYGZus{}stdio}\PYG{p}{(}\PYG{n+nb}{false}\PYG{p}{);}\PYG{l+s}{\PYGZdq{})}
+\PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}}  \PYG{n}{std}\PYG{o}{::}\PYG{n}{cin}\PYG{p}{.}\PYG{n}{tie}\PYG{p}{(}\PYG{k}{nullptr}\PYG{p}{);} \PYG{n}{std}\PYG{o}{::}\PYG{n}{cout}\PYG{p}{.}\PYG{n}{tie}\PYG{p}{(}\PYG{k}{nullptr}\PYG{p}{);}\PYG{l+s}{\PYGZdq{})}
+\PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}}  \PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}\PYG{l+s}{\PYGZdq{})}
 \PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}}\PYG{p}{\PYGZcb{}}\PYG{l+s}{\PYGZdq{})}
 \PYG{l+s}{\PYGZdq{}    let l = l + 1 | call setline(l, \PYGZdq{}\PYGZdq{})}
 \PYG{l+s}{\PYGZdq{}endfunc}

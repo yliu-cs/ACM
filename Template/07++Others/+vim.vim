@@ -20,7 +20,9 @@ set expandtab
 "    let l = l + 1 | call setline(l, "using namespace std;")
 "    let l = l + 1 | call setline(l, "")
 "    let l = l + 1 | call setline(l, "int main(int argc, char *argv[]) {")
-"    let l = l + 1 | call setline(l, "    return 0;")
+"    let l = l + 1 | call setline(l, "  std::ios::sync_with_stdio(false);")
+"    let l = l + 1 | call setline(l, "  std::cin.tie(nullptr); std::cout.tie(nullptr);")
+"    let l = l + 1 | call setline(l, "  return 0;")
 "    let l = l + 1 | call setline(l, "}")
 "    let l = l + 1 | call setline(l, "")
 "endfunc
