@@ -1,8 +1,7 @@
 // 普通读入挂
-template <class T>
-inline bool read(T &ret) {
-  char c;
-  int sgn;
+template <typename t>
+inline bool read(t &ret) {
+  char c; int sgn;
   if (c = getchar(), c == EOF) return false;
   while (c != '-' && (c < '0' || c > '9')) c = getchar();
   sgn = (c == '-') ? -1 : 1;
@@ -13,8 +12,8 @@ inline bool read(T &ret) {
 }
 
 // 普通输出挂
-template <class T>
-inline void out(T x) {
+template <typename t>
+inline void out(t x) {
   if (x < 0) {
     putchar('-');
     x = -x;
