@@ -1,5 +1,6 @@
 const int maxn = "Edit";
 
+// 静态莫队算法求区间不同数字数量
 class MoCap {
   public:
     int n, m;
@@ -11,12 +12,12 @@ class MoCap {
     int cur;
     int ans[maxn];
 
-    void Del(int x) {
-      cur -= (--cnt[arr[x]] == 0);
-    }
-
     void Add(int x) {
       cur += (++cnt[arr[x]] == 1);
+    }
+
+    void Del(int x) {
+      cur -= (--cnt[arr[x]] == 0);
     }
 
     void Solve() {
@@ -33,11 +34,10 @@ class MoCap {
 
       int l = 0, r = 0;
       for (int i = 1; i <= m; ++i) {
-        int ql = q[i].l, qr = q[i].r;
-        while (l < ql) Del(l++);
-        while (l > ql) Add(--l);
-        while (r < qr) Add(++r);
-        while (r > qr) Del(r--);
+        while (l < q[i].l) Del(l++);
+        while (l > q[i].l) Add(--l);
+        while (r < q[i].r) Add(++r);
+        while (r > q[i].r) Del(r--);
         ans[q[i].id] = cur;
       }
 
