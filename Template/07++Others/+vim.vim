@@ -1,10 +1,6 @@
 syntax on
-set nu
-set tabstop=2
-set shiftwidth=2
+set nu ts=2 sw=2 et mouse=a
 set cindent
-set mouse=a
-set expandtab
 
 "map <F9> :call Run()<CR>
 "func! Run()

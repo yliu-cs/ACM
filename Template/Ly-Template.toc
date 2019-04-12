@@ -75,4 +75,6 @@
 \contentsline {subsection}{\numberline {7.1}FastIO}{80}{subsection.7.1}% 
 \contentsline {subsection}{\numberline {7.2}LeepYear}{83}{subsection.7.2}% 
 \contentsline {subsection}{\numberline {7.3}MoAlgorithm}{83}{subsection.7.3}% 
-\contentsline {subsection}{\numberline {7.4}vim}{84}{subsection.7.4}% 
+\contentsline {subsubsection}{\numberline {7.3.1}Dynamic}{83}{subsubsection.7.3.1}% 
+\contentsline {subsubsection}{\numberline {7.3.2}Static}{85}{subsubsection.7.3.2}% 
+\contentsline {subsection}{\numberline {7.4}vim}{86}{subsection.7.4}% 
