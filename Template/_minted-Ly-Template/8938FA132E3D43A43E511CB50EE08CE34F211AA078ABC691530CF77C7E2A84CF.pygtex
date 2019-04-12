@@ -28,8 +28,8 @@
 \PYG{k+kt}{int} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
 
 \PYG{k}{struct} \PYG{n}{Cmp} \PYG{p}{\PYGZob{}}
-  \PYG{k+kt}{bool} \PYG{k}{operator}\PYG{p}{()} \PYG{p}{(}\PYG{k}{const} \PYG{k+kt}{int} \PYG{o}{\PYGZam{}}\PYG{n}{A}\PYG{p}{,} \PYG{k}{const} \PYG{k+kt}{int} \PYG{o}{\PYGZam{}}\PYG{n}{B}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{A}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{B}\PYG{p}{];}
+  \PYG{k+kt}{bool} \PYG{k}{operator}\PYG{p}{()} \PYG{p}{(}\PYG{k}{const} \PYG{k+kt}{int} \PYG{o}{\PYGZam{}}\PYG{n}{k1}\PYG{p}{,} \PYG{k}{const} \PYG{k+kt}{int} \PYG{o}{\PYGZam{}}\PYG{n}{k2}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{k1}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{k2}\PYG{p}{];}
   \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{};}
 

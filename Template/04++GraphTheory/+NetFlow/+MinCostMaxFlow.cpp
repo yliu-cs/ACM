@@ -10,11 +10,6 @@ bool vis[maxn];
 int tot;
 edge g[maxn];
 
-void Init() {
-  tot = 0;
-  memset(head, -1, sizeof(head));
-}
-
 void AddEdge(int u, int v, int cap, int cost) {
   g[tot] = (edge){v, cap, cost, 0, head[u]};
   head[u] = tot++;

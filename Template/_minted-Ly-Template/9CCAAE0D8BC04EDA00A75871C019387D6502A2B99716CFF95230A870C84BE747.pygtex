@@ -3,8 +3,8 @@
 \PYG{k+kt}{void} \PYG{n+nf}{KMPPre}\PYG{p}{(}\PYG{n}{std}\PYG{o}{::}\PYG{n}{string} \PYG{n}{pattern}\PYG{p}{,} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{n}{next}\PYG{p}{)} \PYG{p}{\PYGZob{}}
   \PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{j} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
   \PYG{n}{next}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
-  \PYG{k+kt}{int} \PYG{n}{Len} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{pattern}\PYG{p}{.}\PYG{n}{length}\PYG{p}{();}
-  \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{o}{!=} \PYG{n}{Len}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k+kt}{int} \PYG{n}{len} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{pattern}\PYG{p}{.}\PYG{n}{length}\PYG{p}{();}
+  \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{o}{!=} \PYG{n}{len}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{==} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{||} \PYG{n}{pattern}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{pattern}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{n}{next}\PYG{p}{[}\PYG{o}{++}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{o}{++}\PYG{n}{j}\PYG{p}{;}
     \PYG{k}{else} \PYG{n}{j} \PYG{o}{=} \PYG{n}{next}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
   \PYG{p}{\PYGZcb{}}
@@ -15,8 +15,8 @@
   \PYG{k+kt}{int} \PYG{n}{i}\PYG{p}{,} \PYG{n}{j}\PYG{p}{;}
   \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
   \PYG{n}{j} \PYG{o}{=} \PYG{n}{next}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
-  \PYG{k+kt}{int} \PYG{n}{Len} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{pattern}\PYG{p}{.}\PYG{n}{length}\PYG{p}{();}
-  \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{Len}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k+kt}{int} \PYG{n}{len} \PYG{o}{=} \PYG{p}{(}\PYG{k+kt}{int}\PYG{p}{)}\PYG{n}{pattern}\PYG{p}{.}\PYG{n}{length}\PYG{p}{();}
+  \PYG{k}{while} \PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{len}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k}{while} \PYG{p}{(}\PYG{n}{j} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{pattern}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{pattern}\PYG{p}{[}\PYG{n}{j}\PYG{p}{])} \PYG{n}{j} \PYG{o}{=} \PYG{n}{next}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
     \PYG{k}{if} \PYG{p}{(}\PYG{n}{pattern}\PYG{p}{[}\PYG{o}{++}\PYG{n}{i}\PYG{p}{]} \PYG{o}{==} \PYG{n}{pattern}\PYG{p}{[}\PYG{o}{++}\PYG{n}{j}\PYG{p}{])} \PYG{n}{next}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{next}\PYG{p}{[}\PYG{n}{j}\PYG{p}{];}
     \PYG{k}{else} \PYG{n}{next}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{j}\PYG{p}{;}

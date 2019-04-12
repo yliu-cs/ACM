@@ -1,4 +1,5 @@
-const int maon = "Edit";
+const int inf = "Edit"
+const int maxn = "Edit";
 
 class SplayTree {
   public:
@@ -61,10 +62,10 @@ class SplayTree {
     // 获取以r为根节点Splay Tree中的第k大个元素在Splay Tree中的位置
     int Kth(int r, int k) {
       Pull(r);
-      int Temp = sz[son[r][0]] + 1;
-      if (Temp == k) return r;
-      if (Temp > k) return Kth(son[r][0], k);
-      else return Kth(son[r][1], k - Temp);
+      int tmp = sz[son[r][0]] + 1;
+      if (tmp == k) return r;
+      if (tmp > k) return Kth(son[r][0], k);
+      else return Kth(son[r][1], k - tmp);
     }
 
     // 获取Splay Tree中以o为根节点子树的最小值位置
@@ -111,25 +112,25 @@ class SplayTree {
     }
 
     // 建立Splay Tree
-    void Build(int l, int r, int cur) {
+    void Build(int l, int r, int o) {
       if (l > r) return;
       int m = (l + r) >> 1;
       Build(l, m - 1, m);
       Build(m + 1, r, m);
-      fa[m] = cur;
+      fa[m] = o;
       val[m] = m - 1;
       lazy[m] = 0;
       Push(m);
-      if (m < cur) son[cur][0] = m;
-      else son[cur][1] = m;
+      if (m < o) son[o][0] = m;
+      else son[o][1] = m;
     }
 
     // 输出Splay Tree
-    void Print(int cur) {
-      Pull(cur);
-      if (son[cur][0]) Print(son[cur][0]);
+    void Print(int o) {
+      Pull(o);
+      if (son[o][0]) Print(son[o][0]);
       // 哨兵节点判断
-      if (val[cur] != -INF && val[cur] != INF) printf("%d ", val[cur]);
-      if (val[son[cur][1]]) Print(son[cur][1]);
+      if (val[o] != -inf && val[o] != inf) printf("%d ", val[o]);
+      if (val[son[o][1]]) Print(son[o][1]);
     }
 };

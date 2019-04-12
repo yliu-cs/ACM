@@ -8,19 +8,14 @@ int head[maxn];
 int tot;
 int dis[maxn];
 
-void Init() {
-  tot = 0;
-  memset(head, -1, sizeof(head));
-}
-
 void AddEdge(int u, int v, int c) {
-  g[tot] = edge (v, c, head[u]);
+  g[tot] = (edge){v, c, head[u]};
   head[u] = tot++;
 }
 
 struct Cmp {
-  bool operator() (const int &A, const int &B) {
-    return dis[A] > dis[B];
+  bool operator() (const int &k1, const int &k2) {
+    return dis[k1] > dis[k2];
   }
 };
 

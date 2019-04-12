@@ -2,8 +2,8 @@
 void KMPPre(std::string pattern, vector<int> &next) {
   int i = 0, j = -1;
   next[0] = -1;
-  int Len = (int)pattern.length();
-  while (i != Len) {
+  int len = (int)pattern.length();
+  while (i != len) {
     if (j == -1 || pattern[i] == pattern[j]) next[++i] = ++j;
     else j = next[j];
   }
@@ -14,8 +14,8 @@ void PreKMP(std::string pattern, vector<int> &next) {
   int i, j;
   i = 0;
   j = next[0] = -1;
-  int Len = (int)pattern.length();
-  while (i < Len) {
+  int len = (int)pattern.length();
+  while (i < len) {
     while (j != -1 && pattern[i] != pattern[j]) j = next[j];
     if (pattern[++i] == pattern[++j]) next[i] = next[j];
     else next[i] = j;
