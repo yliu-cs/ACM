@@ -34,10 +34,10 @@ int main() {
   int l = 0, r = 0;
   for (int i = 1; i <= m; ++i) {
     int ql = q[i].l, qr = q[i].r;
+    while (l < ql) Del(l++);
+    while (l > ql) Add(--l);
     while (r < qr) Add(++r);
     while (r > qr) Del(r--);
-    while (l > ql) Add(--l);
-    while (l < ql) Del(l++);
     ans[q[i].id] = cur;
   }
 

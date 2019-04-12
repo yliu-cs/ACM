@@ -27,8 +27,8 @@ void AddEdge(int u, int v, int c) {
 int dis[maxn];
 
 struct Cmp {
-  bool operator() (const int &A, const int &B) {
-    return dis[A] > dis[B];
+  bool operator() (const int &k1, const int &k2) {
+    return dis[k1] > dis[k2];
   }
 };
 
