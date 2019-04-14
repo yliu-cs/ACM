@@ -1,0 +1,53 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}include}\PYG{c+cpf}{\PYGZlt{}bits/stdc++.h\PYGZgt{}}
+
+\PYG{k}{using} \PYG{k}{namespace} \PYG{n}{std}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n+nf}{main}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+	\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{n}{res}\PYG{p}{;}
+
+	\PYG{c+c1}{//unique 去重后调整vector大小}
+	\PYG{n}{sort}\PYG{p}{(}\PYG{n}{res}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),}\PYG{n}{res}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+	\PYG{n}{res}\PYG{p}{.}\PYG{n}{resize}\PYG{p}{(}\PYG{n}{unique}\PYG{p}{(}\PYG{n}{res}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),}\PYG{n}{res}\PYG{p}{.}\PYG{n}{end}\PYG{p}{())} \PYG{o}{\PYGZhy{}} \PYG{n}{res}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{());}
+	\PYG{c+c1}{//delete repeat element}
+	\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}::}\PYG{n}{iterator} \PYG{n}{newn} \PYG{o}{=} \PYG{n}{unique}\PYG{p}{(}\PYG{n}{res}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),}\PYG{n}{res}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+	\PYG{n}{res}\PYG{p}{.}\PYG{n}{erase}\PYG{p}{(}\PYG{n}{newn}\PYG{p}{,}\PYG{n}{res}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+	\PYG{c+c1}{//find vector}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{find}\PYG{p}{(}\PYG{n}{res}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),}\PYG{n}{res}\PYG{p}{.}\PYG{n}{end}\PYG{p}{(),}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{o}{!=} \PYG{n}{res}\PYG{p}{.}\PYG{n}{end}\PYG{p}{())}  \PYG{n}{cout}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s}{\PYGZdq{}ok\PYGZdq{}}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s+sc}{\PYGZsq{}\PYGZbs{}n\PYGZsq{}}\PYG{p}{;}
+	\PYG{c+c1}{//find set、map(key)}
+	\PYG{n}{map}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{,}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{n}{s}\PYG{p}{;}
+	\PYG{n}{s}\PYG{p}{[}\PYG{l+m+mi}{10}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{6}\PYG{p}{;}
+	\PYG{k}{if}\PYG{p}{(}\PYG{n}{s}\PYG{p}{.}\PYG{n}{find}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{)} \PYG{o}{!=} \PYG{n}{s}\PYG{p}{.}\PYG{n}{end}\PYG{p}{())} \PYG{n}{cout}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s}{\PYGZdq{}sOK\PYGZdq{}}\PYG{p}{;}
+	\PYG{k}{else} \PYG{n}{cout}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{l+s}{\PYGZdq{}no\PYGZdq{}}\PYG{o}{\PYGZlt{}\PYGZlt{}}\PYG{n}{endl}\PYG{p}{;}
+
+	\PYG{c+c1}{//priority\PYGZus{}queue}
+	\PYG{n}{priority\PYGZus{}queue}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{,}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{less}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZgt{}} \PYG{n}{q}\PYG{p}{;}\PYG{c+c1}{//decrease default}
+	\PYG{c+c1}{//priority\PYGZus{}queue\PYGZlt{}int,vector\PYGZlt{}int\PYGZgt{},greater\PYGZlt{}int\PYGZgt{} \PYGZgt{} q;//increase}
+
+	\PYG{c+c1}{//struct}
+	\PYG{k}{struct} \PYG{n}{Student} \PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{level}\PYG{p}{;}
+		\PYG{n}{string} \PYG{n}{name}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{n}{priority\PYGZus{}queue}\PYG{o}{\PYGZlt{}}\PYG{n}{Student}\PYG{o}{\PYGZgt{}} \PYG{n}{pq}\PYG{p}{;}
+	\PYG{c+c1}{//想要对Student中的level从小到大排序，有两种方法：}
+
+
+	\PYG{c+c1}{//1、直接在结构体重载小于运算符}
+	\PYG{k}{struct} \PYG{n}{Student} \PYG{p}{\PYGZob{}}
+		\PYG{k+kt}{int} \PYG{n}{level}\PYG{p}{;}
+		\PYG{n}{string} \PYG{n}{name}\PYG{p}{;}
+		\PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{\PYGZlt{}}\PYG{p}{(}\PYG{k}{const} \PYG{n}{Student}\PYG{o}{\PYGZam{}} \PYG{n}{st}\PYG{p}{)}\PYG{k}{const} \PYG{p}{\PYGZob{}}
+			\PYG{k}{return} \PYG{n}{level} \PYG{o}{\PYGZgt{}} \PYG{n}{st}\PYG{p}{.}\PYG{n}{level}\PYG{p}{;}
+		\PYG{p}{\PYGZcb{}}
+	\PYG{p}{\PYGZcb{}}
+
+	\PYG{c+c1}{//2、在结构体外重载结构体小于运算符}
+	\PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{Student}\PYG{o}{\PYGZam{}} \PYG{n}{a}\PYG{p}{,}\PYG{k}{const} \PYG{n}{Student}\PYG{o}{\PYGZam{}} \PYG{n}{b}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+		\PYG{k}{return} \PYG{n}{a}\PYG{p}{.}\PYG{n}{level} \PYG{o}{\PYGZgt{}} \PYG{n}{b}\PYG{p}{.}\PYG{n}{level}\PYG{p}{;}
+	\PYG{p}{\PYGZcb{}}
+	\PYG{c+c1}{//binary search}
+	\PYG{n}{upper\PYGZus{}bound}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),}\PYG{n}{arr}\PYG{p}{.}\PYG{n}{end}\PYG{p}{(),}\PYG{n}{tar}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{n}{arr}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();}\PYG{c+c1}{//first \PYGZgt{}tar element }
+	\PYG{n}{lower\PYGZus{}bound}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),}\PYG{n}{arr}\PYG{p}{.}\PYG{n}{end}\PYG{p}{(),}\PYG{n}{tar}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{n}{arr}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{();}\PYG{c+c1}{//first \PYGZgt{}=tar element;}
+	\PYG{k}{return} \PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
