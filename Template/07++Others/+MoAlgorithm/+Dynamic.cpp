@@ -69,5 +69,5 @@ class MoCap {
 
       for (int i = 1; i <= q_tot; ++i) printf("%d\n", ans[i]);
     }
-}Mo;
+}mo;
 

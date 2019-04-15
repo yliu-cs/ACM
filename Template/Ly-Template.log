@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  12 APR 2019 14:09
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  12 APR 2019 14:18
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1232,29 +1232,31 @@ Overfull \hbox (56.62552pt too wide) in paragraph at lines 142--142
 [82])
 (./_minted-Ly-Template/FDD435A89889C883F3C3372C283CF10796A5BDFAB0F4491192E91DF1
 49EDA0E8.pygtex)
-(./_minted-Ly-Template/92953108655BDAA87F87884E6CB82EE1AD93029185F68126815AEDF2
-7F5D7FD1.pygtex [83])
-(./_minted-Ly-Template/03CDB9099D7903D574CAF3C9E2647ACC7BC1637C03EBD192262865E9
-1E115C37.pygtex [84]) [85]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 191.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 191.
+(./_minted-Ly-Template/24FCB9355112B6DE27F5D70045E44F500F87F1E32A730808596EBAD1
+B11546D7.pygtex [83] [84])
+(./_minted-Ly-Template/831A4E8AE670DE5CDA331932D328C697D5F0B354B1DD5CBA07B6FE03
+2C764860.pygtex [85])
+(./_minted-Ly-Template/A41DAFB62F33A0952CA161E84E89E0F47BC1637C03EBD192262865E9
+1E115C37.pygtex) [86]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 195.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 195.
  (./Ly-Template.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 191.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 191.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 195.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 195.
 Package rerunfilecheck Info: File `Ly-Template.out' has not changed.
-(rerunfilecheck)             Checksum: C92A6A7F6B8EBB0426A73E83E561E24D.
+(rerunfilecheck)             Checksum: 9ECE89C89CC43C4F2A629602D3ED9DED.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 24754 strings out of 492933
- 499467 string characters out of 6136538
- 657466 words of memory out of 5000000
- 28405 multiletter control sequences out of 15000+600000
+ 24759 strings out of 492933
+ 499816 string characters out of 6136538
+ 657542 words of memory out of 5000000
+ 28407 multiletter control sequences out of 15000+600000
  536510 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  48i,12n,75p,1285b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Ly-Template.pdf (85 pages).
+Output written on Ly-Template.pdf (86 pages).
