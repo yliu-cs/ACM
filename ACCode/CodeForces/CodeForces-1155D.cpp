@@ -17,6 +17,7 @@ int main() {
     dp[i][2] = std::max(arr[i], std::max(dp[i - 1][1] + arr[i], dp[i - 1][2] + arr[i]));
     ans = std::max(ans, std::max(dp[i][0], std::max(dp[i][1], dp[i][2])));
   }
+
   std::cout << ans << '\n';
   return 0;
 }
