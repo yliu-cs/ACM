@@ -28,8 +28,8 @@ UVA                      8
 UVALive                  1  
 ZOJ                      8  
 ZZNUOJ                   3  
-ZZULIOJ                  14  
+ZZULIOJ                  13  
 cometOJ                  21  
 hihoCoder                6  
 ```
-#### `Total:1012`
+#### `Total:1011`

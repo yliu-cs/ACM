@@ -1,6 +1,6 @@
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k}{template} \PYG{o}{\PYGZlt{}}\PYG{k}{typename} \PYG{n}{type}\PYG{o}{\PYGZgt{}}
-\PYG{k}{class} \PYG{n+nc}{STTable} \PYG{p}{\PYGZob{}}
+\PYG{k}{class} \PYG{n+nc}{SparseTable} \PYG{p}{\PYGZob{}}
   \PYG{k}{public}\PYG{o}{:}
     \PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{type}\PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{max}\PYG{p}{,} \PYG{n}{min}\PYG{p}{;}
 
