@@ -5,10 +5,10 @@ AYITOJ                   4
 Aizu                     5  
 AtCoder                  3  
 BNUOJ                    1  
-BZOJ                     6  
-CodeForces               318  
+BZOJ                     7  
+CodeForces               321  
 FZU                      4  
-HDU                      199  
+HDU                      200  
 HRBUST                   1  
 HenuOJ                   6  
 JiSuanKe                 21  
@@ -28,8 +28,8 @@ UVA                      8
 UVALive                  1  
 ZOJ                      8  
 ZZNUOJ                   3  
-ZZULIOJ                  13  
-cometOJ                  19  
+ZZULIOJ                  14  
+cometOJ                  21  
 hihoCoder                6  
 ```
-#### `Total:1004`
+#### `Total:1012`
