@@ -1,7 +1,8 @@
-const int maxn = "Edit";
+#include <bits/stdc++.h>
+const int maxn = 1e5 + 5;
 
-int n;
-int arr[maxn];
+int n, m;
+long long val[maxn];
 
 int fa[maxn], dep[maxn];
 int sz[maxn], son[maxn];
@@ -39,7 +40,7 @@ void SegTreePush(int o, int l, int r) {
 
 void SegTreeBuild(int o, int l, int r) {
   if (l == r) {
-    sum[o] = arr[rk[l]];
+    sum[o] = val[rk[l]];
     return;
   }
   int m = (l + r) >> 1;
@@ -94,7 +95,6 @@ void TreeSplitDfs2(int u, int tp) {
   }
 }
 
-
 long long TreeSplitQuery(int u, int v) {
   long long ret = 0;
   while (top[u] != top[v]) {
@@ -107,12 +107,32 @@ long long TreeSplitQuery(int u, int v) {
   return ret;
 }
 
-void TreeSplitModify(int u, int v, int c) {
-  while (top[u] != top[v]) {
-    if (dep[top[u]] < dep[top[v]]) std::swap(u, v);
-    SegTreeModify(1, 1, n, id[top[u]], id[u], c);
-    u = fa[top[u]];
+int main() {
+  scanf("%d%d", &n, &m);
+  for (int i = 1; i <= n; ++i) scanf("%lld", &val[i]);
+  tot = 0; memset(head, -1, sizeof(head));
+  for (int i = 1, u, v; i < n; ++i) {
+    scanf("%d%d", &u, &v);
+    AddEdge(u, v); AddEdge(v, u);
   }
-  if (id[u] > id[v]) std::swap(u, v);
-  SegTreeModify(1, 1, n, id[u], id[v], c);
+  TreeSplitDfs1(1, 0, 1);
+  TreeSplitDfs2(1, 1);
+  SegTreeBuild(1, 1, n);
+  for (int i = 0, op; i < m; ++i) {
+    scanf("%d", &op);
+    if (op == 1) {
+      int o, v; scanf("%d%d", &o, &v);
+      SegTreeModify(1, 1, n, id[o], id[o], v);
+    }
+    else if (op == 2) {
+      int o, v; scanf("%d%d", &o, &v);
+      SegTreeModify(1, 1, n, id[o], id[o] + sz[o] - 1, v);
+    }
+    else if (op == 3) {
+      int o; scanf("%d", &o);
+      printf("%lld\n", TreeSplitQuery(o, 1));
+    }
+  }
+  return 0;
 }
+

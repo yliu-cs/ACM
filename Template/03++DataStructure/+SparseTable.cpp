@@ -1,5 +1,5 @@
 template <typename type>
-class STTable {
+class SparseTable {
   public:
     std::vector<std::vector<type>> max, min;
 
