@@ -1,7 +1,7 @@
 const int mod = "edit";
 
-int Mul(int x, int y) {
-  int ret = 0;
+long long Mul(long long x, long long y) {
+  long long ret = 0;
   while (y) {
     if (y) ret = (ret + x) % mod;
     x = (x + x) % mod;
@@ -10,11 +10,11 @@ int Mul(int x, int y) {
   return ret;
 }
 
-int Pow(int x, int n) {
-  int ret = 1;
+long long Pow(long long x, long long n) {
+  long long ret = 1;
   while (n) {
     if (n & 1) ret = (ret * x) % mod;
-    x = 1ll * x * x % mod;
+    x = x * x % mod;
     n >>= 1;
   }
   return ret;
