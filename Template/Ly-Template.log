@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  28 APR 2019 00:31
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  28 APR 2019 21:56
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1118,28 +1118,32 @@ C354EF4C.pygtex [11])
 BC52005A.pygtex [12])
 (./_minted-Ly-Template/F4783CCFA3F61477C84F177D3464DBFCDBD85E776A70DD0B1B696774
 450926A5.pygtex [13])
+(./_minted-Ly-Template/59F767E99123843067B2E57C5D3E4305A73C2EE802C511AD2F86CF5E
+071712E8.pygtex)
 (./_minted-Ly-Template/2704DAE4E8D1E56AA44DDB47E703C4C5FEDD183A86E1B69E4CC598D1
-6EF8D2C8.pygtex)
+6EF8D2C8.pygtex [14])
 (./_minted-Ly-Template/DAE3CAB1243599F4AF7C5EE8D71E22AE1972ABD0CD02D81BA594E9C9
-EBB18D9E.pygtex [14])
+EBB18D9E.pygtex)
 (./_minted-Ly-Template/3B1347370967C77202DD8BD77D9364F3478860CA5286E5C3761B12C3
 3C055250.pygtex)
 (./_minted-Ly-Template/60D30FFA5D26394E89BA19C151D0642CEE39091DC1AD330EF1706D37
-766C252E.pygtex)
+766C252E.pygtex [15])
 (./_minted-Ly-Template/4EB999B1061CD362DBEDE0542BCB247060931939733ADAE24D73A9CE
 5B551B9A.pygtex)
 (./_minted-Ly-Template/EE547FB61B1FB112BF5C66DA4AD36C15CC35500DB1D0B4DDCD54504F
-2CFD97C5.pygtex [15])
+2CFD97C5.pygtex)
 (./_minted-Ly-Template/F186D839FA1455267729AE6014A1AB3C0AB1131DBF8EEA3DE25A1165
-3EB008B1.pygtex)
+3EB008B1.pygtex [16])
+(./_minted-Ly-Template/365AB15586E8EA188431D614A0B3BD9C0D8356D84A6124114CDD7C07
+1F7D78CB.pygtex)
 (./_minted-Ly-Template/3056320993C8FED968FC1F4B8FC8CF22AAC619B0D11A6D449BBACE24
-5ADF54C8.pygtex [16])
+5ADF54C8.pygtex)
 (./_minted-Ly-Template/921798D9050F021E6ECBF19F707EEB76F07C02A49E13549938DCFAA0
-9ADA5CEC.pygtex)
-(./_minted-Ly-Template/48DEE3105F3DCC87CD9CE9C5855E2B0DD7FF01F8FBC31045AE72F8B1
+9ADA5CEC.pygtex [17])
+(./_minted-Ly-Template/54B2152EA07DACE0CFFA109E5C8BFA3AD7FF01F8FBC31045AE72F8B1
 9660BACA.pygtex)
 (./_minted-Ly-Template/8773A1C12F478CF3BAB110F551207DB9DDF9036F95F8068368A4CE37
-DCD9BA64.pygtex [17]) [18]
+DCD9BA64.pygtex) [18]
 (./_minted-Ly-Template/EB4D141031AEDC113A508121D9A427256A0CD10BDC37637F926B3B9F
 0F83430F.pygtex)
 (./_minted-Ly-Template/CBB42560BE13848A0909EBFC219786BBF7D989F64426F3A3C8DA9D99
@@ -1240,25 +1244,25 @@ B11546D7.pygtex [86] [87])
 2C764860.pygtex [88])
 (./_minted-Ly-Template/A41DAFB62F33A0952CA161E84E89E0F47BC1637C03EBD192262865E9
 1E115C37.pygtex) [89]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 197.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 197.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 201.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 201.
  (./Ly-Template.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 197.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 197.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 201.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 201.
 Package rerunfilecheck Info: File `Ly-Template.out' has not changed.
-(rerunfilecheck)             Checksum: 2041CD560382FE1F2A67DC9256FAA61F.
+(rerunfilecheck)             Checksum: AE3E3AA2AAD3A374FACF06931A458A1F.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 24763 strings out of 492933
- 500149 string characters out of 6136538
- 657692 words of memory out of 5000000
- 28408 multiletter control sequences out of 15000+600000
+ 24771 strings out of 492933
+ 500815 string characters out of 6136538
+ 657992 words of memory out of 5000000
+ 28410 multiletter control sequences out of 15000+600000
  536510 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 48i,11n,75p,1285b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,12n,75p,1285b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on Ly-Template.pdf (89 pages).
