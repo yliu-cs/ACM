@@ -26,10 +26,10 @@ SGU                      4
 SPOJ                     1  
 UVA                      8  
 UVALive                  1  
-ZOJ                      8  
+ZOJ                      12  
 ZZNUOJ                   3  
 ZZULIOJ                  13  
 cometOJ                  21  
 hihoCoder                6  
 ```
-#### `Total:1016`
+#### `Total:1020`
