@@ -16,7 +16,7 @@ inline bool Read(t &ret) {
  
 struct node {
   int sz, lson, rson;
-  node() { sz = lson = rson = 0; }
+  node() {sz = lson = rson = 0;}
 };
  
 int n;

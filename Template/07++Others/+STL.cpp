@@ -3,7 +3,7 @@
 #include <bits/extc++.h>
 using namespace __gnu_pbds;
 
-// ---tree---
+// --- tree ---
 
 template< typename Key,
           typename Mapped,
@@ -13,7 +13,7 @@ template< typename Key,
                    typename Node_Itr,
                    typename Cmp_Fn_,
                    typename _Alloc_> class Node_Update = null_node_update,
-          typename _Alloc = std::allocator<char>>
+          typename _Alloc = std::allocator<char> >
 
 __gnu_pbds::tree< Key, Mapped, Cmp_Fn, Tag, Node_Update, _Alloc >
 
@@ -37,9 +37,6 @@ Member types:
   _Alloc:
     Allocator type.
 
-*/
-
-/*
 
 Member functions:
   insert({key, mapped}):
