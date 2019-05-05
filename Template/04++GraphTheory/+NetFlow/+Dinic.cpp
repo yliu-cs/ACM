@@ -1,6 +1,7 @@
 const int maxn = "Edit";
 const int inf = "Edit";
-struct edge {int v, flow, next;};
+
+struct edge { int v, flow, next; };
 edge g[maxn << 2];
 int tot;
 int head[maxn];
@@ -50,11 +51,11 @@ int Dfs(int u, int t, int flow) {
 }
 
 int Dinic(int s, int t) {
-  int ans = 0;
+  int ret = 0;
   while (Bfs(s, t)) {
     for (int i = s; i <= t; ++i) cur[i] = head[i];
-    ans += Dfs(s, t, inf);
+    ret += Dfs(s, t, inf);
   }
-  return ans;
+  return ret;
 }
 

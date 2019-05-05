@@ -1,4 +1,2 @@
-bool IsLeep(int year) {
-  return (!(year % 4) && (year % 100)) || !(year % 400);
-}
+bool IsLeep(int x) { return (!(x % 4) && (x % 100)) || !(x % 400); }
 

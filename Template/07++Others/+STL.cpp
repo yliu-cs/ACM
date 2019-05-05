@@ -1,10 +1,7 @@
 // pbds
-
 #include <bits/extc++.h>
-using namespace __gnu_pbds;
 
 // --- tree ---
-
 template< typename Key,
           typename Mapped,
           typename Cmp_Fn = std::less<Key>,
@@ -14,11 +11,9 @@ template< typename Key,
                    typename Cmp_Fn_,
                    typename _Alloc_> class Node_Update = null_node_update,
           typename _Alloc = std::allocator<char> >
-
 __gnu_pbds::tree< Key, Mapped, Cmp_Fn, Tag, Node_Update, _Alloc >
 
 /*
-
 Member types:
   Key:
     Key type.
@@ -58,6 +53,5 @@ Member functions:
 
   Examples:
     typedef __gnu_pbds::tree<int, int, std::less<int>, __gnu_pbds::splay_tree_tag, __gnu_pbds::tree_order_statistics_node_update> splay_tree;
-
 */
 

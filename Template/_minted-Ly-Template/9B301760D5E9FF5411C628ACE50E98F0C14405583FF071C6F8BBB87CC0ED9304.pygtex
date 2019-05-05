@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{typedef} \PYG{k+kt}{double} \PYG{n}{db}\PYG{p}{;}
+
+\PYG{k}{struct} \PYG{n}{Simpson} \PYG{p}{\PYGZob{}}
+  \PYG{c+cm}{/* 系数 */}
+
+  \PYG{n}{db} \PYG{n}{F}\PYG{p}{(}\PYG{n}{db} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{c+cm}{/* 表达式 */}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{n}{db} \PYG{n}{Simpson}\PYG{p}{(}\PYG{n}{db} \PYG{n}{l}\PYG{p}{,} \PYG{n}{db} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{db} \PYG{n}{m} \PYG{o}{=} \PYG{p}{(}\PYG{n}{l} \PYG{o}{+} \PYG{n}{r}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mf}{2.0}\PYG{p}{;}
+    \PYG{k}{return} \PYG{p}{(}\PYG{n}{F}\PYG{p}{(}\PYG{n}{l}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{4} \PYG{o}{*} \PYG{n}{F}\PYG{p}{(}\PYG{n}{m}\PYG{p}{)} \PYG{o}{+} \PYG{n}{F}\PYG{p}{(}\PYG{n}{r}\PYG{p}{))} \PYG{o}{*} \PYG{p}{(}\PYG{n}{r} \PYG{o}{\PYGZhy{}} \PYG{n}{l}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mf}{6.0}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{n}{db} \PYG{n}{Asr}\PYG{p}{(}\PYG{n}{db} \PYG{n}{l}\PYG{p}{,} \PYG{n}{db} \PYG{n}{r}\PYG{p}{,} \PYG{n}{db} \PYG{n}{ans}\PYG{p}{,} \PYG{n}{db} \PYG{n}{eps}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{db} \PYG{n}{m} \PYG{o}{=} \PYG{p}{(}\PYG{n}{l} \PYG{o}{+} \PYG{n}{r}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mf}{2.0}\PYG{p}{;}
+    \PYG{n}{db} \PYG{n}{l\PYGZus{}ans} \PYG{o}{=} \PYG{n}{Simpson}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,} \PYG{n}{m}\PYG{p}{),} \PYG{n}{r\PYGZus{}ans} \PYG{o}{=} \PYG{n}{Simpson}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,} \PYG{n}{r}\PYG{p}{);}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{fabs}\PYG{p}{(}\PYG{n}{l\PYGZus{}ans} \PYG{o}{+} \PYG{n}{r\PYGZus{}ans} \PYG{o}{\PYGZhy{}} \PYG{n}{ans}\PYG{p}{)} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mf}{15.0} \PYG{o}{*} \PYG{n}{eps}\PYG{p}{)} \PYG{k}{return} \PYG{n}{l\PYGZus{}ans} \PYG{o}{+} \PYG{n}{r\PYGZus{}ans} \PYG{o}{+} \PYG{p}{(}\PYG{n}{l\PYGZus{}ans} \PYG{o}{+} \PYG{n}{r\PYGZus{}ans} \PYG{o}{\PYGZhy{}} \PYG{n}{ans}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mf}{15.0}\PYG{p}{;}
+    \PYG{k}{return} \PYG{n+nf}{Asr}\PYG{p}{(}\PYG{n}{l}\PYG{p}{,} \PYG{n}{m}\PYG{p}{,} \PYG{n}{l\PYGZus{}ans}\PYG{p}{,} \PYG{n}{eps} \PYG{o}{/} \PYG{l+m+mf}{2.0}\PYG{p}{)} \PYG{o}{+} \PYG{n}{Asr}\PYG{p}{(}\PYG{n}{m}\PYG{p}{,} \PYG{n}{r}\PYG{p}{,} \PYG{n}{r\PYGZus{}ans}\PYG{p}{,} \PYG{n}{eps} \PYG{o}{/} \PYG{l+m+mf}{2.0}\PYG{p}{);}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

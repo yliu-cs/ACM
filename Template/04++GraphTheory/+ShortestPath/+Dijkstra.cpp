@@ -1,8 +1,7 @@
 const int maxn = "Edit";
 const int inf = "Edit";
 
-struct edge {int v, c, next;};
-
+struct edge { int v, c, next; };
 edge g[maxn << 1];
 int head[maxn];
 int tot;
@@ -13,11 +12,7 @@ void AddEdge(int u, int v, int c) {
   head[u] = tot++;
 }
 
-struct Cmp {
-  bool operator() (const int &k1, const int &k2) {
-    return dis[k1] > dis[k2];
-  }
-};
+struct Cmp { bool operator() (const int &k1, const int &k2) { return dis[k1] > dis[k2]; } };
 
 int n, e;
 

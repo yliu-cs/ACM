@@ -1,11 +1,9 @@
 typedef double db;
 
-namespace Simpson {
-  db a, b, c, d;
+struct Simpson {
+  /* 系数 */
 
-  db F(db x) {
-    return (c * x + d) / (a * x + b);
-  }
+  db F(db x) { return /* 表达式 */; }
 
   db Simpson(db l, db r) {
     db m = (l + r) / 2.0;

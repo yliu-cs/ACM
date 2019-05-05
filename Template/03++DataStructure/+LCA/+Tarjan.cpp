@@ -1,12 +1,11 @@
 const int maxn = "Edit";
 
-struct edge {int v, next;};
-struct query {int q, next, index;};
-
 int pre[maxn << 2];
+struct edge { int v, next; };
 edge g[maxn << 2];
 int head[maxn];
 int tot;
+struct query { int q, next, index; };
 query qg[maxn << 2];
 int qhead[maxn];
 int qtot;
@@ -14,8 +13,9 @@ int vis[maxn];
 int anc[maxn];
 int ans[maxn];
 
-int Find(int x) {return pre[x] == x ? x : pre[x] = Find(pre[x]);}
-void Union(int x, int y) {pre[Find(x)] = Find(y);}
+int Find(int x) { return pre[x] == x ? x : pre[x] = Find(pre[x]); }
+
+void Union(int x, int y) { pre[Find(x)] = Find(y); }
 
 void AddEdge(int u, int v) {
   g[tot] = edge {v, head[u]};

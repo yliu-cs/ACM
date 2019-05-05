@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{n}{n}\PYG{p}{,} \PYG{n}{pre}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k}{struct} \PYG{n}{edge} \PYG{p}{\PYGZob{}} \PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{,} \PYG{n}{v}\PYG{p}{,} \PYG{n}{c}\PYG{p}{;} \PYG{p}{\PYGZcb{};}
+\PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{n}{edge} \PYG{n}{k1} \PYG{n}{edge} \PYG{n}{k2}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{k1}\PYG{p}{.}\PYG{n}{c} \PYG{o}{\PYGZlt{}} \PYG{n}{k2}\PYG{p}{.}\PYG{n}{c}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
+\PYG{n}{std}\PYG{o}{::}\PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{n}{edge}\PYG{o}{\PYGZgt{}} \PYG{n}{g}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{n+nf}{Find}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{pre}\PYG{p}{[}\PYG{n}{x}\PYG{p}{]} \PYG{o}{==} \PYG{n}{x} \PYG{o}{?} \PYG{n+nl}{x} \PYG{p}{:} \PYG{n}{pre}\PYG{p}{[}\PYG{n}{x}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Find}\PYG{p}{(}\PYG{n}{pre}\PYG{p}{[}\PYG{n}{x}\PYG{p}{]);} \PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{Union}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{y}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{n}{pre}\PYG{p}{[}\PYG{n}{Find}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)]} \PYG{o}{=} \PYG{n}{Find}\PYG{p}{(}\PYG{n}{y}\PYG{p}{);} \PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n+nf}{Kruskal}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+  \PYG{n}{std}\PYG{o}{::}\PYG{n}{sort}\PYG{p}{(}\PYG{n}{g}\PYG{p}{.}\PYG{n}{begin}\PYG{p}{(),} \PYG{n}{g}\PYG{p}{.}\PYG{n}{end}\PYG{p}{());}
+  \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}=} \PYG{n}{n}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{n}{pre}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;}
+  \PYG{k+kt}{int} \PYG{n}{ret} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{k}{for} \PYG{p}{(}\PYG{k}{auto} \PYG{o}{\PYGZam{}}\PYG{n+nl}{e} \PYG{p}{:} \PYG{n}{g}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{Find}\PYG{p}{(}\PYG{n}{e}\PYG{p}{.}\PYG{n}{u}\PYG{p}{)} \PYG{o}{!=} \PYG{n}{Find}\PYG{p}{(}\PYG{n}{e}\PYG{p}{.}\PYG{n}{v}\PYG{p}{))} \PYG{p}{\PYGZob{}}
+      \PYG{n}{Union}\PYG{p}{(}\PYG{n}{e}\PYG{p}{.}\PYG{n}{u}\PYG{p}{,} \PYG{n}{e}\PYG{p}{.}\PYG{n}{v}\PYG{p}{);}
+      \PYG{n}{ret} \PYG{o}{+=} \PYG{n}{e}\PYG{p}{.}\PYG{n}{c}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k}{return} \PYG{n}{ret}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

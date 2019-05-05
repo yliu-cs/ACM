@@ -1,9 +1,9 @@
 const int maxn = "Edit";
 
-long long catalan[maxn];
+long long cat[maxn];
 
-void GetCalalan() {
-  memset(catalan, 0, sizeof(catalan));
-  catalan[0] = catalan[1] = 1;
-  for (int i = 2; i < maxn; ++i) catalan[i] = Catalan[i - 1] * (4 * i - 2) / (i + 1);
+void GetCat() {
+  memset(cat, 0, sizeof(cat));
+  cat[0] = cat[1] = 1;
+  for (int i = 2; i < maxn; ++i) cat[i] = cat[i - 1] * (4 * i - 2) / (i + 1);
 }

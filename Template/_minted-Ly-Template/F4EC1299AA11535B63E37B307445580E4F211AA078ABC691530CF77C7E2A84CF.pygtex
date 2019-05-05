@@ -1,0 +1,82 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{inf} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{k}{struct} \PYG{n}{edge} \PYG{p}{\PYGZob{}} \PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{next}\PYG{p}{;} \PYG{p}{\PYGZcb{};}
+
+\PYG{n}{edge} \PYG{n}{g}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{head}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{tot}\PYG{p}{;}
+\PYG{n}{edge} \PYG{n}{rev\PYGZus{}g}\PYG{p}{[}\PYG{n}{maxn} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{rev\PYGZus{}head}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+\PYG{k+kt}{int} \PYG{n}{rev\PYGZus{}tot}\PYG{p}{;}
+
+\PYG{k+kt}{void} \PYG{n+nf}{Init}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+  \PYG{n}{tot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{n}{memset}\PYG{p}{(}\PYG{n}{head}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{head}\PYG{p}{));}
+  \PYG{n}{rev\PYGZus{}tot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{n}{memset}\PYG{p}{(}\PYG{n}{rev\PYGZus{}head}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{rev\PYGZus{}head}\PYG{p}{));}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{void} \PYG{n+nf}{AddEdge}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{u}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{v}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{c}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{g}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{edge} \PYG{p}{\PYGZob{}}\PYG{n}{v}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{head}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]\PYGZcb{};}
+  \PYG{n}{head}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{=} \PYG{n}{tot}\PYG{o}{++}\PYG{p}{;}
+  \PYG{n}{rev\PYGZus{}g}\PYG{p}{[}\PYG{n}{rev\PYGZus{}tot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{edge} \PYG{p}{\PYGZob{}}\PYG{n}{u}\PYG{p}{,} \PYG{n}{c}\PYG{p}{,} \PYG{n}{rev\PYGZus{}head}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]\PYGZcb{};}
+  \PYG{n}{rev\PYGZus{}head}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{rev\PYGZus{}tot}\PYG{o}{++}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{int} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+
+\PYG{k}{struct} \PYG{n}{Cmp} \PYG{p}{\PYGZob{}} \PYG{k+kt}{bool} \PYG{k}{operator}\PYG{p}{()} \PYG{p}{(}\PYG{k}{const} \PYG{k+kt}{int} \PYG{o}{\PYGZam{}}\PYG{n}{k1}\PYG{p}{,} \PYG{k}{const} \PYG{k+kt}{int} \PYG{o}{\PYGZam{}}\PYG{n}{k2}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{k1}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{k2}\PYG{p}{];} \PYG{p}{\PYGZcb{}} \PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{// 利用反向边图求各点到终点的最短路}
+\PYG{k+kt}{void} \PYG{n+nf}{Dijkstra}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{s}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{priority\PYGZus{}queue}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{p}{,} \PYG{n}{vector}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{int}\PYG{o}{\PYGZgt{}}\PYG{p}{,} \PYG{n}{Cmp}\PYG{o}{\PYGZgt{}} \PYG{n}{que}\PYG{p}{;}
+  \PYG{n}{memset}\PYG{p}{(}\PYG{n}{dis}\PYG{p}{,} \PYG{n}{inf}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{dis}\PYG{p}{));}
+  \PYG{n}{dis}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{n}{que}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{s}\PYG{p}{);}
+  \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{que}\PYG{p}{.}\PYG{n}{empty}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{u} \PYG{o}{=} \PYG{n}{que}\PYG{p}{.}\PYG{n}{top}\PYG{p}{();} \PYG{n}{que}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{rev\PYGZus{}head}\PYG{p}{[}\PYG{n}{u}\PYG{p}{];} \PYG{n}{i} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{=} \PYG{n}{rev\PYGZus{}g}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{next}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{dis}\PYG{p}{[}\PYG{n}{rev\PYGZus{}g}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{v}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{rev\PYGZus{}g}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{c}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{dis}\PYG{p}{[}\PYG{n}{rev\PYGZus{}g}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{v}\PYG{p}{]} \PYG{o}{=} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]} \PYG{o}{+} \PYG{n}{rev\PYGZus{}g}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{c}\PYG{p}{;}
+        \PYG{n}{que}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{rev\PYGZus{}g}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{v}\PYG{p}{);}
+      \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{struct} \PYG{n}{node} \PYG{p}{\PYGZob{}}
+  \PYG{k+kt}{int} \PYG{n}{f}\PYG{p}{,} \PYG{n}{g}\PYG{p}{,} \PYG{n}{p}\PYG{p}{;}
+  \PYG{c+c1}{// k*核心:f=g+H(p)，这里H(p)=dis[p]}
+  \PYG{k+kt}{bool} \PYG{k}{operator} \PYG{o}{\PYGZlt{}} \PYG{p}{(}\PYG{k}{const} \PYG{n}{node} \PYG{o}{\PYGZam{}}\PYG{n}{k}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{f} \PYG{o}{==} \PYG{n}{k}\PYG{p}{.}\PYG{n}{f}\PYG{p}{)} \PYG{k}{return} \PYG{n}{g} \PYG{o}{\PYGZgt{}} \PYG{n}{k}\PYG{p}{.}\PYG{n}{g}\PYG{p}{;}
+    \PYG{k}{return} \PYG{n}{f} \PYG{o}{\PYGZgt{}} \PYG{n}{k}\PYG{p}{.}\PYG{n}{f}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{// A*算法求起点s到终点t的第k短路}
+\PYG{k+kt}{int} \PYG{n+nf}{AStar}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{s}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{t}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{k}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{k+kt}{int} \PYG{n}{cnt} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{n}{priority\PYGZus{}queue}\PYG{o}{\PYGZlt{}}\PYG{n}{node}\PYG{o}{\PYGZgt{}} \PYG{n}{que}\PYG{p}{;}
+  \PYG{c+c1}{// 注意特盘相同点是否算最短路}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{s} \PYG{o}{==} \PYG{n}{t}\PYG{p}{)} \PYG{n}{k}\PYG{o}{++}\PYG{p}{;}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n}{dis}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]} \PYG{o}{==} \PYG{n}{inf}\PYG{p}{)} \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+  \PYG{n}{que}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{node} \PYG{p}{\PYGZob{}}\PYG{n}{dis}\PYG{p}{[}\PYG{n}{s}\PYG{p}{],} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{s}\PYG{p}{\PYGZcb{});}
+  \PYG{k}{while} \PYG{p}{(}\PYG{o}{!}\PYG{n}{que}\PYG{p}{.}\PYG{n}{empty}\PYG{p}{())} \PYG{p}{\PYGZob{}}
+    \PYG{n}{node} \PYG{n}{keep} \PYG{o}{=} \PYG{n}{que}\PYG{p}{.}\PYG{n}{top}\PYG{p}{();} \PYG{n}{que}\PYG{p}{.}\PYG{n}{pop}\PYG{p}{();}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{keep}\PYG{p}{.}\PYG{n}{p} \PYG{o}{==} \PYG{n}{t}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{cnt}\PYG{o}{++}\PYG{p}{;}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{cnt} \PYG{o}{==} \PYG{n}{k}\PYG{p}{)} \PYG{k}{return} \PYG{n}{keep}\PYG{p}{.}\PYG{n}{g}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{head}\PYG{p}{[}\PYG{n}{keep}\PYG{p}{.}\PYG{n}{p}\PYG{p}{];} \PYG{n}{i} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{=} \PYG{n}{g}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{next}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{node} \PYG{n}{tmp}\PYG{p}{;}
+      \PYG{n}{tmp}\PYG{p}{.}\PYG{n}{p} \PYG{o}{=} \PYG{n}{g}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{v}\PYG{p}{;}
+      \PYG{n}{tmp}\PYG{p}{.}\PYG{n}{g} \PYG{o}{=} \PYG{n}{keep}\PYG{p}{.}\PYG{n}{g} \PYG{o}{+} \PYG{n}{g}\PYG{p}{[}\PYG{n}{i}\PYG{p}{].}\PYG{n}{c}\PYG{p}{;}
+      \PYG{n}{tmp}\PYG{p}{.}\PYG{n}{f} \PYG{o}{=} \PYG{n}{tmp}\PYG{p}{.}\PYG{n}{g} \PYG{o}{+} \PYG{n}{dis}\PYG{p}{[}\PYG{n}{tmp}\PYG{p}{.}\PYG{n}{p}\PYG{p}{];}
+      \PYG{n}{que}\PYG{p}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{tmp}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k}{return} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

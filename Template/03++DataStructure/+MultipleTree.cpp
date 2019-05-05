@@ -21,17 +21,11 @@ namespace SplayTree {
   int val[maxm], cnt[maxm];
   int sz[maxm];
 
-  void Push(int o) {
-    sz[o] = sz[son[o][0]] + sz[son[o][1]] + cnt[o];
-  }
+  void Push(int o) { sz[o] = sz[son[o][0]] + sz[son[o][1]] + cnt[o]; }
 
-  bool Get(int o) {
-    return o == son[fa[o]][1];
-  }
+  bool Get(int o) { return o == son[fa[o]][1]; }
 
-  void Clear(int o) {
-    son[o][0] = son[o][1] = fa[o] = val[o] = sz[o] = cnt[o] = 0;
-  }
+  void Clear(int o) { son[o][0] = son[o][1] = fa[o] = val[o] = sz[o] = cnt[o] = 0; }
 
   void Rotate(int o) {
     int p = fa[o], q = fa[p], ck = Get(o);
@@ -254,7 +248,8 @@ namespace SegTree {
 };
 
 int main() {
-  ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr); cout.tie(nullptr);
   int m; cin >> n >> m;
   for (int i = 0; i < n; ++i) cin >> arr[i];
   SplayTree::tot = 0;

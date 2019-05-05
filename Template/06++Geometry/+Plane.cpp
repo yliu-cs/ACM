@@ -5,25 +5,25 @@ namespace Geometry {
   const db eps = "Edit";
   const db delta = 0.98;
 
-  int Sgn(db k) { return fabs(k) < eps ? 0 : (k < 0 ? -1 : 1);}
-  int Cmp(db k1, db k2) {return Sgn(k1 - k2);}
-  db max(db k1, db k2) {return Cmp(k1, k2) > 0 ? k1 : k2;}
-  db min(db k1, db k2) {return Cmp(k1, k2) < 0 ? k1 : k2;}
+  int Sgn(db k) { return fabs(k) < eps ? 0 : (k < 0 ? -1 : 1); }
+  int Cmp(db k1, db k2) { return Sgn(k1 - k2); }
+  db Max(db k1, db k2) { return Cmp(k1, k2) > 0 ? k1 : k2; }
+  db Min(db k1, db k2) { return Cmp(k1, k2) < 0 ? k1 : k2; }
 
-  struct point {db x, y;};
-  bool operator == (point k1, point k2) {return Cmp(k1.x, k2.x) == 0 && Cmp(k1.y, k2.y) == 0;}
-  point operator + (point k1, point k2) {return (point){k1.x + k2.x, k1.y + k2.y};}
-  point operator - (point k1, point k2) {return (point){k1.x - k2.x, k1.y - k2.y};}
-  db operator * (point k1, point k2) {return k1.x * k2.x + k1.y * k2.y;}
-  db operator ^ (point k1, point k2) {return k1.x * k2.y - k1.y * k2.x;}
-  point operator * (point k1, db k2) {return (point){k1.x * k2, k1.y * k2};}
-  point operator / (point k1, db k2) {return (point){k1.x / k2, k1.y / k2};}
-  db GetLen(point k) {return sqrt(k * k);}
-  db GetDisP2P(point k1, point k2) {return sqrt((k1 - k2) * (k1 - k2));}
-  db GetDisP2P2(point k1, point k2) {return (k1 - k2) * (k1 - k2);}
-  db GetAng(point k1, point k2) {return fabs(atan2(fabs(k1 ^ k2), k1 * k2));}
-  point Rotate(point k, db ang) {return (point){k.x * cos(ang) - k.y * sin(ang), k.x * sin(ang) + k.y * cos(ang)};}
-  point Rotate90(point k) {return (point){-k.y, k.x};}
+  struct point { db x, y; };
+  bool operator == (point k1, point k2) { return Cmp(k1.x, k2.x) == 0 && Cmp(k1.y, k2.y) == 0; }
+  point operator + (point k1, point k2) { return (point){k1.x + k2.x, k1.y + k2.y}; }
+  point operator - (point k1, point k2) { return (point){k1.x - k2.x, k1.y - k2.y}; }
+  db operator * (point k1, point k2) { return k1.x * k2.x + k1.y * k2.y; }
+  db operator ^ (point k1, point k2) { return k1.x * k2.y - k1.y * k2.x; }
+  point operator * (point k1, db k2) { return (point){k1.x * k2, k1.y * k2}; }
+  point operator / (point k1, db k2) { return (point){k1.x / k2, k1.y / k2}; }
+  db GetLen(point k) { return sqrt(k * k); }
+  db GetDisP2P(point k1, point k2) { return sqrt((k1 - k2) * (k1 - k2)); }
+  db GetDisP2P2(point k1, point k2) { return (k1 - k2) * (k1 - k2); }
+  db GetAng(point k1, point k2) { return fabs(atan2(fabs(k1 ^ k2), k1 * k2)); }
+  point Rotate(point k, db ang) { return (point){k.x * cos(ang) - k.y * sin(ang), k.x * sin(ang) + k.y * cos(ang)}; }
+  point Rotate90(point k) { return (point){-k.y, k.x}; }
   bool IsConvexhull(std::vector<point> &p) {
     int n = (int)p.size();
     for (int i = 0; i < n; ++i)
@@ -34,9 +34,9 @@ namespace Geometry {
 
   db ClosestP2P(point p[], int l, int r) {
     if (l + 1 == r) return GetDisP2P(p[l], p[r]);
-    if (l + 2 == r) return min(GetDisP2P(p[l + 1], p[r]), min(GetDisP2P(p[l], p[l + 1]), GetDisP2P(p[l], p[r])));
+    if (l + 2 == r) return Min(GetDisP2P(p[l + 1], p[r]), Min(GetDisP2P(p[l], p[l + 1]), GetDisP2P(p[l], p[r])));
     int mid = (l + r) >> 1;
-    db ret = min(ClosestP2P(l, mid), ClosestP2P(mid + 1, r));
+    db ret = Min(ClosestP2P(l, mid), ClosestP2P(mid + 1, r));
     std::vector<point> mid_p;
     for (int i = l; i <= r; ++i) {
       if (Cmp(fabs(p[i].x - p[mid].x), ret) <= 0) mid_p.push_back(p[i]);
@@ -45,7 +45,7 @@ namespace Geometry {
     for (int i = 0; i < (int)mid_p.size(); ++i) {
       for (int j = i + 1; j < (int)mid_p.size(); ++j) {
         if (Cmp(mid_p[j].y - mid_p[i].y, ret) >= 0) break;
-        ret = min(ret, GetDisP2P(mid_p[i], mid_p[j]));
+        ret = Min(ret, GetDisP2P(mid_p[i], mid_p[j]));
       }
     }
     return ret;
@@ -53,25 +53,25 @@ namespace Geometry {
 
   typedef std::vector<point> poly;
   void RotateCaliper() {
-    ans = -1e20;
+    db ret = -1e20;
     if (ConvexHull.size() == 3) {
-      if (Cmp(GetDisP2P(ConvexHull[0], ConvexHull[1]), ans) > 0) ans = GetDisP2P(ConvexHull[0], ConvexHull[1]);
-      if (Cmp(GetDisP2P(ConvexHull[0], ConvexHull[2]), ans) > 0) ans = GetDisP2P(ConvexHull[0], ConvexHull[2]);
-      if (Cmp(GetDisP2P(ConvexHull[1], ConvexHull[2]), ans) > 0) ans = GetDisP2P(ConvexHull[1], ConvexHull[2]);
+      if (Cmp(GetDisP2P(ConvexHull[0], ConvexHull[1]), ret) > 0) ret = GetDisP2P(ConvexHull[0], ConvexHull[1]);
+      if (Cmp(GetDisP2P(ConvexHull[0], ConvexHull[2]), ret) > 0) ret = GetDisP2P(ConvexHull[0], ConvexHull[2]);
+      if (Cmp(GetDisP2P(ConvexHull[1], ConvexHull[2]), ret) > 0) ret = GetDisP2P(ConvexHull[1], ConvexHull[2]);
       return;
     }
     int cur = 2, size = ConvexHull.size();
     for (int i = 0; i < size; ++i) {
       while (Cmp(fabs((ConvexHull[i] - ConvexHull[(i + 1) % size]) ^ (ConvexHull[cur] - ConvexHull[(i + 1) % size])), fabs((ConvexHull[i] - ConvexHull[(i + 1) % size]) ^ (ConvexHull[(cur + 1) % size] - ConvexHull[(i + 1) % size]))) < 0) cur = (cur + 1) % size;
-      if (Cmp(GetDisP2P(ConvexHull[i], ConvexHull[cur]), ans) > 0) ans = GetDisP2P(ConvexHull[i], ConvexHull[cur]);
+      if (Cmp(GetDisP2P(ConvexHull[i], ConvexHull[cur]), ret) > 0) ret = GetDisP2P(ConvexHull[i], ConvexHull[cur]);
     }
   }
 
   poly Grahamscan(std::vector<point> p) {
-    poly ans;
+    poly ret;
     if ((int)p.size() < 3) {
-      for (int i = 0; i < (int)p.size(); ++i) ans.push_back(p[i]);
-      return ans;
+      for (int i = 0; i < (int)p.size(); ++i) ret.push_back(p[i]);
+      return ret;
     }
     int low = 0;
     for (int i = 0; i < (int)p.size(); ++i)
@@ -84,49 +84,49 @@ namespace Geometry {
       else if (Sgn(tmp) == 0 && Cmp(GetDisP2P(k2, p[0]), GetDisP2P(k1, p[0])) > 0) return true;
       return false;
     });
-    ans.push_back(p[0]);
+    ret.push_back(p[0]);
     for (int i = 1; i < (int)p.size(); ++i) {
-      while ((int)ans.size() >= 2 && Sgn((ans.back() - ans[(ans.size()) - 2]) ^ (p[i] - ans[(int)ans.size() - 2])) <= 0) {
-        ans.pop_back();
+      while ((int)ret.size() >= 2 && Sgn((ret.back() - ret[(ret.size()) - 2]) ^ (p[i] - ret[(int)ret.size() - 2])) <= 0) {
+        ret.pop_back();
       }
-      ans.push_back(p[i]);
+      ret.push_back(p[i]);
     }
-    return ans;
+    return ret;
   }
 
   db GetMinCircle(std::vector<point> p) {
     point cur = p[0];
-    db pro = 10000, ans = inf;
+    db pro = 10000, ret = inf;
     while (pro > eps) {
       int book = 0;
       for (int i = 0; i < (int)p.size(); ++i)
         if (GetDisP2P(cur, p[i]) > GetDisP2P(cur, p[book]))
           book = i;
       db r = GetDisP2P(cur, p[book]);
-      if (Cmp(r, ans) < 0) ans = r;
+      if (Cmp(r, ret) < 0) ret = r;
       cur = cur + (p[book] - cur) / r * pro;
       pro *= delta;
     }
-    return ans;
+    return ret;
   }
 
-  struct line {point s, t;};
+  struct line { point s, t; };
   typedef line seg;
-  db GetLen(seg k) {return GetDisP2P(k.s, k.t);}
-  db GetDisP2Line(point k1, line k2) {return fabs((k1 - k2.s) ^ (k2.t - k2.s)) / GetLen(k2);}
+  db GetLen(seg k) { return GetDisP2P(k.s, k.t); }
+  db GetDisP2Line(point k1, line k2) { return fabs((k1 - k2.s) ^ (k2.t - k2.s)) / GetLen(k2); }
   db GetDisP2Seg(point k1, seg k2) {
     if (Sgn((k1 - k2.s) * (k2.t - k2.s)) < 0 || Sgn((k1 - k2.t) * (k2.s - k2.t)) < 0) {
-      return min(GetDisP2P(k1, k2.s), GetDisP2P(k1, k2.t));
+      return Min(GetDisP2P(k1, k2.s), GetDisP2P(k1, k2.t));
     }
     return GetDisP2Line(k1, k2);
   }
-  bool IsParallel(line k1, line k2) {return Sgn((k1.s - k1.t) ^ (k2.s - k2.t)) == 0;}
+  bool IsParallel(line k1, line k2) { return Sgn((k1.s - k1.t) ^ (k2.s - k2.t)) == 0; }
   bool IsSegInterSeg(seg k1, seg k2) {
     return
-      max(k1.s.x, k1.t.x) >= min(k2.s.x, k2.t.x) &&
-      max(k2.s.x, k2.t.x) >= min(k1.s.x, k1.t.x) &&
-      max(k1.s.y, k1.t.y) >= min(k2.s.y, k2.t.y) &&
-      max(k2.s.y, k2.t.y) >= min(k1.s.y, k1.t.y) &&
+      Max(k1.s.x, k1.t.x) >= Min(k2.s.x, k2.t.x) &&
+      Max(k2.s.x, k2.t.x) >= Min(k1.s.x, k1.t.x) &&
+      Max(k1.s.y, k1.t.y) >= Min(k2.s.y, k2.t.y) &&
+      Max(k2.s.y, k2.t.y) >= Min(k1.s.y, k1.t.y) &&
       Sgn((k2.s - k1.t) ^ (k1.s - k1.t)) * Sgn((k2.t - k1.t) ^ (k1.s - k1.t)) <= 0 &&
       Sgn((k1.s - k2.t) ^ (k2.s - k2.t)) * Sgn((k1.t - k2.t) ^ (k2.s - k2.t)) <= 0;
   }
@@ -145,8 +145,8 @@ namespace Geometry {
   }
 
   // 表示s->t逆时针(左侧)的半平面
-  struct hulfplane:public line {db ang;};
-  void GetAng(halfplane k) {k.ang = atan2(k.t.y - k.s.y, k.t.x - k.s.x);}
+  struct hulfplane:public line { db ang; };
+  void GetAng(halfplane k) { k.ang = atan2(k.t.y - k.s.y, k.t.x - k.s.x); }
   bool operator < (halfplane k1, halfplane k2) {
     if (Sgn(k1.ang - k2.ang) > 0) return k1.ang < k2.ang;
     return Sgn((k1.s - k2.s) ^ (k2.t - k2.s)) < 0;
@@ -159,7 +159,7 @@ namespace Geometry {
     point res[maxn];
     int front, tail;
 
-    void Push(halfplane k) {hp[tot++] = k;}
+    void Push(halfplane k) { hp[tot++] = k; }
 
     void Unique() {
       int cnt = 1;

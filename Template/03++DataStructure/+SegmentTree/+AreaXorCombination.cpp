@@ -1,17 +1,13 @@
 // CodeForces GYM 101982 F 矩形面积异或并
 #include <bits/stdc++.h>
-typedef long long ll;
 
 std::vector<int> x;
-int Get(int k) {
-  return std::lower_bound(x.begin(), x.end(), k) - x.begin();
-}
+int Get(int k) { return std::lower_bound(x.begin(), x.end(), k) - x.begin(); }
 
-class SegTree {
-public:
+struct SegTree {
   struct node {
     int v, lazy;
-    node(int _v = 0, int _lazy = 0): v(_v), lazy(_lazy) {}
+    node() { v = lazy = 0; }
   };
 
   node Unite(const node &k1, const node &k2) {
@@ -20,9 +16,7 @@ public:
     return ans;
   }
 
-  void Pull(int o) {
-    tree[o] = Unite(tree[o << 1], tree[o << 1 | 1]);
-  }
+  void Pull(int o) { tree[o] = Unite(tree[o << 1], tree[o << 1 | 1]); }
   
   void Push(int o, int l, int r) {
     int m = (l + r) >> 1;
@@ -63,9 +57,7 @@ public:
     if (rr > m) Modify(o << 1 | 1, m + 1, r, ll, rr);
     Pull(o);
   }
-  void Modify(int ll, int rr) {
-    Modify(1, 1, n, ll, rr);
-  }
+  void Modify(int ll, int rr) { Modify(1, 1, n, ll, rr); }
 
   node Query(int o, int l, int r, int ll, int rr) {
     if (ll <= l && rr >= r) return tree[o];
@@ -77,12 +69,10 @@ public:
     Pull(o);
     return ans;
   }
-  node Query() {
-    return Query(1, 1, n, 1, n);
-  }
+  node Query() { return Query(1, 1, n, 1, n); }
 };
 
-struct seg {int l, r, h, flag;};
+struct seg { int l, r, h, flag; };
 bool operator < (seg k1, seg k2) {return k1.h < k2.h;}
 std::vector<seg> s;
 
@@ -102,11 +92,11 @@ int main() {
   sort(x.begin(), x.end());
   x.erase(unique(x.begin(), x.end()), x.end());
   SegTree tree((int)x.size());
-  ll ans = 0;
+  long long ans = 0;
   for (int i = 0, l, r; i < (int)s.size() - 1; ++i) {
     l = Get(s[i].l), r = Get(s[i].r);
     tree.Modify(l + 1, r);
-    ans += (ll)tree.Query().v * (s[i + 1].h - s[i].h);
+    ans += (long long)tree.Query().v * (s[i + 1].h - s[i].h);
   }
   std::cout << ans << '\n';
   return 0;

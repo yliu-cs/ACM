@@ -1,7 +1,7 @@
 const int inf = "Edit";
 const int maxn = "Edit";
 
-struct edge {int v, cap, cost, flow, next;};
+struct edge { int v, cap, cost, flow, next; };
 int n, e;
 int head[maxn];
 int path[maxn];

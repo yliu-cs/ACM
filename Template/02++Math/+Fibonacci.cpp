@@ -1,6 +1,6 @@
 const int mod = "Edit";
 
-struct matrix {long long mat[2][2];
+struct matrix { long long mat[2][2]; };
 
 matrix operator * (matrix &k1, matrix &k2) const {
   matrix ret;

@@ -1,5 +1,4 @@
 /*
-
   // windows
   :loop
   data.exe > in.txt
@@ -9,6 +8,5 @@
   if not errorlevel 1 goto loop
   pause
   :end
-
 */
 

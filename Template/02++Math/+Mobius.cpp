@@ -14,14 +14,14 @@ void Sieve() {
       prime.emplace_back(i);
       mu[i] = -1;
     }
-    for (auto &it : prime) {
-      if (it * i >= maxn) break;
-      is_prime[i * it] = false;
-      if (i % it == 0) {
-        mu[i * it] = 0;
+    for (auto &p : prime) {
+      if (p * i >= maxn) break;
+      is_prime[i * p] = false;
+      if (i % p == 0) {
+        mu[i * p] = 0;
         break;
       }
-      mu[i * it] = -mu[i];
+      mu[i * p] = -mu[i];
     }
   }
 }

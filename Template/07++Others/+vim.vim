@@ -1,6 +1,5 @@
 syntax on
-set nu ts=2 sw=2 et mouse=a
-set cindent
+set nu ts=2 sw=2 et mouse=a cindent
 
 "map <F9> :call Run()<CR>
 "func! Run()
@@ -13,13 +12,9 @@ set cindent
 "func SetTitle()
 "    let l = 0
 "    let l = l + 1 | call setline(l, "#include <bits/stdc++.h>")
-"    let l = l + 1 | call setline(l, "#include <bits/extc++.h>")
 "    let l = l + 1 | call setline(l, "")
 "    let l = l + 1 | call setline(l, "int main() {")
-"    let l = l + 1 | call setline(l, "  std::ios::sync_with_stdio(false);")
-"    let l = l + 1 | call setline(l, "  std::cin.tie(nullptr); std::cout.tie(nullptr);")
 "    let l = l + 1 | call setline(l, "  return 0;")
 "    let l = l + 1 | call setline(l, "}")
 "    let l = l + 1 | call setline(l, "")
 "endfunc
-

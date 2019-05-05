@@ -1,6 +1,7 @@
 const int inf = "Edit";
+
 int s, t;
-struct edge {int to, cap, rev;};
+struct edge { int to, cap, rev; };
 std::vector<std::vector<edge>> g;
 std::vector<bool> vis;
 
@@ -31,12 +32,12 @@ int Dfs(int u, int t, int flow) {
 }
 
 int GetMaxFlow(int s, int t) {
-  int ans = 0;
+  int ret = 0;
   while (true) {
     vis.assign(t + 1, false);
     int flow = Dfs(s, t, inf);
-    if (flow == 0) return ans;
-    ans += flow;
+    if (flow == 0) return ret;
+    ret += flow;
   }
 }
 

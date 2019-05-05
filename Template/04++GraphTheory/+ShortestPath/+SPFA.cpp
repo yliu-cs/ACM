@@ -1,7 +1,7 @@
 const int inf = "Edit";
 const int maxn = "Edit";
 
-struct edge {int v, dis;};
+struct edge { int v, dis; };
 int n, e;
 bool vis[maxn];
 int cnt[maxn];

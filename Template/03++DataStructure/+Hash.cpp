@@ -1,6 +1,5 @@
 template <typename type>
-class Hash {
-  public:
+struct Hash {
     int size;
     vector<int> arr;
 

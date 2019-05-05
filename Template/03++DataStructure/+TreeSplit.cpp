@@ -9,7 +9,7 @@ int rk[maxn], top[maxn];
 int id[maxn];
 int dfs_clock;
 
-struct edge {int v, next;};
+struct edge { int v, next; };
 edge g[maxn << 1];
 int tot;
 int head[maxn];
@@ -22,9 +22,7 @@ void AddEdge(int u, int v) {
 long long sum[maxn << 2];
 long long lazy[maxn << 2];
 
-void SegTreePull(int o) {
-  sum[o] = sum[o << 1] + sum[o << 1 | 1];
-}
+void SegTreePull(int o) { sum[o] = sum[o << 1] + sum[o << 1 | 1]; }
 
 void SegTreePush(int o, int l, int r) {
   int m = (l + r) >> 1;

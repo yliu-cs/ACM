@@ -1,5 +1,4 @@
 /*
-  polygon:
-    S = in + (on / 2) - 1
+  polygon: S = in + (on / 2) - 1
 */
 

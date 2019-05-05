@@ -1,9 +1,8 @@
 const int maxn = "Edit";
 
-void GetGeneratingFunction() {
-  int n;
-  int c1[maxn], c2[maxn];
-  scanf("%d", &n);
+int c1[maxn], c2[maxn];
+
+void GetGeneratingFunction(int n) {
   for (int i = 0; i < maxn; ++i) {
     c1[i] = 1;
     c2[i] = 0;

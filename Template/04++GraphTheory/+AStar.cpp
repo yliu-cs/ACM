@@ -1,7 +1,7 @@
 const int inf = "Edit";
 const int maxn = "Edit";
 
-struct edge {int v, c, next;};
+struct edge { int v, c, next; };
 
 edge g[maxn << 1];
 int head[maxn];
@@ -26,11 +26,7 @@ void AddEdge(int u, int v, int c) {
 
 int dis[maxn];
 
-struct Cmp {
-  bool operator() (const int &k1, const int &k2) {
-    return dis[k1] > dis[k2];
-  }
-};
+struct Cmp { bool operator() (const int &k1, const int &k2) { return dis[k1] > dis[k2]; } };
 
 // 利用反向边图求各点到终点的最短路
 void Dijkstra(int s) {

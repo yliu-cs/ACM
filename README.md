@@ -23,7 +23,7 @@ NowCoder                 97
 POJ                      93  
 PTA                      132  
 SGU                      4  
-SPOJ                     1  
+SPOJ                     2  
 UVA                      8  
 UVALive                  1  
 ZOJ                      12  
@@ -32,4 +32,4 @@ ZZULIOJ                  13
 cometOJ                  21  
 hihoCoder                6  
 ```
-#### `Total:1036`
+#### `Total:1037`

@@ -2,7 +2,7 @@ const int inf = "Edit";
 const int maxn = "Edit";
 
 int n;
-struct edge {int u, v, dis;};
+struct edge { int u, v, dis; };
 int dis[maxn];
 std::vector<edge> g;
 

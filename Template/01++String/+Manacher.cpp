@@ -3,7 +3,7 @@ const int maxn = "Edit";
 char convert_str[maxn << 1];
 int len[maxn << 1];
 
-// Manacher算法求Str字符串最长回文子串长度
+// Manacher算法求str字符串最长回文子串长度
 int Manacher(char Str[]) {
   int L = 0, str_len = (int)strlen(Str);
   convert_str[L++] = '$'; convert_str[L++] = '#';

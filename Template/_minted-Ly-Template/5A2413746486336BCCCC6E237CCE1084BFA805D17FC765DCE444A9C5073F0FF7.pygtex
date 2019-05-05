@@ -1,0 +1,68 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{k}{struct} \PYG{n}{PalindromicTree} \PYG{p}{\PYGZob{}}
+  \PYG{c+c1}{// 子节点记录数组}
+  \PYG{k+kt}{int} \PYG{n}{son}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{][}\PYG{l+m+mi}{26}\PYG{p}{];}
+  \PYG{c+c1}{// 失配指针fail数组}
+  \PYG{k+kt}{int} \PYG{n}{fail}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+  \PYG{c+c1}{// len[i]:节点i表示的回文串长度(一个节点表示一个回文串)}
+  \PYG{k+kt}{int} \PYG{n}{len}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+  \PYG{c+c1}{// cnt[i]:节点i表示的本质不同的串的个数(最后需要运行Count()函数才可求出正确结果)}
+  \PYG{k+kt}{int} \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+  \PYG{c+c1}{// num[i]:以节点i表示的最长回文串的最右端为回文串结尾的回文串个数}
+  \PYG{k+kt}{int} \PYG{n}{num}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+  \PYG{c+c1}{// 字符}
+  \PYG{k+kt}{int} \PYG{n}{str}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+  \PYG{c+c1}{// 新添加字符后最长回文串表示的节点}
+  \PYG{k+kt}{int} \PYG{n}{last}\PYG{p}{;}
+  \PYG{c+c1}{// 字符数量}
+  \PYG{k+kt}{int} \PYG{n}{str\PYGZus{}len}\PYG{p}{;}
+  \PYG{c+c1}{// 节点数量}
+  \PYG{k+kt}{int} \PYG{n}{tot}\PYG{p}{;}
+
+  \PYG{c+c1}{// 新建节点}
+  \PYG{k+kt}{int} \PYG{n+nf}{NewNode}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{26}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{n}{son}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{][}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{num}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{len}\PYG{p}{[}\PYG{n}{tot}\PYG{p}{]} \PYG{o}{=} \PYG{n}{x}\PYG{p}{;}
+    \PYG{k}{return} \PYG{n}{tot}\PYG{o}{++}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{c+c1}{// 初始化}
+  \PYG{k+kt}{void} \PYG{n+nf}{Init}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{n}{tot} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{NewNode}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{);} \PYG{n}{NewNode}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+    \PYG{n}{last} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{n}{str\PYGZus{}len} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{c+c1}{// 开头存字符集中没有的字符，减少特判}
+    \PYG{n}{str}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{n}{fail}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{k+kt}{int} \PYG{n+nf}{GetFail}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{str}\PYG{p}{[}\PYG{n}{str\PYGZus{}len} \PYG{o}{\PYGZhy{}} \PYG{n}{len}\PYG{p}{[}\PYG{n}{x}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{str}\PYG{p}{[}\PYG{n}{str\PYGZus{}len}\PYG{p}{])} \PYG{n}{x} \PYG{o}{=} \PYG{n}{fail}\PYG{p}{[}\PYG{n}{x}\PYG{p}{];}
+    \PYG{k}{return} \PYG{n}{x}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{k+kt}{void} \PYG{n+nf}{Add}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{c}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{c} \PYG{o}{\PYGZhy{}=} \PYG{l+s+sc}{\PYGZsq{}a\PYGZsq{}}\PYG{p}{;}
+    \PYG{n}{Str}\PYG{p}{[}\PYG{o}{++}\PYG{n}{str\PYGZus{}len}\PYG{p}{]} \PYG{o}{=} \PYG{n}{c}\PYG{p}{;}
+    \PYG{k+kt}{int} \PYG{n}{Cur} \PYG{o}{=} \PYG{n}{GetFail}\PYG{p}{(}\PYG{n}{last}\PYG{p}{);}
+    \PYG{k}{if} \PYG{p}{(}\PYG{o}{!}\PYG{n}{son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{n}{c}\PYG{p}{])} \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{n}{New} \PYG{o}{=} \PYG{n}{NewNode}\PYG{p}{(}\PYG{n}{len}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{]} \PYG{o}{+} \PYG{l+m+mi}{2}\PYG{p}{);}
+      \PYG{n}{fail}\PYG{p}{[}\PYG{n}{New}\PYG{p}{]} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{GetFail}\PYG{p}{(}\PYG{n}{fail}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{])][}\PYG{n}{c}\PYG{p}{];}
+      \PYG{n}{son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{n}{c}\PYG{p}{]} \PYG{o}{=} \PYG{n}{New}\PYG{p}{;}
+      \PYG{n}{num}\PYG{p}{[}\PYG{n}{New}\PYG{p}{]} \PYG{o}{=} \PYG{n}{num}\PYG{p}{[}\PYG{n}{fail}\PYG{p}{[}\PYG{n}{New}\PYG{p}{]]} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{n}{last} \PYG{o}{=} \PYG{n}{son}\PYG{p}{[}\PYG{n}{Cur}\PYG{p}{][}\PYG{n}{c}\PYG{p}{];}
+    \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{last}\PYG{p}{]}\PYG{o}{++}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{k+kt}{void} \PYG{n+nf}{Count}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{// 若fail[v]=u，则u一定是v回文子串，所以双亲累加孩子的cnt}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{tot} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{i}\PYG{p}{)} \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{fail}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]]} \PYG{o}{+=} \PYG{n}{cnt}\PYG{p}{[}\PYG{n}{i}\PYG{p}{];}
+  \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}

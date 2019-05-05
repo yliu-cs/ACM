@@ -1,16 +1,15 @@
 const int inf = "Edit";
 const int maxn = "Edit";
 
-struct edge {int v, dis;};
-
 int n;
 int dis[maxn];
 int vis[maxn];
+struct edge { int v, dis; };
 std::vector<edge> g[maxn];
 
 void AddEdge(int u, int v, int c) {
-  g[u].push_back(edge (v, c));
-  g[v].push_back(edge (u, c));
+  g[u].push_back((edge){v, c});
+  g[v].push_back((edge){u, c});
 }
 
 // Prim算法

@@ -4,14 +4,14 @@ typedef double db;
 const int maxn = 1e2 + 5;
 const db eps = 1e-9;
 
-int Sgn(db k) {return fabs(k) < eps ? 0 : (k < 0 ? -1 : 1);}
-int Cmp(db k1, db k2) {return Sgn(k1 - k2);}
+int Sgn(db k) { return fabs(k) < eps ? 0 : (k < 0 ? -1 : 1); }
+int Cmp(db k1, db k2) { return Sgn(k1 - k2); }
 
 struct seg {
   db l, r, h;
   int flag;
 };
-bool operator < (seg &k1, seg &k2) {return Cmp(k1.h, k2.h) < 0;}
+bool operator < (seg &k1, seg &k2) { return Cmp(k1.h, k2.h) < 0; }
 std::vector<seg> segs;
 
 std::vector<db> pos;
@@ -35,7 +35,7 @@ struct node {
 };
 node seg_tree[maxn << 4];
 
-void PushUp(int o) {
+void Pull(int o) {
   if (seg_tree[o].cnt) seg_tree[o].len = pos[seg_tree[o].r + 1] - pos[seg_tree[o].l];
   else if (seg_tree[o].l == seg_tree[o].r) seg_tree[o].len = 0.0;
   else seg_tree[o].len = seg_tree[o << 1].len + seg_tree[o << 1 | 1].len;
@@ -48,13 +48,13 @@ void Build(int l, int r, int o) {
   int Mid = (l + r) >> 1;
   Build(l, Mid, o << 1);
   Build(Mid + 1, r, o << 1 | 1);
-  PushUp(o);
+  Pull(o);
 }
 
 void Update(int l, int r, int v, int o) {
   if (l <= seg_tree[o].l && r >= seg_tree[o].r) {
     seg_tree[o].cnt += v;
-    PushUp(o);
+    Pull(o);
     return;
   }
   int Mid = (seg_tree[o].l + seg_tree[o].r) >> 1;
@@ -64,7 +64,7 @@ void Update(int l, int r, int v, int o) {
     Update(l, Mid, v, o << 1);
     Update(Mid + 1, r, v, o << 1 | 1);
   }
-  PushUp(o);
+  Pull(o);
 }
 
 int cas;
@@ -81,13 +81,13 @@ int main() {
       segs.push_back((seg){x1, x2, y2, -1});
       pos.push_back(x1); pos.push_back(x2);
     }
-    sort(segs.begin(), segs.end());
-    sort(pos.begin(), pos.end(), [&](db k1, db k2) {return Cmp(k1, k2) < 0;});
-    int Cur = 1;
+    std::sort(segs.begin(), segs.end());
+    std::sort(pos.begin(), pos.end(), [&](db k1, db k2) { return Cmp(k1, k2) < 0; });
+    int cur = 1;
     for (int i = 1; i < (int)pos.size(); ++i)
       if (Cmp(pos[i], pos[i - 1]) != 0)
-        pos[Cur++] = pos[i];
-    pos.erase(pos.begin() + Cur, pos.end());
+        pos[cur++] = pos[i];
+    pos.erase(pos.begin() + cur, pos.end());
     Build(0, (int)pos.size(), 1);
     ans = 0.0;
     for (int i = 0; i < (int)segs.size() - 1; ++i) {

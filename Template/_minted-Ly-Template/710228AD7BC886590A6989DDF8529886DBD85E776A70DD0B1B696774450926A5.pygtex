@@ -1,0 +1,39 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{mod} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{k}{struct} \PYG{n}{matrix} \PYG{p}{\PYGZob{}} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{mat}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{][}\PYG{l+m+mi}{2}\PYG{p}{];} \PYG{p}{\PYGZcb{};}
+
+\PYG{n}{matrix} \PYG{k}{operator} \PYG{o}{*} \PYG{p}{(}\PYG{n}{matrix} \PYG{o}{\PYGZam{}}\PYG{n}{k1}\PYG{p}{,} \PYG{n}{matrix} \PYG{o}{\PYGZam{}}\PYG{n}{k2}\PYG{p}{)} \PYG{k}{const} \PYG{p}{\PYGZob{}}
+  \PYG{n}{matrix} \PYG{n}{ret}\PYG{p}{;}
+  \PYG{n}{memset}\PYG{p}{(}\PYG{n}{ret}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{ret}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{));}
+  \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{o}{++}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{o}{++}\PYG{n}{j}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{k} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{2}\PYG{p}{;} \PYG{o}{++}\PYG{n}{k}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+          \PYG{n}{ret}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{n}{ret}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{+} \PYG{n}{k1}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{k}\PYG{p}{]} \PYG{o}{*} \PYG{n}{k2}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{n}{k}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZpc{}} \PYG{n}{mod}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{n}{mod}\PYG{p}{;}
+      \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k}{return} \PYG{n}{ret}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 矩阵快速幂}
+\PYG{n}{matrix} \PYG{k}{operator} \PYG{o}{\PYGZca{}} \PYG{p}{(}\PYG{n}{matrix} \PYG{n}{base}\PYG{p}{,} \PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{k}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{matrix} \PYG{n}{ret}\PYG{p}{;}
+  \PYG{n}{memset}\PYG{p}{(}\PYG{n}{ret}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{n}{ret}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{));}
+  \PYG{n}{ret}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{ret}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+  \PYG{k}{while} \PYG{p}{(}\PYG{n}{k}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{if} \PYG{p}{(}\PYG{n}{k} \PYG{o}{\PYGZam{}} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{ret} \PYG{o}{=} \PYG{n}{ret} \PYG{o}{*} \PYG{n}{base}\PYG{p}{;}
+    \PYG{n}{base} \PYG{o}{=} \PYG{n}{base} \PYG{o}{*} \PYG{n}{base}\PYG{p}{;}
+    \PYG{n}{k} \PYG{o}{\PYGZgt{}\PYGZgt{}=} \PYG{l+m+mi}{1}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+  \PYG{k}{return} \PYG{n}{ret}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{// 斐波那契数列中第x项}
+\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{Fib}\PYG{p}{(}\PYG{k+kt}{long} \PYG{k+kt}{long} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+  \PYG{n}{matrix} \PYG{n}{base}\PYG{p}{;}
+  \PYG{n}{base}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{base}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{base}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+  \PYG{n}{base}\PYG{p}{.}\PYG{n}{mat}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{k}{return} \PYG{p}{(}\PYG{n}{base} \PYG{o}{\PYGZca{}} \PYG{n}{x}\PYG{p}{).}\PYG{n}{mat}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{];}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

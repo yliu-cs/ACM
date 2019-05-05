@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/*}
+\PYG{c+cm}{  polygon:}
+\PYG{c+cm}{    S = in + (on / 2) \PYGZhy{} 1}
+\PYG{c+cm}{*/}
+\end{Verbatim}

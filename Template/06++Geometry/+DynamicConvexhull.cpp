@@ -3,16 +3,15 @@
 typedef double db;
 const int maxn = 1e5 + 5;
 const db eps = 1e-9;
-int Sgn(db k) {return fabs(k) < eps ? 0 : (k < 0 ? -1 : 1);}
-int Cmp(db k1, db k2) {return Sgn(k1 - k2);}
+int Sgn(db k) { return fabs(k) < eps ? 0 : (k < 0 ? -1 : 1); }
+int Cmp(db k1, db k2) { return Sgn(k1 - k2); }
 
-struct point {db x, y;};
-typedef point Vector;
-Vector operator - (Vector k1, Vector k2) {return (Vector){k1.x - k2.x, k1.y - k2.y};}
-Vector operator + (Vector k1, Vector k2) {return (Vector){k1.x + k2.x, k1.y + k2.y};}
-db operator * (Vector k1, Vector k2) {return k1.x * k2.x + k1.y * k2.y;}
-db operator ^ (Vector k1, Vector k2) {return k1.x * k2.y - k1.y * k2.x;}
-db GetLen(Vector k) {return sqrt(k * k);}
+struct point { db x, y; };
+point operator - (point k1, point k2) { return (point){k1.x - k2.x, k1.y - k2.y}; }
+point operator + (point k1, point k2) { return (point){k1.x + k2.x, k1.y + k2.y}; }
+db operator * (point k1, point k2) { return k1.x * k2.x + k1.y * k2.y; }
+db operator ^ (point k1, point k2) { return k1.x * k2.y - k1.y * k2.x; }
+db GetLen(point k) { return sqrt(k * k); }
 
 int n;
 point basic;
