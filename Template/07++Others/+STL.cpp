@@ -56,5 +56,8 @@ Member functions:
   upper_bound(value):
     Reture the iterator of the first element greater to value.
 
+  Examples:
+    typedef __gnu_pbds::tree<int, int, std::less<int>, __gnu_pbds::splay_tree_tag, __gnu_pbds::tree_order_statistics_node_update> splay_tree;
+
 */
 

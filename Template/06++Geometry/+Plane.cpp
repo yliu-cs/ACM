@@ -1,8 +1,8 @@
 namespace Geometry {
   typedef double db;
-  const db inf = 1e20;
-  const int maxn = 1;
-  const db eps = 1e-8;
+  const db inf = "Edit";
+  const int maxn = "Edit";
+  const db eps = "Edit";
   const db delta = 0.98;
 
   int Sgn(db k) { return fabs(k) < eps ? 0 : (k < 0 ? -1 : 1);}
@@ -25,9 +25,9 @@ namespace Geometry {
   point Rotate(point k, db ang) {return (point){k.x * cos(ang) - k.y * sin(ang), k.x * sin(ang) + k.y * cos(ang)};}
   point Rotate90(point k) {return (point){-k.y, k.x};}
   bool IsConvexhull(std::vector<point> &p) {
-    int N = (int)p.size();
-    for (int i = 0; i < N; ++i)
-      if (Sgn((p[(i + 1) % N] - p[i]) ^ (p[(i + 2) % N] - p[(i + 1) % N])) < 0)
+    int n = (int)p.size();
+    for (int i = 0; i < n; ++i)
+      if (Sgn((p[(i + 1) % n] - p[i]) ^ (p[(i + 2) % n] - p[(i + 1) % n])) < 0)
         return false;
     return true;
   }
@@ -77,8 +77,8 @@ namespace Geometry {
     for (int i = 0; i < (int)p.size(); ++i)
       if (Cmp(p[i].x, p[low].x) < 0 || (Cmp(p[i].x, p[low].x) == 0 && Cmp(p[i].y, p[low].y) < 0))
         low = i;
-    std::swap(p[0], p[low]);
-    std::sort(p.begin() + 1, p.end(), [&](point k1, point k2) {
+      std::swap(p[0], p[low]);
+      std::sort(p.begin() + 1, p.end(), [&](point k1, point k2) {
       double tmp = (k1 - p[0]) ^ (k2 - p[0]);
       if (Sgn(tmp) > 0) return true;
       else if (Sgn(tmp) == 0 && Cmp(GetDisP2P(k2, p[0]), GetDisP2P(k1, p[0])) > 0) return true;

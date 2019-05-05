@@ -94,7 +94,6 @@ void TreeSplitDfs2(int u, int tp) {
   }
 }
 
-
 long long TreeSplitQuery(int u, int v) {
   long long ret = 0;
   while (top[u] != top[v]) {

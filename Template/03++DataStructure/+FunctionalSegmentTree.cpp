@@ -8,25 +8,25 @@ class FuncSegTree {
     int cnt[maxn << 5];
 
     int Build(int l, int r) {
-      int t = ++tot;
-      int m = (l + r) >> 1;
+      int o = ++tot, m = (l + r) >> 1;
+      cnt[o] = 0;
       if (l != r) {
-        lson[t] = Build(l, m);
-        rson[t] = Build(m + 1, r);
+        lson[o] = Build(l, m);
+        rson[o] = Build(m + 1, r);
       }
-      return t;
+      return o;
     }
 
     int Modify(int prev, int l, int r, int v) {
-      int t = ++tot;
-      lson[t] = lson[prev]; rson[t] = rson[prev];
-      cnt[t] = cnt[prev] + 1;
-      int m = (l + r) >> 1;
+      int o = ++tot, m = (l + r) >> 1;
+      lson[o] = lson[prev];
+      rson[o] = rson[prev];
+      cnt[o] = cnt[prev] + 1;
       if (l != r) {
-        if (v <= m) lson[t] = Modify(lson[t], l, m, v);
-        else rson[t] = Modify(rson[t], m + 1, r, v);
+        if (v <= m) lson[o] = Modify(lson[o], l, m, v);
+        else rson[o] = Modify(rson[o], m + 1, r, v);
       }
-      return t;
+      return o;
     }
 
     // 区间[u+1,v]静态第k小
@@ -38,11 +38,10 @@ class FuncSegTree {
       return Query(rson[u], rson[v], m + 1, r, k - num);
     }
 
-    // 区间[u+1,v]内[s,t]数字数量
+    // 区间[u+1,v]内[s,t]数量
     int Query(int u, int v, int s, int t, int l, int r) {
       if (s <= l && t >= r) return cnt[v] - cnt[u];
-      int m = (l + r) >> 1;
-      int ret = 0;
+      int m = (l + r) >> 1, ret = 0;
       if (s <= m) ret += Query(lson[u], lson[v], s, t, l, m);
       if (t > m) ret += Query(rson[u], rson[v], s, t, m + 1, r);
       return ret;

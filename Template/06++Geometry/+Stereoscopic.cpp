@@ -1,8 +1,8 @@
 namespace Geometry3D {
   typedef double db;
-  const db inf = 1e20;
+  const db inf = "Edit";
   const int maxn = "Edit";
-  const db eps = 1e-9;
+  const db eps = "Edit";
   const db delta = 0.98;
 
   int Sgn(db k) {return fabs(k) < eps ? 0 : (k < 0 ? -1 : 1);}
@@ -87,3 +87,4 @@ namespace Geometry3D {
   }
 };
 using namespace Geometry3D;
+
