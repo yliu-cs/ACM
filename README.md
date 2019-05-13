@@ -6,9 +6,9 @@ Aizu                     5
 AtCoder                  3  
 BNUOJ                    1  
 BZOJ                     9  
-CodeForces               331  
+CodeForces               337  
 FZU                      4  
-HDU                      200  
+HDU                      201  
 HRBUST                   1  
 HenuOJ                   6  
 JiSuanKe                 21  
@@ -19,7 +19,7 @@ LuoGu                    35
 MiOJ                     6  
 NEUQOJ                   6  
 NYOJ                     1  
-NowCoder                 97  
+NowCoder                 105  
 POJ                      93  
 PTA                      132  
 SGU                      4  
@@ -32,4 +32,4 @@ ZZULIOJ                  13
 cometOJ                  21  
 hihoCoder                6  
 ```
-#### `Total:1037`
+#### `Total:1052`

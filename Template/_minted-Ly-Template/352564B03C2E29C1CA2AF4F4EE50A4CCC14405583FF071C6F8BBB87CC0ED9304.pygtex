@@ -4,9 +4,7 @@
 \PYG{k}{struct} \PYG{n}{Simpson} \PYG{p}{\PYGZob{}}
   \PYG{c+cm}{/* 系数 */}
 
-  \PYG{n}{db} \PYG{n}{F}\PYG{p}{(}\PYG{n}{db} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{k}{return} \PYG{c+cm}{/* 表达式 */}\PYG{p}{;}
-  \PYG{p}{\PYGZcb{}}
+  \PYG{n}{db} \PYG{n}{F}\PYG{p}{(}\PYG{n}{db} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{c+cm}{/* 表达式 */}\PYG{p}{;} \PYG{p}{\PYGZcb{}}
 
   \PYG{n}{db} \PYG{n}{Simpson}\PYG{p}{(}\PYG{n}{db} \PYG{n}{l}\PYG{p}{,} \PYG{n}{db} \PYG{n}{r}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{n}{db} \PYG{n}{m} \PYG{o}{=} \PYG{p}{(}\PYG{n}{l} \PYG{o}{+} \PYG{n}{r}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mf}{2.0}\PYG{p}{;}
