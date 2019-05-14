@@ -24,14 +24,13 @@ namespace Geometry {
   db GetAng(point k1, point k2) { return fabs(atan2(fabs(k1 ^ k2), k1 * k2)); }
   point Rotate(point k, db ang) { return (point){k.x * cos(ang) - k.y * sin(ang), k.x * sin(ang) + k.y * cos(ang)}; }
   point Rotate90(point k) { return (point){-k.y, k.x}; }
-  bool IsConvexhull(std::vector<point> &p) {
-    int n = (int)p.size();
-    for (int i = 0; i < n; ++i)
-      if (Sgn((p[(i + 1) % n] - p[i]) ^ (p[(i + 2) % n] - p[(i + 1) % n])) < 0)
+  bool IsConvexhull(const std::vector<point> &p) {
+    int sz = (int)p.size();
+    for (int i = 0; i < sz; ++i)
+      if (Sgn((p[(i + 1) % sz] - p[i]) ^ (p[(i + 2) % sz] - p[(i + 1) % sz])) < 0)
         return false;
     return true;
   }
-
   db ClosestP2P(point p[], int l, int r) {
     if (l + 1 == r) return GetDisP2P(p[l], p[r]);
     if (l + 2 == r) return Min(GetDisP2P(p[l + 1], p[r]), Min(GetDisP2P(p[l], p[l + 1]), GetDisP2P(p[l], p[r])));
@@ -41,7 +40,7 @@ namespace Geometry {
     for (int i = l; i <= r; ++i) {
       if (Cmp(fabs(p[i].x - p[mid].x), ret) <= 0) mid_p.push_back(p[i]);
     }
-    std::sort(mid_p.begin(), mid_p.end(), [&](point k1, point k2) {return Cmp(k1.y, k2.y) < 0;});
+    std::sort(mid_p.begin(), mid_p.end(), [&](point k1, point k2) { return Cmp(k1.y, k2.y) < 0; });
     for (int i = 0; i < (int)mid_p.size(); ++i) {
       for (int j = i + 1; j < (int)mid_p.size(); ++j) {
         if (Cmp(mid_p[j].y - mid_p[i].y, ret) >= 0) break;
@@ -50,50 +49,81 @@ namespace Geometry {
     }
     return ret;
   }
-
   typedef std::vector<point> poly;
-  void RotateCaliper() {
-    db ret = -1e20;
-    if (ConvexHull.size() == 3) {
-      if (Cmp(GetDisP2P(ConvexHull[0], ConvexHull[1]), ret) > 0) ret = GetDisP2P(ConvexHull[0], ConvexHull[1]);
-      if (Cmp(GetDisP2P(ConvexHull[0], ConvexHull[2]), ret) > 0) ret = GetDisP2P(ConvexHull[0], ConvexHull[2]);
-      if (Cmp(GetDisP2P(ConvexHull[1], ConvexHull[2]), ret) > 0) ret = GetDisP2P(ConvexHull[1], ConvexHull[2]);
+  db RotateCaliper(poly p) {
+    db ret = -inf;
+    if ((int)p.size() == 3) {
+      if (Cmp(GetDisP2P(p[0], p[1]), ret) > 0) ret = GetDisP2P(p[0], p[1]);
+      if (Cmp(GetDisP2P(p[0], p[2]), ret) > 0) ret = GetDisP2P(p[0], p[2]);
+      if (Cmp(GetDisP2P(p[1], p[2]), ret) > 0) ret = GetDisP2P(p[1], p[2]);
       return;
     }
-    int cur = 2, size = ConvexHull.size();
+    int cur = 2, size = (int)p.size();
     for (int i = 0; i < size; ++i) {
-      while (Cmp(fabs((ConvexHull[i] - ConvexHull[(i + 1) % size]) ^ (ConvexHull[cur] - ConvexHull[(i + 1) % size])), fabs((ConvexHull[i] - ConvexHull[(i + 1) % size]) ^ (ConvexHull[(cur + 1) % size] - ConvexHull[(i + 1) % size]))) < 0) cur = (cur + 1) % size;
-      if (Cmp(GetDisP2P(ConvexHull[i], ConvexHull[cur]), ret) > 0) ret = GetDisP2P(ConvexHull[i], ConvexHull[cur]);
-    }
-  }
-
-  poly Grahamscan(std::vector<point> p) {
-    poly ret;
-    if ((int)p.size() < 3) {
-      for (int i = 0; i < (int)p.size(); ++i) ret.push_back(p[i]);
-      return ret;
-    }
-    int low = 0;
-    for (int i = 0; i < (int)p.size(); ++i)
-      if (Cmp(p[i].x, p[low].x) < 0 || (Cmp(p[i].x, p[low].x) == 0 && Cmp(p[i].y, p[low].y) < 0))
-        low = i;
-      std::swap(p[0], p[low]);
-      std::sort(p.begin() + 1, p.end(), [&](point k1, point k2) {
-      double tmp = (k1 - p[0]) ^ (k2 - p[0]);
-      if (Sgn(tmp) > 0) return true;
-      else if (Sgn(tmp) == 0 && Cmp(GetDisP2P(k2, p[0]), GetDisP2P(k1, p[0])) > 0) return true;
-      return false;
-    });
-    ret.push_back(p[0]);
-    for (int i = 1; i < (int)p.size(); ++i) {
-      while ((int)ret.size() >= 2 && Sgn((ret.back() - ret[(ret.size()) - 2]) ^ (p[i] - ret[(int)ret.size() - 2])) <= 0) {
-        ret.pop_back();
-      }
-      ret.push_back(p[i]);
+      while (Cmp(fabs((p[i] - p[(i + 1) % size]) ^ (p[cur] - p[(i + 1) % size])), fabs((p[i] - p[(i + 1) % size]) ^ (p[(cur + 1) % size] - p[(i + 1) % size]))) < 0) cur = (cur + 1) % size;
+      if (Cmp(GetDisP2P(p[i], p[cur]), ret) > 0) ret = GetDisP2P(p[i], p[cur]);
     }
     return ret;
   }
-
+  poly Grahamscan(std::vector<point> p) {
+    poly ret;
+    if ((int)p.size() < 3) {
+      for (point &v : p) ret.emplace_back(v);
+      return ret;
+    }
+    int idx = 0;
+    for (int i = 0; i < (int)p.size(); ++i)
+      if (Cmp(p[i].x, p[idx].x) < 0 || (Cmp(p[i].x, p[idx].x) == 0 && Cmp(p[i].y, p[idx].y) < 0))
+        idx = i;
+    std::swap(p[0], p[idx]);
+    std::sort(p.begin() + 1, p.end(), [&](point k1, point k2) {
+      db tmp = (k1 - p[0]) ^ (k2 - p[0]);
+      if (Sgn(tmp) > 0) return true;
+      else if (Sgn(tmp) == 0 && Cmp(GetDisP2P(k1, p[0]), GetDisP2P(k2, p[0])) < 0) return true;
+      return false;
+    });
+    ret.emplace_back(p[0]);
+    for (int i = 1; i < (int)p.size(); ++i) {
+      while ((int)ret.size() >= 2 && Sgn((ret.back() - ret[(int)ret.size() - 2]) ^ (p[i] - ret[(int)ret.size() - 2])) <= 0) ret.pop_back();
+      ret.emplace_back(p[i]);
+    }
+    return ret;
+  }
+  bool IsIn(point p, const poly &ch) {
+    point base = ch[0];
+    if (Sgn((p - base) ^ (ch[1] - p)) > 0 || Sgn((p - base) ^ (ch.back() - base)) < 0) return false;
+    if (Sgn((p - base) ^ (ch[1] - p)) == 0 && Cmp(GetLen(p - base), GetLen(ch[1] - base)) <= 0) return true;
+    int idx = std::lower_bound(ch.begin(), ch.end(), p, [&] (point k1, point k2) { return Sgn((k1 - base) ^ (k2 - base)) > 0; }) - ch.begin() - 1;
+    return Sgn((ch[idx + 1] - ch[idx]) ^ (p - ch[idx])) >= 0;
+  }
+  poly Minkowski(const poly &k1, const poly &k2) {
+    int sz1 = (int)k1.size(), sz2 = (int)k2.size();
+    std::queue<point> buf1, buf2;
+    for (int i = 0; i < sz1; ++i) buf1.push(k1[(i + 1) % sz1] - k1[i]);
+    for (int i = 0; i < sz2; ++i) buf2.push(k2[(i + 1) % sz2] - k2[i]);
+    poly ret;
+    ret.push_back(k1[0] + k2[0]);
+    while (!buf1.empty() && !buf2.empty()) {
+      point tmp1 = buf1.front(), tmp2 = buf2.front();
+      if (Sgn(tmp1 ^ tmp2) > 0) {
+        ret.push_back(ret.back() + tmp1);
+        buf1.pop();
+      }
+      else {
+        ret.push_back(ret.back() + tmp2);
+        buf2.pop();
+      }
+    }
+    while (!buf1.empty()) {
+      ret.push_back(ret.back() + buf1.front());
+      buf1.pop();
+    }
+    while (!buf2.empty()) {
+      ret.push_back(ret.back() + buf2.front());
+      buf2.pop();
+    }
+    return Grahamscan(ret);
+  }
   db GetMinCircle(std::vector<point> p) {
     point cur = p[0];
     db pro = 10000, ret = inf;
@@ -202,7 +232,6 @@ namespace Geometry {
     point o = (point){k1.x + (c1 * b2 - c2 * b1) / d, k1.y + (a1 * c2 - a2 * c1) / d};
     return (circle){o, GetDisP2P(k1, o)};
   }
-
   circle GetMinCircle(std::vector<point> p) {
     std::random_shuffle(p.begin(), p.end());
     int n = (int)p.size();
