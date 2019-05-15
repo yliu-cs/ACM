@@ -1,0 +1,51 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZsh{}define lowbit(x) (x\PYGZam{}(\PYGZhy{}x))}
+\PYG{k}{const} \PYG{k+kt}{int} \PYG{n}{maxn} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}Edit\PYGZdq{}}\PYG{p}{;}
+
+\PYG{k}{struct} \PYG{n}{BitTree} \PYG{p}{\PYGZob{}}
+  \PYG{k+kt}{int} \PYG{n}{arr}\PYG{p}{[}\PYG{n}{maxn}\PYG{p}{];}
+
+  \PYG{k+kt}{void} \PYG{n+nf}{Init}\PYG{p}{()} \PYG{p}{\PYGZob{}} \PYG{n}{memset}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{k}{sizeof}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{));} \PYG{p}{\PYGZcb{}}
+
+  \PYG{k+kt}{void} \PYG{n+nf}{Modify}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{idx}\PYG{p}{,} \PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{idx} \PYG{o}{\PYGZlt{}} \PYG{n}{maxn}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{arr}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{]} \PYG{o}{+=} \PYG{n}{x}\PYG{p}{;}
+      \PYG{n}{idx} \PYG{o}{+=} \PYG{n}{lowbit}\PYG{p}{(}\PYG{n}{idx}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{k+kt}{int} \PYG{n+nf}{Query}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{idx}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{ret} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{idx} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{ret} \PYG{o}{+=} \PYG{n}{arr}\PYG{p}{[}\PYG{n}{idx}\PYG{p}{];}
+      \PYG{n}{idx} \PYG{o}{\PYGZhy{}=} \PYG{n}{lowbit}\PYG{p}{(}\PYG{n}{idx}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{ret}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{k+kt}{int} \PYG{n+nf}{GetRank}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{ret} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+    \PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{x}\PYG{p}{;}
+    \PYG{k}{while} \PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{ret} \PYG{o}{+=} \PYG{n}{arr}\PYG{p}{[}\PYG{n}{x}\PYG{p}{];}
+      \PYG{n}{x} \PYG{o}{\PYGZhy{}=} \PYG{n}{lowbit}\PYG{p}{(}\PYG{n}{x}\PYG{p}{);}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{n}{ret}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{c+c1}{// min}
+  \PYG{k+kt}{int} \PYG{n+nf}{GetKth}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{k}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k+kt}{int} \PYG{n}{ret} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cnt} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{max} \PYG{o}{=} \PYG{n}{log2}\PYG{p}{(}\PYG{n}{maxn}\PYG{p}{);}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{n}{max}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{n}{i}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n}{ret} \PYG{o}{+=} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{i}\PYG{p}{);}
+      \PYG{k}{if} \PYG{p}{(}\PYG{n}{ret} \PYG{o}{\PYGZgt{}=} \PYG{n}{maxn} \PYG{o}{||} \PYG{n}{cnt} \PYG{o}{+} \PYG{n}{arr}\PYG{p}{[}\PYG{n}{ret}\PYG{p}{]} \PYG{o}{\PYGZgt{}=} \PYG{n}{k}\PYG{p}{)} \PYG{n}{ret} \PYG{o}{\PYGZhy{}=} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{n}{i}\PYG{p}{);}
+      \PYG{k}{else} \PYG{n}{cnt} \PYG{o}{+=} \PYG{n}{arr}\PYG{p}{[}\PYG{n}{ret}\PYG{p}{];}
+    \PYG{p}{\PYGZcb{}}
+    \PYG{k}{return} \PYG{o}{++}\PYG{n}{ret}\PYG{p}{;}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{k+kt}{int} \PYG{n+nf}{GetPrev}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{GetKth}\PYG{p}{(}\PYG{n}{GetRank}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{);} \PYG{p}{\PYGZcb{}}
+
+  \PYG{k+kt}{int} \PYG{n+nf}{GetNext}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{x}\PYG{p}{)} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n}{GetKth}\PYG{p}{(}\PYG{n}{GetRank}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{);} \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{};}
+\end{Verbatim}
