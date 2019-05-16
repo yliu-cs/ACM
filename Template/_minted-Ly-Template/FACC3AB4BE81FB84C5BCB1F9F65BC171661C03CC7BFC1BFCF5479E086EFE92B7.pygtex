@@ -1,0 +1,29 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/*}
+\PYG{c+cm}{  // windows}
+\PYG{c+cm}{  :loop}
+\PYG{c+cm}{  data.exe \PYGZgt{} in.txt}
+\PYG{c+cm}{  main.exe \PYGZlt{} in.txt \PYGZgt{} out.txt}
+\PYG{c+cm}{  std.exe \PYGZlt{} in.txt \PYGZgt{} std.txt}
+\PYG{c+cm}{  fc out.txt std.txt}
+\PYG{c+cm}{  if not errorlevel 1 goto loop}
+\PYG{c+cm}{  pause}
+\PYG{c+cm}{  :end}
+
+\PYG{c+cm}{  // Linux}
+\PYG{c+cm}{  declare \PYGZhy{}i n=1}
+\PYG{c+cm}{  while (true)}
+\PYG{c+cm}{    do}
+\PYG{c+cm}{    ./dtmk}
+\PYG{c+cm}{    ./my \PYGZlt{} 1.in \PYGZgt{} my.out}
+\PYG{c+cm}{    ./force \PYGZlt{} 1.in \PYGZgt{} for.out}
+\PYG{c+cm}{    if diff my.out for.out}
+\PYG{c+cm}{    then}
+\PYG{c+cm}{      echo right \PYGZdl{}n}
+\PYG{c+cm}{      n=n+1}
+\PYG{c+cm}{    else}
+\PYG{c+cm}{      exit}
+\PYG{c+cm}{    fi}
+\PYG{c+cm}{  done}
+\PYG{c+cm}{*/}
+\end{Verbatim}
