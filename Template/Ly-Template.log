@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  16 MAY 2019 19:32
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2019.1.8)  23 MAY 2019 17:47
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1130,8 +1130,10 @@ EBB18D9E.pygtex [14])
 766C252E.pygtex)
 (./_minted-Ly-Template/4EB999B1061CD362DBEDE0542BCB247060931939733ADAE24D73A9CE
 5B551B9A.pygtex)
+(./_minted-Ly-Template/6886479E39974C9CAB90554D6FCEB9FF83A81E237CF41A70AA829B6C
+82868105.pygtex [15])
 (./_minted-Ly-Template/5A8186E4F4AD42B40CEDDB7411FAD765FC26B63663FC1D1B05F234B8
-927180A7.pygtex [15])
+927180A7.pygtex)
 (./_minted-Ly-Template/763F635812B632CACBEA6ECC73B662F7CC35500DB1D0B4DDCD54504F
 2CFD97C5.pygtex [16])
 (./_minted-Ly-Template/F186D839FA1455267729AE6014A1AB3C0AB1131DBF8EEA3DE25A1165
@@ -1143,9 +1145,9 @@ EBB18D9E.pygtex [14])
 (./_minted-Ly-Template/921798D9050F021E6ECBF19F707EEB76F07C02A49E13549938DCFAA0
 9ADA5CEC.pygtex)
 (./_minted-Ly-Template/54B2152EA07DACE0CFFA109E5C8BFA3AD7FF01F8FBC31045AE72F8B1
-9660BACA.pygtex)
+9660BACA.pygtex [18])
 (./_minted-Ly-Template/433E592579EB2F615C9F330BF390219CDDF9036F95F8068368A4CE37
-DCD9BA64.pygtex [18]) [19]
+DCD9BA64.pygtex) [19]
 (./_minted-Ly-Template/A26333D2A0C75AA519B0568DA83349606A0CD10BDC37637F926B3B9F
 0F83430F.pygtex [20])
 (./_minted-Ly-Template/CBB42560BE13848A0909EBFC219786BBF7D989F64426F3A3C8DA9D99
@@ -1212,55 +1214,41 @@ CAADE8E6.pygtex)
 1BCFE16D.pygtex [60]) [61]
 (./_minted-Ly-Template/728D7AA294577CA53DCB4D9A0FA982504E28813AC7203E6EFB1CD35E
 EFEE6F5C.pygtex [62])
-(./_minted-Ly-Template/BBE7EADAEE6BDABE3FD50D02F4F94321FF3CBA8D094DE404C7A71EF0
-2292DDA9.pygtex [63] [64]
-Overfull \hbox (10.63553pt too wide) in paragraph at lines 73--73
-\TU/lmtt/m/n/10.95 min(min(disSP(k1,k2,k3),disSP(k1,k2,k4)),min(disSP(k3,k4,k1)
-,disSP(k3,k4,k2)));|  
- []
-
-[65]
-Overfull \hbox (16.38428pt too wide) in paragraph at lines 140--140
-\TU/lmtt/m/n/10.95 a[]=[](k2.o[]-[]k1.o).abs2(),cosA[]=[](k1.r[]*[]k1.r[]+[]a[]
--[]k2.r[]*[]k2.r)[]/[]([]2[][]*[]k1.r[]*[]sqrt(max(a,(db)[]0.0[])));|  
- []
-
-[66] [67] [68] [69] [70] [71] [72] [73] [74])
 (./_minted-Ly-Template/DCA6A68A9BA651B5D506C9E75F5A546056C089735D13B173CEE96FA4
 9CC8D8A6.pygtex)
-(./_minted-Ly-Template/A067A1C956DE0E0378F04808092D989A75E710F370310D24AEBFF19C
-D9EF2FAA.pygtex [75] [76] [77] [78] [79] [80])
+(./_minted-Ly-Template/45C4425821C32B92E0A930E74EBA9C3775E710F370310D24AEBFF19C
+D9EF2FAA.pygtex [63] [64] [65] [66] [67] [68])
 (./_minted-Ly-Template/352564B03C2E29C1CA2AF4F4EE50A4CCC14405583FF071C6F8BBB87C
-C0ED9304.pygtex)
+C0ED9304.pygtex [69])
 (./_minted-Ly-Template/662E2D955584E94228B8C2A968AF9E5E0E272F3E93AD2BD69FA0E476
-14A4EA0D.pygtex [81] [82]) [83]
+14A4EA0D.pygtex [70] [71]) [72]
 (./_minted-Ly-Template/FACC3AB4BE81FB84C5BCB1F9F65BC171661C03CC7BFC1BFCF5479E08
 6EFE92B7.pygtex)
 (./_minted-Ly-Template/5AF4DD5C1F02EB0C9C2D91D24B36675FE3AEBA6EE1AD0EA284FD2DD3
-C58D1FF7.pygtex [84] [85] [86]
+C58D1FF7.pygtex [73] [74] [75]
 Overfull \hbox (56.62552pt too wide) in paragraph at lines 142--142
 []\TU/lmtt/m/n/10.95 100000000000000LL[],[]1000000000000000LL[],[]1000000000000
 0000LL[],[]100000000000000000LL[]};|  
  []
 
-[87])
+[76])
 (./_minted-Ly-Template/05CA8363D32ECDB75472F666892DBC1E96A5BDFAB0F4491192E91DF1
 49EDA0E8.pygtex)
 (./_minted-Ly-Template/819319B8AE96C8F53F06356795835BCE0F87F1E32A730808596EBAD1
-B11546D7.pygtex [88])
+B11546D7.pygtex [77])
 (./_minted-Ly-Template/F1855A854C020DA1245883DE60CEC49CD5F0B354B1DD5CBA07B6FE03
-2C764860.pygtex [89])
+2C764860.pygtex [78])
 (./_minted-Ly-Template/A776964486880D72DF540CF895D0F11CD068A32F5D5192F6E602C2FE
-81CF61F8.pygtex [90])
+81CF61F8.pygtex [79])
 (./_minted-Ly-Template/869C6B69E97F5EFAB060453876C110847BC1637C03EBD192262865E9
-1E115C37.pygtex [91]) [92]
+1E115C37.pygtex [80]) [81]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 213.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 213.
  (./Ly-Template.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 213.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 213.
 Package rerunfilecheck Info: File `Ly-Template.out' has not changed.
-(rerunfilecheck)             Checksum: 5C3B77F221E911BFFDCD691EA456BF57.
+(rerunfilecheck)             Checksum: C6E13C8DCD40FBDCFAB1755B06E02505.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1269,10 +1257,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  24792 strings out of 492933
  502496 string characters out of 6136538
- 659511 words of memory out of 5000000
+ 649454 words of memory out of 5000000
  28416 multiletter control sequences out of 15000+600000
  536510 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  48i,12n,75p,1213b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Ly-Template.pdf (92 pages).
+Output written on Ly-Template.pdf (81 pages).
