@@ -19,6 +19,7 @@ namespace Geometry {
   point operator * (point k1, db k2) { return (point){k1.x * k2, k1.y * k2}; }
   point operator / (point k1, db k2) { return (point){k1.x / k2, k1.y / k2}; }
   db GetLen(point k) { return sqrt(k * k); }
+  point GetUnit(point k) { db len = Getlen(k); return (point){k.x / len, k.y / len}; }
   db GetDisP2P(point k1, point k2) { return sqrt((k1 - k2) * (k1 - k2)); }
   db GetDisP2P2(point k1, point k2) { return (k1 - k2) * (k1 - k2); }
   db GetAng(point k1, point k2) { return fabs(atan2(fabs(k1 ^ k2), k1 * k2)); }
@@ -225,6 +226,11 @@ namespace Geometry {
   };
 
   struct circle {point o; db r;};
+  std::pair<point, pair> TangentP2Cir(circle k1, point k2) {
+    db a = GetLen(k2 - k1.o), b = k1.r * k1.r / a, c = sqrt(Max(0.0, k1.r * k1.r - b * b));
+    point k = GetUnit(k2 - k1.o), m = k1.o + k * b, del = Rotate90(k) * c;
+    return {m - del, m + del};
+  }
   circle GetCircle(point k1, point k2, point k3) {
     db a1 = k2.x - k1.x, b1 = k2.y - k1.y, c1 = (a1 * a1 + b1 * b1) / 2;
     db a2 = k3.x - k1.x, b2 = k3.y - k1.y, c2 = (a2 * a2 + b2 * b2) / 2;
