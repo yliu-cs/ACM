@@ -1,36 +1,38 @@
 import os
 
-AllCnt = 0
+all_cnt = 0
 
 README = open('README.md', 'w')
 
-def DirCount(Path):
-    Dirs = os.listdir(Path)
-    Cnt = 0
-    for Dir in Dirs:
-        if os.path.isdir(Path + '/' + Dir):
-            Cnt += DirCount(Path + '/' + Dir)
-        elif os.path.isfile(Path + '/' + Dir):
-            Cnt += 1
-    return Cnt
+def CntFile(idx):
+    dirs = os.listdir(idx)
+    cnt = 0
+    for dir in dirs:
+        path = idx + '/' + dir
+        if os.path.isdir(path):
+            cnt += CntFile(path)
+        elif os.path.isfile(path):
+            cnt += 1
+    return cnt
 
 def GetREADME():
-    global AllCnt
+    global all_cnt
     README.write('# Count of Solved Problems  \n```\n')
-    Index = os.getcwd() + '/ACCode'
-    OJs = os.listdir(Index)
-    OJs.sort()
-    for OJ in OJs:
-        Cnt = DirCount(Index + '/' + OJ)
-        AllCnt += Cnt
-        README.write('{:<25s}{:d}{:s}'.format(OJ, Cnt, '  \n'))
-    README.write('```\n#### `Total:' + str(AllCnt) + '`\n')
+    idx = os.getcwd()
+    ojs = os.listdir(idx)
+    for oj in ojs:
+        path = idx + '/' + oj
+        if os.path.isdir(path) and oj != '.git':
+            cnt = CntFile(path)
+            all_cnt += cnt
+            README.write('{:<25s}{:d}{:s}'.format(oj, cnt, '  \n'))
+    README.write('```\n#### `Total:' + str(all_cnt) + '`\n')
 
 def main():
     GetREADME()
     README.close()
     os.system('git add .')
-    os.system('git commit -m Update')
+    os.system('git commit -m update')
     os.system('git push origin master')
 
 if __name__ == '__main__':
