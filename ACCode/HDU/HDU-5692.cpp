@@ -1,149 +1,118 @@
 #include <bits/stdc++.h>
-using namespace std;
-
-const long long INF = 1e18;
+const long long inf = 1e18 + 5;
 const int maxn = 1e5 + 5;
 
-// 链式前向星
+int t;
+int n, m;
+std::vector<int> g[maxn];
+long long val[maxn];
 
-struct Link {
-    int V, Next;
-};
+// dfs sequence
+int dfs_clock;
+int in[maxn], out[maxn];
+int ele[maxn];
+long long dis[maxn];
 
-Link edges[maxn << 1];
-int Head[maxn];
-int Tot = 0;
-
-int T;
-int N, M;
-long long Weight[maxn];
-
-void Init() {
-    Tot = 0;
-    memset(Head, -1, sizeof(Head));
+void DfsSeq(int u, int prev) {
+  in[u] = ++dfs_clock;
+  ele[dfs_clock] = u;
+  for (int &v : g[u]) {
+    if (v == prev) continue;
+    dis[v] = dis[u] + val[v];
+    DfsSeq(v, u);
+  }
+  out[u] = dfs_clock;
 }
 
-void AddEdge(int U, int V) {
-    edges[++Tot] = Link {V, Head[U]};
-    Head[U] = Tot;
-    edges[++Tot] = Link {U, Head[V]};
-    Head[V] = Tot;
+// segment tree
+long long max[maxn << 2], lazy[maxn << 2];
+
+void Pull(int o) {
+  max[o] = std::max(max[o << 1], max[o << 1 | 1]);
 }
 
-// dfs序
-
-int Cnt;
-int InIndex[maxn], OutIndex[maxn];
-int Element[maxn];
-long long Dis[maxn];
-
-void Dfs(int U, int Pre) {
-    Cnt++;
-    InIndex[U] = Cnt;
-    Element[Cnt] = U;
-    for (int i = Head[U]; i != -1; i = edges[i].Next) {
-        if (edges[i].V != Pre) {
-            Dis[edges[i].V] = Dis[U] + Weight[edges[i].V];
-            Dfs(edges[i].V, U);
-        }
-    }
-    OutIndex[U] = Cnt;
+void Push(int o) {
+  if (lazy[o] != 0) {
+    lazy[o << 1] += lazy[o];
+    lazy[o << 1 | 1] += lazy[o];
+    max[o << 1] += lazy[o];
+    max[o << 1 | 1] += lazy[o];
+    lazy[o] = 0;
+  }
 }
 
-// 线段树
-
-long long Max[maxn << 2], Lazy[maxn << 2];
-
-void PushUp(int Root) {
-    Max[Root] = max(Max[Root << 1], Max[Root << 1 | 1]);
+void Build(int o, int l, int r) {
+  max[o] = lazy[o] = 0;
+  if (l == r) {
+    max[o] = dis[ele[l]];
+    return;
+  }
+  int m = (l + r) / 2;
+  Build(o << 1, l, m);
+  Build(o << 1 | 1, m + 1, r);
+  Pull(o);
 }
 
-void PushDown(int Root) {
-    if (Lazy[Root]) {
-        Lazy[Root << 1] += Lazy[Root];
-        Lazy[Root << 1 | 1] += Lazy[Root];
-        Max[Root << 1] += Lazy[Root];
-        Max[Root << 1 | 1] += Lazy[Root];
-        Lazy[Root] = 0;
-    }
+void Modify(int o, int l, int r, int ll, int rr, long long v) {
+  if (ll <= l && rr >= r) {
+    max[o] += v;
+    lazy[o] += v;
+    return;
+  }
+  int m = (l + r) / 2;
+  Push(o);
+  if (ll <= m) Modify(o << 1, l, m, ll, rr, v);
+  if (rr > m) Modify(o << 1 | 1, m + 1, r, ll, rr, v);
+  Pull(o);
+}
+void Modify(int ll, int rr, long long v) {
+  return Modify(1, 1, n, ll, rr, v);
 }
 
-void Build(int Left, int Right, int Root) {
-    Lazy[Root] = 0;
-    if (Left == Right) {
-        Max[Root] = Dis[Element[Left]];
-        return;
-    }
-    int Mid = (Left + Right) >> 1;
-    Build(Left, Mid, Root << 1);
-    Build(Mid + 1, Right, Root << 1 | 1);
-    PushUp(Root);
+long long Query(int o, int l, int r, int ll, int rr) {
+  if (ll <= l && rr >= r) return max[o];
+  Push(o);
+  int m = (l + r) / 2;
+  long long ret = -inf;
+  if (ll <= m) ret = std::max(ret, Query(o << 1, l, m, ll, rr));
+  if (rr > m) ret = std::max(ret, Query(o << 1 | 1, m + 1, r, ll, rr));
+  return ret;
+}
+long long Query(int ll, int rr) {
+  return Query(1, 1, n, ll, rr);
 }
 
-void IntervalUpdate(int OperateLeft, int OperateRight, int Value, int Left, int Right, int Root) {
-    if (OperateLeft <= Left && OperateRight >= Right) {
-        Max[Root] += Value;
-        Lazy[Root] += Value;
-        return;
+int main() {
+  scanf("%d", &t);
+  for (int cas = 1; cas <= t; ++cas) {
+    scanf("%d%d", &n, &m);
+    for (int i = 0; i <= n; ++i) g[i].clear();
+    for (int i = 1, u, v; i < n; ++i) {
+      scanf("%d%d", &u, &v);
+      g[u].push_back(v);
+      g[v].push_back(u);
     }
-    int Mid = (Left + Right) >> 1;
-    PushDown(Root);
-    if (OperateLeft <= Mid) {
-        IntervalUpdate(OperateLeft, OperateRight, Value, Left, Mid, Root << 1);
+    for (int i = 0; i < n; ++i) scanf("%lld", &val[i]);
+    dis[0] = val[0];
+    dfs_clock = 0;
+    DfsSeq(0, -1);
+    Build(1, 1, n);
+    printf("Case #%d:\n", cas);
+    for (int i = 1; i <= m; ++i) {
+      int opt;
+      scanf("%d", &opt);
+      if (opt == 0) {
+        int x, y;
+        scanf("%d%d", &x, &y);
+        Modify(in[x], out[x], y - val[x]);
+        val[x] = y;
+      }
+      else if (opt == 1) {
+        int x;
+        scanf("%d", &x);
+        printf("%lld\n", Query(in[x], out[x]));
+      }
     }
-    if (OperateRight > Mid) {
-        IntervalUpdate(OperateLeft, OperateRight, Value, Mid + 1, Right, Root << 1 | 1);
-    }
-    PushUp(Root);
+  }
+  return 0;
 }
-
-long long Query(int OperateLeft, int OperateRight, int Left, int Right, int Root) {
-    if (OperateLeft <= Left && OperateRight >= Right) {
-        return Max[Root];
-    }
-    int Mid = (Left + Right) >> 1;
-    PushDown(Root);
-    long long Ans = -INF;
-    if (OperateLeft <= Mid) {
-        Ans = max(Ans, Query(OperateLeft, OperateRight, Left, Mid, Root << 1));
-    }
-    if (OperateRight > Mid) {
-        Ans = max(Ans, Query(OperateLeft, OperateRight, Mid + 1, Right, Root << 1 | 1));
-    }
-    return Ans;
-}
-
-int main(int argc, char *argv[]) {
-    scanf("%d", &T);
-    for (int Case = 1; Case <= T; ++Case) {
-        Init();
-        scanf("%d%d", &N, &M);
-        for (int i = 1, X, Y; i < N; ++i) {
-            scanf("%d%d", &X, &Y);
-            AddEdge(X, Y);
-        }
-        for (int i = 0; i < N; ++i) {
-            scanf("%lld", &Weight[i]);
-        }
-        Dis[0] = Weight[0];
-        Cnt = 0;
-        Dfs(0, -1);
-        Build(1, N, 1);
-        printf("Case #%d:\n", Case);
-        for (int Operation = 1, Operate, X, Y; Operation <= M; ++Operation) {
-            scanf("%d", &Operate);
-            if (Operate == 1) {
-                scanf("%d", &X);
-                printf("%lld\n", Query(InIndex[X], OutIndex[X], 1, N, 1));
-            }
-            else {
-                scanf("%d%d", &X, &Y);
-                IntervalUpdate(InIndex[X], OutIndex[X], Y - Weight[X], 1, N, 1);
-                Weight[X] = Y;
-            }
-        }
-    }
-    return 0;
-}
-
-
