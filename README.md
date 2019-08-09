@@ -1,5 +1,6 @@
 # Count of Solved Problems  
 ```
+.vs                      3  
 51Nod                    3  
 Aizu                     5  
 AtCoder                  3  
@@ -9,7 +10,7 @@ BZOJ                     9
 CodeForces               348  
 cometOJ                  21  
 FZU                      4  
-HDU                      211  
+HDU                      213  
 HenuOJ                   6  
 hihoCoder                6  
 HRBUST                   1  
@@ -20,7 +21,7 @@ LightOJ                  5
 LuoGu                    42  
 MiOJ                     6  
 NEUQOJ                   6  
-NowCoder                 129  
+NowCoder                 130  
 NYOJ                     1  
 POJ                      94  
 PTA                      132  
@@ -32,4 +33,4 @@ ZOJ                      15
 ZZNUOJ                   3  
 ZZULIOJ                  13  
 ```
-#### `Total:1112`
+#### `Total:1118`
