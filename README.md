@@ -1,6 +1,5 @@
 # Count of Solved Problems  
 ```
-.vs                      3  
 51Nod                    3  
 Aizu                     5  
 AtCoder                  3  
@@ -33,4 +32,4 @@ ZOJ                      15
 ZZNUOJ                   3  
 ZZULIOJ                  13  
 ```
-#### `Total:1118`
+#### `Total:1115`
