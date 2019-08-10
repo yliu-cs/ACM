@@ -6,7 +6,7 @@ AtCoder                  3
 AYITOJ                   4  
 BNUOJ                    1  
 BZOJ                     9  
-CodeForces               348  
+CodeForces               352  
 cometOJ                  21  
 FZU                      4  
 HDU                      213  
@@ -20,7 +20,7 @@ LightOJ                  5
 LuoGu                    42  
 MiOJ                     6  
 NEUQOJ                   6  
-NowCoder                 130  
+NowCoder                 127  
 NYOJ                     1  
 POJ                      94  
 PTA                      132  
@@ -32,4 +32,4 @@ ZOJ                      15
 ZZNUOJ                   3  
 ZZULIOJ                  13  
 ```
-#### `Total:1115`
+#### `Total:1116`
