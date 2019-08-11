@@ -84,17 +84,19 @@ struct LCT {
     Splay(u);
     return sum[u];
   }
-}T;
+};
+LCT T;
 int main() {
   int n, m;
   scanf("%d%d", &n, &m);
   T.Init(n);
-  for (int i = 1, opt, u, v; i <= m; ++i) {
-    scanf("%d%d%d", &opt, &u, &v);
-    if (opt == 0) printf("%d\n", T.Query(u, v));
-    else if (opt == 1) T.Link(u, v);
-    else if (opt == 2) T.Cut(u, v);
-    else T.Modify(u, v);
+  for (int i = 1, opt, x, y; i <= m; ++i) {
+    scanf("%d%d%d", &opt, &x, &y);
+    if (opt == 0) printf("%d\n", T.Query(x, y));
+    else if (opt == 1) T.Link(x, y);
+    else if (opt == 2) T.Cut(x, y);
+    else T.Modify(x, y);
   }
   return 0;
 }
+
