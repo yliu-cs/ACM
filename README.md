@@ -20,7 +20,7 @@ LightOJ                  5
 LuoGu                    45  
 MiOJ                     6  
 NEUQOJ                   6  
-NowCoder                 132  
+NowCoder                 133  
 NYOJ                     1  
 POJ                      94  
 PTA                      132  
@@ -32,4 +32,4 @@ ZOJ                      15
 ZZNUOJ                   3  
 ZZULIOJ                  13  
 ```
-#### `Total:1134`
+#### `Total:1135`
