@@ -9,7 +9,7 @@ BZOJ                     11
 CodeForces               360  
 cometOJ                  21  
 FZU                      4  
-HDU                      222  
+HDU                      224  
 HenuOJ                   6  
 hihoCoder                6  
 HRBUST                   1  
@@ -32,4 +32,4 @@ ZOJ                      15
 ZZNUOJ                   3  
 ZZULIOJ                  13  
 ```
-#### `Total:1149`
+#### `Total:1151`
