@@ -45,11 +45,10 @@ struct Query { int l, r, id; };
 Query qry[maxm];
 std::vector<int> add[maxn];
 SegTree T;
-int ans[maxn];
+int ans[maxm];
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
-    freopen("in.txt", "r", stdin);
     std::cin >> n >> m;
     for (int i = 1; i <= n; ++i) {
         std::cin >> a[i];
