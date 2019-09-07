@@ -13,7 +13,7 @@ HDU                      235
 HenuOJ                   6  
 hihoCoder                6  
 HRBUST                   1  
-JiSuanKe                 28  
+JiSuanKe                 29  
 Kattis                   2  
 LibreOJ                  2  
 LightOJ                  5  
@@ -32,4 +32,4 @@ ZOJ                      15
 ZZNUOJ                   3  
 ZZULIOJ                  13  
 ```
-#### `Total:1178`
+#### `Total:1179`
