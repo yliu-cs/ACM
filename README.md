@@ -17,7 +17,7 @@ JiSuanKe                 29
 Kattis                   2  
 LibreOJ                  2  
 LightOJ                  5  
-LuoGu                    47  
+LuoGu                    48  
 MiOJ                     6  
 NEUQOJ                   6  
 NowCoder                 142  
@@ -32,4 +32,4 @@ ZOJ                      15
 ZZNUOJ                   3  
 ZZULIOJ                  13  
 ```
-#### `Total:1179`
+#### `Total:1180`
