@@ -50,6 +50,9 @@ int main() {
       }
     }
   }
+  if (n ! = 1) {
+    d.push_back(n);
+  }
   if (d.empty()) {
     std::cout << n << '\n';
   }
