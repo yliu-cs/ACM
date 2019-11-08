@@ -1,94 +1,74 @@
 #include <bits/stdc++.h>
 
-const int maxn = 5e5 + 5;
+const int N = 1e6 + 5;
+const int C = 26;
 
-struct AhoCorasickAutomaton {
-    // 子节点记录数组
-    int Son[maxn][26];
-    int Val[maxn];
-    // 失配指针Fail数组
-    int Fail[maxn];
-    // 节点数量
-    int Tot;
+int trie[N][C], tot, cnt[N], fail[N];
 
-    // Trie Tree初始化
-    void TrieInit() {
-        Tot = 0;
-        memset(Son, 0, sizeof(Son));
-        memset(Val, 0, sizeof(Val));
-        memset(Fail, 0, sizeof(Fail));
+int Get(char x) {
+  return (int)(x - 'a');
+}
+
+void Insert(char s[]) {
+  int len = std::strlen(s + 1), cur = 0;
+  for (int i = 1; i <= len; ++i) {
+    int x = Get(s[i]);
+    if (trie[cur][x] == 0) {
+      trie[cur][x] = ++tot;
     }
+    cur = trie[cur][x];
+  }
+  ++cnt[cur];
+}
 
-    // 计算字母下标
-    int Pos(char X) {
-        return X - 'a';
+void GetFail() {
+  std::queue<int> que;
+  for (int i = 0; i < C; ++i) {
+    if (trie[0][i] != 0) {
+      fail[trie[0][i]] = 0;
+      que.push(trie[0][i]);
     }
-
-    // 向Trie Tree中插入Str模式字符串
-    void Insert(char Str[]) {
-        int Cur = 0, Len = int(strlen(Str));
-        for (int i = 0; i < Len; ++i) {
-            int Index = Pos(Str[i]);
-            if (!Son[Cur][Index]) {
-                Son[Cur][Index] = ++Tot;
-            }
-            Cur = Son[Cur][Index];
-        }
-        Val[Cur]++;
+  }
+  while (!que.empty()) {
+    int cur = que.front();
+    que.pop();
+    for (int i = 0; i < C; ++i) {
+      if (trie[cur][i] != 0) {
+        fail[trie[cur][i]] = trie[fail[cur]][i];
+        que.push(trie[cur][i]);
+      }
+      else {
+        trie[cur][i] = trie[fail[cur]][i];
+      }
     }
+  }
+}
 
-    // Bfs求得Trie Tree上失配指针
-    void GetFail() {
-        std::queue<int> Que;
-        for (int i = 0; i < 26; ++i) {
-            if (Son[0][i]) {
-                Fail[Son[0][1]] = 0;
-                Que.push(Son[0][i]);
-            }
-        }
-        while (!Que.empty()) {
-            int Cur = Que.front(); Que.pop();
-            for (int i = 0; i < 26; ++i) {
-                if (Son[Cur][i]) {
-                    Fail[Son[Cur][i]] = Son[Fail[Cur]][i];
-                    Que.push(Son[Cur][i]);
-                }
-                else {
-                    Son[Cur][i] = Son[Fail[Cur]][i];
-                }
-            }
-        }
+int Query(char s[]) {
+  int len = std::strlen(s + 1), cur = 0, ret = 0;
+  for (int i = 1; i <= len; ++i) {
+    int x = Get(s[i]);
+    cur = trie[cur][x];
+    for (int j = cur; j && cnt[j] != -1; j = fail[j]) {
+      ret += cnt[j];
+      cnt[j] = -1;
     }
+  }
+  return ret;
+}
 
-    // 询问Str中出现的模式串数量
-    int Query(char Str[]) {
-        int Len = int(strlen(Str));
-        int Cur = 0, Ans = 0;
-        for (int i = 0; i < Len; ++i) {
-            Cur = Son[Cur][Pos(Str[i])];
-            for (int j = Cur; j && ~Val[j]; j = Fail[j]) {
-                Ans += Val[j];
-                Val[j] = -1;
-            }
-        }
-        return Ans;
-    }
-};
+int n;
+char s[N];
 
-int N;
-char Str[maxn << 1];
-AhoCorasickAutomaton AC;
-
-int main(int argc, char *argv[]) {
-    AC.TrieInit();
-    scanf("%d", &N);
-    for (int i = 0; i < N; ++i) {
-        scanf("%s", Str);
-        AC.Insert(Str);
-    }
-    AC.GetFail();
-    scanf("%s", Str);
-    printf("%d\n", AC.Query(Str));
-    return 0;
+int main() {
+  scanf("%d", &n);
+  for (int i = 1; i <= n; ++i) {
+    scanf("%s", s + 1);
+    Insert(s);
+  }
+  GetFail();
+  scanf("%s", s + 1);
+  printf("%d\n", Query(s));
+  return 0;
 }
 
