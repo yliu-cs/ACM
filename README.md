@@ -11,7 +11,7 @@ cometOJ                  21
 FZU                      6  
 HDU                      236  
 HenuOJ                   6  
-hihoCoder                6  
+hihoCoder                7  
 HRBUST                   1  
 JiSuanKe                 31  
 Kattis                   2  
@@ -32,4 +32,4 @@ ZOJ                      15
 ZZNUOJ                   3  
 ZZULIOJ                  13  
 ```
-#### `Total:1308`
+#### `Total:1309`
