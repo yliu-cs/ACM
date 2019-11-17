@@ -6,12 +6,12 @@ AtCoder                  3
 AYITOJ                   4  
 BNUOJ                    1  
 BZOJ                     11  
-CodeForces               494  
+CodeForces               498  
 cometOJ                  21  
 FZU                      6  
 HDU                      236  
 HenuOJ                   6  
-hihoCoder                8  
+hihoCoder                9  
 HRBUST                   1  
 JiSuanKe                 31  
 Kattis                   2  
@@ -32,4 +32,4 @@ ZOJ                      15
 ZZNUOJ                   3  
 ZZULIOJ                  13  
 ```
-#### `Total:1322`
+#### `Total:1327`
