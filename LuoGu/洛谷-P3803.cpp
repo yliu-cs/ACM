@@ -1,86 +1,60 @@
 #include <bits/stdc++.h>
-using namespace std;
 
-const int maxn = 3e6 + 5;
-const double pi = acos(-1.0);
+const int N = 4e6 + 5;
 
-struct Complex {
-    double X, Y;
+int n, m, l;
+std::complex<double> a[N], b[N];
+int r[N];
 
-    Complex operator + (const Complex &B) const {
-        return Complex {X + B.X, Y + B.Y};
+void FFT(std::complex<double> a[], int sgn) {
+  for (int i = 0; i < n; ++i) {
+    if (i < r[i]) {
+      std::swap(a[i], a[r[i]]);
     }
-
-    Complex operator - (const Complex &B) const {
-        return Complex {X - B.X, Y - B.Y};
+  }
+  for (int i = 1; i < n; i <<= 1) {
+    std::complex<double> w(std::cos(M_PI / i), sgn * std::sin(M_PI / i));
+    for (int p = i << 1, j = 0; j < n; j += p) {
+      std::complex<double> e(1, 0);
+      for (int k = 0; k < i; ++k, e *= w) {
+        std::complex<double> x = a[j + k], y = e * a[i + j + k];
+        a[j + k] = x + y;
+        a[j + k + i] = x - y;
+      }
     }
-
-    Complex operator * (const Complex &B) const {
-        return Complex {X * B.X - Y * B.Y, X * B.Y + Y * B.X};
-    }
-    
-    Complex operator / (const Complex &B) const {
-        double Temp = B.X * B.X + B.Y * B.Y;
-        return Complex {(X * B.X + Y * B.Y) / Temp, (Y * B.X - X * B.Y) / Temp};
-    }
-};
-
-int N, M;
-int L;
-int Limit;
-int R[maxn];
-
-void FFT(Complex F[], int Op) {
-    for (int i = 0; i < Limit; ++i) {
-        if (i < R[i]) {
-            swap(F[i], F[R[i]]);
-        }
-    }
-    for (int j = 1; j < Limit; j <<= 1) {
-        Complex Temp = Complex {cos(pi / j), Op * sin(pi / j)};
-        for (int k = 0; k < Limit; k += (j << 1)) {
-            Complex Buffer = Complex {1.0, 0.0};
-            for (int l = 0; l < j; ++l) {
-                Complex Tx = F[k + l], Ty = Buffer * F[k + j + l];
-                F[k + l] = Tx + Ty;
-                F[k + j + l] = Tx - Ty;
-                Buffer = Buffer * Temp;
-            }
-        }
-    }
-}
-
-Complex A[maxn], B[maxn];
+  }
+} 
 
 void Cal() {
-    Limit = 1; L = 0;
-    while (Limit <= N + M) {
-        Limit <<= 1;
-        L++;
-    }
-    for (int i = 0; i < Limit; ++i) {
-        R[i] = (R[i >> 1] >> 1) | ((i & 1) << (L - 1));
-    }
-    FFT(A, 1);
-    FFT(B, 1);
-    for (int i = 0; i <= Limit; ++i) {
-        A[i] = A[i] * B[i];
-    }
-    FFT(A, -1);
+  m = n + m;
+  for (n = 1; n <= m; n <<= 1) {
+    ++l;
+  }
+  for (int i = 0; i < n; ++i) {
+    r[i] = (r[i >> 1] >> 1) | ((i & 1) << (l - 1));
+  }
+  FFT(a, 1);
+  FFT(b, 1);
+  for (int i = 0; i <= n; ++i) {
+    a[i] = a[i] * b[i];
+  }
+  FFT(a, -1);
 }
 
-int main(int argc, char *argv[]) {
-    scanf("%d%d", &N, &M);
-    for (int i = 0; i <= N; ++i) {
-        scanf("%lf", &A[i].X);
-    }
-    for (int i = 0; i <= M; ++i) {
-        scanf("%lf", &B[i].X);
-    }
-    Cal();
-    for (int i = 0; i <= N + M; ++i) {
-        printf("%.0lf ", fabs(A[i].X / Limit));
-    }
-    return 0;
+int main() {
+  scanf("%d%d", &n, &m);
+  for (int i = 0, x; i <= n; ++i) {
+    scanf("%d", &x);
+    a[i] = x;
+  }
+  for (int i = 0, x; i <= m; ++i) {
+    scanf("%d", &x);
+    b[i] = x;
+  }
+  Cal();
+  for (int i = 0; i <= m; ++i) {
+    printf("%d ", (int)(a[i].real() / n + 0.5));
+  }
+  return 0;
 }
 

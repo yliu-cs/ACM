@@ -15,9 +15,9 @@ hihoCoder                9
 HRBUST                   1  
 JiSuanKe                 31  
 Kattis                   2  
-LibreOJ                  3  
+LibreOJ                  4  
 LightOJ                  5  
-LuoGu                    55  
+LuoGu                    56  
 MiOJ                     6  
 NEUQOJ                   6  
 NowCoder                 143  
@@ -32,4 +32,4 @@ ZOJ                      15
 ZZNUOJ                   3  
 ZZULIOJ                  13  
 ```
-#### `Total:1332`
+#### `Total:1334`
