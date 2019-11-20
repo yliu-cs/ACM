@@ -5,90 +5,47 @@ int main() {
   std::cin.tie(nullptr);
   int n;
   std::cin >> n;
-  struct Triple { int x, y, z; };
-  std::vector<Triple> q(n - 2);
-  std::set<int> idx[n];
+  std::vector<int> g[n], cnt(n, 0);
   for (int i = 0; i < n - 2; ++i) {
     int x, y, z;
     std::cin >> x >> y >> z;
     --x;
     --y;
     --z;
-    q[i] = (Triple){x, y, z};
-    idx[x].insert(i);
-    idx[y].insert(i);
-    idx[z].insert(i);
+    g[x].push_back(y); g[x].push_back(z);
+    g[y].push_back(x); g[y].push_back(z);
+    g[z].push_back(x); g[z].push_back(y);
+    ++cnt[x];
+    ++cnt[y];
+    ++cnt[z];
   }
-  int s = 0;
+  int x, y;
   for (int i = 0; i < n; ++i) {
-    if ((int)idx[i].size() == 1) {
-      s = i;
+    if (cnt[i] == 1) {
+      x = i;
       break;
     }
   }
-  std::vector<int> ans;
-  ans.push_back(s);
-  int id = (*idx[s].begin());
-  idx[s].erase(id);
-  Triple buf = q[id];
-  int a = 0, b = 0;
-  if (buf.x == s) {
-    a = buf.y;
-    b = buf.z;
-  }
-  else if (buf.y == s) {
-    a = buf.x;
-    b = buf.z;
+  if (cnt[g[x][0]] == 2) {
+    y = g[x][0];
   }
   else {
-    a = buf.x;
-    b = buf.y;
+    y = g[x][1];
   }
-  ans.push_back(a);
-  ans.push_back(b);
-  idx[a].erase(id);
-  idx[b].erase(id);
-  while (true) {
-    a = ans[(int)ans.size() - 2], b = ans[(int)ans.size() - 1];
-    if (idx[a].empty()) {
-      a = ans[(int)ans.size() - 3];
-    }
-    bool f = false;
-    for (auto &v : idx[a]) {
-      if (idx[b].count(v)) {
-        id = v;
-        f = true;
-        break;
+  std::vector<bool> vis(n, false);
+  vis[x] = vis[y] = true;
+  std::cout << x + 1 << ' ' << y + 1 << ' ';
+  for (int i = 0; i < n - 2; ++i) {
+    int z;
+    for (int j = 0; j < (int)g[x].size(); ++j) {
+      if (!vis[g[x][j]]) {
+        z = g[x][j];
       }
     }
-    if (!f) {
-      for (auto &v : idx[b]) {
-        if (idx[a].count(v)) {
-          id = v;
-          f = true;
-          break;
-        }
-      }
-    }
-    if (!f) {
-      break;
-    }
-    buf = q[id];
-    if (buf.x != a && buf.x != b) {
-      ans.push_back(buf.x);
-    }
-    else if (buf.y != a && buf.y != b) {
-      ans.push_back(buf.y);
-    }
-    else {
-      ans.push_back(buf.z);
-    }
-    idx[a].erase(id);
-    idx[b].erase(id);
-    idx[ans.back()].erase(id);
-  }
-  for (int i = 0; i < (int)ans.size(); ++i) {
-    std::cout << ans[i] + 1 << ' ';
+    vis[z] = true;
+    std::cout << z + 1 << ' ';
+    x = y;
+    y = z;
   }
   std::cout << '\n';
   return 0;
